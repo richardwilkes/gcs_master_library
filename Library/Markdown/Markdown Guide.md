@@ -186,6 +186,18 @@ Come visit [GCS](https://gurpscharactersheet.com "GURPS Character Sheet")!
 
 Come visit [GCS](https://gurpscharactersheet.com "GURPS Character Sheet")!
 
+Unlike most markdown viewers, GCS can accept not only links starting with `http://` and `https://`, but can also accept those starting with `md:` (a reference to a markdown file in one of your libraries) and those with a standard GURPS page reference, such as `B45` to open up the Basic Set to page 45. Note that unlike md: links specified in a page reference field, spaces must be converted to `%20` in the markdown since a space normally separates the link from its tooltip.
+
+```
+[Markdown Guide](md:Markdown%20Guide)
+
+[Basic Set, page 45](B45)
+```
+
+[Markdown Guide](md:Markdown%20Guide)
+
+[Basic Set, page 45](B45)
+
 ### Images
 
 You can display an image by adding `!` and wrapping the alt text in `[ ]`, then wrapping the URL in parentheses `( )`.
