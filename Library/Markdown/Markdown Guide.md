@@ -170,7 +170,7 @@ Some text with
 
 ### Links
 
-Links within the text are normally detected and converted automatically, such as https://gurpscharactersheet.com. You can, however, give them your own text to display by wrapping the link text in brackets `[ ]` and then wrapping the URL in parentheses `( )`.
+Standard web links within the text are normally detected and converted automatically, such as https://gurpscharactersheet.com. You can, however, give them your own text to display by wrapping the link text in brackets `[ ]` and then wrapping the URL in parentheses `( )`.
 
 ```
 Come visit [GCS](https://gurpscharactersheet.com)!
@@ -186,21 +186,25 @@ Come visit [GCS](https://gurpscharactersheet.com "GURPS Character Sheet")!
 
 Come visit [GCS](https://gurpscharactersheet.com "GURPS Character Sheet")!
 
-Unlike most markdown viewers, GCS can accept not only links starting with `http://` and `https://`, but can also accept those starting with `md:` (a reference to a markdown file in one of your libraries) and those with a standard GURPS page reference, such as `B45` to open up the Basic Set to page 45. Note that unlike md: links specified in a page reference field, spaces must be converted to `%20` in the markdown since a space normally separates the link from its tooltip.
+Unlike most markdown viewers, GCS can accept not only links starting with `http://` and `https://`, but can also accept those starting with `md:` (a reference to a markdown file in one of your libraries) and those with a standard GURPS page reference, such as `B45` to open up the Basic Set to page 45. Note that unlike md: links specified in a page reference field, spaces must be converted to `%20` in the markdown since a space normally separates the link from its tooltip. In addition, relative file paths can be specified. Again, these will need to have spaces converted. Also note that paths should use the unix standard forward slashes, not the Windows backwards slash.
 
 ```
 [Markdown Guide](md:Markdown%20Guide)
 
 [Basic Set, page 45](B45)
+
+[Markdown Guide](./Markdown%20Guide.md)
 ```
 
 [Markdown Guide](md:Markdown%20Guide)
 
 [Basic Set, page 45](B45)
+
+[Markdown Guide](./Markdown%20Guide.md)
 
 ### Images
 
-You can display an image by adding `!` and wrapping the alt text in `[ ]`, then wrapping the URL in parentheses `( )`.
+You can display an image by adding `!` and wrapping the alt text in `[ ]`, then wrapping the URL in parentheses `( )`. The URL can also be a relative file path, as for links, above.
 
 ```
 ![GURPS Character Sheet](https://gurpscharactersheet.com/images/logo.gif)
