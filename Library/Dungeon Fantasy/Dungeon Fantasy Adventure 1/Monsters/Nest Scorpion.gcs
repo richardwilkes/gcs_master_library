@@ -1,0 +1,828 @@
+{
+	"type": "character",
+	"version": 4,
+	"id": "26ead06a-911a-41c5-a0cc-e418444f899d",
+	"total_points": -93,
+	"points_record": [
+		{
+			"when": "2022-12-04T14:59:09-05:00",
+			"points": -93,
+			"reason": "Initial points"
+		}
+	],
+	"profile": {
+		"player_name": "Mirror of the Fire Demon",
+		"title": "Nest Scorpion (colony of 20+)",
+		"organization": "Dire Animal",
+		"skin": "black",
+		"gender": "both",
+		"tech_level": "3",
+		"height": "6\"",
+		"weight": "75 lb"
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"melee",
+			"ranged",
+			"traits skills",
+			"notes",
+			"reactions",
+			"conditional_modifiers",
+			"spells",
+			"equipment",
+			"other_equipment"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"attribute_base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"attribute_base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"attribute_base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"attribute_base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"attribute_base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"attribute_base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"attribute_base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"attribute_base": "($dx+$ht)/4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"attribute_base": "floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"attribute_base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"expression": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"expression": "0",
+						"explanation": "Roll vs. Will to do anything besides talk or rest; failure causes unconsciousness\nEach FP you lose below 0 also causes 1 HP of injury\nMove, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"expression": "round($fp/3)",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"expression": "$fp-1"
+					},
+					{
+						"state": "Rested",
+						"expression": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"attribute_base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"expression": "round(-$hp*5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"expression": "round(-$hp*4)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-4 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"expression": "round(-$hp*3)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-3 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"expression": "round(-$hp*2)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-2 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"expression": "-$hp",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-1 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"expression": "0",
+						"explanation": "Roll vs. HT every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"expression": "round($hp/3)",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"expression": "$hp-1"
+					},
+					{
+						"state": "Healthy",
+						"expression": "$hp"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Humanoid",
+			"roll": "0",
+			"locations": [
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Swarm Body",
+					"slots": 2,
+					"calc": {
+						"roll_range": "0-1",
+						"dr": {
+							"all": 0
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true,
+		"exclude_unspent_points_from_total": false
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": -6,
+			"calc": {
+				"value": 4,
+				"points": -120
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 6,
+			"calc": {
+				"value": 10,
+				"points": 30
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 0,
+			"calc": {
+				"value": 4,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 4,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 4,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 4,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 4,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": -2,
+			"calc": {
+				"value": 3,
+				"points": -40
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 0,
+			"calc": {
+				"value": 3,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"current": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"current": 11,
+				"points": 2
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "14046d1d-90d0-4588-b1bc-08eae0a3961f",
+			"type": "trait",
+			"name": "Swarm Attacks",
+			"reference": "B271",
+			"modifiers": [
+				{
+					"id": "4b63945b-a224-4008-886d-ec2f20e4aeb0",
+					"type": "modifier",
+					"name": "Armor Divisor (2)",
+					"reference": "B102",
+					"cost": 50
+				}
+			],
+			"weapons": [
+				{
+					"id": "34aaef61-5fb8-4d14-8d92-fe51513c59c9",
+					"type": "melee_weapon",
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"armor_divisor": 2
+					},
+					"usage": "Bite",
+					"reach": "C",
+					"parry": "No",
+					"block": "No",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 10,
+						"parry": "No",
+						"block": "No",
+						"damage": "1d-2(2) cr"
+					}
+				}
+			],
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "e58aa565-6177-4554-a344-34c14d48217c",
+			"type": "trait",
+			"name": "Injury Tolerance",
+			"reference": "B60,P52,MA45",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "26605205-a95d-4690-9dc0-cc648294a15e",
+					"type": "modifier",
+					"name": "Diffuse",
+					"reference": "B60",
+					"notes": "Immune to crippling injuries. Brain, Vitals and Groin cannot be targeted. Most foes cannot slam or grapple you (GM's decision). Do not bleed. Unaffected by blood-borne toxins. Immune to attacks that rely on cutting off blood to part of your body. Impaling and piercing attacks of any size never do more than 1 HP of injury, regardless of penetrating damage. Other attacks never do more than 2 HP of injury. Exception: Area-effect, cone, and explosion attacks cause normal injury",
+					"cost": 100,
+					"cost_type": "points"
+				},
+				{
+					"id": "e98b0c17-141f-45ca-aaf2-5d6ff9f9ab87",
+					"type": "modifier",
+					"name": "Homogenous",
+					"reference": "B60",
+					"notes": "Altered wound modifiers: imp \u0026 pi++ are x1/2, pi+ is x1/3, pi is x1/5, pi- is x1/10",
+					"cost": 40,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "27ef0bd2-f4b7-4c88-9bd4-c84557d3f790",
+					"type": "modifier",
+					"name": "No Blood",
+					"reference": "B61",
+					"notes": "Do not bleed, unaffected by blood-borne toxins, immune to attacks that rely on cutting off blood to part of your body",
+					"cost": 5,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "4fa959a6-3b06-42d4-b9a9-ad02e2a7f809",
+					"type": "modifier",
+					"name": "No Brain",
+					"reference": "B61",
+					"notes": "Brain cannot be targeted. Blows to the skull or eye are treated like blows to the face, except that eye injury can still cripple the eye",
+					"cost": 5,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "ff796ec8-c350-48cc-b6a2-74f7c48bc261",
+					"type": "modifier",
+					"name": "No Eyes",
+					"reference": "B61",
+					"notes": "Eyes may not be targeted. Immune to blinding attacks",
+					"cost": 5,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "cdab2614-a6a1-47ea-8c7c-f42698d872cb",
+					"type": "modifier",
+					"name": "No Head",
+					"reference": "B61",
+					"notes": "Skull, Brain and Face cannot be targeted",
+					"cost": 7,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "e0ef00ad-30d2-494c-8ceb-931ff304cb1f",
+					"type": "modifier",
+					"name": "No Neck",
+					"reference": "B61",
+					"notes": "Neck may not be targeted and cannot be decapitated, choked or strangled",
+					"cost": 5,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "a4374f61-3843-4e33-b1f4-a2890ee6cba1",
+					"type": "modifier",
+					"name": "No Vitals",
+					"reference": "B61",
+					"notes": "Attacks to the Vitals or Groin are treated as attacks to the Torso",
+					"cost": 5,
+					"cost_type": "points",
+					"disabled": true
+				},
+				{
+					"id": "8d81f217-bc0f-443a-b6cb-281287f84a77",
+					"type": "modifier",
+					"name": "Unliving",
+					"reference": "B61",
+					"notes": "Altered wound modifiers: imp \u0026 pi++ are x1, pi+ is x1/2, pi is x1/3, pi- is x1/5",
+					"cost": 20,
+					"cost_type": "points",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": 100
+			}
+		},
+		{
+			"id": "94db72e4-7cc4-4df7-9f71-bdf80530458c",
+			"type": "trait_container",
+			"open": true,
+			"children": [
+				{
+					"id": "d28051e9-aaf5-437c-830b-03483cdcb762",
+					"type": "trait",
+					"name": "Bestial",
+					"reference": "B124",
+					"tags": [
+						"Disadvantage",
+						"Exotic",
+						"Mental"
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "679a762f-3216-461d-b3e2-797c91344d5e",
+					"type": "trait",
+					"name": "Cannot Speak",
+					"reference": "B125",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"base_points": -15,
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": false,
+								"name": {
+									"compare": "is",
+									"qualifier": "stuttering"
+								}
+							}
+						]
+					},
+					"calc": {
+						"points": -15
+					}
+				},
+				{
+					"id": "377a3456-2fdb-4ce9-8f2e-5a954e1c0a4e",
+					"type": "trait",
+					"name": "Hidebound",
+					"reference": "B138",
+					"notes": "-2 penalty on any task that requires creativity or invention, including most rolls against Artist skill, all Engineer rolls for new inventions, and all skill rolls made to use the Gadgeteer advantage.",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "421114b0-3665-4b01-a670-ed024c61162f",
+					"type": "trait",
+					"name": "Taboo Trait (Fixed IQ)",
+					"reference": "B263",
+					"tags": [
+						"Physical"
+					],
+					"calc": {
+						"points": 0
+					}
+				}
+			],
+			"name": "Meta-Trait: Wild Animal",
+			"reference": "B263",
+			"container_type": "meta_trait",
+			"calc": {
+				"points": -30
+			}
+		},
+		{
+			"id": "89d1473d-c15a-434e-b2f8-348910413125",
+			"type": "trait_container",
+			"open": true,
+			"children": [
+				{
+					"id": "830b79f7-6f53-4365-a8e6-b4c02de15540",
+					"type": "trait",
+					"name": "Extra Legs",
+					"reference": "B54",
+					"tags": [
+						"Advantage",
+						"Exotic",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "8515d1e1-189f-481a-a353-fb2977c9c628",
+							"type": "modifier",
+							"name": "4",
+							"reference": "B54",
+							"cost": 5,
+							"cost_type": "points",
+							"disabled": true
+						},
+						{
+							"id": "3b28a907-fd1d-416d-8374-9256414c61ec",
+							"type": "modifier",
+							"name": "6",
+							"reference": "B55",
+							"cost": 10,
+							"cost_type": "points"
+						},
+						{
+							"id": "564204b9-a261-437c-a467-7bb3037de07c",
+							"type": "modifier",
+							"name": "@7+@",
+							"reference": "B55",
+							"cost": 15,
+							"cost_type": "points",
+							"disabled": true
+						},
+						{
+							"id": "3f39aa70-a2aa-4fd4-8c8c-62814edfb25e",
+							"type": "modifier",
+							"name": "Long",
+							"reference": "B55",
+							"cost": 100,
+							"levels": 1,
+							"disabled": true
+						},
+						{
+							"id": "e7b5a707-415e-4a4d-a3ce-ed78742e31e1",
+							"type": "modifier",
+							"name": "Cannot Kick",
+							"reference": "B55",
+							"cost": -50
+						},
+						{
+							"id": "e7f9de79-ab0f-4987-a35d-828c7a2593b8",
+							"type": "modifier",
+							"name": "Extra Flexible",
+							"reference": "MATG27",
+							"cost": 50,
+							"disabled": true
+						},
+						{
+							"id": "1d493283-93c0-4f60-a1e8-c20d612293b8",
+							"type": "modifier",
+							"name": "Prehensile Feet",
+							"reference": "MATG28",
+							"cost": 20,
+							"disabled": true
+						}
+					],
+					"calc": {
+						"points": 5
+					}
+				},
+				{
+					"id": "31a83511-fd74-4d23-80e0-cfed2db56efe",
+					"type": "trait",
+					"name": "Horizontal",
+					"reference": "B139",
+					"tags": [
+						"Disadvantage",
+						"Exotic",
+						"Physical"
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "2457d4a4-838a-4563-b353-ed1e8b3c3d4d",
+					"type": "trait",
+					"name": "No Fine Manipulators",
+					"reference": "B145",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"base_points": -30,
+					"features": [
+						{
+							"type": "cost_reduction",
+							"attribute": "st",
+							"percentage": 40
+						},
+						{
+							"type": "cost_reduction",
+							"attribute": "dx",
+							"percentage": 40
+						}
+					],
+					"calc": {
+						"points": -30
+					}
+				}
+			],
+			"name": "Meta-Trait: Quadruped",
+			"reference": "B263",
+			"calc": {
+				"points": -35
+			}
+		}
+	],
+	"notes": [
+		{
+			"id": "d1edcb5e-4669-450b-ae9a-561583344209",
+			"type": "note",
+			"text": "Nest scorpions live in distinctively shaped low cylindrical nests\rmade from sand. They abandon and rebuild nests every few\rmonths as the size of the colony changes, some dying off and\rothers being born, so an area with nest scorpions will have\rempty chimney-shaped nests scattered around (roll vs.\rNaturalist or Survival (Desert), either at +4, to identify these).",
+			"reference": "DFA1:46"
+		},
+		{
+			"id": "4d99e5a9-b3f4-4174-9eea-2b7d490432fb",
+			"type": "note",
+			"text": "A swarm takes 11 HP of injury before dispersing.",
+			"reference": "DFA1:46"
+		},
+		{
+			"id": "04b6b752-b74e-4efa-891a-060c61658e8c",
+			"type": "note",
+			"text": "Scorpions are bad enough, but some scorpions in the\rDevouring Lands live in small colonies, swarming over their\rprey. A swarm is about 20 scorpions, each roughly the size of a\rsmall paperback book.",
+			"reference": "DFA1:46"
+		}
+	],
+	"created_date": "2022-12-04T14:59:09-05:00",
+	"modified_date": "2022-12-04T18:34:57-05:00",
+	"calc": {
+		"swing": "1d",
+		"thrust": "1d-2",
+		"basic_lift": "20 lb",
+		"move": [
+			3,
+			2,
+			1,
+			1,
+			1
+		],
+		"dodge": [
+			6,
+			5,
+			4,
+			3,
+			2
+		]
+	}
+}
