@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Character Sheet
 A character sheet is pretty much the whole point to this program. An electronic, automated, GURPS Character Sheet. This will save so much time, you'll be able to learn to cook donuts and speak Norwegian. Unless noted, when referencing the *Character Sheet*, it includes the displayed, exported and printed character sheets.
 
@@ -55,7 +57,7 @@ Select the character sheet to modify:
   - **\<context_menu> -> Delete**
   - Press 'Del'. It might say 'delete', but that's a pretty long word for such a little key.
 
-When adding elements, some present dialogues to get user input for [mods](./mods.md "Mods") (e.g: Riding skill which requires specialization, Language trait requires a specialization and modifiers). Substitutions are presented as a field that needs completion. Modifications are a checklist of variables. Set the values and select Ok. Select Cancel to dismiss the dialogue, but that likely leaves the element and character incomplete. Edit the element to complete the selections.
+When adding elements, some present dialogues to get user input for [mods](./Mods.md "Mods") (e.g: Riding skill which requires specialization, Language trait requires a specialization and modifiers). Substitutions are presented as a field that needs completion. Modifications are a checklist of variables. Set the values and select Ok. Select Cancel to dismiss the dialogue, but that likely leaves the element and character incomplete. Edit the element to complete the selections.
 
 Group elements by adding containers to the blocks and then elements to the containers. In character sheets, containers just sit there, containing stuff. The true *Power Of The Container* comes from [Character Templates](./Character%20Template.md "Character Template"). See [Container](./Container.md "Container") for details.
 
@@ -97,7 +99,9 @@ Otherwise, the file needs to be deleted with the OS file manager.
 The calculators are for Jumping, Throwing and Hiking. The results are based in character sheet settings and calculator options.
 
 ## Fields
-Some fields are [free-form data](./free-form%20data.md "free-form data") and some are formatted. Some of the formats depend on the sheet settings. Some fields are calculated and can't be directly changed. Some fields are lists. To *some* it up, there are a lot of fields.
+*Almost all character sheet data is [unlinked](./Unlinked%20Data.md "Unlinked Data").*
+
+Some fields are [free-form data](./Free-Form%20Data.md "Free-Form Data") and some are formatted. Some of the formats depend on the sheet settings. Some fields are calculated and can't be directly changed. Some fields are lists. To *some* it up, there are a lot of fields.
 
 None of these fields are required, but many auto populate or complain if you remove the value. The file will save regardless. The filename is not linked to any field value. Character sheets use .gcs extensions by default.
 
@@ -110,13 +114,13 @@ Remove the picture:\
 **Select Edit -> Clear Portrait**
 
 ### Identity
-These are all [free-form](./free-form%20data.md "free-form data") fields. Hard return won't work.
+These are all [free-form](./Free-Form%20Data.md "Free-Form Data") fields. Hard return won't work.
 
 ### Miscellaneous
 The dates are automated. The Player name is free form.
 
 ### Points
-This is a calculated break down of available, unspent, and used character points. The calculation works on the given total. Click [edit](./common%20icon.md "common icon:Edit") ( ![](./img/pen-dark.png "common icon:Edit") ), in the title, to alter point total and [Points Record](./Points%20Record.md "Points Record").
+This is a calculated break down of available, unspent, and used character points. The calculation works on the given total. Click [edit](./Common%20Icon.md "Common Icon:Edit") ( ![](./img/pen-dark.png "Common Icon:Edit") ), in the title, to alter point total and [Points Record](./Points%20Record.md "Points Record").
 
 ### Description
 Height, Weight, Size, and TL are formatted fields. The rest are free-form.
@@ -188,3 +192,5 @@ This is a list of [Note](./Note.md "Note") elements. Add these to the character 
 
 ## Related
 [These guys](http://www.sjgames.com/gurps/) 
+
+***Last updated for v5.7.0***

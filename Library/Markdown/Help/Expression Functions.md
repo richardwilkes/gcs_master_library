@@ -33,3 +33,5 @@
 | trait_level(name)                           | Looks for a trait with the `name` and returns its level or -1 if it can't be found. **Not available prior to v5.** |
 
 See also: [Expression Operators](./Expression%20Operators.md)
+
+***Last updated for v5.7.0***

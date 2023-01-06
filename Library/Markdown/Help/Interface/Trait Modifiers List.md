@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Trait Modifiers List
 A Trait Modifier List is found in a [Trait](./Trait.md "Trait") [Detail Editor](./Detail%20Editor.md "Detail Editor") and a [Trait Modifiers Library](./Library%20Tree.md "Library Tree:Trait Modifiers"). [Trait Modifiers](./Trait%20Modifiers.md "Trait Modifiers") add enhancements or limitations to traits. This allows a trait to go from *horrible* to *really horrible* with a drag and a drop, but at least now that bobsledding skill is affordable.
 
@@ -23,3 +25,5 @@ The enabled column only applies to trait modifiers that are part of a character 
 ## Parent
 [Trait Modifiers Library](./Library%20Tree.md "Library Tree:Trait Modifiers")
 [Trait](./Trait.md "Trait")
+
+***Last updated for v5.7.0***

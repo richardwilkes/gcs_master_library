@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Page Reference Mappings
 Page Reference Mappings link references, in used with [Page Reference](./Page%20Reference.md "Page Reference") fields, to external PDF files and pages.
 
@@ -16,8 +18,8 @@ Use the trash can ( ![](./img/trash.png "Delete") ) to the right.
 
 ## Interface
 ### Tool Bar
-- **[Reset](./common%20icon.md "common icon:Reset") ( ![](./img/power.png "Reset") )** : just like new
-- **[Menu](./common%20icon.md "common icon:Menu") ( ![](./img/bars.png "Menu") )**
+- **[Reset](./Common%20Icon.md "Common Icon:Reset") ( ![](./img/power.png "Reset") )** : just like new
+- **[Menu](./Common%20Icon.md "Common Icon:Menu") ( ![](./img/bars.png "Menu") )**
   - **[Import](./Settings.md "Import")** : Reads a JSON file with these values
   - **[Export](./Settings.md "Export")** : Writes a JSON file with these values
   - A list of any saved [Settings](./Settings.md "Settings") sets
@@ -31,4 +33,7 @@ The offset is used to account for leading pages, or if there is something wrong 
 
 ### Tools
 Each line entry has this entire tool set:
-- **[Delete](./common%20icon.md "common icon:Delete") ( ![](./img/trash.png "Delete") )** : to delete the map
+- **[Delete](./Common%20Icon.md "Common Icon:Delete") ( ![](./img/trash.png "Delete") )** : to delete the map
+- **[Edit](./Common%20Icon.md "Common Icon:Edit") ( ![](./img/pen.png "Edit") )** : opens a file selection panel to modify the setting
+
+***Last updated for v5.7.0***

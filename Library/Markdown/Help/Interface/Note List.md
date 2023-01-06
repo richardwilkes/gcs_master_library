@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Note List
 A Note, as opposed to the [notes field](./Notes.md "Notes"), is a block containing zero or more note entries. Note entries are stored in Note Libraries, character sheets, and templates. They can be dragged and dropped all around. Like Note carpet bombing. When a template is applied, all note entries are transferred to the character sheet.
 
@@ -64,4 +66,6 @@ As noted above:
 ## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
 [Character Template](./Character%20Template.md "Character Template")
-[Note Library](./Library%20Tree.md "Library Tree:Note")
+[Note Library](./Library%20Tree.md "Library Tree")
+
+***Last updated for v5.7.0***

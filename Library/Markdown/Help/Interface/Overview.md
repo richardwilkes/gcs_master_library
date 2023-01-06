@@ -2,6 +2,8 @@
 
 The contents of this guide were primarily written by **@kriegstinte** from the GCS Discord server (or **@outofnamespace** on GitHub). If you find mistakes or have suggestions for improvements, please contact him there or create a PR on GitHub with relevant changes.
 
+Any panel with a question mark icon ( ![](./img/q.png "Help") ) will open Help related to that panel. Or a vortex in time and space. About 50/50 at this point.
+
 1. [Library Tree](./Library%20Tree.md)
 2. [Character Sheet](./Character%20Sheet.md)
    1. [Points Record](./Points%20Record.md)
@@ -66,3 +68,5 @@ The contents of this guide were primarily written by **@kriegstinte** from the G
 7. [Markdown Guide](../Markdown%20Guide.md)
 8. [Expression Function Reference](../Expression%20Functions.md)
 9. [Expression Operators Reference](../Expression%20Operators.md)
+
+***Last updated for v5.7.0***

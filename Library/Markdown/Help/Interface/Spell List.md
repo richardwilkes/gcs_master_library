@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Spell List
 The Spell List acts as a grimoire for a magic using character. In No Mana zones, it acts as an unending source of humor for other characters. For all of them, the list is on the [Character Sheet](./Character%20Sheet.md "Character Sheet").
 
@@ -25,10 +27,12 @@ The list headers are some simple values. Most of them are GURPS defined.
 - **Pts** : points assigned to skill
 - **Reference ( ![](./img/flag.png "Reference") )** : link to reference
 
-The Spell entries will have additional information about casting the spell, dependant on the spell level.
+The Spell entries will have additional information about casting the spell, dependent on the spell level.
 
 ## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
 
 ## Related
 [Spell](./Spell.md "Spell")
+
+***Last updated for v5.7.0***

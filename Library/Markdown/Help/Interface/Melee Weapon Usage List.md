@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Melee Weapon Usage List
 The Melee Weapon Usage List is a collection of ways to use an item to inflict damage, such as a swing, stab, or badminton slam. This list is available for all [equipment](./Equipment.md "Equipment") elements, but commonly only applied to equipment that is considered a melee weapon. Although, pillows are the primary armament in a pillow fight.
 
@@ -33,3 +35,5 @@ These fields are weapon statistics for GURPS (B268-271). They are calculated by 
 
 ## Related
 [Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")
+
+***Last updated for v5.7.0***

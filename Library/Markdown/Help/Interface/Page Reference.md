@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Page Reference
 The Page Reference field is for annotations to links of external PDF files. These can be official GURPS documents or just some How To on breeding earth worms. GCS won't judge you.
 
@@ -15,3 +17,5 @@ The colon can be omitted if there are no numbers in the name. Both E2 and E:2 me
 Comma separate multiple references. This is denoted by a plus sign displayed next to the first reference. Open the first reference by clicking the name. The first or *all* references are opened with the context menu.
 
 **Fancy Tip:** Use lowercase references to avoid name collisions with the defaults.
+
+***Last updated for v5.7.0***

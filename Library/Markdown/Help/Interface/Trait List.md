@@ -1,5 +1,7 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Trait List
-The Trait List is the compliation of advantages, disadvantages and quirks, collectively referred to as [Traits](./Trait.md "Trait"). It is found on the [Character Sheet](./Character%20Sheet.md "Character Sheet") under *"Trait"*. Who didn't see that coming?
+The Trait List is the compilation of advantages, disadvantages and quirks, collectively referred to as [Traits](./Trait.md "Trait"). It is found on the [Character Sheet](./Character%20Sheet.md "Character Sheet") under *"Trait"*. Who didn't see that coming?
 
 ## Usage
 *For common list functionality, see [List](./List.md "List").* **Read that first.**
@@ -31,3 +33,5 @@ Most of the list headers are values defined by GURPS.
 
 ## Related
 [Trait](./Trait.md "Trait")
+
+***Last updated for v5.7.0***

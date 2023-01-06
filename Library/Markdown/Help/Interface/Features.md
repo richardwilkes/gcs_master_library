@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Features
 Features are modifiers for attributes, DR, level, cost, and more. Features are in the Features block which is found on the detail editor for several elements.
 
@@ -21,3 +23,5 @@ Each feature is like building a sentence. Like in *\<insert_native_language_here
 [Equipment](./Equipment.md "Equipment")
 [Skill](./Skill.md "Skill")
 [Trait](./Trait.md "Trait")
+
+***Last updated for v5.7.0***

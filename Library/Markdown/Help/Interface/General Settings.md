@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # General Settings
 These are generic application settings, and a few for new [character sheets](./Character%20Sheet.md "Character Sheet"), for features which would never change after character sheet creation.
 
@@ -10,8 +12,8 @@ Changes take effect immediately.
 
 ## Interface
 ### Tool Bar
-- **[Reset](./common%20icon.md "common icon:Reset") ![](./img/power.png "Reset")** : return to reality
-- **[Menu](./common%20icon.md "common icon:Menu") ( ![](./img/bars.png "Reset") )**
+- **[Reset](./Common%20Icon.md "Common Icon:Reset") ![](./img/power.png "Reset")** : return to reality
+- **[Menu](./Common%20Icon.md "Common Icon:Menu") ( ![](./img/bars.png "Reset") )**
   - **[Import](./Settings.md "Import")** : Reads a JSON file with these values
   - **[Export](./Settings.md "Export")** : Writes a JSON file with these values
   - a list of all saved [Settings](./Settings.md "Settings") sets
@@ -54,3 +56,5 @@ Using Adobe Acrobat Reader as an example:\
 
 See [Page Reference](./Page%20Reference.md "Page Reference") to make this do something useful.
 Also see [Page Reference Mapping](./Page%20Reference%20Mappings.md "Page Reference Mappings").
+
+***Last updated for v5.7.0***

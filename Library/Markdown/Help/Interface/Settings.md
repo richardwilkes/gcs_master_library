@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Settings
 This applies to everything in the menu bar *Settings* sub-menu. See *Related* below.
 
@@ -9,7 +11,7 @@ Settings can be exported and imported to sets, which will appear under the setti
 **\<library>\\<settings.file>**\
 **\<library>\\Settings\\<settings.file>**
 
-When using the Settings sub-diretory, further sub-directories are possible, to any depth. Though you should stop and ask yourself, "why?", before doing that. Menu list naming is based on the filename, and the setting type is based on the file extension. Duplicate names are shown. Regardless of the directory structure, all settings are displayed in a single menu column, without indication of file location.
+When using the Settings sub-directory, further sub-directories are possible, to any depth. Though you should stop and ask yourself, "why?", before doing that. Menu list naming is based on the filename, and the setting type is based on the file extension. Duplicate names are shown. Regardless of the directory structure, all settings are displayed in a single menu column, without indication of file location.
 
 Save custom settings under the user libraries. If they are stored in the Master Library, the next time it is updated, all those saved settings will mysteriously vanish.
 
@@ -34,3 +36,5 @@ BUT ... *if they have been properly saved*, just select the settings name from t
 [Menu Keys](./Menu%20Keys.md "Menu Keys")
 [Page Reference Mappings](./Page%20Reference%20Mappings.md "Page Reference Mappings")
 [Sheet Settings](./Sheet%20Settings.md "Sheet Settings")
+
+***Last updated for v5.7.0***

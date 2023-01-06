@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Points Record
 The Points Record is a list of character point changes. The first record is the starting points from [General Settings](./General%20Settings.md "General Settings:"). Using records is not required. You can just keep changing the first record and no one will know.
  The points sum is used in the [Points](./Character%20Sheet.md "Character Sheet:Points") block.
@@ -6,11 +8,11 @@ The Points Record is a list of character point changes. The first record is the 
 Alter the current record(s) or add a new one.
  It's all done with the tool buttons.
 
-## Interface
-### Tool Bar
-- **[Save](./common%20icon.md "common icon:Save") ( ![](./img/check.png "Save") )** : save and close
-- **[Cancel](./common%20icon.md "common icon:Cancel") ( ![](./img/no.png "Cancel") )** : cancel and close
-- **[Add](./common%20icon.md "common icon:Add") ( ![](./img/plus.png "Add") )** : add a record
+## InterfaceCommon Icon:
+### Tool BarCommon Icon:
+- **[Save](./Common%20Icon.md "Common Icon:Save") ( ![](./img/check.png "Save") )** : save and close
+- **[Cancel](./Common%20Icon.md "Common Icon:Cancel") ( ![](./img/no.png "Cancel") )** : cancel and close
+- **[Add](./Common%20Icon.md "Common Icon:Add") ( ![](./img/plus.png "Add") )** : add a record
 
 ## Fields
 - **When** :
@@ -28,3 +30,5 @@ If the sign is left out, plus is used.
 
 ## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
+
+***Last updated for v5.7.0***

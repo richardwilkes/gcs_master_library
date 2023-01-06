@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Range Weapon Usage List
 The Range Weapon Usage List is a collection of ways to use a range weapon to inflict damage from a distance, such as throwing, shooting, or mail delivery. This list is available for all [equipment](./Equipment.md "Equipment"), but only applies to range weapons. A toaster, for example, could be used as a range weapon, but flying toast has limited potential for injury.
 
@@ -36,3 +38,5 @@ These fields are weapon statistics for GURPS (B268-271). Results are calculated 
 
 ## Related
 [Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")
+
+***Last updated for v5.7.0***

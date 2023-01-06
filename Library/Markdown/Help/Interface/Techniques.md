@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Technique
 Techniques are individual feats perfected from a [Skill](./Skill.md "Skill") (B229-233). Any given aspect of a skill is potentially a technique. You can cook? Great! But can you do it upside down? Now you can. And you can add it the "Complete waste of Character Points" [container](./Container.md "Container"). Don't worry, there are plenty of useful techniques available (B229).
 
@@ -46,3 +48,5 @@ A technique is far more likely to provide a weapon use than a skill.
 [Library Tree](./Library%20Tree.md "Library Tree")
 [Skill List](./Skill%20List.md "Skill List")
 [Skill](./Skill.md "Skill")
+
+***Last updated for v5.7.0***

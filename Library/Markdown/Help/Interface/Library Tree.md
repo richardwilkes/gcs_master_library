@@ -1,5 +1,17 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Library Tree
-The Library Tree is the far left panel in GCS. It contains all the files in the library directories. The Master Library is created and maintained along with the GCS application. Don't change anything in there. The entire Master Library is removed and replaced when the Master Library is updated, and when you aren't looking. The User Library supports the same structure and features as the Master Library, but is never altered during updates.
+The Library Tree is the far left panel in GCS. It displays all the files in the library directories.
+
+The Master Library is created and maintained along with the GCS application. Don't change anything in there. The entire Master Library is removed and replaced when the Master Library is updated, and when you aren't looking.
+
+The User Library supports the same structure and features as the Master Library, but is never altered during updates.
+
+The Master library files contain the various pre-defined objects that define a character's capacity to create chaos, such as [traits](./Trait.md "Trait") and [skills](./Skill.md "Skill"). Just drag and drop them onto [character sheets](./Character%20Sheet.md "Character Sheet"). Yes, using GCS is a Skill, and no, you can't afford it yet. Or you wouldn't be reading this.
+
+User libraries contain all the stuff users create that SJGames didn't think up yet.
+
+However, the Library Tree also holds, character sheets, [templates](./Character%20Template.md "Character Template"), [markdown](./Markdown.md "Markdown") and more.
 
 By default, these directories are:
 
@@ -7,6 +19,8 @@ By default, these directories are:
 **\<user_home>/GCS/User Library/**
 
 The library tree can be hidden by collapsing the divider bar, giving more work space, but it will always be there.
+
+*All library data is [unlinked](./Unlinked%20Data.md "Unlinked Data") when used on character sheet, template or other libraries.*
 
 ## Usage
 ### New
@@ -89,4 +103,4 @@ Icons are based on file extensions.
 - **Repository** : GitHub repository name or local directory
 - **Path** : local directory to put the library
 
-
+***Last updated for v5.7.0***
