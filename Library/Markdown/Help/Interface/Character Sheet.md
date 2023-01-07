@@ -32,7 +32,7 @@ Depending on [General Settings](./General%20Settings.md "General Settings") and 
 ### Open
 **File -> Open**
 
-Use the dialogue to find the file.
+Use the dialog to find the file.
 
 See Usage: Save.
 
@@ -57,7 +57,7 @@ Select the character sheet to modify:
   - **\<context_menu> -> Delete**
   - Press 'Del'. It might say 'delete', but that's a pretty long word for such a little key.
 
-When adding elements, some present dialogues to get user input for [mods](./Mods.md "Mods") (e.g: Riding skill which requires specialization, Language trait requires a specialization and modifiers). Substitutions are presented as a field that needs completion. Modifications are a checklist of variables. Set the values and select Ok. Select Cancel to dismiss the dialogue, but that likely leaves the element and character incomplete. Edit the element to complete the selections.
+When adding elements, some present dialogs to get user input for [mods](./Mods.md "Mods") (e.g: Riding skill which requires specialization, Language trait requires a specialization and modifiers). Substitutions are presented as a field that needs completion. Modifications are a checklist of variables. Set the values and select Ok. Select Cancel to dismiss the dialog, but that likely leaves the element and character incomplete. Edit the element to complete the selections.
 
 Group elements by adding containers to the blocks and then elements to the containers. In character sheets, containers just sit there, containing stuff. The true *Power Of The Container* comes from [Character Templates](./Character%20Template.md "Character Template"). See [Container](./Container.md "Container") for details.
 
@@ -72,7 +72,7 @@ Character sheets have a .gcs extension and can be stored anywhere. Which is exac
 ### Close
 **File -> Close**
 
-An unsaved file with get a save option dialogue before closing.
+An unsaved file with get a save option dialog before closing.
 
 ### Export
 **File -> Export To...**

@@ -8,8 +8,8 @@ The Points Record is a list of character point changes. The first record is the 
 Alter the current record(s) or add a new one.
  It's all done with the tool buttons.
 
-## InterfaceCommon Icon:
-### Tool BarCommon Icon:
+## Interface
+### Tool Bar
 - **[Save](./Common%20Icon.md "Common Icon:Save") ( ![](./img/check.png "Save") )** : save and close
 - **[Cancel](./Common%20Icon.md "Common Icon:Cancel") ( ![](./img/no.png "Cancel") )** : cancel and close
 - **[Add](./Common%20Icon.md "Common Icon:Add") ( ![](./img/plus.png "Add") )** : add a record

@@ -21,7 +21,7 @@ Traits use the [Detail Editor](./Detail%20Editor.md "Detail Editor").
 
 Control Roll does not affect calculations, but it does display under the trait on the trait list.
 
-The Container Type can impact how character points are distributed. *Group* means it's just a trait container for holding stuff. Like your lunch. *Meta-Trait* containers allow all the container traits to stay together, as listed (B262). Buying off just one is probably not allowed. Making it a *Race* container, causes the Points field to count the contents of the container against the Race value and activates the Ancestry field. *Alternative Abilities* tends toward being a Supers thing (B61 + Supers).
+The Container Type can impact how character points are distributed. *Group* means it's just a trait container for holding stuff. Like your lunch. *Meta-Trait* containers allow all the container traits to stay together, as listed (B262). Buying off just one is probably not allowed. Making it a *Race* container, causes the Points field to count the contents of the container against the Race value and activates the Ancestry field. *Alternative Abilities* tends toward being a Supers thing (B61 + Supers). An *Attribute* container puts the contents towards the Attribute value.
 
 ### Blocks
 - **[Prerequisites](./Prerequisites.md "Prerequisites")** : get those before this (B169)

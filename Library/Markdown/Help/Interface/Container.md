@@ -117,6 +117,7 @@ In some cases, containers have fields that are the same as the elements they hol
 - *Meta-trait* containers are useful for containing meta-traits. This might seem obvious, but if it isn't done, the meta-traits might get lost in the list of other traits. And, without one of the related traits, the entire meta-trait is likely invalid. This is a name only feature, there is no effect on calculations.
 - *Race* type counts against race points. It also activates the Ancestry feature.
 - *Alternative Abilities* setting applies to all elements in the container. If the traits are removed from the container, the alternate rules no longer apply.
+- *Attributes* makes all the contained objects count against attribute points
 
 ### Ancestry
 This effects the way randomized fields are filled. The catch is that the character sheet must already exist to apply the template. This means that after the template is applied or the Race container is created, the randomization must be done again manually. This feature will expand in future versions.

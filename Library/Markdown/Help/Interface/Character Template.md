@@ -3,7 +3,7 @@
 # Character Templates
 Templates are collections of elements from all the possible types. They consist of [traits](./Trait.md "Trait"), [skills](./Skill.md "Skill"), [spells](./Spell.md "Spell"), [Equipment](./Equipment.md "Equipment") and even a [Note](./Note.md "Note") or ten. Templates can represent races, job training, gear sets, grimoires, and more.
 
-A template is *applied* to a character. Depending on the contents, the template may present [mod](./Mods.md "Mods") dialogues. After handling mod potions, the various template elements are added to the character sheet. Once complete, the character sheet is [no longer connected](./Unlinked%20Data.md "Unlinked Data") to the template.
+A template is *applied* to a character. Depending on the contents, the template may present [mod](./Mods.md "Mods") dialogs. After handling mod potions, the various template elements are added to the character sheet. Once complete, the character sheet is [no longer connected](./Unlinked%20Data.md "Unlinked Data") to the template.
 
 ## Building a Template
 - Create a new template
@@ -31,11 +31,11 @@ Same as a character sheet.
 ### Modify
 Templates are modified the same as Character Sheets.
 
-As elements are added, element [mod](./Mods.md "Mods") dialogues do not occur. The element is added 'as is'. The assumption is that the dialogues will be presented and resolved when the template is applied. If that is desired, then just move along.
+As elements are added, element [mod](./Mods.md "Mods") dialogs do not occur. The element is added 'as is'. The assumption is that the dialogs will be presented and resolved when the template is applied. If that is desired, then just move along.
 
 To pre-select mods, edit the element and make the changes. This is useful if all the options are the same for a set of target characters (e.g. a language, job skills, hatred of bagels).
 
-On template application, anything with *modifiers* still presents the dialogues, but the choices can be pre-selected. Completed *substitutions* are not presented.
+On template application, anything with *modifiers* still presents the dialogs, but the choices can be pre-selected. Completed *substitutions* are not presented.
 
 Containers are where all the advanced functionality and fancy footwork is done. Note that, the container doesn't always stick around, depending on how it is configured. See [Containers](./Container.md "Container") for details.
 

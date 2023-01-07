@@ -31,8 +31,8 @@ The menu bar option is available when a character sheet is active. Changes take 
 - **Page Settings** : Used in printing and exporting
 - **Block Layout** : Arrangement of named blocks on the character sheet
   - block names are case-insensitive but otherwise immutable
-  - blocks can two side by side or in a single column
-  - they will all always be there, by your layout choice or GCS's
+  - blocks are arranged in any combination of two side by side, or in a single column
+  - all blocks will all always be there, by your layout choice or GCS's
 
 ## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
