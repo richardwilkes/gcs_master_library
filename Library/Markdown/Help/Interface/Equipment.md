@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Equipment
 Equipment is any physical object in the game world (e.g.: pencils, bullets, comic books, a '06 Ford Model N). And maybe some that aren't. This includes containers that represent physical gear (e.g.: a backpack, a coffee cup), which have capacity limits and weight. Containers can also be used as logical organizers in inventory, just make sure they have no weight or cost.
 
@@ -50,7 +52,7 @@ These fields are for the Equipment Detail Editor. See [Equipment List](./Equipme
 - **Tech Level** : B27, the items tech level
 - **Legality Class** : B276, relates to how long you will spend in jail
 - **Quantity** : read a dictionary
-- **Value** : $ cost, followd by extended cost
+- **Value** : $ cost, followed by extended cost
 - **Weight** : lb., followed by extended weight
 - **Ignore weight for skills** : cancel encumbrance related skill penalty
 - **Uses** : Number of times used
@@ -70,4 +72,8 @@ Extended value and weight are calculated based on quantity.
 - [Range Weapon Usage](./Range%20Weapon%20Usage.md "Range Weapon Usage")
 
 ## Parent
-[Character Sheet](./Character%20Sheet.md "Character Sheet"), [Character Template](./Character%20Template.md "Character Template"), [Equipment Library](./Library%20Tree.md "Library Tree")
+[Character Sheet](./Character%20Sheet.md "Character Sheet")
+[Character Template](./Character%20Template.md "Character Template")
+[Equipment Library](./Library%20Tree.md "Library Tree")
+
+***Last updated for v5.7.0***

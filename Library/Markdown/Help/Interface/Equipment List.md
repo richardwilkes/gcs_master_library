@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Equipment List
 Equipment lists display all the carried and other equipment. The only difference between the two is carried equipment has an equipped column. That, plus all the encumbrance and calculation differences. Templates always add equipment as *carried* equipment.
 
@@ -45,7 +47,9 @@ Maximum uses is set through the Detail Editor.
 
 **Fancy Tip:** Stacked items are not individually tracked for usage. Create a container and add single items with individual use counts. When done emptying that blaster into the enemy, mark off the battery. Remember to recycle.
 
-# Parent
+## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
 [Character Template](./Character%20Template.md "Character Template")
 [Equipment Library](./Library%20Tree.md "Library Tree:Equipment")
+
+***Last updated for v5.7.0***

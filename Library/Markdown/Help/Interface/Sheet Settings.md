@@ -1,5 +1,7 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Sheet Settings
-Sheet Settings alter display and calculation options for the [Character Sheet](./Character%20Sheet.md "Character Sheet"). They are [stored individually](./unlinked%20data.md "unlinked data"), with each character sheet. The initial values are found in [Default Sheet Settings](./Default%20Sheet%20Settings.md "Default Sheet Settings"), which is part of the GCS configuration file. Modifications can be saved as a [set](./Settings.md "Settings").
+Sheet Settings alter display and calculation options for the [Character Sheet](./Character%20Sheet.md "Character Sheet"). They are [stored individually](./Unlinked%20Data.md "Unlinked Data"), with each character sheet. The initial values are found in [Default Sheet Settings](./Default%20Sheet%20Settings.md "Default Sheet Settings"), which is part of the GCS configuration file. Modifications can be saved as a [set](./Settings.md "Settings").
 
 ## Usage
 **Settings -> Sheet Settings ...**
@@ -8,9 +10,9 @@ The menu bar option is available when a character sheet is active. Changes take 
 
 ## Interface
 ### Tool Bar
-- **[Reset](./common%20icon.md "Common Icon:Reset") ( ![](./img/power.png "Reset") )** 
-: puts everything back to default, even you
-- **[Menu](./common%20icon.md "Common Icon:Menu") ( ![](./img/bars.png "Menu") )** 
+- **[Reset](./Common%20Icon.md "Common Icon:Reset") ( ![](./img/power.png "Reset") )** 
+: puts everytCommon%20Icondefault, even you
+- **[Menu](.Common%20Icon.md "Common Icon:Menu") ( ![](./img/bars.png "Menu") )** 
 : Opens the tool bar menu
   - **[Import](./Settings.md "Settings:Import")** : Reads a JSON file with these values
   - **[Export](./Settings.md "Settings:Export")** : Writes a JSON file with these values
@@ -29,7 +31,10 @@ The menu bar option is available when a character sheet is active. Changes take 
 - **Page Settings** : Used in printing and exporting
 - **Block Layout** : Arrangement of named blocks on the character sheet
   - block names are case-insensitive but otherwise immutable
-  - blocks can be removed by not including the name (e.g.: spells, for a non-magic campaign)
+  - blocks are arranged in any combination of two side by side, or in a single column
+  - all blocks will all always be there, by your layout choice or GCS's
 
 ## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
+
+***Last updated for v5.7.0***

@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # List
 Lists are table form displays of all elements of the list type. Lists are found on [character sheets](./Character%20Sheet.md "Character Sheet"), [templates](./Character%20Template.md "Character Template"), and the display of [libraries](./Library%20Tree.md "Library Tree").
 
@@ -57,7 +59,7 @@ This will delete containers all contents.
 ## Interface
 ### Tool Bar
 - **View Scale** : as a percentage
-- **Expand/Collapse ( ![](./img/tree.png "Expand/Collapse") )** : all the containers and subcontainers
+- **Expand/Collapse ( ![](./img/tree.png "Expand/Collapse") )** : all the containers and sub-containers
 - **Resize ( ![](./img/dblarrow.png "Resize")** : fit all columns to content
 - **Search Filter** : filter on name column
 - **Filter Tag** : filter by tags
@@ -65,7 +67,9 @@ This will delete containers all contents.
 ## Columns
 Columns depend on the list type.
 
-# Parent
+## Parent
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
 [Character Template](./Character%20Template.md "Character Template")
 [Library Tree](./Library%20Tree.md "Library Tree")
+
+***Last updated for v5.7.0***

@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Container
 Containers are used to group related or similar skills, racial traits, or to organize inventory into pockets, because you forgot to buy a backpack. For the functionality of GCS, a containers biggest benefit is to direct the actions of templates. Containers are added directly to the [Character Sheet](./Character%20Sheet.md "Character Sheet") or [Character Template](./Character%20Template.md "Character Template").
 
@@ -115,6 +117,7 @@ In some cases, containers have fields that are the same as the elements they hol
 - *Meta-trait* containers are useful for containing meta-traits. This might seem obvious, but if it isn't done, the meta-traits might get lost in the list of other traits. And, without one of the related traits, the entire meta-trait is likely invalid. This is a name only feature, there is no effect on calculations.
 - *Race* type counts against race points. It also activates the Ancestry feature.
 - *Alternative Abilities* setting applies to all elements in the container. If the traits are removed from the container, the alternate rules no longer apply.
+- *Attributes* makes all the contained objects count against attribute points
 
 ### Ancestry
 This effects the way randomized fields are filled. The catch is that the character sheet must already exist to apply the template. This means that after the template is applied or the Race container is created, the randomization must be done again manually. This feature will expand in future versions.
@@ -149,3 +152,5 @@ character sheet. Selecting Count or Points will duplicate the selections to the 
 [Skill](./Skill.md "Skill")
 [Spell](./Spell.md "Spell")
 [Trait](./Trait.md "Trait")
+
+***Last updated for v5.7.0***

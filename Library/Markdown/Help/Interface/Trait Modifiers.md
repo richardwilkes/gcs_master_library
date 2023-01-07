@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Trait Modifiers
 Trait Modifiers are enhancements or limits on traits. These modifiers are found in the [Trait Modifiers Lists](./Trait%20Modifiers%20List.md "Trait Modifiers List") under the [Trait](./Trait.md "Trait") detail editor.
 
@@ -28,4 +30,7 @@ Level is only active when *% per level* is used.
 [Equipment Modifier List](./Equipment%20Modifier%20List.md "Equipment Modifier List")
 
 ## Related
-[Equipment](./Equipment.md "Equipment"), [List](./List.md "List")
+[Equipment](./Equipment.md "Equipment")
+[List](./List.md "List")
+
+***Last updated for v5.7.0***

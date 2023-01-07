@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Skill List
 The Skill list is on the [Character Sheet](./Character%20Sheet.md "Character Sheet"). It is also the goal to all this. A list of all the game related [skills](./Skill.md "Skill"). A character can have all the attributes, traits and body types they want, but if they can't actually do anything, they might as well go into politics.
 
@@ -37,3 +39,5 @@ The list headers are basic GURPS defined values.
 ## Related
 [Skill](./Skill.md "Skill")
 [Technique](./Technique.md "Technique")
+
+***Last updated for v5.7.0***

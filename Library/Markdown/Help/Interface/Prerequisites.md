@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Prerequisites
 Prerequisites is a list of requirements to qualify for [Equipment](./Equipment.md "Equipment")
 , [Skills](./Skill.md "Skill")
@@ -24,7 +26,7 @@ A list can hold any number of prerequisites and sub-lists. Each list is either "
 
 The first rule on all lists is a technology level requirement. By default the requirement is *"any technology level"* which is always true. But the technology level requirement doesn't count for the lists *and/or* requirement, regardless of how it is set. It is more like *technology level requirement* AND *the entire rest of the list*.
 
-New items are added to the top. Sub-lists are at the bottom. elax. Breathe. Order doesn't matter. The root list can't be removed.
+New items are added to the top. Sub-lists are at the bottom. Relax. Breathe. Order doesn't matter. Also, the root list can't be removed.
 
 ### Example
 - Tech Level requirement (and) *all of*
@@ -66,6 +68,8 @@ Each prerequisite has:
 
 ## Parent
 [Equipment](./Equipment.md "Equipment")
-, [Skill](./Skill.md "Skill")
+[Skill](./Skill.md "Skill")
 [Spell](./Spell.md "Spell")
-, [Trait](./Trait.md "Trait")
+[Trait](./Trait.md "Trait")
+
+***Last updated for v5.7.0***

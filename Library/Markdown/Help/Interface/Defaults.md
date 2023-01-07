@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Defaults
 Defaults are a list of skills or attributes a new skill level will use by default (B170). Training and character points take it from there. Almost all skills default to an attribute or another skill, or ten. Some skills do not default. Try Judo untrained and even the white belts will laugh at you.
 
@@ -24,9 +26,11 @@ Edit the fields directly in the list.
 - **Specialization** : skill specialization
 - **Modifier** : signed integer, difference from source value
 
-Name and specialization are case insensative strings, which are only active when *Type* is *Skill*.
+Name and specialization are case insensitive strings, which are only active when *Type* is *Skill*.
 
 ## Parent
 [Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")
 [Range Weapon Usage](./Range%20Weapon%20Usage.md "Range Weapon Usage")
 [Skill](./Skill.md "Skill")
+
+***Last updated for v5.7.0***

@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Study
 Study is a time tracking list for learning [skills](./Skill.md "Skill"), [spells](./Spell.md "Spell"), and [traits](./Trait.md "Trait") (B292-294). Even advantages are learnable. And while no one would normally go to school to become disadvantaged, no one is stopping you.
 
@@ -37,3 +39,5 @@ Each line has mysterious, unnamed fields:
 [Spell List](./Spell%20List.md "Spell List")
 [Techniques](./Technique.md "Technique")
 [Trait](./Trait.md "Trait")
+
+***Last updated for v5.7.0***

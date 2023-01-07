@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Skill
 Skills are the characters ability to do something. These are usually game related, as *'blowing bubbles with my nose'* might be a waste of character points. Skills are found on the [skill list](./Skill%20List.md "Skill List"), along with [Techniques](./Technique.md "Technique").
 
@@ -32,3 +34,5 @@ Difficulty is a combination of a controlling attribute and a difficulty level. T
 [Library Tree](./Library%20Tree.md "Library Tree")
 [Skill List](./Skill%20List.md "Skill List")
 [Techniques](./Technique.md "Technique")
+
+***Last updated for v5.7.0***

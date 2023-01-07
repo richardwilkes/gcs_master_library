@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Note
 A Note is an entry on a [Note List](./Note.md "Note"). Note lists are found in [Note Libraries](./Library%20Tree.md "Library Tree: Note"), [Character Sheets](./Character%20Sheet.md "Character Sheet"), and [Character Templates](./Character%20Template.md "Character Template"). These entries are for writing character or game related information. They appear, as formatted, at the bottom of the character sheet.
 
@@ -14,9 +16,9 @@ From the note list, a note opens in the [Detail Editor](./Detail%20Editor.md "De
 
 ## Fields
 ### Notes
-Start typing. It dynamically grows to suit the text. The data is [free form](./free-form%20data.md "free-form data") [markdown](./Markdown.md "Markdown"), but it does not use the markdown editor. The markdown is edited directly in this field. Hard returns are Ok, tabs are not. Sorry, tabs, you're just not team players.
+Start typing. It dynamically grows to suit the text. The data is [free form](./Free-Form%20Data.md "Free-Form Data") [markdown](./Markdown.md "Markdown"), but it does not use the markdown editor. The markdown is edited directly in this field. Hard returns are Ok, tabs are not. Sorry, tabs, you're just not team players.
 
-See the ***!!!!! [Markdown Guide](needs_link "needs permalink") !!!!!*** for details on the syntax.
+See the ***[Markdown Guide](../Markdown%20Guide.md "Markdown Guide")*** for details on the syntax.
 
 There is no hard limit to size. But, it's probably a really bad idea to post War And Peace in a note.
 
@@ -28,3 +30,5 @@ This will display the note, as rendered, in real time.
 
 ## Parent
 [Note List](./Note%20List.md "Note List")
+
+***Last updated for v5.7.0***

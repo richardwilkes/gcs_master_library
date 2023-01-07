@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Trait
 Traits are advantages, disadvantages and quirks. All of these are found on the [Trait List](./Trait%20List.md "Trait List") of a [Character Sheet](./Character%20Sheet.md "Character Sheet"), or in a [Trait Library](./Library%20Tree.md "Library Tree:Trait").
 
@@ -9,7 +11,7 @@ Traits use the [Detail Editor](./Detail%20Editor.md "Detail Editor").
 - **[Notes](./Notes.md "Notes")** : for notes
 - **[VTT Notes](./VTT%20Notes.md "VTT Notes")** : for vtt notes
 - **[User Description](./User%20Description.md "User Description")** : for user description
-- **[Tags](./Tags.md "Tags")** : for shopping list ... not really ... for tags
+- **[Tags](./Tags.md "Tags")** : for shopping lists ... not really ... for meta-data tags
 - **Self-Control Roll** : See B121
 - **CR Adjustment** : See Self-Control Roll
 - **Container Type** : various effects
@@ -19,7 +21,7 @@ Traits use the [Detail Editor](./Detail%20Editor.md "Detail Editor").
 
 Control Roll does not affect calculations, but it does display under the trait on the trait list.
 
-The Container Type can impact how character points are distributed. *Group* means it's just a trait container for holding stuff. Like your lunch. *Meta-Trait* containers allow all the container traits to stay together, as listed (B262). Buying off just one is probbaly not allowed. Making it a *Race* container, causes the Points field to count the contents of the container against the Race value and activates the Ancestry field. *Alternative Abilities* tends toward being a Supers thing (B61 + Supers).
+The Container Type can impact how character points are distributed. *Group* means it's just a trait container for holding stuff. Like your lunch. *Meta-Trait* containers allow all the container traits to stay together, as listed (B262). Buying off just one is probably not allowed. Making it a *Race* container, causes the Points field to count the contents of the container against the Race value and activates the Ancestry field. *Alternative Abilities* tends toward being a Supers thing (B61 + Supers). An *Attribute* container puts the contents towards the Attribute value.
 
 ### Blocks
 - **[Prerequisites](./Prerequisites.md "Prerequisites")** : get those before this (B169)
@@ -32,3 +34,5 @@ The Container Type can impact how character points are distributed. *Group* mean
 ## Parent
 [Library Tree](./Library%20Tree.md "Library Tree")
 [Trait List](./Trait%20List.md "Trait List")
+
+***Last updated for v5.7.0***

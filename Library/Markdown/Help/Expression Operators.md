@@ -21,3 +21,5 @@
 | %        | Modulo                   |
 
 See also: [Expression Functions](./Expression%20Functions.md)
+
+***Last updated for v5.7.0***

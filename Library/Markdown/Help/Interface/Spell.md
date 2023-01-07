@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Spell
 Spells are the ability to use mana to effect. Yes, it's just that simple. Go give it a try. They are on the [Spell List](./Spell%20List.md "Spell List") and in [spell libraries](./Library%20Tree.md "Library Tree: Spell").
 
@@ -42,3 +44,5 @@ The *Resistance* field is used for any notes, changes, or comments on how the sp
 
 ## Related
 [Character Sheet](./Character%20Sheet.md "Character Sheet")
+
+***Last updated for v5.7.0***

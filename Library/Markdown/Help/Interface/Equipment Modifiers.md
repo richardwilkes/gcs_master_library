@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Equipment Modifiers
 Equipment Modifiers are alterations to standard hardware. It could be a change in weight, cost, features, or other aspects (e.g.: a +3 Dagger of Bagel Slicing). These modifiers are found in the [Equipment Modifier List](./Equipment%20Modifier%20List.md "Equipment Modifier List") under the [equipment](./Equipment.md "Equipment") detail editor and in an [Equipment Modifier Library](./Library%20Tree.md "Library Tree: Equipment Modifier").
 
@@ -29,3 +31,5 @@ Weight Modifier is a fairly specific use case. Normally, a different piece of eq
 ## Related
 [Equipment](./Equipment.md "Equipment")
 [List](./List.md "List")
+
+***Last updated for v5.7.0***

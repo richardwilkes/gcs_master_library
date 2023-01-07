@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Detail Editor
 The Detail Editor has the same interface for all the details it edits. The fields change based on what is being edited.
 
@@ -17,5 +19,8 @@ Well ... a lot.
 [Equipment]( ./Equipment.md "Equipment")
 [Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")
 [Range Weapon Usage](./Range%20Weapon%20Usage.md "Range Weapon Usage")
-[Skill]( ./Skill.md "Skill"), [Spell]( ./Spell.md "Spell")
+[Skill]( ./Skill.md "Skill")
+[Spell]( ./Spell.md "Spell")
 ... and then some.
+
+***Last updated for v5.7.0***

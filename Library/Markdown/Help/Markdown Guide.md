@@ -353,3 +353,5 @@ Note that tables don't have to have consistent column sizing.
 |:---|---:|:---:|
 | aa | bb | cc |
 | aaaa | bbbb | cccc |
+
+***Last updated for v5.7.0***

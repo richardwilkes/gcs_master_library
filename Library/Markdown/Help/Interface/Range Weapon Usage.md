@@ -1,3 +1,5 @@
+[<< Back to Overview](./Overview.md "Overview")
+
 # Range Weapon Usage
 Range Weapon Usage is a single means to use a weapon in long distance discussions. Range usage is similar to [melee weapon usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage"), except you don't have to be close enough to smell their crappy cologne.
 
@@ -41,4 +43,7 @@ A weapon must have at least one default or it will never have a Skill Level scor
 [Equipment](./Equipment.md "Equipment")
 
 ## Related
-[Range Weapon Usage List](./Range%20Weapon%20Usage%20List.md "Range Weapon Usage List"), [Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")
+[Range Weapon Usage List](./Range%20Weapon%20Usage%20List.md "Range Weapon Usage List")
+[Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")
+
+***Last updated for v5.7.0***
