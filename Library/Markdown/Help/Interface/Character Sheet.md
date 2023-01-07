@@ -101,7 +101,7 @@ The calculators are for Jumping, Throwing and Hiking. The results are based in c
 ## Fields
 *Almost all character sheet data is [unlinked](./Unlinked%20Data.md "Unlinked Data").*
 
-Some fields are [free-form data](./Free-Form%20Data.md "Free-Form Data") and some are formatted. Some of the formats depend on the sheet settings. Some fields are calculated and can't be directly changed. Some fields are lists. To *some* it up, there are a lot of fields.
+Some fields are [free-form data](./Free-Form%20Data.md "Free-Form Data") and some are formatted. Some of the formats depend on the sheet settings. Some fields are calculated and can't be directly changed. Some fields are lists. To *sum* it up, there are a lot of fields.
 
 None of these fields are required, but many auto populate or complain if you remove the value. The file will save regardless. The filename is not linked to any field value. Character sheets use .gcs extensions by default.
 
