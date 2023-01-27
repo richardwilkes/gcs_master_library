@@ -1,60 +1,571 @@
 {
 	"type": "character",
-	"version": 1,
+	"version": 4,
 	"id": "306e747a-923e-433f-8aab-ee0bf5b09786",
+	"total_points": 3,
+	"points_record": [
+		{
+			"when": "2022-11-19T12:04:00-08:00",
+			"points": 3,
+			"reason": "Reconciliation"
+		}
+	],
+	"profile": {
+		"name": "Lion",
+		"weight": "500 lb",
+		"SM": 1
+	},
 	"settings": {
-		"version": 1,
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions conditional_modifiers",
+			"melee",
+			"ranged",
+			"traits skills",
+			"spells",
+			"equipment",
+			"other_equipment",
+			"notes"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"attribute_base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"attribute_base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"attribute_base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"attribute_base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"attribute_base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"attribute_base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"attribute_base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"attribute_base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"attribute_base": "($dx+$ht)/4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"attribute_base": "floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"attribute_base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"expression": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"expression": "0",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. Will\u003c/b\u003e to do anything besides talk or rest; failure causes unconsciousness\u003cbr\u003e\nEach FP you lose below 0 also causes 1 HP of injury\u003cbr\u003e\nMove, Dodge and ST are halved (B426)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"expression": "round($fp/3)",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"expression": "$fp-1"
+					},
+					{
+						"state": "Rested",
+						"expression": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"attribute_base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"expression": "round(-$hp*5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"expression": "round(-$hp*4)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-4\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"expression": "round(-$hp*3)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-3\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"expression": "round(-$hp*2)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-2\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"expression": "-$hp",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-1\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"expression": "0",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"expression": "round($hp/3)",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"expression": "$hp-1"
+					},
+					{
+						"state": "Healthy",
+						"expression": "$hp"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Quadruped",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 3
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "6",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Foreleg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "7-8",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 3,
+					"calc": {
+						"roll_range": "9-11",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Hindleg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 2,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "15-16",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "tail",
+					"choice_name": "Tail",
+					"table_name": "Tail",
+					"slots": 2,
+					"hit_penalty": -3,
+					"description": "If a tail counts as an Extra Arm or a Striker, or is a fish\ntail, treat it as a limb (arm, leg) for crippling purposes;\notherwise, treat it as an extremity (hand, foot). A crippled\ntail affects balance. For a ground creature, this gives -1\nDX. For a swimmer or flyer, this gives -2 DX and halves\nMove. If the creature has no tail, or a very short one (like\na rabbit), treat as torso.",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 1
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
 		"default_length_units": "ft_in",
 		"default_weight_units": "lb",
 		"user_description_display": "tooltip",
 		"modifiers_display": "inline",
 		"notes_display": "inline",
-		"base_will_and_per_on_10": false,
-		"use_multiplicative_modifiers": false,
-		"use_modifying_dice_plus_adds": false,
-		"use_know_your_own_strength": false,
-		"use_reduced_swing": false,
-		"use_thrust_equals_swing_minus_2": false,
-		"use_simple_metric_conversions": true,
-		"show_college_in_sheet_spells": false,
-		"use_title_in_footer": false,
-		"block_layout": [
-			"reactions",
-			"melee",
-			"ranged",
-			"advantages skills",
-			"spells",
-			"equipment",
-			"other_equipment",
-			"notes"
-		]
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true,
+		"exclude_unspent_points_from_total": false
 	},
-	"created_date": "May 16, 2020, 12:00 AM",
-	"modified_date": "Jun 20, 2020, 1:49 PM",
-	"profile": {
-		"name": "Lion",
-		"weight": "500 lb",
-		"SM": 1,
-		"body_type": "quadruped"
-	},
-	"total_points": 3,
-	"ST": 16,
-	"DX": 13,
-	"IQ": 4,
-	"HT": 11,
-	"will_adj": 7,
-	"per_adj": 8,
-	"move_adj": 4,
-	"advantages": [
+	"attributes": [
 		{
-			"type": "advantage",
-			"version": 1,
+			"attr_id": "st",
+			"adj": 6,
+			"calc": {
+				"value": 16,
+				"points": 30
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 3,
+			"calc": {
+				"value": 13,
+				"points": 36
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": -6,
+			"calc": {
+				"value": 4,
+				"points": -120
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 7,
+			"calc": {
+				"value": 11,
+				"points": 35
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 8,
+			"calc": {
+				"value": 12,
+				"points": 40
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 12,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 12,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 12,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 12,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": 0,
+			"calc": {
+				"value": 6,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 4,
+			"calc": {
+				"value": 10,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"current": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 0,
+			"calc": {
+				"value": 16,
+				"current": 16,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
 			"id": "2904b774-d963-4d18-bae7-af8971412e8d",
+			"type": "trait",
 			"name": "Claws, Sharp (Feet)",
-			"physical": true,
+			"reference": "B42",
+			"tags": [
+				"Advantage",
+				"Physical"
+			],
 			"base_points": 5,
 			"weapons": [
 				{
+					"id": "1c175d03-d7e1-4f85-b7cd-5007a564547b",
 					"type": "melee_weapon",
 					"damage": {
 						"type": "cut",
@@ -66,461 +577,462 @@
 					"block": "No",
 					"defaults": [
 						{
-							"type": "DX",
+							"type": "dx",
 							"modifier": -2
 						},
 						{
-							"type": "Skill",
+							"type": "skill",
 							"name": "Brawling",
 							"modifier": -2
 						},
 						{
-							"type": "Skill",
+							"type": "skill",
 							"name": "Karate",
 							"modifier": -2
 						}
-					]
+					],
+					"calc": {
+						"level": 13,
+						"parry": "No",
+						"block": "No",
+						"damage": "1d+2 cut"
+					}
 				}
 			],
-			"reference": "B42",
-			"categories": [
-				"Advantage"
-			]
+			"calc": {
+				"points": 5
+			}
 		},
 		{
-			"type": "advantage",
-			"version": 1,
 			"id": "7af0b336-0d51-41af-a28d-a3bd42ad8aaf",
+			"type": "trait",
 			"name": "Damage Resistance",
-			"physical": true,
-			"exotic": true,
-			"levels": "1",
-			"points_per_level": 5,
+			"reference": "B47",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
 			"modifiers": [
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "486280c0-77c5-42e9-941e-b52f09b2c751",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Force Field",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": 20,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "e4ac59cd-b9fd-4187-9770-532caebf0e23",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Hardened",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": 20,
-					"affects": "total",
-					"levels": 1
+					"levels": 1,
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "b94954a5-0428-491e-b4de-625fe1d89f7e",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Absorption",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "Enhances @Trait@",
 					"cost": 80,
-					"affects": "total",
-					"notes": "Enhances @Trait@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "3684268e-62d3-4b02-a612-707842271c23",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Absorption",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "Healing only",
 					"cost": 80,
-					"affects": "total",
-					"notes": "Healing only"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "aa25f5bd-30c1-497f-9655-6369d5facba1",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Absorption",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "Enhances any trait",
 					"cost": 100,
-					"affects": "total",
-					"notes": "Enhances any trait"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "24ceeb91-a5be-47d9-a8f5-c165f1f5a760",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Reflection",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": 100,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "66a030b3-a345-419b-85d5-a7e95404a67e",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Bane",
 					"reference": "H14",
-					"cost_type": "points",
+					"notes": "@Rare@",
 					"cost": -1,
-					"affects": "total",
-					"notes": "@Rare@"
+					"cost_type": "points",
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "d0f14d82-c454-4866-8eec-1d48f890e539",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Bane",
 					"reference": "H14",
-					"cost_type": "percentage",
+					"notes": "@Occasional@",
 					"cost": -5,
-					"affects": "total",
-					"notes": "@Occasional@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "4a2aee59-d30a-429d-9a3a-e589931ce233",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Bane",
 					"reference": "H14",
-					"cost_type": "percentage",
+					"notes": "@Common@",
 					"cost": -10,
-					"affects": "total",
-					"notes": "@Common@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "748045a7-eea6-484f-9a6f-f269619e142a",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Bane",
 					"reference": "H14",
-					"cost_type": "percentage",
+					"notes": "@Very Common@",
 					"cost": -15,
-					"affects": "total",
-					"notes": "@Very Common@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "213dc79c-6fc1-42cd-9c8c-04f129fc18d1",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Directional",
 					"reference": "B47",
-					"cost_type": "percentage",
+					"notes": "Front",
 					"cost": -20,
-					"affects": "total",
-					"notes": "Front"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "2ce333a2-814f-4846-90ec-a5c15aa62d28",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Flexible",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": -20,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "909efbeb-6df6-4e7b-8b42-fcb7f86ff2bb",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Limited",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "@Very Common Attack Form@",
 					"cost": -20,
-					"affects": "total",
-					"notes": "@Very Common Attack Form@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "cea840b6-38bf-4c3e-b498-2e98c4931eea",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Semi-Ablative",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": -20,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "c3b36b6e-69c7-4966-b959-c0503be63a80",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Can't wear armor",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": -40,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "0c305de8-9d1b-4813-ba78-e5c25f076154",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Directional",
 					"reference": "B47",
-					"cost_type": "percentage",
+					"notes": "@Direction: Back, Right, Left, Top or Underside@",
 					"cost": -40,
-					"affects": "total",
-					"notes": "@Direction: Back, Right, Left, Top or Underside@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "41293f94-8fc2-4daf-ad63-3605c743d1a5",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Limited",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "@Common Attack Form@",
 					"cost": -40,
-					"affects": "total",
-					"notes": "@Common Attack Form@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "1ec81f4b-6a49-49b0-b31a-7eabb6465249",
+					"type": "modifier",
 					"name": "Tough Skin",
-					"cost_type": "percentage",
-					"cost": -40,
-					"affects": "total",
-					"notes": "Effects that just require skin contact or a scratch ignore this DR"
+					"notes": "Effects that just require skin contact or a scratch ignore this DR",
+					"cost": -40
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "96a6ff89-9967-46b2-9856-66d47df9212f",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Limited",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "@Occasional Attack Form@",
 					"cost": -60,
-					"affects": "total",
-					"notes": "@Occasional Attack Form@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "422731d7-21e7-43a5-a881-403d5f100a9b",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Ablative",
 					"reference": "B47",
-					"cost_type": "percentage",
 					"cost": -80,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "0c06fff7-46ba-4665-814a-5c4bebbdfa9a",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Limited",
 					"reference": "B46",
-					"cost_type": "percentage",
+					"notes": "@Rare Attack Form@",
 					"cost": -80,
-					"affects": "total",
-					"notes": "@Rare Attack Form@"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "816be20c-073f-472b-8002-7332b408d14e",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Laminate",
 					"reference": "RSWL18",
-					"cost_type": "percentage",
 					"cost": 10,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "a5ae98fb-b8b4-4a02-a056-55b6ecfd9859",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Malediction-Proof",
 					"reference": "PSI14",
-					"cost_type": "percentage",
 					"cost": 50,
-					"affects": "total"
+					"disabled": true
 				},
 				{
-					"type": "modifier",
-					"version": 1,
 					"id": "87513052-0c7e-4c09-91a5-094e0db66808",
-					"disabled": true,
+					"type": "modifier",
 					"name": "Maledictions Only",
 					"reference": "PSI14",
-					"cost_type": "percentage",
-					"cost": 0,
-					"affects": "total"
+					"disabled": true
 				}
 			],
-			"reference": "B47",
+			"levels": 1,
+			"points_per_level": 5,
 			"features": [
 				{
 					"type": "dr_bonus",
+					"location": "skull",
 					"amount": 1,
-					"per_level": true,
-					"location": "full_body_except_eyes"
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "face",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "neck",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "torso",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "vitals",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "groin",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "arm",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "hand",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "leg",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "foot",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "tail",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "wing",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "fin",
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"location": "brain",
+					"amount": 1,
+					"per_level": true
 				}
 			],
-			"categories": [
-				"Advantage"
-			]
+			"can_level": true,
+			"calc": {
+				"points": 3
+			}
 		},
 		{
-			"type": "advantage",
-			"version": 1,
 			"id": "cf53ef99-d8ae-4947-83aa-43eb82ba4cd5",
+			"type": "trait",
 			"name": "Laziness",
-			"mental": true,
-			"base_points": -10,
 			"reference": "B142",
 			"notes": "Your chances of getting a raise or promotion in any job are halved. If you are self-employed, halve your monthly pay.",
-			"categories": [
-				"Disadvantage"
-			]
+			"tags": [
+				"Disadvantage",
+				"Mental"
+			],
+			"base_points": -10,
+			"calc": {
+				"points": -10
+			}
 		},
 		{
-			"type": "advantage_container",
-			"version": 1,
 			"id": "c12bc55c-4be7-4305-b695-301c9e140118",
-			"name": "Meta-Trait: Quadruped",
-			"reference": "B263",
+			"type": "trait_container",
 			"open": true,
 			"children": [
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "7050f1c1-fcf1-467a-a65b-0f32b14d92e5",
+					"type": "trait",
 					"name": "Extra Legs",
-					"physical": true,
-					"exotic": true,
+					"reference": "B54",
+					"tags": [
+						"Advantage",
+						"Exotic",
+						"Physical"
+					],
 					"modifiers": [
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "9f612204-136a-4b87-8507-7c00d10e5687",
+							"type": "modifier",
 							"name": "4",
 							"reference": "B54",
-							"cost_type": "points",
 							"cost": 5,
-							"affects": "total"
+							"cost_type": "points"
 						},
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "1df1c9ab-3d4b-445d-967b-e0b24817a0d5",
-							"disabled": true,
+							"type": "modifier",
 							"name": "@5 or 6@",
 							"reference": "B55",
-							"cost_type": "points",
 							"cost": 10,
-							"affects": "total"
+							"cost_type": "points",
+							"disabled": true
 						},
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "ba711206-bc8e-4b9c-b70e-767e6c67a9fe",
-							"disabled": true,
+							"type": "modifier",
 							"name": "@7+@",
 							"reference": "B55",
-							"cost_type": "points",
 							"cost": 15,
-							"affects": "total"
+							"cost_type": "points",
+							"disabled": true
 						},
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "1d03474a-e474-44c1-8f7f-4a8d88e9f588",
-							"disabled": true,
+							"type": "modifier",
 							"name": "Long",
 							"reference": "B55",
-							"cost_type": "percentage",
 							"cost": 100,
-							"affects": "total",
-							"levels": 1
+							"levels": 1,
+							"disabled": true
 						},
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "7f419dc6-e166-4e56-8921-e6f9283361f2",
-							"disabled": true,
+							"type": "modifier",
 							"name": "Cannot Kick",
 							"reference": "B55",
-							"cost_type": "percentage",
 							"cost": -50,
-							"affects": "total"
+							"disabled": true
 						},
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "013bd93b-7d7f-4cd1-a004-b05a93093750",
-							"disabled": true,
+							"type": "modifier",
 							"name": "Extra Flexible",
 							"reference": "MATG27",
-							"cost_type": "percentage",
 							"cost": 50,
-							"affects": "total"
+							"disabled": true
 						},
 						{
-							"type": "modifier",
-							"version": 1,
 							"id": "a193b042-50fe-4e8b-bff8-45efdb8a3d5a",
-							"disabled": true,
+							"type": "modifier",
 							"name": "Prehensile Feet",
 							"reference": "MATG28",
-							"cost_type": "percentage",
 							"cost": 20,
-							"affects": "total"
+							"disabled": true
 						}
 					],
-					"reference": "B54",
-					"categories": [
-						"Advantage"
-					]
+					"calc": {
+						"points": 5
+					}
 				},
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "04ecbe99-07a0-45cf-af75-18124cbacd2c",
+					"type": "trait",
 					"name": "Horizontal",
-					"physical": true,
-					"exotic": true,
-					"base_points": -10,
 					"reference": "B139",
-					"categories": [
-						"Disadvantage"
-					]
+					"tags": [
+						"Disadvantage",
+						"Exotic",
+						"Physical"
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
 				},
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "d060e2f8-f36f-4b97-9fd6-d9a9a2adc973",
+					"type": "trait",
 					"name": "No Fine Manipulators",
-					"physical": true,
-					"base_points": -30,
 					"reference": "B145",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"base_points": -30,
 					"features": [
 						{
 							"type": "cost_reduction",
@@ -533,47 +1045,53 @@
 							"percentage": 40
 						}
 					],
-					"categories": [
-						"Disadvantage"
-					]
+					"calc": {
+						"points": -30
+					}
 				}
-			]
+			],
+			"name": "Meta-Trait: Quadruped",
+			"reference": "B263",
+			"calc": {
+				"points": -35
+			}
 		},
 		{
-			"type": "advantage_container",
-			"version": 1,
 			"id": "ba0bd09e-c485-4a7e-b014-5ced58372f71",
-			"name": "Meta-Trait: Wild Animal",
-			"reference": "B263",
+			"type": "trait_container",
 			"open": true,
 			"children": [
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "62508685-ea91-45cb-8304-1bcdf012e42c",
+					"type": "trait",
 					"name": "Bestial",
-					"mental": true,
-					"exotic": true,
-					"base_points": -10,
 					"reference": "B124",
-					"categories": [
-						"Disadvantage"
-					]
+					"tags": [
+						"Disadvantage",
+						"Exotic",
+						"Mental"
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
 				},
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "87154cbe-05de-4fda-9047-a09fe455d9db",
+					"type": "trait",
 					"name": "Cannot Speak",
-					"physical": true,
-					"base_points": -15,
 					"reference": "B125",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"base_points": -15,
 					"prereqs": {
 						"type": "prereq_list",
 						"all": true,
 						"prereqs": [
 							{
-								"type": "advantage_prereq",
+								"type": "trait_prereq",
 								"has": false,
 								"name": {
 									"compare": "is",
@@ -582,56 +1100,74 @@
 							}
 						]
 					},
-					"categories": [
-						"Disadvantage"
-					]
+					"calc": {
+						"points": -15
+					}
 				},
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "5c83e59c-e584-44fb-a46c-5b1e2d596219",
+					"type": "trait",
 					"name": "Hidebound",
-					"mental": true,
-					"base_points": -5,
 					"reference": "B138",
 					"notes": "-2 penalty on any task that requires creativity or invention, including most rolls against Artist skill, all Engineer rolls for new inventions, and all skill rolls made to use the Gadgeteer advantage.",
-					"categories": [
-						"Disadvantage"
-					]
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
 				},
 				{
-					"type": "advantage",
-					"version": 1,
 					"id": "46b7d204-361f-4a6e-94a1-b598dd31aaff",
+					"type": "trait",
 					"name": "Taboo Trait (Fixed IQ)",
-					"physical": true,
-					"reference": "B263"
+					"reference": "B263",
+					"tags": [
+						"Physical"
+					],
+					"calc": {
+						"points": 0
+					}
 				}
-			]
+			],
+			"name": "Meta-Trait: Wild Animal",
+			"reference": "B263",
+			"calc": {
+				"points": -30
+			}
 		},
 		{
-			"type": "advantage",
-			"version": 1,
 			"id": "01f7b3e4-1c49-4ac1-84db-40f970f151af",
+			"type": "trait",
 			"name": "Night Vision",
-			"physical": true,
-			"levels": "5",
-			"points_per_level": 1,
 			"reference": "B71",
-			"categories": [
-				"Advantage"
-			]
+			"tags": [
+				"Advantage",
+				"Physical"
+			],
+			"levels": 5,
+			"points_per_level": 1,
+			"can_level": true,
+			"calc": {
+				"points": 5
+			}
 		},
 		{
-			"type": "advantage",
-			"version": 1,
 			"id": "c7dcc460-fcf2-43c6-ab73-dc97164914c9",
+			"type": "trait",
 			"name": "Teeth, Sharp",
-			"physical": true,
-			"exotic": true,
+			"reference": "B91",
+			"tags": [
+				"Exotic",
+				"Perk",
+				"Physical"
+			],
 			"base_points": 1,
 			"weapons": [
 				{
+					"id": "70679814-ee3e-48db-96d2-bdc19d12ea00",
 					"type": "melee_weapon",
 					"damage": {
 						"type": "cut",
@@ -644,48 +1180,58 @@
 					"block": "No",
 					"defaults": [
 						{
-							"type": "Skill",
+							"type": "skill",
 							"name": "Brawling"
 						},
 						{
-							"type": "DX"
+							"type": "dx"
 						}
-					]
+					],
+					"calc": {
+						"level": 15,
+						"parry": "No",
+						"block": "No",
+						"damage": "1d+1 cut"
+					}
 				}
 			],
-			"reference": "B91",
-			"categories": [
-				"Perk"
-			]
+			"calc": {
+				"points": 1
+			}
 		},
 		{
-			"type": "advantage",
-			"version": 1,
 			"id": "4610df14-2dd4-468e-9fb0-df78200bc77c",
+			"type": "trait",
 			"name": "Temperature Tolerance",
-			"physical": true,
-			"levels": "1",
-			"points_per_level": 1,
 			"reference": "B93",
-			"categories": [
-				"Advantage"
-			]
+			"tags": [
+				"Advantage",
+				"Physical"
+			],
+			"levels": 1,
+			"points_per_level": 1,
+			"can_level": true,
+			"calc": {
+				"points": 1
+			}
 		}
 	],
 	"skills": [
 		{
-			"type": "skill",
-			"version": 1,
 			"id": "aebfb146-4001-4b41-b1b1-536be00c2df0",
+			"type": "skill",
 			"name": "Brawling",
 			"reference": "B182",
-			"difficulty": "DX/E",
+			"tags": [
+				"Combat",
+				"Melee Combat",
+				"Weapon"
+			],
+			"difficulty": "dx/e",
 			"points": 4,
 			"features": [
 				{
 					"type": "weapon_bonus",
-					"amount": 1,
-					"per_level": true,
 					"selection_type": "weapons_with_required_skill",
 					"name": {
 						"compare": "is",
@@ -694,24 +1240,28 @@
 					"level": {
 						"compare": "at_least",
 						"qualifier": 2
-					}
+					},
+					"amount": 1,
+					"per_level": true
 				}
 			],
-			"categories": [
-				"Combat/Weapon",
-				"Melee Combat"
-			]
+			"calc": {
+				"level": 15,
+				"rsl": "DX+2"
+			}
 		},
 		{
-			"type": "skill",
-			"version": 1,
 			"id": "cacb6a14-ae54-426f-88e5-f07fe4a451da",
+			"type": "skill",
 			"name": "Running",
 			"reference": "B218",
-			"difficulty": "HT/A",
+			"tags": [
+				"Athletic"
+			],
+			"difficulty": "ht/a",
 			"points": 8,
 			"defaulted_from": {
-				"type": "HT",
+				"type": "ht",
 				"modifier": -5,
 				"level": 6,
 				"adjusted_level": 6,
@@ -719,37 +1269,43 @@
 			},
 			"defaults": [
 				{
-					"type": "HT",
+					"type": "ht",
 					"modifier": -5
 				}
 			],
-			"categories": [
-				"Athletic"
-			]
+			"calc": {
+				"level": 13,
+				"rsl": "HT+2"
+			}
 		}
 	],
 	"notes": [
 		{
-			"type": "note",
-			"version": 1,
 			"id": "50731985-0490-4d59-8fbd-0f69063f465d",
+			"type": "note",
 			"text": "A big, lazy cat, found in both plains and jungle. Lions hunt in small groups.",
-			"reference": "B456"
+			"reference": "BX456"
 		}
 	],
-	"print_settings": {
-		"printer": "HP Color LaserJet M452dw (4EB237)",
-		"units": "in",
-		"orientation": "portrait",
-		"width": 8.5,
-		"height": 11,
-		"top_margin": 0.5,
-		"left_margin": 0.5,
-		"bottom_margin": 0.25,
-		"right_margin": 0.5,
-		"ink_chromaticity": "monochrome",
-		"sides": "duplex",
-		"quality": "normal",
-		"resolution": "120000"
+	"created_date": "2020-05-16T00:00:00-07:00",
+	"modified_date": "2020-06-20T13:49:00-07:00",
+	"calc": {
+		"swing": "2d+2",
+		"thrust": "1d+1",
+		"basic_lift": "51 lb",
+		"move": [
+			10,
+			8,
+			6,
+			4,
+			2
+		],
+		"dodge": [
+			9,
+			8,
+			7,
+			6,
+			5
+		]
 	}
 }
