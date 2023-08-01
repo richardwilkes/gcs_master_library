@@ -198,6 +198,15 @@ The remainder of this document details the various data types that the data is m
 - `.Cast` (string)
 - `.Maintain` (string)
 
+### Margins
+
+#### Margins Fields:
+
+- `.Bottom` (string)
+- `.Left` (string)
+- `.Right` (string)
+- `.Top` (string)
+
 ### MeleeWeapon
 
 #### MeleeWeapon Fields:
@@ -254,6 +263,14 @@ numbers.
 - `.Sub` — Returns the result of subtracting `value` from this number
     - Parameter: `value` (Number)
 - `.Trunc` — Returns a value which has everything to the right of the decimal place truncated
+
+### Page
+
+#### Page Fields:
+
+- `.Height` (string)
+- `.Margins` (Margins)
+- `.Width` (string)
 
 ### Points
 
@@ -325,6 +342,7 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Name` (string)
 - `.Notes` ([]Note)
 - `.Organization` (string)
+- `.Page` (Page)
 - `.Player` (string)
 - `.Points` (Points)
 - `.RangedWeapons` ([]RangedWeapon)
