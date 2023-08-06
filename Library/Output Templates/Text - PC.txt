@@ -1,16 +1,18 @@
-Name: @ENCODING_OFF@NAME (@TOTAL_POINTS)
-Primary Attributes:@PRIMARY_ATTRIBUTE_LOOP_START @NAME @VALUE [@POINTS];@PRIMARY_ATTRIBUTE_LOOP_END
-Secondary Attributes:@SECONDARY_ATTRIBUTE_LOOP_START @NAME @VALUE [@POINTS];@SECONDARY_ATTRIBUTE_LOOP_END
-Point Pools:@POINT_POOL_LOOP_START @NAME @CURRENT / @MAXIMUM [@POINTS];@POINT_POOL_LOOP_END
-Reactions:@REACTION_LOOP_START @MODIFIER @SITUATION;@REACTION_LOOP_END
-Conditional Modifiers:@CONDITIONAL_MODIFIERS_LOOP_START @MODIFIER @SITUATION;@CONDITIONAL_MODIFIERS_LOOP_END
-Advantages:@ADVANTAGES_ONLY_LOOP_START @DESCRIPTION_PRIMARY [@POINTS];@ADVANTAGES_ONLY_LOOP_END
-Perks:@PERKS_LOOP_START @DESCRIPTION_PRIMARY [@POINTS];@PERKS_LOOP_END
-Disadvantages:@DISADVANTAGES_LOOP_START @DESCRIPTION_PRIMARY [@POINTS];@DISADVANTAGES_LOOP_END
-Quirks:@QUIRKS_LOOP_START @DESCRIPTION_PRIMARY [@POINTS];@QUIRKS_LOOP_END
-Skills:@SKILLS_LOOP_START @DESCRIPTION_PRIMARY @RSL [@POINTS]-@SL;@SKILLS_LOOP_END
-Equipment:@EQUIPMENT_LOOP_START @QTY @DESCRIPTION_PRIMARY [$@COST; @WEIGHT];@EQUIPMENT_LOOP_END
-Spells:@SPELLS_LOOP_START @DESCRIPTION_PRIMARY @SL(@RSL) [@POINTS] [Class: @CLASS; Cost: @MANA_CAST; Maintain: @MANA_MAINTAIN; Time: @TIME_CAST ; Duration:@DURATION];@SPELLS_LOOP_END
-Other Equipment:@OTHER_EQUIPMENT_LOOP_START @QTY @DESCRIPTION_PRIMARY [$@COST; @WEIGHT];@OTHER_EQUIPMENT_LOOP_END
-Notes:@NOTES_LOOP_START
-@NOTE @NOTES_LOOP_END
+GCS Text Template v1
+Name: {{.Name}} ({{.Points.Total}})
+Primary Attributes:{{range .Attributes.Primary}} {{.Name}} {{.Value}} [{{.Points}}];{{end}}
+Secondary Attributes:{{range .Attributes.Secondary}} {{.Name}} {{.Value}} [{{.Points}}];{{end}}
+Point Pools:{{range .Attributes.Pools}} {{.Name}} {{.Current}} / {{.Maximum}} [{{.Points}}];{{end}}
+Reactions:{{range .Reactions}} {{.Total.StringWithSign}} {{.Situation}};{{end}}
+Conditional Modifiers:{{range .ConditionalModifiers}} {{.Total.StringWithSign}} {{.Situation}};{{end}}
+Advantages:{{range .Traits}}{{if gt (numberToInt .Points) 1}} {{.Description}} [{{.Points}}];{{end}}{{end}}
+Perks:{{range .Traits}}{{if eq (numberToInt .Points) 1}} {{.Description}} [{{.Points}}];{{end}}{{end}}
+Disadvantages:{{range .Traits}}{{if lt (numberToInt .Points) -1}} {{.Description}} [{{.Points}}];{{end}}{{end}}
+Quirks:{{range .Traits}}{{if eq (numberToInt .Points) -1}} {{.Description}} [{{.Points}}];{{end}}{{end}}
+Skills:{{range .Skills}}{{if eq .Type "item"}} {{.Description}} {{.RelativeLevel}} [{{.Points}}]-{{.Level}};{{end}}{{end}}
+Equipment:{{range .Equipment.Carried}} {{.Quantity}} {{.Description}} [${{.Cost}}; {{.Weight}}];{{end}}
+Spells:{{range .Spells}} {{.Description}} {{.Level}}({{.RelativeLevel}}) [{{.Points}}] [Class: {{.Class}}; Cost: {{.Mana.Cast}}; Maintain: {{.Mana.Maintain}}; Time: {{.TimeToCast}}; Duration: {{.Duration}}];{{end}}
+Other Equipment:{{range .Equipment.Other}} {{.Quantity}} {{.Description}} [${{.Cost}}; {{.Weight}}];{{end}}
+Notes:{{range.Notes}}
+{{.Description}}
+{{end}}
