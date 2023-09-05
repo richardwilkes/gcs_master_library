@@ -120,6 +120,14 @@ So is ___this___.
 
 But this is not.
 
+You can also strike-through text by using a double `~` before and after the text you wish to strike-through.
+
+```
+This has ~~not~~ been struck through.
+```
+
+This has ~~not~~ been struck through.
+
 ### Block Quotes
 
 You can quote text by preceding it with a `>`.
