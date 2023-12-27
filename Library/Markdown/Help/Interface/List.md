@@ -1,7 +1,7 @@
 [<< Back to Overview](./Overview.md "Overview")
 
 # List
-Lists are table form displays of all elements of the list type. Lists are found on [character sheets](./Character%20Sheet.md "Character Sheet"), [templates](./Character%20Template.md "Character Template"), and the display of [libraries](./Library%20Tree.md "Library Tree").
+Lists are table form displays of all elements of the list type. Lists are found on [character sheets](./Character%20Sheet.md), [templates](./Character%20Template.md), and the display of [libraries](./Library%20Tree.md).
 
 ## Usage
 The table and list items each have context menus, which reflect the menu bar sub-menus *Edit* and *Item*.
@@ -9,14 +9,14 @@ The table and list items each have context menus, which reflect the menu bar sub
 To use these functions, the panel or specific list must be active.
 
 Also see specific list types:
-- [Equipment List](./Equipment%20List.md "Equipment List")
-- [Equipment Modifier List](./Equipment%20Modifier%20List.md "Equipment Modifier List")
-- [Melee Weapon Usage List](./Melee%20Weapon%20Usage%20List.md "Melee Weapon Usage List")
-- [Range Weapon Usage List](./Range%20Weapon%20Usage%20List.md "Range Weapon Usage List")
-- [Skill List](./Skill%20List.md "Skill List")
-- [Spell List](./Spell%20List.md "Spell List")
-- [Trait List](./Trait%20List.md "Trait List")
-- [Trait Modifiers List](./Trait%20Modifiers%20List.md "Trait Modifiers List")
+- [Equipment List](./Equipment%20List.md)
+- [Equipment Modifier List](./Equipment%20Modifiers%20List.md)
+- [Melee Weapon Usage List](./Melee%20Weapon%20Usage%20List.md)
+- [Ranged Weapon Usage List](./Ranged%20Weapon%20Usage%20List.md)
+- [Skill List](./Skill%20List.md)
+- [Spell List](./Spell%20List.md)
+- [Trait List](./Trait%20List.md)
+- [Trait Modifiers List](./Trait%20Modifiers%20List.md)
 
 ***... after reading this.***
 
@@ -68,8 +68,8 @@ This will delete containers all contents.
 Columns depend on the list type.
 
 ## Parent
-[Character Sheet](./Character%20Sheet.md "Character Sheet")
-[Character Template](./Character%20Template.md "Character Template")
-[Library Tree](./Library%20Tree.md "Library Tree")
+[Character Sheet](./Character%20Sheet.md)
+[Character Template](./Character%20Template.md)
+[Library Tree](./Library%20Tree.md)
 
 ***Last updated for v5.7.0***
