@@ -1,7 +1,7 @@
-[<< Back to Overview](./Overview.md "Overview")
+[<< Back to Overview](./Overview.md)
 
 # Spell
-Spells are the ability to use mana to effect. Yes, it's just that simple. Go give it a try. They are on the [Spell List](./Spell%20List.md "Spell List") and in [spell libraries](./Library%20Tree.md "Library Tree: Spell").
+Spells are the ability to use mana to effect. Yes, it's just that simple. Go give it a try. They are on the [Spell List](./Spell%20List.md) and in [spell libraries](./Library%20Tree.md).
 
 When discussing spells, this page includes Ritual Magic spells.
 
@@ -15,7 +15,7 @@ Spells use the Detail Editor.
 - **College** : See B239
 - **Class** : See B239
 - **Power Source** : For Dungeon Fantasy games
-- **Base Skill** : [Skill](./Skill.md "Skill") needed to learn (B242)
+- **Base Skill** : [Skill](./Skill.md) needed to learn (B242)
 - **Difficulty** : Controlling attribute plus difficulty level (B235)
 - **Points** : character points assigned
 - **Resistance** : string comment (B241)
@@ -23,10 +23,10 @@ Spells use the Detail Editor.
 - **Maintenance Cost** : point cost (B237)
 - **Casting Time** : GURPS uses seconds, in case the player has the altered time trait (B236)
 - **Casting Duration** : see (B237)
-- **[Notes](./Notes.md "Notes")** : For notes that appear
-- **[VTT Notes](./VTT%20Notes.md "VTT Notes")** : For notes that don't
-- **[Tags](./Tags.md "Tags")** : For tags that appear
-- **[Page Reference](./Page%20Reference.md "Page Reference")** : bookmarks
+- **[Notes](./Notes.md)** : For notes that appear
+- **[VTT Notes](./VTT%20Notes.md)** : For notes that don't
+- **[Tags](./Tags.md)** : For tags that appear
+- **[Page Reference](./Page%20Reference.md)** : bookmarks
 
 *Power source* is exclusively for Dungeon Fantasy characters. It is unused anywhere else. It does not display on the character sheet.
 
@@ -37,12 +37,12 @@ Spells use the Detail Editor.
 The *Resistance* field is used for any notes, changes, or comments on how the spell is resisted (B241).
 
 ### Blocks
-- **[Prerequisites](./Prerequisites.md "Prerequisites")** : get those before this (B169)
-- **[Melee Weapon Usage](./Melee%20Weapon%20Usage.md "Melee Weapon Usage")** : melee use(s) obtained
-- **[Range Weapon Usage](./Range%20Weapon%20Usage.md "Range Weapon Usage")** : range use(s) obtained
-- **[Study](./Study.md "Study")** : how it was learned
+- **[Prerequisites](./Prerequisites.md)** : get those before this (B169)
+- **[Melee Weapon Usage](./Melee%20Weapon%20Usage.md)** : melee use(s) obtained
+- **[Ranged Weapon Usage](./Ranged%20Weapon%20Usage.md)** : ranged use(s) obtained
+- **[Study](./Study.md)** : how it was learned
 
 ## Related
-[Character Sheet](./Character%20Sheet.md "Character Sheet")
+[Character Sheet](./Character%20Sheet.md)
 
 ***Last updated for v5.7.0***
