@@ -84,11 +84,6 @@
 				"cost_per_point": 2
 			},
 			{
-				"id": "senses",
-				"type": "secondary_separator",
-				"name": "Senses"
-			},
-			{
 				"id": "per",
 				"type": "integer",
 				"name": "Per",
@@ -125,11 +120,6 @@
 				"cost_per_point": 2
 			},
 			{
-				"id": "movement",
-				"type": "secondary_separator",
-				"name": "Movement"
-			},
-			{
 				"id": "basic_speed",
 				"type": "decimal",
 				"name": "Basic Speed",
@@ -142,30 +132,6 @@
 				"name": "Basic Move",
 				"attribute_base": "floor($basic_speed)",
 				"cost_per_point": 5
-			},
-			{
-				"id": "highjump",
-				"type": "integer_ref",
-				"name": "High Jump (in)",
-				"attribute_base": "(6 * max(max($basic_move, floor(skill_level(jumping) / 2)), $st / 4) - 10) * enc(false, true) * (2 ^ max(0, trait_level(super jump)))"
-			},
-			{
-				"id": "running_highjump",
-				"type": "integer_ref",
-				"name": "when running",
-				"attribute_base": "(6 * max(max($basic_move, floor(skill_level(jumping) / 2)), $st / 4) * (1 + max(0, trait_level(\"enhanced move (ground)\"))) - 10) * enc(false, true) * if(trait_level(\"enhanced move (ground)\")\u003c1,2,1) * (2 ^ max(0, trait_level(super jump)))"
-			},
-			{
-				"id": "broadjump",
-				"type": "integer_ref",
-				"name": "Broad Jump (ft)",
-				"attribute_base": "(2 * max(max($basic_move, floor(skill_level(jumping) / 2)), $st / 4) - 3) * enc(false, true) * (2 ^ max(0, trait_level(super jump)))"
-			},
-			{
-				"id": "running_broadjump",
-				"type": "integer_ref",
-				"name": "when running",
-				"attribute_base": "(2 * max(max($basic_move, floor(skill_level(jumping) / 2)), $st / 4) * (1 + max(0, trait_level(\"enhanced move (ground)\"))) - 3) * enc(false, true) * if(trait_level(\"enhanced move (ground)\")\u003c1,2,1) * (2 ^ max(0, trait_level(super jump)))"
 			},
 			{
 				"id": "fp",
@@ -196,7 +162,7 @@
 					},
 					{
 						"state": "Tired",
-						"expression": "round($fp/3)",
+						"expression": "ceil($fp/3)-1",
 						"explanation": "Move, Dodge and ST are halved (B426)",
 						"ops": [
 							"halve_move",
@@ -278,7 +244,7 @@
 					},
 					{
 						"state": "Reeling",
-						"expression": "round($hp/3)",
+						"expression": "ceil($hp/3)-1",
 						"explanation": "Move and Dodge are halved (B419)",
 						"ops": [
 							"halve_move",
@@ -297,7 +263,7 @@
 			}
 		],
 		"body_type": {
-			"name": "Humanoid",
+			"name": "Quadruped",
 			"roll": "3d",
 			"locations": [
 				{
@@ -343,28 +309,28 @@
 					}
 				},
 				{
-					"id": "leg",
-					"choice_name": "Leg",
-					"table_name": "Right Leg",
-					"slots": 2,
-					"hit_penalty": -2,
-					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
 					"calc": {
-						"roll_range": "6-7",
+						"roll_range": "6",
 						"dr": {
 							"all": 0
 						}
 					}
 				},
 				{
-					"id": "arm",
-					"choice_name": "Arm",
-					"table_name": "Right Arm",
-					"slots": 1,
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Foreleg",
+					"slots": 2,
 					"hit_penalty": -2,
-					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
 					"calc": {
-						"roll_range": "8",
+						"roll_range": "7-8",
 						"dr": {
 							"all": 0
 						}
@@ -374,9 +340,9 @@
 					"id": "torso",
 					"choice_name": "Torso",
 					"table_name": "Torso",
-					"slots": 2,
+					"slots": 3,
 					"calc": {
-						"roll_range": "9-10",
+						"roll_range": "9-11",
 						"dr": {
 							"all": 0
 						}
@@ -390,20 +356,6 @@
 					"hit_penalty": -3,
 					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
 					"calc": {
-						"roll_range": "11",
-						"dr": {
-							"all": 0
-						}
-					}
-				},
-				{
-					"id": "arm",
-					"choice_name": "Arm",
-					"table_name": "Left Arm",
-					"slots": 1,
-					"hit_penalty": -2,
-					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
-					"calc": {
 						"roll_range": "12",
 						"dr": {
 							"all": 0
@@ -413,7 +365,7 @@
 				{
 					"id": "leg",
 					"choice_name": "Leg",
-					"table_name": "Left Leg",
+					"table_name": "Hindleg",
 					"slots": 2,
 					"hit_penalty": -2,
 					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
@@ -425,40 +377,26 @@
 					}
 				},
 				{
-					"id": "hand",
-					"choice_name": "Hand",
-					"table_name": "Hand",
-					"slots": 1,
-					"hit_penalty": -4,
-					"description": "If holding a shield, double the penalty to hit: -8 for\nshield hand instead of -4. Reduce the wounding multiplier of\nlarge piercing (pi+), huge piercing (pi++), and impaling\n(imp) damage to x1. Any major wound (loss of over ⅓ HP\nfrom one blow) cripples the extremity. Damage beyond that\nthreshold is lost.",
-					"calc": {
-						"roll_range": "15",
-						"dr": {
-							"all": 0
-						}
-					}
-				},
-				{
 					"id": "foot",
 					"choice_name": "Foot",
 					"table_name": "Foot",
-					"slots": 1,
+					"slots": 2,
 					"hit_penalty": -4,
 					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
 					"calc": {
-						"roll_range": "16",
+						"roll_range": "15-16",
 						"dr": {
 							"all": 0
 						}
 					}
 				},
 				{
-					"id": "neck",
-					"choice_name": "Neck",
-					"table_name": "Neck",
+					"id": "tail",
+					"choice_name": "Tail",
+					"table_name": "Tail",
 					"slots": 2,
-					"hit_penalty": -5,
-					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"hit_penalty": -3,
+					"description": "If a tail counts as an Extra Arm or a Striker, or is a fish\ntail, treat it as a limb (arm, leg) for crippling purposes;\notherwise, treat it as an extremity (hand, foot). A crippled\ntail affects balance. For a ground creature, this gives -1\nDX. For a swimmer or flyer, this gives -2 DX and halves\nMove. If the creature has no tail, or a very short one (like\na rabbit), treat as torso.",
 					"calc": {
 						"roll_range": "17-18",
 						"dr": {
@@ -606,35 +544,19 @@
 		},
 		{
 			"attr_id": "highjump",
-			"adj": 0,
-			"calc": {
-				"value": 38,
-				"points": 0
-			}
+			"adj": 0
 		},
 		{
 			"attr_id": "running_highjump",
-			"adj": 0,
-			"calc": {
-				"value": 76,
-				"points": 0
-			}
+			"adj": 0
 		},
 		{
 			"attr_id": "broadjump",
-			"adj": 0,
-			"calc": {
-				"value": 13,
-				"points": 0
-			}
+			"adj": 0
 		},
 		{
 			"attr_id": "running_broadjump",
-			"adj": 0,
-			"calc": {
-				"value": 26,
-				"points": 0
-			}
+			"adj": 0
 		},
 		{
 			"attr_id": "fp",
@@ -1246,7 +1168,7 @@
 		}
 	],
 	"created_date": "2024-01-22T21:13:19Z",
-	"modified_date": "2024-01-22T22:15:49Z",
+	"modified_date": "2024-01-29T20:26:03Z",
 	"calc": {
 		"swing": "1d-2",
 		"thrust": "1d-3",
