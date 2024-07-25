@@ -14,7 +14,16 @@ def leaves(root)
 end
 
 IGNORE = [
-  "sUyJha-nzo-BupJ2J" # Hopolomachia Push
+  "sUyJha-nzo-BupJ2J", # Hopolomachia Push
+  "qcbaTmfyu2dj08U5W", # Aikido Acrobatic stand
+  "qOD4wWVWPqAzijWDQ", # Aikido Breakfall
+  "q-wbdfEAqDd4cFV_t", # Aikido Ground Fighting
+  "qwrLlY7Wx2HyXLrL5",
+  "qlgvEwHUzbxVMBFEv",
+  "q-eJ4dofW54uaWWcy",
+  "qCcYWB3sCQZTrWhLe",
+  "qgqZQOgN73_ZslFsG",
+  "qbhSXDNqOyJNqo3Ae"
 ]
 
 SKILLS = {
@@ -108,11 +117,65 @@ SKILLS = {
 }
 
 TECHNIQUES = {
+  "Feint (Force Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qGOkewCG1_HhBwpEn"}},
+  "Dual-Weapon Defense (Force Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"q-XuDYLJuSbsGmjSm"}, "replacements"=>{"Combat Skill"=>"Force Sword"}},
+  "Whirlwind Attack (Force Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qFePYS23kanaYnTPM"}, "replacements"=>{"Melee Weapon Skill"=>"Force Sword"}},
+  "Finger Lock (Arm Lock)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qYM2DzTFNsKqSZCHD"}},
+  "Arm Lock (Judo)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qejpSeVSRZK4yn5A5"}},
+  "Ground Fighting (Judo)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"q4dXeT1nQwBNKcZbG"}, "replacements"=>{"Combat Skill"=>"Judo"}},
+  "Disarming (Judo)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"q11aSGW0Y6yrbz_e5"}, "replacements"=>{"Unarmed or Melee Weapon Skill"=>"Judo"}},
+  "Close Combat (Bow)"=> {},
+  "Retain Weapon (Bow)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"q8aKdq6bj2oMv--f3"}, "replacements"=>{"Weapon Skill"=>"Bow"}},
+  "Horse Archery (Bow)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qq5DZpMNDLEjAu05C"}},
+  "Feint (Shortsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qyEYoi3JfBXv05QsV"}},
+  "Feint (Shield)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qlf8-jNd24f1dDJf6"}, "replacements"=>{"Unarmed or Melee Weapon Skill"=>"Shield"}},
+  "Retain Weapon (Shortsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qfxYLT4lYCKFB6Zwu"}},
+  "Retain Weapon (Spear)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qVd4AfYpe8IZSKeb5"}, "replacements"=>{"Melee Weapon Skill"=>"Spear"}},
+  "Elbow Strike (Karate)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qJJkAOfGC0eHr0Wlj"}},
+  "Head Lock (Judo)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qLPRxPtEJrVjH2ogS"}},
+  "Knee Strike (Karate)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qDNr2oliZ5yOymrmZ"}},
+  "Ground Fighting (Karate)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qT8kD6V0un5JZRwU4"}},
+  "Ground Fighting (Wrestling)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"q4dXeT1nQwBNKcZbG"}, "replacements"=>{"Combat Skill"=>"Wrestling"}},
+  "Disarming (Spear)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"q11aSGW0Y6yrbz_e5"}, "replacements"=>{"Unarmed or Melee Weapon Skill"=>"Spear"}},
+  "Disarming (Staff)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"q11aSGW0Y6yrbz_e5"}, "replacements"=>{"Unarmed or Melee Weapon Skill"=>"Staff"}},
+  "Reverse Grip (Broadsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qD3MecSEmG2h4ks9e"}, "replacements"=>{"One-Handed Weapon Skill"=>"Broadsword"}},
+  "Reverse Grip (Knife)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qD3MecSEmG2h4ks9e"}, "replacements"=>{"One-Handed Weapon Skill"=>"Knife"}},
+  "Reverse Grip (Shortsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qD3MecSEmG2h4ks9e"}, "replacements"=>{"One-Handed Weapon Skill"=>"Shortsword"}},
+  "Reverse Grip (Spear)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qD3MecSEmG2h4ks9e"}, "replacements"=>{"One-Handed Weapon Skill"=>"Spear"}},
+  "Choke Hold (Judo)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qVZntC-x_8ebfCxIW"}},
+  "Close Combat (Smallsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qHgRlTejK8kg_4j_m"}, "replacements"=>{"Reach 1 Weapon Skill"=>"Smallsword"}},
+  "Grand Disarm (Smallsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qQzll_MC417uwsomn"}, "replacements"=>{"Fencing Weapon Skill"=>"Smallsword"}},
+  "Dual-Weapon Defense (Rapier)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Rapier"}},
+  "Dual-Weapon Defense (Main-Gauche)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Main-Gauche"}},
+  "Grand Disarm (Rapier)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qQzll_MC417uwsomn"}, "replacements"=>{"Fencing Weapon Skill"=>"Rapier"}},
+  "Close Combat (Rapier)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qHgRlTejK8kg_4j_m"}, "replacements"=>{"Reach 1 Weapon Skill"=>"Rapier"}},
+  "Close Combat (Shortsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qHgRlTejK8kg_4j_m"}, "replacements"=>{"Reach 1 Weapon Skill"=>"Shortsword"}},
+  "Dual-Weapon Defense (Two-Handed Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Two-Handed Sword"}},
+  "Reverse Grip (Two-Handed Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qnI5XcgjTif3O65gW"}, "replacements"=>{"Two-Handed Weapon Skill"=>"Two-Handed Sword"}},
+  "Dual-Weapon Defense (Shortsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Shortsword"}},
+  "Reverse Grip (Axe/Mace)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qD3MecSEmG2h4ks9e"}, "replacements"=>{"One-Handed Weapon Skill"=>"Axe/Mace"}},
+  "Reverse Grip (Jitte/Sai)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qD3MecSEmG2h4ks9e"}, "replacements"=>{"One-Handed Weapon Skill"=>"Jitte/Sai"}},
+  "Dual-Weapon Defense (Shield)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"q-XuDYLJuSbsGmjSm"}, "replacements"=>{"Blocking Combat Skill"=>"Shield"}},
+  "Dual-Weapon Defense (Flail)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Flail"}},
+  "Dual-Weapon Defense (Axe/Mace)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Axe/Mace"}},
+  "Dual-Weapon Defense (Jitte/Sai)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Jitte/Sai"}},
+  "Dual-Weapon Defense (Staff)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Staff"}},
+  "Dual-Weapon Defense (Tonfa)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Tonfa"}},
+  "Dual-Weapon Defense (Broadsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Broadsword"}},
+  "Dual-Weapon Defense (Knife)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Knife"}},
+  "Dual-Weapon Defense (Polearm)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Polearm"}},
+  "Dual-Weapon Defense (Spear)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Spear"}},
+  "Dual-Weapon Defense (Two-Handed Axe/Mace)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qCXEAzI-ewF60vBEK"}, "replacements"=>{"Parrying Combat Skill"=>"Two-Handed Axe/Mace"}},
+  "Close Combat (Two-Handed Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"qHgRlTejK8kg_4j_m"}, "replacements"=>{"Reach 1 Weapon Skill"=>"Two-Handed Sword"}}
   
 }
 
 def normalize()
   `/home/smithkm/bin/gcs -c "Library/Martial Arts"`
+end
+
+def query_user(found)
+  
 end
 
 JSON.dump_default_options[:indent]="\t"
@@ -130,18 +193,24 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
   
   leaves(style["skills"]) do |skill|
 
+    # It already has a source
     next if skill.has_key? "source"
+
+    # It is in the ignore list
     next if IGNORE.include? skill["id"]
     
     if(skill["difficulty"].include? "/")
+      # It's a skill
       key = "#{skill['name']} (#{skill['specialization']})"
       puts "S #{key}"
       if(SKILLS.include? key)
+        # It's in the known skills list
         skill.merge! SKILLS[key]
       else
+        # Look for matching skills
         found_skills = []
         Dir.glob("**/*.skl").each do |skill_lib_filename|
-          next unless skill_lib_filename =~ /(Basic Set|Martial Arts)/
+          next unless skill_lib_filename =~ /(Basic Set|Martial Arts|Power)/
           skill_lib = open(skill_lib_filename,'r') do |skill_lib_file|
             JSON.load(skill_lib_file)
           end
@@ -159,21 +228,96 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
           end          
         end
         if found_skills.size == 1
+          # Exactly one match so use it
           skill.merge! found_skills[0][1]
         elsif found_skills.empty?
           puts " *** ERRROR #{key} could not find match"
           normalize()
           exit
         else
+          # Multiple matches, stop and let user decide what to add to known skills list
           found_skills.each do |found_key, found_skill|
             puts " - #{found_key}  --  \"#{key}\"=> #{found_skill.inspect}"
           end
-           normalize()
+          normalize()
           exit
         end
       end
     else
-      puts "T #{skill['name']} (#{skill['default']['name']})"
+      # It's a technique
+      key = "#{skill['name']} (#{skill['default']['name']})"
+      puts "T #{key} (#{skill["id"]})"
+      if(TECHNIQUES.include? key)
+        # It's in the known skills list
+        skill.merge! TECHNIQUES[key]
+      else
+        # Look for matching skills
+        found_skills = []
+        Dir.glob("**/*.skl").each do |skill_lib_filename|
+          next unless skill_lib_filename =~ /(Basic Set|Martial Arts|Power)/
+          skill_lib = open(skill_lib_filename,'r') do |skill_lib_file|
+            JSON.load(skill_lib_file)
+          end
+          leaves(skill_lib["rows"]) do |lib_skill|
+            found_default = lib_skill.dig("default", "name")
+            found_key="#{lib_skill['name']} (#{found_default})"
+            if skill["name"].start_with? "Targeted Attack" and lib_skill["name"].start_with? "Targeted Attack"
+              cap = /Targeted Attack \((?<Skill>.*?) (?<Attack>\w+?)\/(?<Location>.*?)\)/.match(skill["name"]).named_captures
+              if(cap["Attack"]=="Grapple")
+                if(lib_skill['name'].include? "Grapple")
+                  found_skills<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{skill_lib_filename}", "id"=>"#{lib_skill["id"]}"}, "replacements"=>{"Skill"=>cap["Skill"]}}]
+                end
+              elsif(lib_skill["name"].end_with? "#{cap["Location"]})")
+                unless(lib_skill['name'].include? "Grapple")
+                  found_skills<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{skill_lib_filename}", "id"=>"#{lib_skill["id"]}"}, "replacements"=>{"Skill"=>cap["Skill"], "Attack"=>cap["Attack"]}}]
+                end
+              end
+            elsif skill["name"]==lib_skill["name"]
+              if(found_default==skill['default']['name'])
+                found_skills<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{skill_lib_filename}", "id"=>"#{lib_skill["id"]}"}}]
+              elsif found_default=~/^\@.*?\@$/
+                found_skills<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{skill_lib_filename}", "id"=>"#{lib_skill["id"]}"}, "replacements"=>{found_default[1...-1]=>skill["default"]["name"]}}]
+              end
+            end
+          end
+        end          
+        if found_skills.size == 1
+          # Exactly one match so use it
+          skill.merge! found_skills[0][1]
+        elsif found_skills.empty?
+          puts " *** ERRROR #{key} could not find match"
+          normalize()
+          exit
+        else
+          no_replace = found_skills.select {|found_key, found_skill| not found_skill.has_key? "replacements"}
+          p no_replace
+          if(no_replace.size == 1)
+            skill.merge! no_replace[0][1]
+          elsif(no_replace.size == found_skills.size or no_replace.size == 0)
+            basic = found_skills.select {|found_key, found_skill| found_skill["source"]["path"].include? "Basic Set"}
+            if (basic.size==1)
+              skill.merge! basic[0][1]
+            else
+              # Multiple matches, stop and let user decide what to add to known skills list
+              found_skills.each do |found_key, found_skill|
+                puts " - #{found_key}  --  \"#{key}\"=> #{found_skill.inspect}"
+              end
+              normalize()
+              exit
+            end
+          
+          else
+            # Multiple matches, stop and let user decide what to add to known skills list
+            found_skills.each do |found_key, found_skill|
+              puts " - #{found_key}  --  \"#{key}\"=> #{found_skill.inspect}"
+            end
+            normalize()
+            exit
+          end
+        end
+      end
+
+      
     end
     
     
