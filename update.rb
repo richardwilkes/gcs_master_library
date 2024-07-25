@@ -118,7 +118,6 @@ SKILLS = {
 
 TECHNIQUES = {
   "Feint (Force Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qGOkewCG1_HhBwpEn"}},
-  "Dual-Weapon Defense (Force Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Skills.skl", "id"=>"q-XuDYLJuSbsGmjSm"}, "replacements"=>{"Combat Skill"=>"Force Sword"}},
   "Whirlwind Attack (Force Sword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qFePYS23kanaYnTPM"}, "replacements"=>{"Melee Weapon Skill"=>"Force Sword"}},
   "Finger Lock (Arm Lock)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qYM2DzTFNsKqSZCHD"}},
   "Arm Lock (Judo)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"qejpSeVSRZK4yn5A5"}},
