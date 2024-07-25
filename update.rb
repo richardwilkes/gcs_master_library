@@ -13,6 +13,10 @@ def leaves(root)
   end
 end
 
+IGNORE = [
+  "sUyJha-nzo-BupJ2J" # Hopolomachia Push
+]
+
 SKILLS = {
   "Acrobatics ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"sX8y2AmeL5DLlQl17"}},
   "Combat Art (Judo)"=>{"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"sWEitxqi3RfTcRTOl"}, "replacements"=>{"Hard Skill"=> "Judo"}},
@@ -103,6 +107,14 @@ SKILLS = {
   "Combat Sport (Broadsword)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Skills.skl", "id"=>"sRHz1wOm309d71vq9"}, "replacements"=>{"Average Skill"=>"Broadsword"}},
 }
 
+TECHNIQUES = {
+  
+}
+
+def normalize()
+  `/home/smithkm/bin/gcs -c "Library/Martial Arts"`
+end
+
 JSON.dump_default_options[:indent]="\t"
 JSON.dump_default_options[:object_nl]="\n"
 JSON.dump_default_options[:array_nl]="\n"
@@ -117,6 +129,10 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
   end
   
   leaves(style["skills"]) do |skill|
+
+    next if skill.has_key? "source"
+    next if IGNORE.include? skill["id"]
+    
     if(skill["difficulty"].include? "/")
       key = "#{skill['name']} (#{skill['specialization']})"
       puts "S #{key}"
@@ -146,11 +162,13 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
           skill.merge! found_skills[0][1]
         elsif found_skills.empty?
           puts " *** ERRROR #{key} could not find match"
+          normalize()
           exit
         else
           found_skills.each do |found_key, found_skill|
             puts " - #{found_key}  --  \"#{key}\"=> #{found_skill.inspect}"
           end
+           normalize()
           exit
         end
       end
@@ -164,4 +182,7 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
   open(style_filename,'w') do |style_file|
     JSON.dump(style, style_file)
   end
+
 end
+
+normalize()
