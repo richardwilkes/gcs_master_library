@@ -1,5 +1,5 @@
 require "json"
-
+require "set"
 
 def leaves(root)
   root.each do |node|
@@ -169,6 +169,10 @@ TECHNIQUES = {
   
 }
 
+TRAITS = {
+  "Talent (Forceful Chi) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Power Ups/Power Ups Traits.adq", "id"=>"tILT5DL-euLhs6NdO"}}
+}
+
 def normalize()
   `/home/smithkm/bin/gcs -c "Library/Martial Arts"`
 end
@@ -182,6 +186,26 @@ JSON.dump_default_options[:object_nl]="\n"
 JSON.dump_default_options[:array_nl]="\n"
 JSON.dump_default_options[:space]=" "
 
+def find_replacements(value, replacements=Set.new)
+  case value
+  when Hash
+    value.each do |key, child|
+      find_replacements(child, replacements) unless key == "children"
+    end
+  when String
+    replacements+=value.scan(/\@.+?\@/)
+  when Array
+    value.each do |child|
+      find_replacements(child, replacements)
+    end
+  end
+  replacements
+end
+
+def replacements_to_regex(string)
+  Regexp.new(string.gsub(/[^\@]+/) {|match| Regexp.escape(match)}.gsub(/\@.+?\@/){|match| "(?<#{match[1...-1]}>.+?)"})
+end
+
 Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
   puts "****"
   puts "* #{style_filename}"
@@ -190,6 +214,93 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
     JSON.load(style_file)
   end
   
+  leaves(style["traits"]) do |trait|
+    key = trait["name"]
+    key = "#{trait['name']} (#{trait['notes']})"
+    
+    next if trait["name"].start_with? "Style Familiarity"
+    
+    # It already has a source
+    next if trait.has_key? "source"
+
+    # It is in the ignore list
+    next if IGNORE.include? trait["id"]
+
+    if(TRAITS.include? key)
+      # It's in the known traits list
+      trait.merge! TRAITS[key]
+    else
+      found_traits = []
+      Dir.glob("**/*.adq").each do |trait_lib_filename|
+        next unless trait_lib_filename =~ /(Basic Set|Martial Arts|Power)/
+        puts trait_lib_filename
+        trait_lib = open(trait_lib_filename,'r') do |trait_lib_file|
+          JSON.load(trait_lib_file)
+        end
+        leaves(trait_lib["rows"]) do |lib_trait|
+          found_key = "#{lib_trait['name']} (#{lib_trait['notes']})"
+          if key==found_key
+            replacements = find_replacements(lib_trait)
+            if replacements.empty?
+              found_traits<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{trait_lib_filename}", "id"=>"#{lib_trait["id"]}"}}]
+            else
+              found_traits<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{trait_lib_filename}", "id"=>"#{lib_trait["id"]}"}, "replacements"=> replacements.to_h{|key| [key, "TODO"]} }]
+            end
+          else
+            if lib_trait["name"].start_with? "Off-Hand"
+              p found_key
+              puts replacements_to_regex(found_key)
+              puts key
+            end
+            if (replacements_to_regex(lib_trait["name"])=~ trait["name"])
+              captures = $~.named_captures
+              if ((lib_trait["notes"].nil? and trait["notes"].nil?) or replacements_to_regex(lib_trait["notes"])=~ trait["notes"])
+                captures.merge! $~.named_captures
+                found_traits<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{trait_lib_filename}", "id"=>"#{lib_trait["id"]}"}, "replacements"=> captures}]
+              end
+            end
+          end
+        end
+      end
+      if found_traits.size == 1
+        # Exactly one match so use it
+        trait.merge! found_traits[0][1]
+      elsif found_traits.empty?
+        puts " *** ERRROR #{key} could not find match"
+        normalize()
+        exit
+      else
+        no_replace = found_traits.select {|found_key, found_trait| not found_trait.has_key? "replacements"}
+        not_replace_all = found_traits.select {|found_key, found_trait| not found_key=~/^\@[^@]+\@ \(\)$/}
+        p no_replace
+        p not_replace_all
+        if no_replace.size == 1
+          trait.merge! no_replace[0][1]
+        elsif not_replace_all.size == 1
+          if not_replace_all[0][1]["replacements"].values.none? {|replacement| replacement=="TODO"}
+            trait.merge! not_replace_all[0][1]
+          else
+            # Multiple matches, stop and let user decide what to add to known traits list
+            found_traits.each do |found_key, found_trait|
+              puts " - #{found_key}  --  \"#{key}\"=> #{found_trait.inspect}"
+            end
+            normalize()
+            exit
+          end
+        else
+          # Multiple matches, stop and let user decide what to add to known traits list
+          found_traits.each do |found_key, found_trait|
+            puts " - #{found_key}  --  \"#{key}\"=> #{found_trait.inspect}"
+          end
+          normalize()
+          exit
+        end
+      end
+    end
+      
+    
+  end
+ 
   leaves(style["skills"]) do |skill|
 
     # It already has a source
@@ -321,6 +432,8 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
     
     
   end
+
+  puts "Writing #{style_file}"
   
   open(style_filename,'w') do |style_file|
     JSON.dump(style, style_file)
