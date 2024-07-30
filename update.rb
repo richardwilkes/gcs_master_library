@@ -23,7 +23,11 @@ IGNORE = [
   "q-eJ4dofW54uaWWcy",
   "qCcYWB3sCQZTrWhLe",
   "qgqZQOgN73_ZslFsG",
-  "qbhSXDNqOyJNqo3Ae"
+  "qbhSXDNqOyJNqo3Ae",
+
+  "trPM4mpwMJnj-tqdg", # Basic Set Metal Quirk
+  "tHv97hIejdmH2l3xH", # Basic Set Physical Quirk
+  "t22BmBtcIvbGV0tnb", # Basic Set Missing Disadvantage
 ]
 
 SKILLS = {
@@ -170,9 +174,31 @@ TECHNIQUES = {
 }
 
 TRAITS = {
-  "Talent (Forceful Chi) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Power Ups/Power Ups Traits.adq", "id"=>"tILT5DL-euLhs6NdO"}}
+  "Talent (Forceful Chi) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Power Ups/Power Ups Traits.adq", "id"=>"tILT5DL-euLhs6NdO"}},
+  "Talent (Inner Balance) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Power Ups/Power Ups Traits.adq", "id"=>"t5T8Izo6tqE0FHmsl"}},
+  "Code of Honor (@Subject@)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Traits.adq", "id"=>"tYKd1V2ZzpN6-3H8E"}},
+  "Skill Adaptation (Acrobatic Stand defaults to Judo Art) (Lets you base Techniques on different skill.)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tKyqtFwOeGWrJ9jPL"}, "replacements"=>{"Speciality"=>"Acrobatic Stand defaults to Judo Art"}},
+  "Armor Familiarity (Judo) (Let you ignore one encumbrance level)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tXhB1YEtxrzarLhO6"}, "replacements"=>{"Skill"=>"Judo"}},
+  "Extra Fatigue Points ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Basic Set/Basic Set Traits.adq", "id"=>"tsIfS0jZqdshsDFOM"}},
+  "Talent (Animal Friend) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Power Ups/Power Ups Traits.adq", "id"=>"tQTxX0r4i-XLx942S"}},
+  "Talent (Musical Ability) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Power Ups/Power Ups Traits.adq", "id"=>"tLj86VHSw45Z9pRsQ"}},
+  "Reputation (Dirty Tricks) ()"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"twqQpveqPpnS9szSJ"}, "replacements"=>{"Signature\\ Move\\ as\\ a\\ Quick\\ Contest"=>"Dirty Tricks"}}
 }
-
+TRAITS_BY_NAME ={
+  "Code of Honor (Bushido)"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tU8574DkPhyM06wgy"}},
+  "Acrobatic Feints"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tY4uVjzRzVbrWMZbH"}},
+  "Acrobatic Kicks"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"t_TymR9O5N_htT6No"}},
+  "Clinch"=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"t_BDJ5STtHyWG0kUw"}},
+}
+TRAITS_BY_NAME_REGEX ={
+  /^Unusual Training \((?<Cinematic Skill>.*?)\)$/=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tpUrun7KhUhOLGZsk"}},
+  /^Style Perks \((?<Style Name>.*?)\)$/=>Hash.new,
+  /^Special Excercises \((?<Trait>.*?)\)$/=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"t1XEhNJ5DSJqy5Osv"}},
+  /^Skill Adaptation \((?<Speciality>.*?)\)$/=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tKyqtFwOeGWrJ9jPL"}},
+  /^Unusual Training \((?<Cinematic Skill>.*?)\)$/=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"tpUrun7KhUhOLGZsk"}},
+  /^Off-Hand Weapon Training \((?<Weapon>.*?)\)$/=> {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"Library/Martial Arts/Martial Arts Traits.adq", "id"=>"thw7_FAQ8ZHAD2N0b"}},
+ 
+}
 def normalize()
   `/home/smithkm/bin/gcs -c "Library/Martial Arts"`
 end
@@ -203,7 +229,7 @@ def find_replacements(value, replacements=Set.new)
 end
 
 def replacements_to_regex(string)
-  Regexp.new(string.gsub(/[^\@]+/) {|match| Regexp.escape(match)}.gsub(/\@.+?\@/){|match| "(?<#{match[1...-1]}>.+?)"})
+  Regexp.new("^"+string.gsub(/[^\@]+/) {|match| Regexp.escape(match)}.gsub(/\@.+?\@/){|match| "(?<#{match[1...-1]}>.+?)"}+"$")
 end
 
 Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
@@ -226,19 +252,32 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
     # It is in the ignore list
     next if IGNORE.include? trait["id"]
 
-    if(TRAITS.include? key)
+    from_trait_by_regex=TRAITS_BY_NAME_REGEX.find do |pattern, value|
+      pattern=~trait["name"]
+    end
+
+    #p from_trait_by_regex
+    p trait
+    
+    if(not from_trait_by_regex.nil?)
+      trait.merge! from_trait_by_regex[1]
+    elsif(TRAITS.include? key)
       # It's in the known traits list
       trait.merge! TRAITS[key]
+    elsif(TRAITS_BY_NAME.include? trait["name"])
+      # It's in the known traits list
+      trait.merge! TRAITS_BY_NAME[trait["name"]]
     else
       found_traits = []
       Dir.glob("**/*.adq").each do |trait_lib_filename|
-        next unless trait_lib_filename =~ /(Basic Set|Martial Arts|Power)/
-        puts trait_lib_filename
+        next unless trait_lib_filename =~ /(Basic Set|Martial Arts|Power Ups)/
         trait_lib = open(trait_lib_filename,'r') do |trait_lib_file|
           JSON.load(trait_lib_file)
         end
         leaves(trait_lib["rows"]) do |lib_trait|
           found_key = "#{lib_trait['name']} (#{lib_trait['notes']})"
+          next if IGNORE.include? lib_trait["id"]
+
           if key==found_key
             replacements = find_replacements(lib_trait)
             if replacements.empty?
@@ -247,14 +286,9 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
               found_traits<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{trait_lib_filename}", "id"=>"#{lib_trait["id"]}"}, "replacements"=> replacements.to_h{|key| [key, "TODO"]} }]
             end
           else
-            if lib_trait["name"].start_with? "Off-Hand"
-              p found_key
-              puts replacements_to_regex(found_key)
-              puts key
-            end
             if (replacements_to_regex(lib_trait["name"])=~ trait["name"])
               captures = $~.named_captures
-              if ((lib_trait["notes"].nil? and trait["notes"].nil?) or replacements_to_regex(lib_trait["notes"])=~ trait["notes"])
+              if ((lib_trait["notes"].nil? and trait["notes"].nil?) or replacements_to_regex(lib_trait["notes"]||"")=~ trait["notes"])
                 captures.merge! $~.named_captures
                 found_traits<<[found_key, {"source"=>{"library"=>"smithkm/gcs_master_library", "path"=>"#{trait_lib_filename}", "id"=>"#{lib_trait["id"]}"}, "replacements"=> captures}]
               end
@@ -271,16 +305,13 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
         exit
       else
         no_replace = found_traits.select {|found_key, found_trait| not found_trait.has_key? "replacements"}
-        not_replace_all = found_traits.select {|found_key, found_trait| not found_key=~/^\@[^@]+\@ \(\)$/}
-        p no_replace
-        p not_replace_all
         if no_replace.size == 1
           trait.merge! no_replace[0][1]
-        elsif not_replace_all.size == 1
-          if not_replace_all[0][1]["replacements"].values.none? {|replacement| replacement=="TODO"}
+        elsif found_traits.size == 1
+          if found_traits[0][1]["replacements"].values.none? {|replacement| replacement=="TODO"}
             trait.merge! not_replace_all[0][1]
           else
-            # Multiple matches, stop and let user decide what to add to known traits list
+            # TODO
             found_traits.each do |found_key, found_trait|
               puts " - #{found_key}  --  \"#{key}\"=> #{found_trait.inspect}"
             end
@@ -433,7 +464,7 @@ Dir.glob("Library/Martial Arts/*/**/*.gct").each do |style_filename|
     
   end
 
-  puts "Writing #{style_file}"
+  puts "Writing #{style_filename}"
   
   open(style_filename,'w') do |style_file|
     JSON.dump(style, style_file)
