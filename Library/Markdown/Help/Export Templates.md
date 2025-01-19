@@ -47,14 +47,16 @@ manipulate strings.
 - `hasSuffix` — Returns true if `str` ends with `suffix`
   - Parameter: `str` (string)
   - Parameter: `suffix` (string)
-- `indexStr` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`
+- `indexStr` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
+  *NOTE: This was named `index` prior to GCS v5.33.0, but was renamed due to conflicts with built-in functions that Go supplies.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
 - `join` — Returns a new string by concatenating the elements of `elems` to create a single string, placing `substr`
   between each element in the resulting string
   - Parameter: `elems`, ([]string)
   - Parameter: `sep` (string)
-- `lastIndexStr` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in `str`
+- `lastIndexStr` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
+  *NOTE: This was named `lastIndex` prior to GCS v5.33.0, but was renamed to be consistent with `indexStr`.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
 - `lower` — Returns the lowercase version of `str`
@@ -112,8 +114,14 @@ The remainder of this document details the various data types that the data is m
 #### Attributes Fields
 
 - `.Pools` ([]Pool)
+- `.PoolsByID` (map[string]Pool)<br>
+  *NOTE: This did not exist prior to v5.33.0*
 - `.Primary` ([]Attribute)
+- `.PrimaryByID` (map[string]Attribute)<br>
+  *NOTE: This did not exist prior to v5.33.0*
 - `.Secondary` ([]Attribute)
+- `.SecondaryByID` (map[string]Attribute)<br>
+  *NOTE: This did not exist prior to v5.33.0*
 
 ### BodyType
 
