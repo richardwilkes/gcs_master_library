@@ -66,7 +66,8 @@ Any panel with a question mark icon ( ![](./img/q.png "Help") ) will open Help r
    21. [Container](./Container.md)
    22. [Toggle State](./Toggle%20State.md)
 7. [Markdown Guide](../Markdown%20Guide.md)
-8. [Expression Function Reference](../Expression%20Functions.md)
-9. [Expression Operators Reference](../Expression%20Operators.md)
+8. [Scripting](../Scripting.md)
+9. [Expression Function Reference](../Expression%20Functions.md)
+10. [Expression Operators Reference](../Expression%20Operators.md)
 
 ***Last updated for v5.7.0***
