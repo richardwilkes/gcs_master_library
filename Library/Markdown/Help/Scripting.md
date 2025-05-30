@@ -4,7 +4,8 @@
 
 Some fields, such as notes, now support using Javascript to resolve their content. To enable this, the contents of the
 field in question must start with `^^^`. Everything after will be parsed and interpreted as Javascript and the value
-returned will be shown in the field.
+returned will be shown in the field. Note that you must explicitly return a value, e.g. `return 1 + 1`. Simply writing
+`1 + 1` will not work correctly.
 
 When your Javascript code is called, the following global objects will be available for you to use:
 
