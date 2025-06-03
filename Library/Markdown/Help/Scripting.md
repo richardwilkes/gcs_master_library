@@ -6,6 +6,13 @@ Some fields, such as notes, support using Javascript to resolve their content. V
 simple expression evaluator instead. Expressions from those old data files will be automatically transformed into the
 equivalent Javascript.
 
+For fields that aren't exclusively a script, such as note fields, you must embed your scripts by wrapping them in script
+tags, like this:
+
+```
+My ST + DX is <script>$st + $dx</script>!
+```
+
 When your Javascript code is called, the following globals will be available for you to use:
 
 - `console`
@@ -15,6 +22,7 @@ When your Javascript code is called, the following globals will be available for
 - `iff`
 - `length`
 - `Math.exp2`
+- `self`
 - `signedValue`
 - `ssrt`
 - `weight`
@@ -281,6 +289,12 @@ This object provides conversion of length values to specific units.
 This is actually just an addition to the standard Javascript Math object.
 
 - `Math.exp2(value: number): number`: Returns 2 raised to the power of the `value`.
+
+## self
+
+This will be set to the object that the script is attached to. Note that in some cases, this will be `undefined`, such
+as for scripts attached to attributes, attribute thresholds, and top-level notes. In some other cases, the object will
+actually be the containing object, if any, such as for trait modifiers and equipment modifiers.
 
 ## signedValue
 
