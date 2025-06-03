@@ -293,8 +293,8 @@ This is actually just an addition to the standard Javascript Math object.
 ## self
 
 This will be set to the object that the script is attached to. Note that in some cases, this will be `undefined`, such
-as for scripts attached to attributes, attribute thresholds, and top-level notes. In some other cases, the object will
-actually be the containing object, if any, such as for trait modifiers and equipment modifiers.
+as for scripts attached to attributes, attribute thresholds, ancestries, and top-level notes. In some other cases, the
+object will actually be the containing object, if any, such as for trait modifiers and equipment modifiers.
 
 ## signedValue
 
