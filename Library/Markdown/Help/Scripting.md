@@ -123,13 +123,22 @@ This object represents the current character sheet data.
   (a value from 0 to 4) or the move multiplication factor if 'returnMoveFactor' is true. If 'forSkills' is true, the
   modifier is adjusted to account for equipment that has been marked as not having its weight counting against skills.
 - `encumbrance(): encumbrance`: Returns the encumbrance data.
+- `equipment(): Array<equipment>`: Returns the top-level carried equipment with a quantity greater than 0.
 - `exists(): boolean`: Returns true if this script is being run on a sheet.
 - `extraDiceFromModifiers(): boolean`: Returns true if the Modifying Dice + Adds option from B269 is in use.
+- `findEquipment(name: string, tag: string): Array<equipment>`: Returns the carried equipment that match the given
+  'name' and has the given 'tag', case-insensitively. When matching, an empty or undefined value passed in will match
+  everything. Note that only equipment with a quantity greater than 0 is considered and if all parents of that equipment
+  must also have a quantity greater than 0.
+- `findSkills(name: string, specialization: string, tag: string): Array<skill>`: Returns the enabled skills that match
+  the given 'name', the given 'specialization', and have the given 'tag', case-insensitively. When matching, an empty or
+  undefined value passed in will match everything.
+- `findSpells(name: string): Array<spell>`: Returns the enabled spells that match the given 'name', the given
+  'specialization', and have the given 'tag', case-insensitively. When matching, an empty or undefined value passed in
+  will match everything.
+- `findTraits(name: string, tag: string): Array<trait>`: Returns the enabled traits that match the given 'name' and have
+  the given 'tag', case-insensitively. When matching, an empty or undefined value passed in will match everything.
 - `hasTrait(name: string): boolean`: Returns true if the named trait is present and enabled.
-- `item(name: string, includeChildren: boolean): Array<equipment>`: Returns the equipment with a quantity greater than 0
-  that match the given 'name', case-insensitively. If 'includeChildren' is true, then the children field will be
-  populated in each piece of equipment.
-- `items(): Array<equipment>`: Returns all equipment with a quantity greater than 0.
 - `randomHeight(strength: number): number`: Returns a height in inches based on the given 'strength' using the chart
   from B18.
 - `randomWeight(strength: number, shift: number): number`: Returns a weight in pounds based on the given 'strength'
@@ -137,21 +146,13 @@ This object represents the current character sheet data.
   the sheet. 'shift' causes a shift towards a lighter value if negative and a heavier value if positive, similar to
   having one of the traits Skinny, Overweight, Fat, and Very Fat applied, but is additive to them.
 - `sizeModifier(): number`: Returns the size modifier of the entity.
-- `skill(name: string, specialization: string, includeChildren: boolean): Array<skill>`: Returns the skills that match
-  the given 'name' and 'specialization', case-insensitively. If 'includeChildren' is true, then the children field will
-  be populated in each skill.
-- `skills(): Array<skill>`: Returns all skills.
+- `skills(): Array<skill>`: Returns the top-level enabled skills.
 - `skillLevel(name: string, specialization: string, relative: boolean): number`: Returns the level of the skill with the
   given 'name' and 'specialization'. If 'relative' is true, returns the relative level instead.
-- `spell(name: string, includeChildren: boolean): Array<spell>`: Returns the spells that match the given 'name',
-  case-insensitively. If 'includeChildren' is true, then the children field will be populated in each spell.
-- `spells(): Array<spell>`: Returns all spells.
-- `trait(name: string, includeEnabledChildren: boolean): Array<trait>`: Returns the enabled traits that match the given
-  'name', case-insensitively. If 'includeEnabledChildren' is true, then the children field will be populated in each
-  trait.
+- `spells(): Array<spell>`: Returns the top-level enabled spells.
 - `traitLevel(name: string): number`: Returns the combined level of the enabled trait(s) with the given 'name', or -1 if
   not found.
-- `traits(): Array<trait>`: Returns all enabled traits.
+- `traits(): Array<trait>`: Returns the top-level enabled traits.
 - `weaponDamage(name: string, usage: string): string`: Returns the weapon damage for the weapon entry that matches the
   given 'name' and 'usage', or an empty string if none is found.
 - `weightUnits(): weightUnit`: Returns the default weight units to use for the entity.
@@ -164,15 +165,27 @@ This object holds data for equipment.
 
 - `name: string`: The name.
 - `quantity: number`: The quantity.
-- `value: number`: The value of one of these items.
-- `extendedValue: number`: The value of this item and any items it contains.
-- `weight: number`: The weight in pounds of one of these items.
-- `extendedWeight: number`: The weight in pounds of this item and any items it contains.
+- `techLevel: string`: The tech level of the item.
+- `legalityClass: string`: The legality class of the item.
 - `level: number`: The level of the item.
 - `uses: number`: The current uses value.
+- `maxUses: number`: The maximum uses value.
+- `weightIgnoredForSkills: boolean`: If true, this item's weight doesn't count against skill usage.
 - `equipped: boolean`: If true, the item is equipped.
+- `container: boolean`: If true, this item is a container.
+- `hasChildren: boolean`: If true, this item has children.
 - `tags: Array<string>`: The associated tags.
-- `children: Array<equipment>`: The contained children. May not be filled in if it wasn't requested.
+
+### Methods for equipment
+
+- `children(): Array<equipment>`: The contained children.
+- `extendedValue(): number`: The value of this item and any items it contains.
+- `extendedWeight(): number`: The weight in pounds of this item and any items it contains.
+- `find(name: string, tag: string): Array<equipment>`: Returns the equipment within the hierarchy of this equipment that
+  match the given 'name' and has the given 'tag', case-insensitively. When matching, an empty or undefined value passed
+  in will match everything.
+- `value(): number`: The value of one of these items.
+- `weight(): number`: The weight in pounds of one of these items.
 
 ## fixed
 
@@ -308,15 +321,26 @@ This object holds data for a skill.
 
 ### Properties for skill
 
+- `id: string`: The object ID.
+- `parentID: string`: The parent's object ID.
 - `name: string`: The name.
 - `specializiation: string`: The specialization.
 - `kind: string`: The kind of skill, one of 'skill', 'technique', or 'group'.
-- `level: number`: The computed level.
-- `relativeLevel: number`: The computed level relative to the controlling attribute.
 - `attribute: string`: The attribute ID used with the skill.
 - `difficulty: string`: The difficulty ID used with the skill, one of 'e', 'a', 'h', 'vh', or 'w'.
+- `points: number`: The number of points in the skill.
 - `tags: Array<string>`: The associated tags.
-- `children: Array<skill>`: The contained children. May not be filled in if it wasn't requested.
+- `container: boolean`: If true, this item is a container.
+- `hasChildren: boolean`: If true, this item has children.
+
+### Methods for skill
+
+- `children(): Array<skill>`: The contained children.
+- `find(name: string, specialization: string, tag: string): Array<skill>`: Returns the skills within the hierarchy of
+  this skill that match the given 'name', the given 'specialization', and have the given 'tag', case-insensitively. When
+  matching, an empty or undefined value passed in will match everything.
+- `level(): number`: The computed level.
+- `relativeLevel(): number`: The computed level relative to the controlling attribute.
 
 ## spell
 
@@ -324,12 +348,15 @@ This object holds data for a spell.
 
 ### Properties for spell
 
+- `id: string`: The object ID.
+- `parentID: string`: The parent's object ID.
 - `name: string`: The name.
 - `kind: string`: The kind of spell, one of 'spell', 'ritual magic spell', or 'group'.
 - `level: number`: The computed level.
 - `relativeLevel: number`: The computed level relative to the controlling attribute.
 - `attribute: string`: The attribute ID used with the spell.
 - `difficulty: string`: The difficulty ID used with the spell, one of 'e', 'a', 'h', 'vh', or 'w'.
+- `points: number`: The number of points in the spell.
 - `college: Array<string>`: The associated colleges.
 - `powerSource: string`: The power source.
 - `spellClass: string`: The spell class.
@@ -341,7 +368,17 @@ This object holds data for a spell.
 - `ritualSkillName: string`: The name of the skill used as a base for ritual magic spells.
 - `ritualPrereqCount: number`: The number of prereqs a ritual magic spell has.
 - `tags: Array<string>`: The associated tags.
-- `children: Array<spell>`: The contained children. May not be filled in if it wasn't requested.
+- `container: boolean`: If true, this item is a container.
+- `hasChildren: boolean`: If true, this item has children.
+
+### Methods for spell
+
+- `children(): Array<spell>`: The contained children.
+- `find(name: string, tag: string): Array<spell>`: Returns the spells within the hierarchy of this spell that match the
+  given 'name' and have the given 'tag', case-insensitively. When matching, an empty or undefined value passed in will
+  match everything.
+- `level(): number`: The computed level.
+- `relativeLevel(): number`: The computed level relative to the controlling attribute.
 
 ## ssrt
 
@@ -361,11 +398,21 @@ This object holds data for a trait.
 
 ### Properties for trait
 
+- `id: string`: The object ID.
+- `parentID: string`: The parent's object ID.
 - `name: string`: The name.
-- `kind: string`: The kind of trait, one of 'trait', 'group', 'alternative abilities', 'ancestry', 'attributes', or 'meta trait'.
+- `kind: string`: The kind of container, one of 'group', 'alternative abilities', 'ancestry', 'attributes', or 'meta trait'.
 - `levels: fixed`: The levels, if any.
 - `tags: Array<string>`: The associated tags.
-- `children: Array<trait>`: The contained children. May not be filled in if it wasn't requested.
+- `container: boolean`: If true, this trait is a container.
+- `hasChildren: boolean`: If true, this trait has children.
+
+### Methods for trait
+
+- `children(): Array<trait>`: The contained children.
+- `find(name: string, tag: string): Array<trait>`: Returns the traits within the hierarchy of this trait that match the
+  given 'name' and have the given 'tag', case-insensitively. When matching, an empty or undefined value passed in will
+  match everything.
 
 ## weight
 
