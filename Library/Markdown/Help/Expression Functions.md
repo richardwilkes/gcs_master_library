@@ -1,5 +1,8 @@
 ### Expression Functions
 
+> This information is for the expression evaluation engine, which is no longer present in GCS v5.36.0 and later. It was
+> replaced with [JavaScript](./Scripting.md).
+
 | Function | Description |
 |----------|-------------|
 | abs(number) | Returns the absolute value of the `number`. |
