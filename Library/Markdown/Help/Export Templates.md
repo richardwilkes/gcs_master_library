@@ -15,8 +15,8 @@ the desired results.
 
 Both of these new formats are based on the Go language's templating facilities. Details about GCS-specific functionality
 is provided below and much more detail about Go's templating facilities and how they work can be found on
-the https://go.dev site. Specifically, https://pkg.go.dev/text/template for the text template
-and https://pkg.go.dev/html/template for the HTML template.
+the <https://go.dev> site. Specifically, <https://pkg.go.dev/text/template> for the text template
+and <https://pkg.go.dev/html/template> for the HTML template.
 
 When the template is called, it will be given a `Sheet` value (the various data types are described below).
 
@@ -27,68 +27,70 @@ manipulate strings.
 ### Number Functions
 
 - `numberFrom` — Returns the equivalent `Number` value of `value`
-    - Parameter: `value` (int, float64, or string that contains a number)
+  - Parameter: `value` (int, float64, or string that contains a number)
 - `numberToFloat` — Returns the equivalent floating-point number value of `value`
-    - Parameter: `value` (`Number`)
+  - Parameter: `value` (`Number`)
 - `numberToInt` — Returns the equivalent integer value of `value`
-    - Parameter: `value` (`Number`)
+  - Parameter: `value` (`Number`)
 
 ### String Functions
 
 - `caselessEqual` — Returns true if `left` and `right` are the same when case isn't considered
-    - Parameter: `left` (string)
-    - Parameter: `right` (string)
+  - Parameter: `left` (string)
+  - Parameter: `right` (string)
 - `contains` — Returns true if `str` contains `substr`
-    - Parameter: `str` (string)
-    - Parameter: `substr` (string)
+  - Parameter: `str` (string)
+  - Parameter: `substr` (string)
 - `hasPrefix` — Returns true if `str` starts with `prefix`
-    - Parameter: `str` (string)
-    - Parameter: `prefix` (string)
+  - Parameter: `str` (string)
+  - Parameter: `prefix` (string)
 - `hasSuffix` — Returns true if `str` ends with `suffix`
-    - Parameter: `str` (string)
-    - Parameter: `suffix` (string)
-- `index` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`
-    - Parameter: `str` (string)
-    - Parameter: `substr` (string)
+  - Parameter: `str` (string)
+  - Parameter: `suffix` (string)
+- `indexStr` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
+  *NOTE: This was named `index` prior to GCS v5.33.0, but was renamed due to conflicts with built-in functions that Go supplies.*
+  - Parameter: `str` (string)
+  - Parameter: `substr` (string)
 - `join` — Returns a new string by concatenating the elements of `elems` to create a single string, placing `substr`
   between each element in the resulting string
-    - Parameter: `elems`, ([]string)
-    - Parameter: `sep` (string)
-- `lastIndex` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in `str`
-    - Parameter: `str` (string)
-    - Parameter: `substr` (string)
+  - Parameter: `elems`, ([]string)
+  - Parameter: `sep` (string)
+- `lastIndexStr` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
+  *NOTE: This was named `lastIndex` prior to GCS v5.33.0, but was renamed to be consistent with `indexStr`.*
+  - Parameter: `str` (string)
+  - Parameter: `substr` (string)
 - `lower` — Returns the lowercase version of `str`
-    - Parameter: `str` (string)
+  - Parameter: `str` (string)
 - `repeat` — Returns a new string consisting of `count` copies of `str`
-    - Parameter: `str` (string)
-    - Parameter: `count` (int)
+  - Parameter: `str` (string)
+  - Parameter: `count` (int)
 - `replace` — Returns a copy of `str` with all non-overlapping instances of `old` replaced by `new`
-    - Parameter: `str` (string)
-    - Parameter: `old` (string)
-    - Parameter: `new` (string)
+  - Parameter: `str` (string)
+  - Parameter: `old` (string)
+  - Parameter: `new` (string)
 - `split` — Returns a slice of sub-strings by splitting `str` into all sub-strings separated by `sep`
-    - Parameter: `str` (string)
-    - Parameter: `sep` (string)
+  - Parameter: `str` (string)
+  - Parameter: `sep` (string)
 - `splitN` — Returns a slice of sub-strings by splitting `str` into at most `count` sub-strings separated by `sep`
-    - `str` (string)
-    - `sep` (string)
-    - `count` (int)
+  - `str` (string)
+  - `sep` (string)
+  - `count` (int)
 - `trim` — Returns a copy of `str` with all leading and trailing white space removed
-    - Parameter: `str` (string)
+  - Parameter: `str` (string)
 - `trimPrefix` — Returns a copy of `str` without the `prefix` at the beginning
-    - Parameter: `str` (string)
-    - Parameter: `prefix` (string)
+  - Parameter: `str` (string)
+  - Parameter: `prefix` (string)
 - `trimSuffix` — Returns a copy of `str` without the `suffix` at the end
-    - Parameter: `str` (string)
-    - Parameter: `suffix` (string)
+  - Parameter: `str` (string)
+  - Parameter: `suffix` (string)
 - `upper` — Returns the uppercase version of `str`
-    - Parameter: `str` (string)
+  - Parameter: `str` (string)
 
 The remainder of this document details the various data types that the data is made up of.
 
 ### AllEquipment
 
-#### AllEquipment Fields:
+#### AllEquipment Fields
 
 - `.Carried` ([]Equipment)
 - `.CarriedValue` (Number)
@@ -98,7 +100,7 @@ The remainder of this document details the various data types that the data is m
 
 ### Attribute
 
-#### Attribute Fields:
+#### Attribute Fields
 
 - `.CombinedName` (string)
 - `.FullName` (string)
@@ -109,22 +111,28 @@ The remainder of this document details the various data types that the data is m
 
 ### Attributes
 
-#### Attributes Fields:
+#### Attributes Fields
 
 - `.Pools` ([]Pool)
+- `.PoolsByID` (map[string]Pool)<br>
+  *NOTE: This did not exist prior to v5.33.0*
 - `.Primary` ([]Attribute)
+- `.PrimaryByID` (map[string]Attribute)<br>
+  *NOTE: This did not exist prior to v5.33.0*
 - `.Secondary` ([]Attribute)
+- `.SecondaryByID` (map[string]Attribute)<br>
+  *NOTE: This did not exist prior to v5.33.0*
 
 ### BodyType
 
-#### BodyType Fields:
+#### BodyType Fields
 
 - `.Locations` ([]HitLocation)
 - `.Name` (string)
 
 ### ConditionalModifier
 
-#### ConditionalModifier Fields:
+#### ConditionalModifier Fields
 
 - `.ID` (string)
 - `.Situation` (string)
@@ -133,7 +141,7 @@ The remainder of this document details the various data types that the data is m
 
 ### Encumbrance
 
-#### Encumbrance Fields:
+#### Encumbrance Fields
 
 - `.Dodge` (int)
 - `.IsCurrent` (boolean)
@@ -145,7 +153,7 @@ The remainder of this document details the various data types that the data is m
 
 ### Equipment
 
-#### Equipment Fields:
+#### Equipment Fields
 
 - `.Cost` (Number)
 - `.Depth` (int)
@@ -170,7 +178,7 @@ The remainder of this document details the various data types that the data is m
 
 ### HitLocation
 
-#### HitLocation Fields:
+#### HitLocation Fields
 
 - `.Depth` (int)
 - `.DR` (string)
@@ -181,7 +189,7 @@ The remainder of this document details the various data types that the data is m
 
 ### Lift
 
-#### Lift Fields:
+#### Lift Fields
 
 - `.Basic` (string)
 - `.CarryOnBack` (string)
@@ -193,14 +201,14 @@ The remainder of this document details the various data types that the data is m
 
 ### Mana
 
-#### Mana Fields:
+#### Mana Fields
 
 - `.Cast` (string)
 - `.Maintain` (string)
 
 ### Margins
 
-#### Margins Fields:
+#### Margins Fields
 
 - `.Bottom` (string)
 - `.Left` (string)
@@ -209,7 +217,7 @@ The remainder of this document details the various data types that the data is m
 
 ### MeleeWeapon
 
-#### MeleeWeapon Fields:
+#### MeleeWeapon Fields
 
 - `.Block` (string)
 - `.Damage` (string)
@@ -223,7 +231,7 @@ The remainder of this document details the various data types that the data is m
 
 ### Note
 
-#### Note Fields:
+#### Note Fields
 
 - `.Depth` (int)
 - `.Description` (string)
@@ -237,36 +245,36 @@ The remainder of this document details the various data types that the data is m
 A special type of number that uses a fixed number of decimal digits for calculations, unlike traditional floating-point
 numbers.
 
-#### Number Methods:
+#### Number Methods
 
 - `.Abs` — Returns the absolute value of this value
 - `.Add` — Returns the result of adding this number to `value`
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Ceil` — Returns the value rounded up to the nearest whole number
 - `.Comma` — Returns the string representation of this value, but with commas for values of 1000 and greater
 - `.CommaWithSign` — Same as `.Comma`, but prefixes the value with a '+' if it is positive
 - `.Dec` — Returns the value decremented by 1
 - `.Div` — Returns the result of dividing this number by `value`
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Inc` — Returns the value incremented by 1
 - `.Max` — Returns the maximum of this value or `value`
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Min` — Returns the minimum of this value or `value`
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Mod` — Returns the remainder after subtracting all full multiples of the passed-in `value` from this number
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Mul` — Returns the result of multiplying this number by `value`
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Round` — Returns the nearest integer value, rounding half away from zero
 - `.String` — Returns the string representation of this value
 - `.StringWithSign` — Same as `.String`, but prefixes the value with a '+' if it is positive
 - `.Sub` — Returns the result of subtracting `value` from this number
-    - Parameter: `value` (Number)
+  - Parameter: `value` (Number)
 - `.Trunc` — Returns a value which has everything to the right of the decimal place truncated
 
 ### Page
 
-#### Page Fields:
+#### Page Fields
 
 - `.Height` (string)
 - `.Margins` (Margins)
@@ -274,7 +282,7 @@ numbers.
 
 ### Points
 
-#### Points Fields:
+#### Points Fields
 
 - `.Advantages` (Number)
 - `.Ancestry` (Number)
@@ -288,7 +296,7 @@ numbers.
 
 ### Pool
 
-#### Pool Fields:
+#### Pool Fields
 
 - `.CombinedName` (string)
 - `.Current` (Number)
@@ -300,7 +308,7 @@ numbers.
 
 ### RangedWeapon
 
-#### RangedWeapon Fields:
+#### RangedWeapon Fields
 
 - `.Accuracy` (string)
 - `.Bulk` (string)
@@ -319,7 +327,7 @@ numbers.
 
 This is the object passed in to the template. All other data is derived from it.
 
-#### Sheet Fields:
+#### Sheet Fields
 
 - `.Age` (string)
 - `.Attributes` (Attributes)
@@ -361,7 +369,7 @@ This is the object passed in to the template. All other data is derived from it.
 
 ### Skill
 
-#### Skill Fields:
+#### Skill Fields
 
 - `.Depth` (int)
 - `.Description` (string)
@@ -380,14 +388,14 @@ This is the object passed in to the template. All other data is derived from it.
 
 ### Source
 
-#### Source Fields:
+#### Source Fields
 
 - `.Amount` (Number)
 - `.Source` (string)
 
 ### Spell
 
-#### Spell Fields:
+#### Spell Fields
 
 - `.Class` (string)
 - `.Colleges` ([]string)
@@ -412,7 +420,7 @@ This is the object passed in to the template. All other data is derived from it.
 
 ### Trait
 
-#### Trait Fields:
+#### Trait Fields
 
 - `.Depth` (int)
 - `.Description` (string)

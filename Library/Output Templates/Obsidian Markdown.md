@@ -7,7 +7,7 @@
 > **ST** | @ST | **WILL**|@WILL
 > **DX** | @DX|**Fright Check**|@FRIGHT_CHECK
 > **IQ** | @IQ|**PER**|@PERCEPTION
-> **HT**| HT|**Vision**|@VISION
+> **HT**| @HT|**Vision**|@VISION
 >**HP**|@HP|**FP**|@FP
 > ###### Description
 >  |
