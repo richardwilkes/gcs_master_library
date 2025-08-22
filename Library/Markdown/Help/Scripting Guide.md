@@ -179,7 +179,10 @@ This object holds data for equipment.
 
 ### Properties for equipment
 
+- `id: string`: The object ID.
+- `parentID: string`: The parent's object ID.
 - `name: string`: The name.
+- `notes: string`: The full notes (available from GCS v5.39+).
 - `quantity: number`: The quantity.
 - `techLevel: string`: The tech level of the item.
 - `legalityClass: string`: The legality class of the item.
@@ -281,6 +284,7 @@ This object holds data for a skill.
 - `parentID: string`: The parent's object ID.
 - `name: string`: The name.
 - `specializiation: string`: The specialization.
+- `notes: string`: The full notes (available from GCS v5.39+).
 - `kind: string`: The kind of skill, one of 'skill', 'technique', or 'group'.
 - `attribute: string`: The attribute ID used with the skill.
 - `difficulty: string`: The difficulty ID used with the skill, one of 'e', 'a', 'h', 'vh', or 'w'.
@@ -307,6 +311,7 @@ This object holds data for a spell.
 - `id: string`: The object ID.
 - `parentID: string`: The parent's object ID.
 - `name: string`: The name.
+- `notes: string`: The full notes (available from GCS v5.39+).
 - `kind: string`: The kind of spell, one of 'spell', 'ritual magic spell', or 'group'.
 - `level: number`: The computed level.
 - `relativeLevel: number`: The computed level relative to the controlling attribute.
@@ -345,6 +350,7 @@ This object holds data for a trait.
 - `id: string`: The object ID.
 - `parentID: string`: The parent's object ID.
 - `name: string`: The name.
+- `notes: string`: The full notes (available from GCS v5.39+).
 - `kind: string`: The kind of container, one of 'group', 'alternative abilities', 'ancestry', 'attributes', or 'meta trait'.
 - `levels: number`: The levels, if any.
 - `tags: Array<string>`: The associated tags.
@@ -360,4 +366,4 @@ This object holds data for a trait.
 
 ---
 
-***Last updated for v5.36.0***
+***Last updated for v5.39.0***
