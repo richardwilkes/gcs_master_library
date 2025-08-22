@@ -313,8 +313,6 @@ This object holds data for a spell.
 - `name: string`: The name.
 - `notes: string`: The full notes (available from GCS v5.39+).
 - `kind: string`: The kind of spell, one of 'spell', 'ritual magic spell', or 'group'.
-- `level: number`: The computed level.
-- `relativeLevel: number`: The computed level relative to the controlling attribute.
 - `attribute: string`: The attribute ID used with the spell.
 - `difficulty: string`: The difficulty ID used with the spell, one of 'e', 'a', 'h', 'vh', or 'w'.
 - `points: number`: The number of points in the spell.
