@@ -18,6 +18,7 @@ When your Javascript code is called, the following globals will be available for
 - `console`
 - `dice`
 - `entity`
+- `formatNum`
 - `iff`
 - `Math.exp2`
 - `measure`
@@ -205,6 +206,14 @@ This object holds data for equipment.
   in will match everything.
 - `value(): number`: The value of one of these items.
 - `weight(): number`: The weight in pounds of one of these items.
+
+## formatNum
+
+This is a top-level function.
+
+- `formatNum(value: number, withCommas: boolean, withSign: boolean): string`: Returns the 'value' as a string with
+  commas every third digit from the right if 'withCommas' is true and with a leading '+' if it is positive and
+  'withSign' is true (available from GCS v5.39+).
 
 ## iff
 
