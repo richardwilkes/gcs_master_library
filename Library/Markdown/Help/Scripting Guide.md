@@ -133,6 +133,9 @@ This object represents the current character sheet data.
 - `heightInInches: number`: The entity's height, in inches.
 - `weightInPounds: number`: The entity's weight, in pounds,
 - `sizeModifier: number`: The entity's size modifier.
+- `liftingStrength: number`: The entity's ST for lifting purposes.
+- `strikingStrength: number`: The entity's ST for striking purposes.
+- `throwingStrength: number`: The entity's ST for throwing purposes.
 - `extraDiceFromModifiers: boolean`: true if the Modifying Dice + Adds option from B269 is in use.
 
 ### Methods for entity
@@ -373,4 +376,4 @@ This object holds data for a trait.
 
 ---
 
-***Last updated for v5.39.0***
+***Last updated for v5.40.0***
