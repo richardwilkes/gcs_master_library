@@ -35,6 +35,7 @@ This object represents the current character sheet data.
 | skills | object[] | The top-level list of [Skills](Skill) for this sheet. | GCS 5.36+
 | spells | object[] | The top-level list of [Spells](Spell) for this sheet. | GCS 5.36+
 | traits | object[] | The top-level list of enabled [Traits](Trait) for this sheet. | GCS 5.36+
+| weapons | object[] | The list of enabled [Weapons](Weapon) for this sheet. | GCS 5.41+
 
 | Method | Arguments | Result Type | Result | Availability
 | --- | --- | --- | --- | ---
@@ -44,10 +45,10 @@ This object represents the current character sheet data.
 | findSkills | name: string, specialization: string, tag: string | object[] | Returns the [Skills](Skill) that match the given **name**, the given **specialization,** and have the given **tag,** case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.36+
 | findSpells | name: string, tag: string | object[] | Returns the [Spells](Spell) that match the given **name** and have the given **tag,** case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.36+
 | findTraits | name: string, tag: string | object[] | Returns the enabled [Traits](Trait) that match the given **name** and have the given **tag,** case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.36+
+| findWeapons | melee: boolean, name: string, usage: string | object[] | Returns the enabled [Weapons](Weapon) that match the given **name** and **usage**, case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.41+
 | hasTrait | name: string | boolean | Returns true if the named [Trait](Trait) is present and enabled. | GCS 5.36+
 | skillLevel | name: string, specialization: string, relative: boolean | number | Returns the level of the [Skill](Skill) with the given **name** and **specialization.** If **relative** is true, returns the relative level instead. | GCS 5.36+
 | traitLevel | name: string | number | Returns the combined level of the enabled trait(s) with the given ’name’, or -1 if none are found. | GCS 5.36+
-| weaponDamage | name: string, usage: string | string \| undefined | Returns the weapon damage for the weapon entry that matches the given **name** and **usage,** or undefined if none is found. | GCS 5.36+
 | randomHeightInInches | strength: number | number | Returns a height in inches based on the given **strength** using the chart from B18. | GCS 5.36+
 | randomWeightInPounds | strength: number, shift: number | number | Returns a weight in pounds based on the given **strength** using the chart from B18. Adjusts appropriately for the traits _Skinny, Overweight, Fat,_ and _Very Fat,_ if present on the sheet. **shift** causes a shift towards a lighter value if negative and a heavier value if positive, similar to having one of the traits _Skinny, Overweight, Fat,_ and _Very Fat_ applied, but is additive to them. | GCS 5.36+
 

@@ -7,7 +7,7 @@ This object represents a single Equipment Modifier. Only active Equipment Modifi
 | Property | Type | Value | Availability
 | --- | --- | --- | ---
 | id | string | The object ID. | GCS 5.41+
-| attachedTo | object \| undefined | The Equipment this modifier is attached to or undefined if there isn't one. | GCS 5.41+
+| attachedTo | object \| undefined | The [Equipment](Equipment) this modifier is attached to or undefined if there isn't one. | GCS 5.41+
 | name | string | The name. | GCS 5.41+
 | techLevel | string | The Tech Level. | GCS 5.41+
 | notes | string | The notes. | GCS 5.41+

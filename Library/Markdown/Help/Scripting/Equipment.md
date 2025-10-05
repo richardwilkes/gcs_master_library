@@ -24,6 +24,7 @@ The **For** column indicates whether the property or method is defined for a con
 | CL | extendedWeight | number | The weight in pounds of this item (with its full quantity) and any items it contains. | GCS 5.36+
 | CL | weightIgnoredForSkills | boolean | True if this item's weight doesn't count against skill usage. | GCS 5.36+
 | CL | equipped | boolean | True if the item is equipped. | GCS 5.36+
+| CL | weapons | object[] | Returns a list of [Weapons](Weapon) attached to this item. | GCS 5.41+
 | CL | notes | string | The notes. | GCS 5.39+
 | CL | tags | string[] | The associated tags. | GCS 5.36+
 | CL | container | boolean | True if this is a container. | GCS 5.36+
@@ -33,6 +34,7 @@ The **For** column indicates whether the property or method is defined for a con
 | For | Method | Arguments | Result Type | Result | Availability
 | :-: | --- | --- | --- | --- | ---
 | C | find | name: string, tag: string | object[] | Returns the Equipment within the hierarchy of this item that matches the given **name** and have the given **tag**, case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.36+
-| CL | activeModifierNamed | name: string | object \| null | Returns the first _active_ [Equipment Modifier](Equipment%20Modifier) attached to this item with the given **name**, case-insensitively. | GCS 5.41+
+| CL | findActiveModifier | name: string | object \| null | Returns the first _active_ [Equipment Modifier](Equipment%20Modifier) attached to this item with the given **name**, case-insensitively. | GCS 5.41+
+| CL | findWeapons | melee: boolean, name: string, usage: string | object[] | Returns the [Weapons](Weapon) that match the given **name** and **usage**, case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.41+
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)

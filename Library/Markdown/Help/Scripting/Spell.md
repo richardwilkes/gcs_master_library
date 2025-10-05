@@ -29,6 +29,7 @@ The **For** column indicates whether the property or method is defined for a con
 | L | duration | string | The duration it lasts. | GCS 5.36+
 | L | prereqCount | number | The count of Spell prereqs. | GCS 5.36+
 | L | ritualSkillName | string | The name of the [Skill](Skill) used as a base for ritual magic spells. | GCS 5.36+
+| L | weapons | object[] | Returns a list of [Weapons](Weapon) attached to this spell. | GCS 5.41+
 | CL | notes | string | The notes. | GCS 5.39+
 | CL | tags | string[] | The associated tags. | GCS 5.36+
 | CL | container | boolean | True if this is a container. | GCS 5.36+
@@ -37,5 +38,6 @@ The **For** column indicates whether the property or method is defined for a con
 | For | Method | Arguments | Result Type | Result | Availability
 | :-: | --- | --- | --- | --- | ---
 | C | find | name: string, tag: string | object[] | Returns the Spells within the hierarchy of this container that match the given **name** and have the given **tag**, case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.36+
+| L | findWeapons | melee: boolean, name: string, usage: string | object[] | Returns the [Weapons](Weapon) that match the given **name** and **usage**, case-insensitively. When matching, an empty or undefined value passed in will match everything. | GCS 5.41+
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)
