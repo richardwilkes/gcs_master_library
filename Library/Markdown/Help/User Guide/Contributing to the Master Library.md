@@ -35,14 +35,17 @@ To submit your content:
 
 1. Create a free GitHub account if you don’t already have one.
 2. Go to the [GCS Master Library repository](https://github.com/richardwilkes/gcs_master_library).
-3. **Fork** the repository (make your own copy).
-4. Edit or [create custom content](./custom%20content) in the library files in your fork.
-   - Place your new items in the correct **library folder** (traits, skills, templates, etc.).
+3. **Fork** the repository to make your own copy under your account.
+4. **Clone your fork** to your computer using GitHub Desktop or the command line.
+5. In your fork, **create a new branch** for your changes.
+   - Use a clear name like to describe your change.
+6. Edit or [create custom content](./custom%20content) in the library files in your branch.
+   - Place your new items in the correct **library folder** (`traits`, `skills`, `templates`, etc.).
    - Follow the existing file structure so content stays organized.
-5. Commit your changes and push them to your fork.
-6. Open a **Pull Request (PR)** back to the main repository.
-   - Describe your changes clearly (for example, “Added a Dwarf template” or “Corrected point cost of Ally advantage”).
-7. Tag the **Librarians** (`@Librarian`) in the [GCS Discord](https://discord.gg/MKhuDPPagY) libraries channel so they know your PR is ready for review.
+7. **Commit** your changes, then **push** the branch to your fork.
+8. On GitHub, open a **Pull Request (PR)** from your branch to the main repository.
+   - Clearly describe what you changed (for example, “Added Dwarf template” or “Corrected point cost for Ally advantage”).
+9. Tag the **Librarians** (`@Librarian`) in the [GCS Discord](https://discord.gg/MKhuDPPagY) libraries channel so they know your PR is ready for review.
 
 ## What happens next
 
