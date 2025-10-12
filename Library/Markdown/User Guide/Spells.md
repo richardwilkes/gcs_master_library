@@ -89,7 +89,7 @@ To increase (or decrease) the spell level:
 
 You can also track study time for spells. See [Study time](Study%20time) for more details.
 
-> [!TIP]  
+> [!TIP]
 > When tracking study time for spells, don’t forget that **Magery** reduces the required hours (p. B66). Update the **Standard learning hours** setting in the Study section to reflect this reduction.
 
 ### Organizing spells with containers
@@ -99,7 +99,7 @@ Spells can be grouped into [Containers](Containers) to keep related magic togeth
 For example:
 
 - Group all **Fire College** spells into one container.
-- You can also use containers when building [Character templates](Character%20templates) to require a caster picks a certain number of spells.
+- You can also use containers when building [Character templates](Character%20Templates) to require a caster picks a certain number of spells.
 
 ### Deleting a spell
 

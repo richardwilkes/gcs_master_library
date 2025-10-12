@@ -72,7 +72,7 @@ For example:
 
 - Put **Combat Reflexes** and **High Pain Threshold** into a “Combat Traits” container.
 - Use **Alternate Abilities** or **Meta-trait** container types to apply special grouping rules.
-- You can also use containers when building [Character templates](Character%20templates) to require a user take a certain point value of advantages and disadvantages.
+- You can also use containers when building [Character templates](Character%20Templates) to require a user take a certain point value of advantages and disadvantages.
 
 ### Deleting a trait
 
@@ -137,7 +137,7 @@ The toolbar above the Trait Editor gives you quick access to common actions:
 | ![](./images/icons/icn-substitutions.svg)  | **Set Substitutions** | Lets you enter values for traits with placeholders in their notes. For example, for _Enemy_ you can replace `@enemy@` with the foe's name. |
 
 > [!NOTE]
-> When you first add a trait with substitutions, a pop-up appears for you to fill them in.  
+> When you first add a trait with substitutions, a pop-up appears for you to fill them in.
 > If you skip it, you can set them later with **Set Substitutions** or by editing the text directly in the notes field.
 
 ## Customizing the Trait Layout

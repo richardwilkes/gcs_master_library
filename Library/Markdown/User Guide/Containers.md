@@ -36,7 +36,7 @@ To move something into a container:
    - If the highlight is flat (not indented), the item will go _below_ the container instead of inside it.
 2. To move an item back out, drag it until the highlight is no longer indented.
 
-> [!TIP]  
+> [!TIP]
 > For equipment, container contents count toward the **container’s weight and value** totals (for example, a backpack full of gear).
 
 ## Ancestry container type
@@ -51,7 +51,7 @@ This ensures that GCS applies the correct metadata (like random names, height, a
 
 ## Template Choices
 
-When creating [Character templates](Character%20templates), (p. B258), containers can also act as **choice groups**. This lets you enforce that a character picks a certain **number of options** or spends a certain **amount of points** from the container’s contents.
+When creating [Character templates](Character%20Templates), (p. B258), containers can also act as **choice groups**. This lets you enforce that a character picks a certain **number of options** or spends a certain **amount of points** from the container’s contents.
 
 You can set the Template Choice type to:
 
@@ -69,12 +69,12 @@ The template choices use [Operators](Operators) (`is at least`, `is at most`, `i
 | **Disadvantages**: _-X points chosen from among..._ | `Points` `is at least` |
 | **Skills**: _Select X skills from:_                 | `Count` `is`           |
 
-You can also **nest containers** (for example, one “Pick 1 of 3 Skills” box inside another “Pick 10 Points of Skills” box). GCS handles simple nesting automatically, but very complex setups may be better documented in the template notes. See [Character templates](Character%20templates) for more details on creating templates with advanced containers.
+You can also **nest containers** (for example, one “Pick 1 of 3 Skills” box inside another “Pick 10 Points of Skills” box). GCS handles simple nesting automatically, but very complex setups may be better documented in the template notes. See [Character templates](Character%20Templates) for more details on creating templates with advanced containers.
 
-> [!TIP]  
+> [!TIP]
 > If you’re not building templates, you can ignore Template Choices. They don’t affect day-to-day use of containers.
 
-For recommendations on how to structure Template Choices effectively, see **Best practices for templates** on [Character templates](Character%20templates).
+For recommendations on how to structure Template Choices effectively, see **Best practices for templates** on [Character templates](Character%20Templates).
 
 ## Trait container fields
 

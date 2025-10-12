@@ -87,7 +87,7 @@ Skills can be grouped into [Containers](Containers) for easier navigation.
 For Example:
 
 - Put **Broadsword** and **Axe/Mace** into a “Melee Combat Skills” container.
-- You can also use containers when building [Character templates](Character%20templates) to enforce “pick X skills” rules.
+- You can also use containers when building [Character templates](Character%20Templates) to enforce “pick X skills” rules.
 
 ### Deleting a skill
 
