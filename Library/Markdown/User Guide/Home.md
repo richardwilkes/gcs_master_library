@@ -4,7 +4,7 @@
 
 The **GCS User Guide** is your reference for learning and using the app. Whether you’re brand new or experienced, you’ll find guides to help you get the most out of GCS.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This guide focuses on **how to use GCS**, not on teaching the full GURPS rules. For rules, see the relevant [GURPS books](https://www.sjgames.com/gurps/).
 
 ## What you’ll find here
@@ -13,7 +13,7 @@ This guide includes step-by-step tutorials to [install GCS](Installing%20and%20U
 
 See the **Table of Contents** below for a complete list of pages. Most pages cross-link to related topics for easy navigation.
 
-> [!TIP]  
+> [!TIP]
 > Throughout the User Guide, you’ll see **page references to GURPS books** (for example, p. B10) to connect GCS features to the rules. See [Page References](Page%20References) for details.
 
 ## Getting help
@@ -60,7 +60,7 @@ If you can’t find what you’re looking for:
 ### Advanced Features
 
 - **Content Creation**
-  - [Character templates](Character%20templates)
+  - [Character Templates](Character%20Templates)
   - [Custom Content](Custom%20Content)
   - [Trait Modifiers](Trait%20Modifiers)
   - [Equipment Modifiers](Equipment%20Modifiers)

@@ -4,26 +4,26 @@ Markdown is also supported in the notes field in the **Detail Editors** for [Tra
 
 ## Quick Reference
 
-| **Element**             | Syntax                                                                             | Output                                                      |
-| ----------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| **Headings**            | `# Heading 1`<br>`## Heading 2`<br>`### Heading 3`                                 | (headings shown below)                                      |
-| **Bold**                | `**bold**` or `__bold__`                                                           | **bold text**                                               |
-| **Italic**              | `*italic*` or `_italic_`                                                           | _italic text_                                               |
-| **Bold+Italic**         | `***text***` or `___text___`                                                       | _**bold & italic text**_                                    |
-| **Strikethrough**       | `~~text~~`                                                                         | ~~strikethrough text~~                                      |
-| **Quote**               | `> quoted text`                                                                    | > quoted text                                               |
-| **Alerts**              | `> [!NOTE]`<br>`> The alert text.`                                                 | (alerts shown below)                                        |
-| **Inline code**         | `` `code` ``                                                                       | `inline code`                                               |
-| **Code block**          | ` ```code``` `                                                                     | (block shown below)                                         |
-| **Horizontal rule**     | `---` or `***`                                                                     | ---                                                         |
-| **Link**                | External: `[text](https://example.com)`<br>Internal: `[text](Markdown%20Guide.md]` | [text](https://example.com)<br>[text](Markdown%20Guide.md)  |
-| **Markdown Link**       | `[Markdown Guide](md:Markdown%20Guide)`                                            | [Markdown Guide](md:Markdown%20Guide)                       |
-| **Page reference link** | `[Basic Set, page 45](B45)`                                                        | [Basic Set, page 45](B45)                                   |
-| **Image**               | `![alt](url)`                                                                      | ![alt](https://gurpscharactersheet.com/images/app_icon.svg) |
-| **List (unordered)**    | `- item`<br>`- item`                                                               | - test<br>- test                                            |
-| **List (ordered)**      | `1. item`<br>`2. item`                                                             | 1. item<br>2. item                                          |
-| **Table**               | See details below                                                                  | (table shown below)                                         |
-| **Escape Markdown**     | `\**escape\**`                                                                     | \*\*escape\*\*                                              |
+| **Element**             | Syntax                                                                          | Output                                                      |
+| ----------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Headings**            | `# Heading 1`<br>`## Heading 2`<br>`### Heading 3`                              | (headings shown below)                                      |
+| **Bold**                | `**bold**` or `__bold__`                                                        | **bold text**                                               |
+| **Italic**              | `*italic*` or `_italic_`                                                        | _italic text_                                               |
+| **Bold+Italic**         | `***text***` or `___text___`                                                    | _**bold & italic text**_                                    |
+| **Strikethrough**       | `~~text~~`                                                                      | ~~strikethrough text~~                                      |
+| **Quote**               | `> quoted text`                                                                 | > quoted text                                               |
+| **Alerts**              | `> [!NOTE]`<br>`> The alert text.`                                              | (alerts shown below)                                        |
+| **Inline code**         | `` `code` ``                                                                    | `inline code`                                               |
+| **Code block**          | ` ```code``` `                                                                  | (block shown below)                                         |
+| **Horizontal rule**     | `---` or `***`                                                                  | ---                                                         |
+| **Link**                | External: `[text](https://example.com)`<br>Internal: `[text](Markdown%20Guide]` | [text](https://example.com)<br>[text](Markdown%20Guide)     |
+| **Markdown Link**       | `[Markdown Guide](md:Markdown%20Guide)`                                         | [Markdown Guide](md:Markdown%20Guide)                       |
+| **Page reference link** | `[Basic Set, page 45](B45)`                                                     | [Basic Set, page 45](B45)                                   |
+| **Image**               | `![alt](url)`                                                                   | ![alt](https://gurpscharactersheet.com/images/app_icon.svg) |
+| **List (unordered)**    | `- item`<br>`- item`                                                            | - test<br>- test                                            |
+| **List (ordered)**      | `1. item`<br>`2. item`                                                          | 1. item<br>2. item                                          |
+| **Table**               | See details below                                                               | (table shown below)                                         |
+| **Escape Markdown**     | `\**escape\**`                                                                  | \*\*escape\*\*                                              |
 
 ## Headings
 
@@ -150,19 +150,19 @@ Use alerts to emphasize critical information. Alerts are displayed with distinct
 
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > Useful information the reader should know, even when skimming.
 
-> [!TIP]  
+> [!TIP]
 > Helpful advice for doing things better or more easily.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Key information needed to achieve a goal.
 
-> [!WARNING]  
+> [!WARNING]
 > Urgent info that needs immediate attention to avoid problems.
 
-> [!CAUTION]  
+> [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
 ---
@@ -234,15 +234,16 @@ You can also add tooltips if you hover over the link:
 You can link to files in the same library using **relative paths**. This makes your notes easier to share because they don’t depend on absolute locations.
 
 ```
-[Markdown Guide](./Markdown%20Guide.md)
+[Markdown Guide](./Markdown%20Guide)
 ```
 
-[Markdown Guide](./Markdown%20Guide.md)
+[Markdown Guide](./Markdown%20Guide)
 
 **Rules for relative paths:**
 
 - Use **forward slashes `/`** (not Windows `\`).
 - Replace spaces with `%20`.
+- The markdown extension (`.md`) can be omitted in your links.
 - `./` means “this folder.”
 - `../` means “go up one folder.”
 - `../../` means "go up two folders."
