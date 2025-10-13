@@ -60,7 +60,7 @@ If you can’t find what you’re looking for:
 ### Advanced Features
 
 - **Content Creation**
-  - [Character templates](Character%20Templates)
+  - [Character Templates](Character%20Templates)
   - [Custom Content](Custom%20Content)
   - [Trait Modifiers](Trait%20Modifiers)
   - [Equipment Modifiers](Equipment%20Modifiers)
@@ -68,6 +68,7 @@ If you can’t find what you’re looking for:
   - [Defaults](Defaults)
   - [Features](Features)
   - [Contributing to the Master Library](Contributing%20to%20the%20Master%20Library)
+  - [Export Templates](Export%20Templates)
 - **Advanced Tools**
   - [Calculator](Calculator)
   - [Loot Sheets](Loot%20Sheets)
@@ -89,6 +90,7 @@ If you can’t find what you’re looking for:
 - [Operators](Operators)
 - [Markdown Guide](Markdown%20Guide)
 - [Scripting Guide](Scripting%20Guide)
+- [Name Generators](Name%20Generators)
 
 ### Troubleshooting
 
