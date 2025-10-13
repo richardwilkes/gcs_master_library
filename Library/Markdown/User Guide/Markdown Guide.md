@@ -81,7 +81,7 @@ This is a second paragraph.
 End a line with two spaces or use `<br>` for a manual break.
 
 ```
-First line (with two spaces)
+First line (with two spaces)  
 Second line
 
 First line<br>
@@ -91,7 +91,7 @@ Second line
 First line (with two spaces)  
 Second line
 
-First line<br>  
+First line<br>
 Second line
 
 ---
@@ -150,19 +150,19 @@ Use alerts to emphasize critical information. Alerts are displayed with distinct
 
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > Useful information the reader should know, even when skimming.
 
-> [!TIP]  
+> [!TIP]
 > Helpful advice for doing things better or more easily.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Key information needed to achieve a goal.
 
-> [!WARNING]  
+> [!WARNING]
 > Urgent info that needs immediate attention to avoid problems.
 
-> [!CAUTION]  
+> [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
 ---
@@ -210,7 +210,7 @@ ___
 
 ## Links
 
-Plain links are auto-detected:  
+Plain links are auto-detected:
 [https://gurpscharactersheet.com](https://gurpscharactersheet.com)
 
 To add custom text, use `[text](URL)`:
@@ -234,10 +234,10 @@ You can also add tooltips if you hover over the link:
 You can link to files in the same library using **relative paths**. This makes your notes easier to share because they don’t depend on absolute locations.
 
 ```
-[Markdown Guide](./Markdown%20Guide.md)
+[Markdown Guide](./Markdown%20Guide)
 ```
 
-[Markdown Guide](./Markdown%20Guide.md)
+[Markdown Guide](./Markdown%20Guide)
 
 **Rules for relative paths:**
 
@@ -333,9 +333,9 @@ Indent items to nest them (and mix and match ordered and unordered lists):
 
 ```
 1. First list item
-	- First nested list item
-		- Second nested list item
-	- More...
+ - First nested list item
+  - Second nested list item
+ - More...
 2. Another...
 ```
 

@@ -38,7 +38,7 @@
 <summary>Advanced Features</summary>
 
 - **Content Creation**
-  - [Character templates](Character%20templates)
+  - [Character templates](Character%20Templates)
   - [Custom Content](Custom%20Content)
   - [Trait Modifiers](Trait%20Modifiers)
   - [Equipment Modifiers](Equipment%20Modifiers)
