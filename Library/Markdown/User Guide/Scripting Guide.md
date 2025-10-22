@@ -26,6 +26,7 @@ When your Javascript code is called, the following globals will be available for
   - [Spells](Scripting/Spell)
   - [Traits](Scripting/Trait)
   - [Trait Modifiers](Scripting/Trait%20Modifiers)
+  - [Weapon](Scripting/Weapon)
 - [Top-Level Functions](Scripting/Top-Level%20Functions)
   - formatNum
   - iff
