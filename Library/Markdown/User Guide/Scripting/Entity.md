@@ -21,7 +21,7 @@ This object represents the current character sheet data.
 | skin | string | The character’s skin. | GCS 5.36+
 | handedness | string | The character’s primary hand. | GCS 5.36+
 | heightInInches | number | The character’s height, in inches. | GCS 5.36+
-| weightInPounds | number | The character’s weight, in inches. | GCS 5.36+
+| weightInPounds | number | The character’s weight, in pounds. | GCS 5.36+
 | displayHeightUnits | string | The height units that should be used for display. | GCS 5.36+
 | displayWeightUnits | string | The weight units that should be used for display. | GCS 5.36+
 | sizeModifier | number | The character’s Size Modifier. | GCS 5.36+
