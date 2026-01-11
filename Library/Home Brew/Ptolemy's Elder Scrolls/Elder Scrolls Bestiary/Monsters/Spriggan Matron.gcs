@@ -1,0 +1,3141 @@
+{
+	"version": 5,
+	"id": "AFtvjw1Zs3XaUBHdE",
+	"total_points": 559,
+	"points_record": [
+		{
+			"when": "2023-11-26T21:44:08-05:00",
+			"points": 559,
+			"reason": "Initial points"
+		}
+	],
+	"profile": {
+		"name": "Spriggan Matron",
+		"height": "8'",
+		"weight": "300 lb",
+		"tech_level": "4",
+		"SM": 1
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions conditional_modifiers",
+			"melee",
+			"ranged",
+			"traits skills",
+			"equipment",
+			"other_equipment",
+			"notes",
+			"spells"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"base": "($dx + $ht) / 4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"base": "Math.floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"value": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. Will to do anything besides talk or rest; failure causes unconsciousness\nEach FP you lose below 0 also causes 1 HP of injury\nMove, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"value": "Math.ceil($fp / 3) - 1",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"value": "$fp - 1"
+					},
+					{
+						"state": "Rested",
+						"value": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"value": "Math.round(-$hp * 5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"value": "Math.round(-$hp * 4)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-4 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"value": "Math.round(-$hp * 3)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-3 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"value": "Math.round(-$hp * 2)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-2 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"value": "-$hp",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-1 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. HT every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"value": "Math.ceil($hp / 3) - 1",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"value": "$hp - 1"
+					},
+					{
+						"state": "Healthy",
+						"value": "$hp"
+					}
+				]
+			},
+			{
+				"id": "mp",
+				"type": "pool",
+				"name": "MP",
+				"full_name": "Magicka Points",
+				"base": "$iq",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "",
+						"value": "0"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Humanoid",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 10
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Right Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "6-7",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Right Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "8",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 2,
+					"calc": {
+						"roll_range": "9-10",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "11",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Left Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Left Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "hand",
+					"choice_name": "Hand",
+					"table_name": "Hand",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "If holding a shield, double the penalty to hit: -8 for\nshield hand instead of -4. Reduce the wounding multiplier of\nlarge piercing (pi+), huge piercing (pi++), and impaling\n(imp) damage to x1. Any major wound (loss of over ⅓ HP\nfrom one blow) cripples the extremity. Damage beyond that\nthreshold is lost.",
+					"calc": {
+						"roll_range": "15",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "16",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 2,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 8
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 8
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": 12,
+			"calc": {
+				"value": 22,
+				"points": 108
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 4,
+			"calc": {
+				"value": 14,
+				"points": 80
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 4,
+			"calc": {
+				"value": 14,
+				"points": 40
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 4,
+			"calc": {
+				"value": 14,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 16,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 5,
+			"calc": {
+				"value": 15,
+				"points": 25
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": 0,
+			"calc": {
+				"value": 7,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 0,
+			"calc": {
+				"value": 7,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"current": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 3,
+			"calc": {
+				"value": 25,
+				"current": 25,
+				"points": 6
+			}
+		},
+		{
+			"attr_id": "mp",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"current": 10,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "tVEr0-vZtkdxjXh7c",
+			"name": "Spriggan Claws",
+			"reference": "B88,MA47",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"replacements": {
+				"Body Part": "Claws"
+			},
+			"modifiers": [
+				{
+					"id": "m1HJPBrhky0ARr_rL",
+					"name": "Cannot Parry",
+					"reference": "B88",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mf3rI97XAlvNBLN0U",
+					"name": "Clumsy",
+					"reference": "B88",
+					"cost_adj": "-20%",
+					"features": [
+						{
+							"type": "skill_bonus",
+							"selection_type": "this_weapon",
+							"name": {
+								"compare": "is"
+							},
+							"amount": -1,
+							"per_level": true
+						}
+					],
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mRUs-vp4FhOE-6Yb9",
+					"name": "Limited Arc (@Direction@)",
+					"reference": "B88",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mUDTGxInXO77ZF-Rd",
+					"name": "Weak",
+					"cost_adj": "-50%",
+					"features": [
+						{
+							"type": "weapon_bonus",
+							"selection_type": "this_weapon",
+							"name": {
+								"compare": "is"
+							},
+							"level": {
+								"compare": "at_least"
+							},
+							"amount": -1,
+							"per_die": true
+						}
+					],
+					"disabled": true
+				},
+				{
+					"id": "mwcJsMyvirEB2CgC_",
+					"name": "Long",
+					"reference": "B88",
+					"cost_adj": "100%",
+					"levels": 1
+				},
+				{
+					"id": "m_exjr08axAT2FZzP",
+					"name": "Long, max reach only",
+					"reference": "B88",
+					"cost_adj": "75%",
+					"levels": 1,
+					"disabled": true
+				}
+			],
+			"base_points": 5,
+			"weapons": [
+				{
+					"id": "wfyWVdGiFDAIQQxXo",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"fragmentation": "2d",
+						"fragmentation_type": "tox",
+						"modifier_per_die": 1
+					},
+					"usage_notes": "Follow-up Spriggan Venom",
+					"reach": "C,1",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 18,
+						"damage": "2d+4 cr [2d tox]",
+						"parry": "13"
+					}
+				}
+			],
+			"calc": {
+				"points": 10
+			}
+		},
+		{
+			"id": "tCg3NLAaRgvJgS09D",
+			"name": "Spriggan Poison",
+			"reference": "B62,P53,MA45",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"replacements": {
+				"Carrier Attack": "Blunt Claws"
+			},
+			"modifiers": [
+				{
+					"id": "m8eJDCQIZQqS1J27i",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 sec",
+					"cost_adj": "100%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mbLLEUjPGq2BVLdZK",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "10 sec",
+					"cost_adj": "50%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mds0KXj06uDusTZL5",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 min",
+					"cost_adj": "40%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "muGHBul7WQ6a19rEE",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 hr",
+					"cost_adj": "20%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "moj-24MyQuyHl4KxK",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 day",
+					"cost_adj": "10%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mZIYpJhZXBGNHOVN6",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 sec; Resistible",
+					"cost_adj": "50%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mlfn-8Vcd7SaVYAUf",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "10 sec; Resistible",
+					"cost_adj": "25%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mQ7tWHMrZMX4WLx4p",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 min; Resistible",
+					"cost_adj": "20%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mxJOmVnc_KdtOzH-i",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 hr; Resistible",
+					"cost_adj": "10%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mKZhLRCqAknpu0aG-",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 day; Resistible",
+					"cost_adj": "5%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mTjus6DDSNsNAuEzh",
+					"name": "Contagious",
+					"reference": "B103",
+					"local_notes": "Mildly",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mfoUjGUQNy_tmr95P",
+					"name": "Contagious",
+					"reference": "B103",
+					"local_notes": "Highly",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mhUnIgz-wpWITX5sv",
+					"name": "Double Blunt Trauma",
+					"reference": "B104",
+					"local_notes": "1HP per 10 dmg",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "muxcRf7JoNiWfLZry",
+					"name": "Explosion",
+					"reference": "B104",
+					"cost_adj": "50%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "m8lsqrhUXo6Bs28oN",
+					"name": "Fragmentation",
+					"reference": "B104",
+					"cost_adj": "15%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "m2gCuArKNop7Oj9Qm",
+					"name": "Fragmentation",
+					"reference": "B104",
+					"local_notes": "Hot",
+					"cost_adj": "15%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mEZ03iLjVSGEYGxwi",
+					"name": "Radiation",
+					"reference": "B104",
+					"cost_adj": "100%",
+					"disabled": true
+				},
+				{
+					"id": "m6RUfU24IIpBWuBsW",
+					"name": "Surge",
+					"reference": "B104",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mHsJuEASCtzkck1PJ",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "2",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "md3TiLcobXxzwQ2u7",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "3",
+					"cost_adj": "100%",
+					"disabled": true
+				},
+				{
+					"id": "mWbV2BXGRG3YBg_K5",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "5",
+					"cost_adj": "150%",
+					"disabled": true
+				},
+				{
+					"id": "mJ9ONqGjb4q7uWrKT",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "10",
+					"cost_adj": "200%",
+					"disabled": true
+				},
+				{
+					"id": "mBcD1ULuTEk-4hAHJ",
+					"name": "Side Effect",
+					"reference": "B109",
+					"local_notes": "@Effect@",
+					"disabled": true
+				},
+				{
+					"id": "mjSbcJV404K3cIvBi",
+					"name": "Symptoms",
+					"reference": "B109",
+					"local_notes": "@Effect@",
+					"disabled": true
+				},
+				{
+					"id": "mewUgcXWOmh8ONtf7",
+					"name": "Armor Divisor",
+					"reference": "B110",
+					"local_notes": "0.5",
+					"cost_adj": "-30%",
+					"disabled": true
+				},
+				{
+					"id": "mLcdAEN92f_BbP154",
+					"name": "Armor Divisor",
+					"reference": "B110",
+					"local_notes": "0.2",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mmqGRdpkj_Rf595xZ",
+					"name": "Armor Divisor",
+					"reference": "B110",
+					"local_notes": "0.1",
+					"cost_adj": "-70%",
+					"disabled": true
+				},
+				{
+					"id": "mlhqplnktQXCix0mM",
+					"name": "No Wounding",
+					"reference": "B111",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mzn90RcUnC7HIUQ9E",
+					"name": "Incendiary",
+					"reference": "B104",
+					"cost_adj": "10%",
+					"disabled": true
+				},
+				{
+					"id": "mwgB9xk8rpNPOjCF1",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Basic Set/Basic Set Enhancement Modifiers.adm",
+						"id": "m1nJdcOiKLxg7pXwe"
+					},
+					"name": "Follow-Up (@Carrier Attack@)",
+					"reference": "B105,P102"
+				}
+			],
+			"points_per_level": 4,
+			"can_level": true,
+			"levels": 2,
+			"calc": {
+				"points": 8,
+				"current_level": 2
+			}
+		},
+		{
+			"id": "tGQgkNLYgFuE7wzUI",
+			"name": "Spriggan Poison Spray",
+			"reference": "B62,P53,MA45",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"replacements": {
+				"Attack Type": "Breath"
+			},
+			"modifiers": [
+				{
+					"id": "m7uUHN3993fbKf6aW",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 sec",
+					"cost_adj": "100%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mcBTyeGlItumn9gp-",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "10 sec",
+					"cost_adj": "50%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mMKDuwv-GIbshNwfS",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 min",
+					"cost_adj": "40%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "m9XhUp7ktu1kTTETN",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 hr",
+					"cost_adj": "20%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mja0S-LOXxK2edt25",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 day",
+					"cost_adj": "10%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "m_D8mh1va-Ld3fTSI",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 sec; Resistible",
+					"cost_adj": "50%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "muBaKUDz8Vj7tf9Cg",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "10 sec; Resistible",
+					"cost_adj": "25%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mBfqy_K2ict3LYzEV",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 min; Resistible",
+					"cost_adj": "20%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mADTWeJY7W8eUxnJF",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 hr; Resistible",
+					"cost_adj": "10%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mvmPJwfeym4Gyrq3J",
+					"name": "Cyclic",
+					"reference": "B103",
+					"local_notes": "1 day; Resistible",
+					"cost_adj": "5%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mvykkpRt6d0_mw7yp",
+					"name": "Contagious",
+					"reference": "B103",
+					"local_notes": "Mildly",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mf-YOHEaRdF0M9Wqp",
+					"name": "Contagious",
+					"reference": "B103",
+					"local_notes": "Highly",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mh-Sc_Nz3ABYTAGAL",
+					"name": "Double Blunt Trauma",
+					"reference": "B104",
+					"local_notes": "1HP per 10 dmg",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mor0kpJS0JPSyJM9r",
+					"name": "Explosion",
+					"reference": "B104",
+					"cost_adj": "50%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mMEx2qWgUAKSTMmBu",
+					"name": "Fragmentation",
+					"reference": "B104",
+					"cost_adj": "15%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mOfBunuY7QoMK2kqv",
+					"name": "Fragmentation",
+					"reference": "B104",
+					"local_notes": "Hot",
+					"cost_adj": "15%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mYtd6KrVMeIJgkrQr",
+					"name": "Radiation",
+					"reference": "B104",
+					"cost_adj": "100%",
+					"disabled": true
+				},
+				{
+					"id": "mbF7TxHiULYlnM9Hd",
+					"name": "Surge",
+					"reference": "B104",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "m9fReQtySHHYCksAC",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "2",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mfQvq7CN-cigokIeP",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "3",
+					"cost_adj": "100%",
+					"disabled": true
+				},
+				{
+					"id": "my3v0DCSr0L6OnOrU",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "5",
+					"cost_adj": "150%",
+					"disabled": true
+				},
+				{
+					"id": "mbAfMAMdTpMHAXqdF",
+					"name": "Armor Divisor",
+					"reference": "B102",
+					"local_notes": "10",
+					"cost_adj": "200%",
+					"disabled": true
+				},
+				{
+					"id": "melSvERfN5n074V7k",
+					"name": "Side Effect",
+					"reference": "B109",
+					"local_notes": "@Effect@",
+					"disabled": true
+				},
+				{
+					"id": "mNUeCIswlwcT86r8R",
+					"name": "Symptoms",
+					"reference": "B109",
+					"local_notes": "@Effect@",
+					"disabled": true
+				},
+				{
+					"id": "mxIAOz2h6hY_HrkYD",
+					"name": "Armor Divisor",
+					"reference": "B110",
+					"local_notes": "0.5",
+					"cost_adj": "-30%",
+					"disabled": true
+				},
+				{
+					"id": "mg3vr48ceLSR_DR2H",
+					"name": "Armor Divisor",
+					"reference": "B110",
+					"local_notes": "0.2",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mg_COPD5rrTZWZYQe",
+					"name": "Armor Divisor",
+					"reference": "B110",
+					"local_notes": "0.1",
+					"cost_adj": "-70%",
+					"disabled": true
+				},
+				{
+					"id": "mEOlePY5mbnwBA_1i",
+					"name": "No Wounding",
+					"reference": "B111",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "m_bp1DXJnFazYOrZe",
+					"name": "Incendiary",
+					"reference": "B104",
+					"cost_adj": "10%",
+					"disabled": true
+				},
+				{
+					"id": "m8E1Rr3iTeFESEtss",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Basic Set/Basic Set Enhancement Modifiers.adm",
+						"id": "m6WObJI1VTU-Wto4A"
+					},
+					"name": "Jet",
+					"reference": "B106,P103"
+				}
+			],
+			"points_per_level": 4,
+			"weapons": [
+				{
+					"id": "W65Ks_tqnSF3KUnCl",
+					"sv": 1,
+					"damage": {
+						"type": "tox",
+						"leveled": true,
+						"base_leveled": "1d"
+					},
+					"usage": "Jet",
+					"accuracy": "Jet",
+					"range": "10",
+					"rate_of_fire": "Jet",
+					"recoil": "1",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Innate Attack",
+							"specialization": "Projectile"
+						},
+						{
+							"type": "skill",
+							"name": "Innate Attack",
+							"modifier": -2
+						},
+						{
+							"type": "dx",
+							"modifier": -4
+						}
+					],
+					"calc": {
+						"level": 16,
+						"damage": "4d tox"
+					}
+				}
+			],
+			"can_level": true,
+			"levels": 4,
+			"calc": {
+				"points": 16,
+				"current_level": 4
+			}
+		},
+		{
+			"id": "td0Ca9mwjAeXvHKbG",
+			"name": "Spriggan Healing",
+			"reference": "B59,P51,PSI14",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "mQWU_FMcVG0n3v-RL",
+					"name": "Faith Healing",
+					"reference": "B59",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mdXAqUG6bp6Oyw2-S",
+					"name": "Xenohealing",
+					"reference": "B59",
+					"local_notes": "All Mammals",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "ml9SLYyZVl_PgTnG8",
+					"name": "Xenohealing",
+					"reference": "B59",
+					"local_notes": "All Earthly Life",
+					"cost_adj": "40%",
+					"disabled": true
+				},
+				{
+					"id": "msbWrp8Z4ptVKWXSz",
+					"name": "Xenohealing",
+					"reference": "B59",
+					"local_notes": "All Carbon-Based Life",
+					"cost_adj": "60%",
+					"disabled": true
+				},
+				{
+					"id": "mg3HgVcH2H2xysVZq",
+					"name": "Xenohealing",
+					"reference": "B59",
+					"local_notes": "Anything Alive",
+					"cost_adj": "80%",
+					"disabled": true
+				},
+				{
+					"id": "m7dBS2q_VIxepHQfS",
+					"name": "Xenohealing",
+					"reference": "B59",
+					"local_notes": "Anything Animate",
+					"cost_adj": "100%",
+					"disabled": true
+				},
+				{
+					"id": "m6_pJhOrtwiHzS0L3",
+					"name": "Disease Only",
+					"reference": "B59",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mVY0iam9rBzO0qRsf",
+					"name": "Injuries Only",
+					"reference": "B59",
+					"cost_adj": "-20%"
+				},
+				{
+					"id": "mLTnW3ocjoZ9xZu_e",
+					"name": "Own Race Only",
+					"reference": "B59",
+					"cost_adj": "-20%"
+				},
+				{
+					"id": "mW37AqIoP8yx51cij",
+					"name": "Psychic Healing",
+					"reference": "B59",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "mDflUFriADMfFo-q2",
+					"name": "Affects Self",
+					"reference": "P51",
+					"cost_adj": "50%"
+				},
+				{
+					"id": "md1x6WRkiCvWbJk3H",
+					"name": "Cure Affliction",
+					"reference": "P51",
+					"cost_adj": "60%",
+					"disabled": true
+				},
+				{
+					"id": "m_Z270gQNJkOSsyKm",
+					"name": "Affliction Only",
+					"reference": "P51",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "m7FhaHv6q_tN5WhK5",
+					"name": "Capped",
+					"reference": "P51",
+					"local_notes": "2 FP",
+					"cost_adj": "-25%",
+					"disabled": true
+				},
+				{
+					"id": "mbAkX3WabnZcLT3in",
+					"name": "Capped",
+					"reference": "P51",
+					"local_notes": "4 FP",
+					"cost_adj": "-20%",
+					"disabled": true
+				},
+				{
+					"id": "mXAvgNu88c_vEDDGZ",
+					"name": "Capped",
+					"reference": "P51",
+					"local_notes": "6 FP",
+					"cost_adj": "-15%",
+					"disabled": true
+				},
+				{
+					"id": "m0izLUMpY7g7l9REa",
+					"name": "Capped",
+					"reference": "P51",
+					"local_notes": "8 FP",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "mi0FCaMb4LV93EIpe",
+					"name": "Capped",
+					"reference": "P51",
+					"local_notes": "10 FP",
+					"cost_adj": "-5%",
+					"disabled": true
+				},
+				{
+					"id": "mNDwW1e3igk0RcJzJ",
+					"name": "Empathic",
+					"reference": "P51",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mytNMF0rLCgFZiwiK",
+					"name": "Restore Limbs",
+					"reference": "PSI14",
+					"cost_adj": "80%",
+					"disabled": true
+				}
+			],
+			"base_points": 30,
+			"calc": {
+				"points": 33
+			}
+		},
+		{
+			"id": "tUcEasBCx5niM3NJW",
+			"name": "Spriggan Invisibility",
+			"reference": "B63,P56",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Mental",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "mfnEYxITIWzGS2MQm",
+					"name": "Affects Machines",
+					"reference": "B63",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mwedpqWtn0_SIohFC",
+					"name": "Can Carry Objects",
+					"reference": "B63",
+					"local_notes": "Up to No Encumbrance",
+					"cost_adj": "10%",
+					"disabled": true
+				},
+				{
+					"id": "mwukQWl5BjK2evQGd",
+					"name": "Can Carry Objects",
+					"reference": "B63",
+					"local_notes": "Up to Light Encumbrance",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mGiq0sN-i9qiq9PHE",
+					"name": "Can Carry Objects",
+					"reference": "B63",
+					"local_notes": "Up to Medium Encumbrance",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mXyh3eIwLs7yJwbj6",
+					"name": "Can Carry Objects",
+					"reference": "B63",
+					"local_notes": "Up to Heavy Encumbrance",
+					"cost_adj": "100%",
+					"disabled": true
+				},
+				{
+					"id": "mr6-hXLnbYD2nsw7E",
+					"name": "Extended",
+					"reference": "B63",
+					"local_notes": "@Type@",
+					"cost_adj": "20%",
+					"disabled": true
+				},
+				{
+					"id": "mo8OO7M0M5jxkgPaA",
+					"name": "Switchable",
+					"reference": "B63",
+					"cost_adj": "10%"
+				},
+				{
+					"id": "mX4YyC1pZdrgdigBI",
+					"name": "Usually On",
+					"reference": "B63",
+					"local_notes": "Turning visible costs 1 FP per second",
+					"cost_adj": "5%",
+					"disabled": true
+				},
+				{
+					"id": "m04kZDqHWiqYDhsei",
+					"name": "Machines Only",
+					"reference": "B63",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "m0wQT-S1pHOk_3Xz2",
+					"name": "Substantial Only",
+					"reference": "B63",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "mQHIzWZGjtvwk1ajY",
+					"name": "Visible Reflection",
+					"reference": "B63",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "ml0GVJla6GorsEBXb",
+					"name": "Visible Shadow",
+					"reference": "B63",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "mSyI1pDVEr-PrWirc",
+					"name": "Fringe",
+					"reference": "P56",
+					"cost_adj": "-10%",
+					"disabled": true
+				}
+			],
+			"base_points": 40,
+			"calc": {
+				"points": 44
+			}
+		},
+		{
+			"id": "tpk4jxlElAmdaxQ0T",
+			"name": "Summon Animals",
+			"reference": "B36,P41",
+			"local_notes": "Roll vs 15 to summon up to 10 animals nearby to fight for the Spriggan",
+			"tags": [
+				"Advantage",
+				"Social"
+			],
+			"replacements": {
+				"Who": "Nearby Animals"
+			},
+			"modifiers": [
+				{
+					"id": "M_P5ELgu751UfgfvT",
+					"name": "Point Total",
+					"reference": "B37",
+					"children": [
+						{
+							"id": "m8Jr3x-vityuX1K-N",
+							"name": "25% of your starting points",
+							"reference": "B37",
+							"cost_adj": "1"
+						},
+						{
+							"id": "mg0lUP0wfIM4qGUh8",
+							"name": "50% of your starting points",
+							"reference": "B37",
+							"cost_adj": "2",
+							"disabled": true
+						},
+						{
+							"id": "m9FtrUyRXirSjftJ7",
+							"name": "75% of your starting points",
+							"reference": "B37",
+							"cost_adj": "3",
+							"disabled": true
+						},
+						{
+							"id": "mdxXBQb3NKZ-bNhAr",
+							"name": "100% of your starting points",
+							"reference": "B37",
+							"cost_adj": "5",
+							"disabled": true
+						},
+						{
+							"id": "mgT_NRm-GsF2L60VV",
+							"name": "150% of your starting points",
+							"reference": "B37",
+							"cost_adj": "10",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"id": "MPiVnRRok58RZGISm",
+					"name": "Ally Group",
+					"reference": "B37",
+					"children": [
+						{
+							"id": "menfTkJ2zxh8iZ91l",
+							"name": "Group of 6-10",
+							"reference": "B37",
+							"cost_adj": "x6",
+							"disabled": true
+						},
+						{
+							"id": "mFcLS6foszBZWEzVp",
+							"name": "Group of 11-20",
+							"reference": "B37",
+							"cost_adj": "x8"
+						},
+						{
+							"id": "mk36iLHLnNGBAvYyw",
+							"name": "Group of 21-50",
+							"reference": "B37",
+							"cost_adj": "x10",
+							"disabled": true
+						},
+						{
+							"id": "mJKqMZhlJliH5FgmI",
+							"name": "Group of 51-100",
+							"reference": "B37",
+							"cost_adj": "x12",
+							"disabled": true
+						},
+						{
+							"id": "mMEugymkYkx8i5guK",
+							"name": "Group of 101-1000",
+							"reference": "B37",
+							"cost_adj": "x18",
+							"disabled": true
+						},
+						{
+							"id": "mu4alXtySHYB5DNXk",
+							"name": "Group of 1001-10000",
+							"reference": "B37",
+							"cost_adj": "x24",
+							"disabled": true
+						},
+						{
+							"id": "mb2gVZZ7QqxhSAqM8",
+							"name": "Group of 10001-100000",
+							"reference": "B37",
+							"cost_adj": "x30",
+							"disabled": true
+						},
+						{
+							"id": "mY-yacjQX3jhtcVv2",
+							"name": "Group of 100001-1000000",
+							"reference": "B37",
+							"cost_adj": "x36",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"id": "MV2fVNAEe4DXB50-d",
+					"name": "Frequency of Appearance",
+					"reference": "B37",
+					"children": [
+						{
+							"id": "mS5tCiVrDnnQ2jKpv",
+							"name": "Appears quite rarely (6-)",
+							"reference": "B36",
+							"cost_adj": "x0.5",
+							"disabled": true
+						},
+						{
+							"id": "mNq95vcXiL5mX7L34",
+							"name": "Appears fairly often (9-)",
+							"reference": "B36",
+							"cost_adj": "x1",
+							"disabled": true
+						},
+						{
+							"id": "mli12T6I_LrjVWBQt",
+							"name": "Appears quite often (12-)",
+							"reference": "B36",
+							"cost_adj": "x2",
+							"disabled": true
+						},
+						{
+							"id": "mHynJhTJGnKraXCh0",
+							"name": "Appears almost all the time (15-)",
+							"reference": "B36",
+							"cost_adj": "x3"
+						},
+						{
+							"id": "mH9F4uQxJ86UEpafr",
+							"name": "Appears constantly",
+							"reference": "B36",
+							"cost_adj": "x4",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"id": "m--zwRU1pjvQsTzrz",
+					"name": "Minion",
+					"reference": "B38",
+					"local_notes": "IQ 0 or Slave Mentality",
+					"disabled": true
+				},
+				{
+					"id": "m3Zvo_lle9I1C6WF0",
+					"name": "Minion",
+					"reference": "B38",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mL6hK0LfWyTgA1ggK",
+					"name": "Special Abilities",
+					"reference": "B38",
+					"local_notes": "@Abilities@",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "MOF1iSZpg0dFJcAu_",
+					"name": "Summonable",
+					"children": [
+						{
+							"id": "m2P2ZCywaUNkIrBWh",
+							"name": "Summonable",
+							"reference": "B38,P41",
+							"cost_adj": "100%"
+						},
+						{
+							"id": "mvuLwLMVaeBspWgmR",
+							"name": "Conjured",
+							"reference": "DF9:4,P41",
+							"cost_adj": "100%",
+							"disabled": true
+						},
+						{
+							"id": "mSZP-zSKMtMDsVhAJ",
+							"name": "Harder Summoning 1",
+							"reference": "DF9:4",
+							"cost_adj": "-5%",
+							"disabled": true
+						},
+						{
+							"id": "m9LFBZzvYuxL1gGNj",
+							"name": "Harder Summoning 2",
+							"reference": "DF9:4",
+							"cost_adj": "-10%",
+							"disabled": true
+						},
+						{
+							"id": "mBRTCQKQXDCSi2Mq1",
+							"name": "Harder Summoning 3",
+							"reference": "DF9:4",
+							"cost_adj": "-20%",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"id": "MOKpiBq9N0y2zTZiB",
+					"name": "Sympathy",
+					"reference": "B38",
+					"children": [
+						{
+							"id": "mi0hvufwss5g2Igpf",
+							"name": "Sympathy",
+							"reference": "B38",
+							"local_notes": "Death of one party reduces the other to 0 HP",
+							"cost_adj": "-25%",
+							"disabled": true
+						},
+						{
+							"id": "m3_9tTMke9IB2785e",
+							"name": "Sympathy",
+							"reference": "B38",
+							"local_notes": "Death of one party reduces the other to 0 HP and wounds affect ally but not you",
+							"cost_adj": "-5%",
+							"disabled": true
+						},
+						{
+							"id": "mX_MnHDfsyhedOadb",
+							"name": "Sympathy",
+							"reference": "B38",
+							"local_notes": "Death of one party kills the other",
+							"cost_adj": "-50%",
+							"disabled": true
+						},
+						{
+							"id": "mgORuVglNqoHkp_yV",
+							"name": "Sympathy",
+							"reference": "B38",
+							"local_notes": "Death of one party kills the other and wounds affect ally but not you",
+							"cost_adj": "-10%",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"id": "mI2ZFd8IFhpJ-j-em",
+					"name": "Unwilling",
+					"reference": "B38",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mOxRbs6HGUgWcHqoc",
+					"name": "Favor",
+					"reference": "B55",
+					"cost_adj": "x0.2",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": 48
+			}
+		},
+		{
+			"id": "t-dmMbYjjQpiWA7eO",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "tZTGYpVyvbfhURaxn"
+			},
+			"name": "Animal Empathy",
+			"reference": "B40,P48",
+			"tags": [
+				"Advantage",
+				"Mental"
+			],
+			"replacements": {
+				"One class: Mammals, Birds, etc.": "Forest Animals"
+			},
+			"modifiers": [
+				{
+					"id": "mxCA7Pk53UN8pjYC0",
+					"name": "Remote",
+					"reference": "P48",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mhXlTPb1rj8apW10b",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "All aquatic animals",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "msBLbb4t8HNEYId8D",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "All land animals",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mwBOHBd-VEcRps9LO",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "@One class: Mammals, Birds, etc.@",
+					"cost_adj": "-50%",
+					"calc": {
+						"resolved_notes": "Forest Animals"
+					}
+				},
+				{
+					"id": "mK_bQpCD925NWey-o",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "@One family: Felines, Parrots, etc.@",
+					"cost_adj": "-60%",
+					"disabled": true
+				},
+				{
+					"id": "mCbc8i7btAsY27ht5",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "@One species: House Cats, Macaws, etc.@",
+					"cost_adj": "-80%",
+					"disabled": true
+				}
+			],
+			"base_points": 5,
+			"calc": {
+				"points": 3
+			}
+		},
+		{
+			"id": "tHELPY6qofEp52TvQ",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "tGjjVtxav9KsrG7Wx"
+			},
+			"name": "Combat Reflexes",
+			"reference": "B43",
+			"local_notes": "Never freeze",
+			"tags": [
+				"Advantage",
+				"Mental"
+			],
+			"prereqs": {
+				"type": "prereq_list",
+				"all": true,
+				"prereqs": [
+					{
+						"type": "trait_prereq",
+						"has": false,
+						"name": {
+							"compare": "is",
+							"qualifier": "Enhanced Time Sense"
+						}
+					}
+				]
+			},
+			"base_points": 15,
+			"features": [
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "starts_with",
+						"qualifier": "fast-draw"
+					},
+					"amount": 1
+				},
+				{
+					"type": "attribute_bonus",
+					"attribute": "dodge",
+					"amount": 1
+				},
+				{
+					"type": "attribute_bonus",
+					"attribute": "parry",
+					"amount": 1
+				},
+				{
+					"type": "attribute_bonus",
+					"attribute": "block",
+					"amount": 1
+				},
+				{
+					"type": "attribute_bonus",
+					"attribute": "fright_check",
+					"amount": 2
+				},
+				{
+					"type": "conditional_modifier",
+					"situation": "on all IQ rolls to wake up or to recover from surprise or mental stun",
+					"amount": 6
+				},
+				{
+					"type": "conditional_modifier",
+					"situation": "to initiative rolls for your side (+2 if you are the leader)",
+					"amount": 1
+				}
+			],
+			"calc": {
+				"points": 15
+			}
+		},
+		{
+			"id": "tF9TC5PiHP64JCRdU",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "tBmSJ3pNE53c4IRUU"
+			},
+			"name": "Damage Resistance",
+			"reference": "B46,B47,P45,MA43,PSI14",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "MKzwTG7KRA0lnEY9l",
+					"name": "Special Enhancements",
+					"children": [
+						{
+							"id": "mrVLWyD1MKDWBRVai",
+							"name": "Absorption",
+							"reference": "B46",
+							"local_notes": "Enhances @Trait@",
+							"cost_adj": "80%",
+							"disabled": true
+						},
+						{
+							"id": "mPFdszd75bwg0avf9",
+							"name": "Absorption",
+							"reference": "B46",
+							"local_notes": "Healing only",
+							"cost_adj": "80%",
+							"disabled": true
+						},
+						{
+							"id": "mHq733Kc-wXMYVLPD",
+							"name": "Absorption",
+							"reference": "B46",
+							"local_notes": "Enhances any trait",
+							"cost_adj": "100%",
+							"disabled": true
+						},
+						{
+							"id": "mBz-h4DIN9nQiNoxQ",
+							"name": "Force Field",
+							"reference": "B47",
+							"cost_adj": "20%",
+							"disabled": true
+						},
+						{
+							"id": "mwngQfgvqE4yfh8rI",
+							"name": "Hardened",
+							"reference": "B47",
+							"local_notes": "Reduces armor divisor by @Hardened level@ step(s): \"ignores DR\"→100→10→5→3→2→\"no divisor\"",
+							"cost_adj": "20%",
+							"levels": 1,
+							"disabled": true
+						},
+						{
+							"id": "mrxvtT4eWAIUYGROe",
+							"name": "Laminate",
+							"reference": "RSWL18",
+							"cost_adj": "10%",
+							"disabled": true
+						},
+						{
+							"id": "mAXYUFrxwI5p0mNwM",
+							"name": "Malediction-Proof",
+							"reference": "PSI14",
+							"cost_adj": "50%",
+							"disabled": true
+						},
+						{
+							"id": "mHMk0PW-C-8JMU6i-",
+							"name": "Maledictions Only",
+							"reference": "PSI14",
+							"disabled": true
+						},
+						{
+							"id": "m8CKjhMGM7wUbTiar",
+							"name": "Reflection",
+							"reference": "B47",
+							"cost_adj": "100%",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"id": "M5Mjd5kkoOUubiJJG",
+					"name": "Special Limitations",
+					"children": [
+						{
+							"id": "muvLIYsQRCK0GofHh",
+							"name": "Ablative",
+							"reference": "B47",
+							"cost_adj": "-80%",
+							"disabled": true
+						},
+						{
+							"id": "mF1A8OIdZ81dQs-du",
+							"name": "Bane",
+							"reference": "H14",
+							"local_notes": "@Very Common@",
+							"cost_adj": "-15%",
+							"disabled": true
+						},
+						{
+							"id": "miE5xt_9hCMW_8daO",
+							"name": "Bane",
+							"reference": "H14",
+							"local_notes": "@Common@",
+							"cost_adj": "-10%",
+							"disabled": true
+						},
+						{
+							"id": "m1Nu19S6JF3Mkauto",
+							"name": "Bane",
+							"reference": "H14",
+							"local_notes": "@Occasional@",
+							"cost_adj": "-5%",
+							"disabled": true
+						},
+						{
+							"id": "mlbP4kuUwyRrrN7gf",
+							"name": "Bane",
+							"reference": "H14",
+							"local_notes": "@Rare@",
+							"cost_adj": "-1",
+							"disabled": true
+						},
+						{
+							"id": "m9FNfiiiIT2SH5lhT",
+							"name": "Can't wear armor",
+							"reference": "B47",
+							"cost_adj": "-40%",
+							"disabled": true
+						},
+						{
+							"id": "mF4ZMFuewHLqSOuzB",
+							"name": "Directional",
+							"reference": "B47",
+							"local_notes": "Front",
+							"cost_adj": "-20%",
+							"disabled": true
+						},
+						{
+							"id": "mViL8GMITvg3AA_Fw",
+							"name": "Directional",
+							"reference": "B47",
+							"local_notes": "@Direction: Back, Right, Left, Top or Underside@",
+							"cost_adj": "-40%",
+							"disabled": true
+						},
+						{
+							"id": "mG-vHsOvJtfylo2Sz",
+							"name": "Flexible",
+							"reference": "B47",
+							"cost_adj": "-20%",
+							"disabled": true
+						},
+						{
+							"id": "mcrKrH-IF6rz3CKBt",
+							"name": "Limited",
+							"reference": "B46",
+							"local_notes": "@Very Common Attack Form@",
+							"cost_adj": "-20%",
+							"disabled": true
+						},
+						{
+							"id": "m4imbaKKRpiyFtW5O",
+							"name": "Limited",
+							"reference": "B46",
+							"local_notes": "@Common Attack Form@",
+							"cost_adj": "-40%",
+							"disabled": true
+						},
+						{
+							"id": "mbQBHvNkgFNUHW6AJ",
+							"name": "Limited",
+							"reference": "B46",
+							"local_notes": "@Occasional Attack Form@",
+							"cost_adj": "-60%",
+							"disabled": true
+						},
+						{
+							"id": "mdQ_0Fy0cTL_0oW9T",
+							"name": "Limited",
+							"reference": "B46",
+							"local_notes": "@Rare Attack Form@",
+							"cost_adj": "-80%",
+							"disabled": true
+						},
+						{
+							"id": "mGt8lFGbpY2PQfMfa",
+							"name": "Partial (@Location, 1 level per -1 Per Hit Modifier, Torso is -10% thus level 1@)",
+							"reference": "B47",
+							"cost_adj": "-10%",
+							"disabled": true
+						},
+						{
+							"id": "mke5aiyaiPy1pSNd8",
+							"name": "Semi-Ablative",
+							"reference": "B47",
+							"cost_adj": "-20%"
+						},
+						{
+							"id": "mFAKYW8T0lniuWcvJ",
+							"name": "Tough Skin",
+							"reference": "B47",
+							"local_notes": "Effects that just require skin contact or a scratch ignore this DR",
+							"cost_adj": "-40%",
+							"disabled": true
+						}
+					]
+				}
+			],
+			"points_per_level": 5,
+			"features": [
+				{
+					"type": "dr_bonus",
+					"locations": [
+						"all"
+					],
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "dr_bonus",
+					"locations": [
+						"eye"
+					],
+					"amount": -1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 8,
+			"calc": {
+				"points": 32,
+				"current_level": 8
+			}
+		},
+		{
+			"id": "t6n-DZJkjf5Gpuiu9",
+			"name": "Dependency (Forests)",
+			"reference": "B130",
+			"tags": [
+				"Disadvantage",
+				"Exotic",
+				"Physical"
+			],
+			"replacements": {
+				"Substance": "Forests or Natural Environments"
+			},
+			"modifiers": [
+				{
+					"id": "mxAAd1u3WJJ9SR5EZ",
+					"name": "Rarity: Rare",
+					"reference": "B130",
+					"cost_adj": "-30",
+					"disabled": true
+				},
+				{
+					"id": "m3JogvZe_tnm_R43e",
+					"name": "Rarity: Occasional",
+					"reference": "B130",
+					"cost_adj": "-20",
+					"disabled": true
+				},
+				{
+					"id": "mUat-Wu_Lztx4weW4",
+					"name": "Rarity: Common",
+					"reference": "B130",
+					"cost_adj": "-10",
+					"disabled": true
+				},
+				{
+					"id": "mKFa9scgOsHJYf7ZS",
+					"name": "Rarity: Very Common",
+					"reference": "B130",
+					"cost_adj": "-5"
+				},
+				{
+					"id": "mwdR1_E75SBjD6Lik",
+					"name": "Illegal",
+					"reference": "B130",
+					"cost_adj": "-5",
+					"disabled": true
+				},
+				{
+					"id": "mcpKayADmZRW7hwaF",
+					"name": "Frequency: Constantly",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per minute without it",
+					"cost_adj": "x5",
+					"disabled": true
+				},
+				{
+					"id": "mz8lvgCf-cNqZ0u3y",
+					"name": "Frequency: Hourly",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per 10 minutes after missing a hourly dose",
+					"cost_adj": "x4"
+				},
+				{
+					"id": "mrkl3NDPGX-hnCa5A",
+					"name": "Frequency: Daily",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per hour after missing a daily dose",
+					"cost_adj": "x3",
+					"disabled": true
+				},
+				{
+					"id": "mckwbnIbbJA5W9YsH",
+					"name": "Frequency: Weekly",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per six hours after missing a weekly dose",
+					"cost_adj": "x2",
+					"disabled": true
+				},
+				{
+					"id": "mbNFZfRmsacFiglck",
+					"name": "Frequency: Monthly",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per day after missing a monthly dose",
+					"cost_adj": "x1",
+					"disabled": true
+				},
+				{
+					"id": "mJiSrQ1u2Vz0qzIYm",
+					"name": "Frequency: Seasonally",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per 3 days after missing a seasonal dose",
+					"cost_adj": "x0.3333",
+					"disabled": true
+				},
+				{
+					"id": "mZIYUi8nBknjc6Wzl",
+					"name": "Frequency: Yearly",
+					"reference": "B130",
+					"local_notes": "Lose 1 HP per 2 weeks after missing a yearly dose",
+					"cost_adj": "x0.1",
+					"disabled": true
+				},
+				{
+					"id": "mJ8yELFoH0IEcx0Sw",
+					"name": "Aging",
+					"reference": "B130",
+					"local_notes": "Age 2 years for each HP lost due to this dependency",
+					"cost_adj": "30%",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": -20
+			}
+		},
+		{
+			"id": "tLPuozDElQfnR5rc6",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "t4TqvzUkGTe4ipCZE"
+			},
+			"name": "Injury Tolerance",
+			"reference": "B60,P52,MA45",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "mCFI_eulImPLhPJYK",
+					"name": "Diffuse",
+					"reference": "B60",
+					"local_notes": "Immune to crippling injuries. Brain, Vitals and Groin cannot be targeted. Most foes cannot slam or grapple you (GM's decision). Do not bleed. Unaffected by blood-borne toxins. Immune to attacks that rely on cutting off blood to part of your body. Impaling and piercing attacks of any size never do more than 1 HP of injury, regardless of penetrating damage. Other attacks never do more than 2 HP of injury. Exception: Area-effect, cone, and explosion attacks cause normal injury",
+					"cost_adj": "100",
+					"disabled": true
+				},
+				{
+					"id": "mdembFvNO7eQQgaEZ",
+					"name": "Homogenous",
+					"reference": "B60",
+					"local_notes": "Altered wound modifiers: imp \u0026 pi++ are x1/2, pi+ is x1/3, pi is x1/5, pi- is x1/10",
+					"cost_adj": "40",
+					"disabled": true
+				},
+				{
+					"id": "mBiEvDdnC5V2rHwzV",
+					"name": "No Blood",
+					"reference": "B61",
+					"local_notes": "Do not bleed, unaffected by blood-borne toxins, immune to attacks that rely on cutting off blood to part of your body",
+					"cost_adj": "5"
+				},
+				{
+					"id": "mg_CBFVG5ogHwDLl4",
+					"name": "No Brain",
+					"reference": "B61",
+					"local_notes": "Brain cannot be targeted. Blows to the skull or eye are treated like blows to the face, except that eye injury can still cripple the eye",
+					"cost_adj": "5",
+					"disabled": true
+				},
+				{
+					"id": "mBWl_-KyNT_MkXTyB",
+					"name": "No Eyes",
+					"reference": "B61",
+					"local_notes": "Eyes may not be targeted. Immune to blinding attacks",
+					"cost_adj": "5",
+					"disabled": true
+				},
+				{
+					"id": "mr2kHIA_J2rFugTQf",
+					"name": "No Head",
+					"reference": "B61",
+					"local_notes": "Skull, Brain and Face cannot be targeted",
+					"cost_adj": "7",
+					"disabled": true
+				},
+				{
+					"id": "mW614xxv9BeF_bclk",
+					"name": "No Neck",
+					"reference": "B61",
+					"local_notes": "Neck may not be targeted and cannot be decapitated, choked or strangled",
+					"cost_adj": "5",
+					"disabled": true
+				},
+				{
+					"id": "mEvmA7-y0r3CxHk0Q",
+					"name": "No Vitals",
+					"reference": "B61",
+					"local_notes": "Attacks to the Vitals or Groin are treated as attacks to the Torso",
+					"cost_adj": "5"
+				},
+				{
+					"id": "moOVYgt7xYgA12zqa",
+					"name": "Unliving",
+					"reference": "B61",
+					"local_notes": "Altered wound modifiers: imp \u0026 pi++ are x1, pi+ is x1/2, pi is x1/3, pi- is x1/5",
+					"cost_adj": "20"
+				}
+			],
+			"calc": {
+				"points": 30
+			}
+		},
+		{
+			"id": "tu_7hA2-b4ElszuKN",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "tk0ZKpvgqpE35AZcM"
+			},
+			"name": "Night Vision",
+			"reference": "B71,P87",
+			"tags": [
+				"Advantage",
+				"Physical"
+			],
+			"points_per_level": 1,
+			"can_level": true,
+			"levels": 9,
+			"calc": {
+				"points": 9,
+				"current_level": 9
+			}
+		},
+		{
+			"id": "tGOhiM7U_1xAU9D7V",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "txsH3nErsYg29kxhp"
+			},
+			"name": "Plant Empathy",
+			"reference": "B75,P48",
+			"tags": [
+				"Advantage",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "mWadzhown3LXH0xcb",
+					"name": "Remote",
+					"reference": "P48",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "mrDIqBpoO3AR74Na_",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "All terrestrial plants",
+					"cost_adj": "-40%"
+				},
+				{
+					"id": "mxR9Q4wKrUHD3aU1J",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "All aquatic plants",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "m0hU5YZbEb6liOIVw",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "@Large Subset: Herbs, Trees@",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mFI0Pjcn7QmeH3dUf",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "@Small Subset: Evergreens, Medicinals@",
+					"cost_adj": "-60%",
+					"disabled": true
+				}
+			],
+			"base_points": 5,
+			"calc": {
+				"points": 3
+			}
+		},
+		{
+			"id": "t00fA8I5cG6cjdCvM",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "thR91RlonCb2vGKR4"
+			},
+			"name": "Speak With Animals",
+			"reference": "B87,P77",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Mental"
+			],
+			"replacements": {
+				"One class: Mammals, Birds, etc.": "Forest Animals"
+			},
+			"modifiers": [
+				{
+					"id": "mfDZft4qXygm4BS-2",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "All aquatic animals",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mROgDfhlQvtqelSmn",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "All land animals",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mZioTTj6elq6b36uc",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "@One class: Mammals, Birds, etc.@",
+					"cost_adj": "-50%",
+					"calc": {
+						"resolved_notes": "Forest Animals"
+					}
+				},
+				{
+					"id": "mUa68oAXAcC6YvHOP",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "@One family: Felines, Parrots, etc.@",
+					"cost_adj": "-60%",
+					"disabled": true
+				},
+				{
+					"id": "mXoUUfzpQ_Og88p_o",
+					"name": "Specialized",
+					"reference": "B87",
+					"local_notes": "@One species: House Cats, Macaws, etc.@",
+					"cost_adj": "-80%",
+					"disabled": true
+				},
+				{
+					"id": "m5oOk_YF0w2zH-bUQ",
+					"name": "Sapience",
+					"reference": "P77",
+					"cost_adj": "40%",
+					"disabled": true
+				},
+				{
+					"id": "mcmfGgDSQXJlGDYwW",
+					"name": "Universal",
+					"reference": "P77",
+					"cost_adj": "20%",
+					"disabled": true
+				}
+			],
+			"base_points": 25,
+			"calc": {
+				"points": 13
+			}
+		},
+		{
+			"id": "tg6hbEiPtIImpPBZd",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "tRN88FOkObK_Vd2nq"
+			},
+			"name": "Speak With Plants",
+			"reference": "B87,P77",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "mFw-e6CiraDNt_m-R",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "All terrestrial plants",
+					"cost_adj": "-40%"
+				},
+				{
+					"id": "m4mFnCT0PE5uvZpbF",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "All aquatic plants",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "m72nlTMRoYpGGDkfB",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "@Large Subset: Herbs, Trees@",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mMN7HVRDw0ZStRWNl",
+					"name": "Specialized",
+					"reference": "P77",
+					"local_notes": "@Small Subset: Evergreens, Medicinals@",
+					"cost_adj": "-60%",
+					"disabled": true
+				},
+				{
+					"id": "m8mP7qjKL6UFrzsm-",
+					"name": "Sapience",
+					"reference": "P77",
+					"cost_adj": "40%",
+					"disabled": true
+				}
+			],
+			"base_points": 15,
+			"calc": {
+				"points": 9
+			}
+		},
+		{
+			"id": "tB37QuQZg3Xhh-2GP",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "tgZ_USe8H3_wWhOHm"
+			},
+			"name": "Vulnerability",
+			"reference": "B161",
+			"tags": [
+				"Disadvantage",
+				"Exotic",
+				"Physical"
+			],
+			"replacements": {
+				"Very common attack": "Fire"
+			},
+			"modifiers": [
+				{
+					"id": "m1y9hWTz0nUoXLP2U",
+					"name": "@Rare attack@",
+					"reference": "B161",
+					"cost_adj": "-5",
+					"disabled": true
+				},
+				{
+					"id": "mCH9dVse5DRn6kBU8",
+					"name": "@Occasional attack@",
+					"reference": "B161",
+					"cost_adj": "-10",
+					"disabled": true
+				},
+				{
+					"id": "mNTYAG2v0k85-wthD",
+					"name": "@Common attack@",
+					"reference": "B161",
+					"cost_adj": "-15",
+					"disabled": true
+				},
+				{
+					"id": "mMHSUnC38O4QYblP4",
+					"name": "@Very common attack@",
+					"reference": "B161",
+					"cost_adj": "-20"
+				},
+				{
+					"id": "mAfVpGneoQS6qwMeM",
+					"name": "Wounding x2",
+					"reference": "B161",
+					"cost_adj": "x2"
+				},
+				{
+					"id": "mHdpJQsU7cUMdvPbA",
+					"name": "Wounding x3",
+					"reference": "B161",
+					"cost_adj": "x3",
+					"disabled": true
+				},
+				{
+					"id": "m-M3t3InQN-rzgdv8",
+					"name": "Wounding x4",
+					"reference": "B161",
+					"cost_adj": "x4",
+					"disabled": true
+				},
+				{
+					"id": "me8QupUNbwyfDpMQ4",
+					"name": "Fatigue Only",
+					"reference": "B161",
+					"cost_adj": "-50%",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": -40
+			}
+		},
+		{
+			"id": "TWVDId_GOcG_y9Uaf",
+			"name": "Meta-Trait: Plant Spirit",
+			"reference": "B263",
+			"container_type": "meta_trait",
+			"children": [
+				{
+					"id": "taSFBlRnmJ9f4unjF",
+					"name": "Doesn't Breathe",
+					"reference": "B49",
+					"tags": [
+						"Advantage",
+						"Exotic",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mDiz3-_tTUXc9HejC",
+							"name": "Gills",
+							"reference": "B49",
+							"cost_adj": "-50%",
+							"disabled": true
+						},
+						{
+							"id": "mXRzWywLHcPW01Lm3",
+							"name": "Gills",
+							"reference": "B49",
+							"local_notes": "Suffocates in air",
+							"cost_adj": "-20",
+							"disabled": true
+						},
+						{
+							"id": "mRuCLLn1dnsZMfZMN",
+							"name": "Oxygen Absorption",
+							"reference": "B49",
+							"cost_adj": "-25%",
+							"disabled": true
+						},
+						{
+							"id": "mv8QlBMdn1GI5Ezkj",
+							"name": "Oxygen Storage",
+							"reference": "B49",
+							"local_notes": "Can hold breath 25 times as long as normal",
+							"cost_adj": "-50%",
+							"disabled": true
+						},
+						{
+							"id": "mDpbZTI1wsEJcKt4r",
+							"name": "Oxygen Storage",
+							"reference": "B49",
+							"local_notes": "Can hold breath 50 times as long as normal",
+							"cost_adj": "-40%",
+							"disabled": true
+						},
+						{
+							"id": "mouvYgl9aS7M9IPah",
+							"name": "Oxygen Storage",
+							"reference": "B49",
+							"local_notes": "Can hold breath 100 times as long as normal",
+							"cost_adj": "-30%",
+							"disabled": true
+						},
+						{
+							"id": "muaT_ZwXFTaETzBMZ",
+							"name": "Oxygen Storage",
+							"reference": "B49",
+							"local_notes": "Can hold breath 200 times as long as normal",
+							"cost_adj": "-20%",
+							"disabled": true
+						},
+						{
+							"id": "m09X02c_Bc4YB6omx",
+							"name": "Oxygen Storage",
+							"reference": "B49",
+							"local_notes": "Can hold breath 300 times as long as normal",
+							"cost_adj": "-10%",
+							"disabled": true
+						},
+						{
+							"id": "mWJkEaurpW4wbToUc",
+							"name": "Oxygen Combustion",
+							"reference": "B49",
+							"cost_adj": "-50%",
+							"disabled": true
+						}
+					],
+					"base_points": 20,
+					"calc": {
+						"points": 20
+					}
+				},
+				{
+					"id": "tdSXYcOqvkDYU6kBR",
+					"name": "Doesn't Eat or Drink",
+					"reference": "B50",
+					"tags": [
+						"Advantage",
+						"Exotic",
+						"Physical"
+					],
+					"base_points": 10,
+					"calc": {
+						"points": 10
+					}
+				},
+				{
+					"id": "tl7GFGYCaI2SvZ1TD",
+					"name": "Doesn't Sleep",
+					"reference": "B50",
+					"tags": [
+						"Advantage",
+						"Exotic",
+						"Physical"
+					],
+					"base_points": 20,
+					"calc": {
+						"points": 20
+					}
+				},
+				{
+					"id": "tMtAZO9fuU2Y5jw1w",
+					"name": "Unaging",
+					"reference": "B95",
+					"tags": [
+						"Advantage",
+						"Exotic",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mHNltOYlVj8_nU09O",
+							"name": "Age Control",
+							"reference": "B95",
+							"cost_adj": "20%",
+							"disabled": true
+						},
+						{
+							"id": "m0vEbqF3_jraiRtmq",
+							"name": "IQ Only",
+							"reference": "RSWL24",
+							"cost_adj": "-75%",
+							"disabled": true
+						},
+						{
+							"id": "mwetH_euA_ydsklq9",
+							"name": "Halt Aging, Weekly",
+							"reference": "PSI18",
+							"cost_adj": "80%",
+							"disabled": true
+						},
+						{
+							"id": "mkHDlGYDqWz03XGI-",
+							"name": "Halt Aging, Monthly",
+							"reference": "PSI18",
+							"cost_adj": "100%",
+							"disabled": true
+						},
+						{
+							"id": "mfor4rE32XsCWl3Uz",
+							"name": "Halt Aging, Yearly",
+							"reference": "PSI18",
+							"cost_adj": "130%",
+							"disabled": true
+						},
+						{
+							"id": "mO9jeshpSj5K4dd-s",
+							"name": "Life Extension",
+							"reference": "PSI18",
+							"cost_adj": "-30%",
+							"disabled": true
+						}
+					],
+					"base_points": 15,
+					"calc": {
+						"points": 15
+					}
+				}
+			],
+			"calc": {
+				"points": 65
+			}
+		},
+		{
+			"id": "T1HRe3zjWVu7F9i3G",
+			"name": "Meta-Trait: Wild Spirit",
+			"reference": "B263",
+			"container_type": "meta_trait",
+			"children": [
+				{
+					"id": "tWAq7wgRjSsKMQX8F",
+					"name": "Bestial",
+					"reference": "B124",
+					"tags": [
+						"Disadvantage",
+						"Exotic",
+						"Mental"
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "t0HJtbMLunyYxjeW-",
+					"name": "Cannot Speak",
+					"reference": "B125",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": false,
+								"name": {
+									"compare": "is",
+									"qualifier": "stuttering"
+								}
+							}
+						]
+					},
+					"base_points": -15,
+					"calc": {
+						"points": -15
+					}
+				},
+				{
+					"id": "tHwAOGtpCdiCv6P_4",
+					"name": "Hidebound",
+					"reference": "B138",
+					"local_notes": "-2 penalty on any task that requires creativity or invention, including most rolls against Artist skill, all Engineer rolls for new inventions, and all skill rolls made to use the Gadgeteer advantage.",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				}
+			],
+			"calc": {
+				"points": -30
+			}
+		}
+	],
+	"skills": [
+		{
+			"id": "sV0Y_Bx7wAthKM8gL",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "shtDdl5thrvKSnJHf"
+			},
+			"name": "Brawling",
+			"reference": "B182,MA55",
+			"tags": [
+				"Combat",
+				"Melee Combat",
+				"Weapon"
+			],
+			"difficulty": "dx/e",
+			"features": [
+				{
+					"type": "weapon_bonus",
+					"selection_type": "weapons_with_required_skill",
+					"name": {
+						"compare": "is",
+						"qualifier": "Brawling"
+					},
+					"level": {
+						"compare": "at_least",
+						"qualifier": 2
+					},
+					"amount": 1,
+					"per_die": true
+				}
+			],
+			"points": 12,
+			"calc": {
+				"level": 18,
+				"rsl": "DX+4"
+			}
+		},
+		{
+			"id": "sLZfwQcGQ8iz2lXT8",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "sJvwPKtI422-KNEiv"
+			},
+			"name": "Innate Attack",
+			"reference": "B201",
+			"tags": [
+				"Combat",
+				"Ranged Combat",
+				"Weapon"
+			],
+			"specialization": "Projectile",
+			"difficulty": "dx/e",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Innate Attack",
+					"modifier": -2
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -4,
+				"level": 10,
+				"adjusted_level": 10,
+				"points": -10
+			},
+			"calc": {
+				"level": 16,
+				"rsl": "DX+2"
+			}
+		},
+		{
+			"id": "s0NhbMis4ZcmNCDg3",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "svEm7OyeCu_9wJ8Kk"
+			},
+			"name": "Stealth",
+			"reference": "B222",
+			"tags": [
+				"Criminal",
+				"Police",
+				"Spy",
+				"Street"
+			],
+			"difficulty": "dx/a",
+			"encumbrance_penalty_multiplier": 1,
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "dx",
+					"modifier": -5
+				}
+			],
+			"points": 16,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -5,
+				"level": 9,
+				"adjusted_level": 9,
+				"points": -9
+			},
+			"calc": {
+				"level": 18,
+				"rsl": "DX+4"
+			}
+		}
+	],
+	"notes": [
+		{
+			"id": "n_vtoeq9hnnuPkkI4",
+			"markdown": "Spriggans are malevolent nature spirits appearing as glowing, green humanoid females made mostly of wood. They can restore themselves to full health easily, and can call various animals to aid them in battle, even normally non-hostile creatures such as foxes and deer. Spriggans also have the ability to summon swarms of insects to attack. They are weak to fire. Spriggans can be an unwanted surprise in seemingly peaceful caves, as they blend in with the foliage using an invisibility spell, then attack when you pass them. Some even seem to inhabit the trunks of trees, stepping from within them when someone comes too close."
+		},
+		{
+			"id": "nHpROToKZpccAYMec",
+			"markdown": "Grand Soul"
+		}
+	],
+	"created_date": "2023-11-26T21:44:08-05:00",
+	"modified_date": "2025-11-17T19:42:25Z",
+	"calc": {
+		"swing": "4d",
+		"thrust": "2d",
+		"basic_lift": "97 lb",
+		"dodge_bonus": 1,
+		"parry_bonus": 1,
+		"block_bonus": 1,
+		"move": [
+			7,
+			5,
+			4,
+			2,
+			1
+		],
+		"dodge": [
+			11,
+			10,
+			9,
+			8,
+			7
+		]
+	}
+}
