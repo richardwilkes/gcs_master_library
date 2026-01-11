@@ -1,0 +1,2562 @@
+{
+	"version": 5,
+	"id": "AFtvjw1Zs3XaUBHdE",
+	"total_points": 291,
+	"points_record": [
+		{
+			"when": "2023-11-26T21:44:08-05:00",
+			"points": 291,
+			"reason": "Initial points"
+		}
+	],
+	"profile": {
+		"name": "Goblin Shaman",
+		"height": "4'6\"",
+		"weight": "110 lb",
+		"tech_level": "2"
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions conditional_modifiers",
+			"melee",
+			"ranged",
+			"traits skills",
+			"equipment",
+			"other_equipment",
+			"notes",
+			"spells"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"base": "($dx + $ht) / 4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"base": "Math.floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"value": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. Will to do anything besides talk or rest; failure causes unconsciousness\nEach FP you lose below 0 also causes 1 HP of injury\nMove, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"value": "Math.ceil($fp / 3) - 1",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"value": "$fp - 1"
+					},
+					{
+						"state": "Rested",
+						"value": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"value": "Math.round(-$hp * 5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"value": "Math.round(-$hp * 4)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-4 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"value": "Math.round(-$hp * 3)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-3 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"value": "Math.round(-$hp * 2)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-2 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"value": "-$hp",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-1 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. HT every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"value": "Math.ceil($hp / 3) - 1",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"value": "$hp - 1"
+					},
+					{
+						"state": "Healthy",
+						"value": "$hp"
+					}
+				]
+			},
+			{
+				"id": "mp",
+				"type": "pool",
+				"name": "MP",
+				"full_name": "Magicka Points",
+				"base": "$iq",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "",
+						"value": "0"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Humanoid",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 4
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Right Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "6-7",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Right Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "8",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 2,
+					"calc": {
+						"roll_range": "9-10",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "11",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Left Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Left Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "hand",
+					"choice_name": "Hand",
+					"table_name": "Hand",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "If holding a shield, double the penalty to hit: -8 for\nshield hand instead of -4. Reduce the wounding multiplier of\nlarge piercing (pi+), huge piercing (pi++), and impaling\n(imp) damage to x1. Any major wound (loss of over ⅓ HP\nfrom one blow) cripples the extremity. Damage beyond that\nthreshold is lost.",
+					"calc": {
+						"roll_range": "15",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "16",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 2,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 2
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 2,
+			"calc": {
+				"value": 12,
+				"points": 40
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": 2,
+			"calc": {
+				"value": 12,
+				"points": 40
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 2,
+			"calc": {
+				"value": 12,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 1,
+			"calc": {
+				"value": 13,
+				"points": 5
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 1,
+			"calc": {
+				"value": 13,
+				"points": 5
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": 0.5,
+			"calc": {
+				"value": 6.5,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 1,
+			"calc": {
+				"value": 7,
+				"points": 5
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 12,
+				"current": 12,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"current": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "mp",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"current": 14,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "TXfvIIIR4C4GKiKYV",
+			"name": "Goblin",
+			"ancestry": "Human",
+			"container_type": "ancestry",
+			"children": [
+				{
+					"id": "tLJu0ONBY_EZVK4Kx",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Basic Set/Basic Set Traits.adq",
+						"id": "tdlCZw4YB4T7QkOnj"
+					},
+					"name": "Appearance",
+					"reference": "B21",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mfJTelyoQULUofdS2",
+							"name": "Attractive",
+							"reference": "B21",
+							"cost_adj": "4",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 1
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mRb6qKZ-JZgSRDH1r",
+							"name": "Average",
+							"reference": "B21",
+							"disabled": true
+						},
+						{
+							"id": "mHQx7fmwF0ePf6wZ9",
+							"name": "Beautiful",
+							"reference": "B21",
+							"cost_adj": "12",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from those attracted to members of your sex, +2 from everyone else",
+									"amount": 4
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mN1Rbr9B8dhF_CDBA",
+							"name": "Beautiful (Androgynous)",
+							"reference": "B21",
+							"cost_adj": "12",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 3
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mk7tDVwwo_d9x6HPB",
+							"name": "Beautiful (Impressive)",
+							"reference": "B21",
+							"cost_adj": "12",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 3
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mxvpyzK1-i3rOCssK",
+							"name": "Handsome",
+							"reference": "B21",
+							"cost_adj": "12",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from those attracted to members of your sex, +2 from everyone else",
+									"amount": 4
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "m-1WLLNLLjpZ86CcI",
+							"name": "Handsome (Androgynous)",
+							"reference": "B21",
+							"cost_adj": "12",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 3
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mnBqw5frcGtrRWKJH",
+							"name": "Handsome (Impressive)",
+							"reference": "B21",
+							"cost_adj": "12",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 3
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mri5JVwrG5RmGwT3Z",
+							"name": "Hideous",
+							"reference": "B21,B202",
+							"cost_adj": "-16",
+							"features": [
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "Intimidation"
+									},
+									"amount": 2
+								},
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": -4
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mWvkXXE5iUIVD3dz0",
+							"name": "Horrific",
+							"reference": "B21,B202",
+							"cost_adj": "-24",
+							"features": [
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "Intimidation"
+									},
+									"amount": 4
+								},
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": -6
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "me_yWdHxlLN2pM7Z0",
+							"name": "Impressive",
+							"reference": "B21",
+							"disabled": true
+						},
+						{
+							"id": "ml2JTBwlg3dqNuHGA",
+							"name": "Monstrous",
+							"reference": "B21,B202",
+							"cost_adj": "-20",
+							"features": [
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "Intimidation"
+									},
+									"amount": 3
+								},
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": -5
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mpCQKcFsXebaYQsQj",
+							"name": "Off-the-Shelf Looks",
+							"reference": "B21",
+							"local_notes": "Halves the usual reaction bonus - adjust manually",
+							"cost_adj": "-50%",
+							"disabled": true
+						},
+						{
+							"id": "mE_vzhvhS35R7j7QA",
+							"name": "Transcendent",
+							"reference": "B21",
+							"cost_adj": "20",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from those attracted to members of your sex, +2 from everyone else. Exception: Members of the same sex with reason to dislike you (more than -4 in reaction penalties regardless of bonuses) resent your good looks and react at -2 instead.",
+									"amount": 8
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mjJJ-r2B42_umscpQ",
+							"name": "Transcendent (Androgynous)",
+							"reference": "B21",
+							"cost_adj": "20",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 5
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mXFWEVnGxVZkXZ3nC",
+							"name": "Transcendent (Impressive)",
+							"reference": "B21",
+							"cost_adj": "20",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 5
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mvEgTtvYb8J1WRUA_",
+							"name": "Ugly",
+							"reference": "B21",
+							"cost_adj": "-8",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": -2
+								}
+							]
+						},
+						{
+							"id": "mT48XTgg4F6QfLf4h",
+							"name": "Unattractive",
+							"reference": "B21",
+							"cost_adj": "-4",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": -1
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "m_AEYmwnnH6FU31lD",
+							"name": "Universal",
+							"reference": "B21",
+							"cost_adj": "25%",
+							"disabled": true
+						},
+						{
+							"id": "m1aOHJLQ_shjPZFt-",
+							"name": "Very Beautiful",
+							"reference": "B21",
+							"cost_adj": "16",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from those attracted to members of your sex, +2 from everyone else. Exception: Members of the same sex with reason to dislike you (more than -4 in reaction penalties regardless of bonuses) resent your good looks and react at -2 instead.",
+									"amount": 6
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mXCYx-ovY5rQlS0PL",
+							"name": "Very Beautiful (Androgynous)",
+							"reference": "B21",
+							"cost_adj": "16",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 4
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mckixHPmj2Jdm4ZfD",
+							"name": "Very Beautiful (Impressive)",
+							"reference": "B21",
+							"cost_adj": "16",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 4
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mzz6yBvdFUO7AGSTt",
+							"name": "Very Handsome",
+							"reference": "B21",
+							"cost_adj": "16",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from those attracted to members of your sex, +2 from everyone else. Exception: Members of the same sex with reason to dislike you (more than -4 in reaction penalties regardless of bonuses) resent your good looks and react at -2 instead.",
+									"amount": 6
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mpdshPhJwpBjbCSu4",
+							"name": "Very Handsome (Androgynous)",
+							"reference": "B21",
+							"cost_adj": "16",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 4
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mCFN8Q0dyC17sAajX",
+							"name": "Very Handsome (Impressive)",
+							"reference": "B21",
+							"cost_adj": "16",
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from others",
+									"amount": 4
+								}
+							],
+							"disabled": true
+						}
+					],
+					"calc": {
+						"points": -8
+					}
+				},
+				{
+					"id": "to0_DFRs9kH9fJYUh",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Basic Set/Basic Set Traits.adq",
+						"id": "tk0ZKpvgqpE35AZcM"
+					},
+					"name": "Night Vision",
+					"reference": "B71,P87",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"points_per_level": 1,
+					"can_level": true,
+					"levels": 6,
+					"calc": {
+						"points": 6,
+						"current_level": 6
+					}
+				},
+				{
+					"id": "tmCYrtYPWhcK_U_yq",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Basic Set/Basic Set Traits.adq",
+						"id": "trMfToThYl9fEmPdt"
+					},
+					"name": "Rapid Healing",
+					"reference": "B79",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "attribute_prereq",
+								"has": true,
+								"qualifier": {
+									"compare": "at_least",
+									"qualifier": 10
+								},
+								"which": "ht"
+							}
+						]
+					},
+					"base_points": 5,
+					"features": [
+						{
+							"type": "conditional_modifier",
+							"situation": "to your effective HT whenever you roll to recover lost HP or to see if you can get over a crippling injury",
+							"amount": 5
+						}
+					],
+					"calc": {
+						"points": 5
+					}
+				},
+				{
+					"id": "tvLr4kJLYiw7ndOp7",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Basic Set/Basic Set Traits.adq",
+						"id": "tJTfFdHM7YI5IZR7I"
+					},
+					"name": "Resistant",
+					"reference": "B81,P71,MA47",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"replacements": {
+						"Common: Poison, Sickness, etc.": "Poison",
+						"Occasional: Disease, Ingested Poison, etc.": "Disease"
+					},
+					"modifiers": [
+						{
+							"id": "mcxETZDDdKeKVexR0",
+							"name": "@Very Common: Metabolic Hazards, etc.@",
+							"reference": "B80",
+							"cost_adj": "30",
+							"disabled": true
+						},
+						{
+							"id": "mwQS6gm6LmVUgzMlX",
+							"name": "@Common: Poison, Sickness, etc.@",
+							"reference": "B81",
+							"cost_adj": "15"
+						},
+						{
+							"id": "mw4A-74Hg_6Vk9ZfJ",
+							"name": "@Occasional: Disease, Ingested Poison, etc.@",
+							"reference": "B81",
+							"cost_adj": "10"
+						},
+						{
+							"id": "m-W_ou0nZDM6H4bdt",
+							"name": "@Rare: Acceleration, Altitude Sickness, Bends, Seasickness, Space Sickness, Nanomachines, etc.@",
+							"reference": "B81",
+							"cost_adj": "5",
+							"disabled": true
+						},
+						{
+							"id": "mSl9yKA9-y4XVKHky",
+							"name": "Immunity",
+							"reference": "B81",
+							"cost_adj": "x1",
+							"disabled": true
+						},
+						{
+							"id": "m2oZ_72k_YECmvSiM",
+							"name": "+8 to all HT rolls to resist",
+							"reference": "B81",
+							"cost_adj": "x0.5",
+							"disabled": true
+						},
+						{
+							"id": "mns2oH3DUK-iDTUyl",
+							"name": "+3 to all HT rolls to resist",
+							"reference": "B81",
+							"cost_adj": "x0.33"
+						}
+					],
+					"round_down": true,
+					"calc": {
+						"points": 8
+					}
+				},
+				{
+					"id": "tX4hwOO0d9O9kz4gJ",
+					"name": "Social Stigma (@Stigma@)",
+					"reference": "B155",
+					"tags": [
+						"Disadvantage",
+						"Social"
+					],
+					"replacements": {
+						"Stigma": "Savage"
+					},
+					"modifiers": [
+						{
+							"id": "mKB3A2pntz9xnUkYH",
+							"name": "Obvious from your appearance, dress or manner",
+							"use_level_from_trait": true,
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from anyone who sees you",
+									"amount": -1,
+									"per_level": true
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mb2f_gM4AtPjl58Lt",
+							"name": "Obvious from your speech",
+							"use_level_from_trait": true,
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from anyone who hears you speak",
+									"amount": -1,
+									"per_level": true
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "me132jSl7e4yWg2x7",
+							"name": "Easily learned by anyone who cares to check up on you",
+							"use_level_from_trait": true,
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from anyone who cares to check up on you",
+									"amount": -1,
+									"per_level": true
+								}
+							],
+							"disabled": true
+						},
+						{
+							"id": "mF39dvb8WVfSUs3om",
+							"name": "Public Denouncement",
+							"use_level_from_trait": true,
+							"features": [
+								{
+									"type": "reaction_bonus",
+									"situation": "from everryone you meet",
+									"amount": -1,
+									"per_level": true
+								}
+							],
+							"disabled": true
+						}
+					],
+					"base_points": -10,
+					"features": [
+						{
+							"type": "conditional_modifier",
+							"situation": "to all skill rolls when dealing with civilized folk",
+							"amount": -4
+						},
+						{
+							"type": "reaction_bonus",
+							"situation": "from civilized folk",
+							"amount": -2
+						}
+					],
+					"calc": {
+						"points": -10
+					}
+				}
+			],
+			"calc": {
+				"points": 1
+			}
+		},
+		{
+			"id": "tnfkhldE3IRC1T6Ra",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Traits.adq",
+				"id": "t9tUqih50BK8ilsvJ"
+			},
+			"name": "Extra Magicka Points",
+			"reference": "B16",
+			"tags": [
+				"Advantage",
+				"Attribute",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "mkhb8JDKeWrIwQW0_",
+					"name": "Special Recharge",
+					"reference": "P119",
+					"cost_adj": "-70%",
+					"disabled": true
+				}
+			],
+			"points_per_level": 3,
+			"features": [
+				{
+					"type": "attribute_bonus",
+					"attribute": "mp",
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 2,
+			"calc": {
+				"points": 6,
+				"current_level": 2
+			}
+		},
+		{
+			"id": "ttnEzcgsHB3-cBSTK",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Traits.adq",
+				"id": "t6krAE1uo6M0oDJFL"
+			},
+			"name": "Lifting ST",
+			"reference": "B65,P58",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "myjJkNx5l9AEz-8Oy",
+					"name": "No Fine Manipulators",
+					"reference": "B15",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "m1yoWB9yCqcB1jXKz",
+					"name": "Size",
+					"reference": "B15",
+					"cost_adj": "-10%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "m-WjGGBTKMBR60iNR",
+					"name": "Super-Effort",
+					"reference": "P58",
+					"cost_adj": "400%",
+					"disabled": true
+				},
+				{
+					"id": "mtGyAczr5HtA7ArvH",
+					"name": "Know Your Own Strength Variant Price",
+					"reference": "PY83:18",
+					"cost_adj": "4",
+					"affects": "levels_only",
+					"disabled": true
+				},
+				{
+					"id": "mwnAFAhUhyZYzc_mJ",
+					"name": "@Limb@ Grip ST",
+					"reference": "MATG28",
+					"cost_adj": "-70%",
+					"disabled": true
+				},
+				{
+					"id": "mP9yKfCGu71zQBl8R",
+					"name": "Bite ST",
+					"reference": "MATG28",
+					"cost_adj": "-70%",
+					"disabled": true
+				}
+			],
+			"points_per_level": 3,
+			"features": [
+				{
+					"type": "attribute_bonus",
+					"limitation": "lifting_only",
+					"attribute": "st",
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 1,
+			"calc": {
+				"points": 3,
+				"current_level": 1
+			}
+		},
+		{
+			"id": "tT0ccb1zhU9iceg8b",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Traits.adq",
+				"id": "tdvoTXGtduI4gbNro"
+			},
+			"name": "Magery",
+			"reference": "B66",
+			"tags": [
+				"Advantage",
+				"Mental",
+				"Supernatural"
+			],
+			"modifiers": [
+				{
+					"id": "mjBUL0nC0y-RjhWWx",
+					"name": "One College",
+					"local_notes": "@College@",
+					"cost_adj": "-25%",
+					"affects": "levels_only",
+					"disabled": true
+				},
+				{
+					"id": "mzDvvlKrF28Gxwu0a",
+					"name": "Two College",
+					"local_notes": "@Colleges@",
+					"cost_adj": "-10%",
+					"affects": "levels_only",
+					"disabled": true
+				},
+				{
+					"id": "mJBOd0FhPMlufJw69",
+					"name": "Dark-Aspected",
+					"cost_adj": "-50%",
+					"affects": "levels_only",
+					"disabled": true
+				}
+			],
+			"base_points": 5,
+			"points_per_level": 10,
+			"features": [
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Thaumatology"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Ritual Magic"
+					},
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 3,
+			"calc": {
+				"points": 35,
+				"current_level": 3
+			}
+		},
+		{
+			"id": "tpjq31_1QRZRQNoRA",
+			"name": "Natural Attacks",
+			"reference": "B271",
+			"weapons": [
+				{
+					"id": "wwlbhUQge6hgbzNS4",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Bite",
+					"reach": "C",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d-1 cr"
+					}
+				},
+				{
+					"id": "wu_obyTle3YJjr19z",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Punch",
+					"reach": "C",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Boxing"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d-1 cr",
+						"parry": "10"
+					}
+				},
+				{
+					"id": "w5IN4sTMv2Pn_G_06",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr"
+					},
+					"usage": "Kick",
+					"reach": "C,1",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Brawling",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Kicking"
+						},
+						{
+							"type": "skill",
+							"name": "Karate",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 12,
+						"damage": "1d cr"
+					}
+				}
+			],
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "toQsidace9GQS6bUz",
+			"name": "Social Stigma (@Stigma@)",
+			"reference": "B155",
+			"tags": [
+				"Disadvantage",
+				"Social"
+			],
+			"replacements": {
+				"Stigma": "Savage"
+			},
+			"modifiers": [
+				{
+					"id": "m9O-q_AKk05Q-I0yB",
+					"name": "Obvious from your appearance, dress or manner",
+					"use_level_from_trait": true,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from anyone who sees you",
+							"amount": -1,
+							"per_level": true
+						}
+					],
+					"disabled": true
+				},
+				{
+					"id": "mqNYiPtcrrvD7Wb4G",
+					"name": "Obvious from your speech",
+					"use_level_from_trait": true,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from anyone who hears you speak",
+							"amount": -1,
+							"per_level": true
+						}
+					],
+					"disabled": true
+				},
+				{
+					"id": "meA8kGXj02DTdDNLm",
+					"name": "Easily learned by anyone who cares to check up on you",
+					"use_level_from_trait": true,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from anyone who cares to check up on you",
+							"amount": -1,
+							"per_level": true
+						}
+					],
+					"disabled": true
+				},
+				{
+					"id": "m3hadDzG1nEsjRRhk",
+					"name": "Public Denouncement",
+					"use_level_from_trait": true,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from everryone you meet",
+							"amount": -1,
+							"per_level": true
+						}
+					],
+					"disabled": true
+				}
+			],
+			"base_points": -10,
+			"features": [
+				{
+					"type": "conditional_modifier",
+					"situation": "to all skill rolls when dealing with civilized folk",
+					"amount": -4
+				},
+				{
+					"type": "reaction_bonus",
+					"situation": "from civilized folk",
+					"amount": -2
+				}
+			],
+			"calc": {
+				"points": -10
+			}
+		}
+	],
+	"skills": [
+		{
+			"id": "sKp6c_z83jfzTlIH_",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "shtDdl5thrvKSnJHf"
+			},
+			"name": "Brawling",
+			"reference": "B182,MA55",
+			"tags": [
+				"Combat",
+				"Melee Combat",
+				"Weapon"
+			],
+			"difficulty": "dx/e",
+			"features": [
+				{
+					"type": "weapon_bonus",
+					"selection_type": "weapons_with_required_skill",
+					"name": {
+						"compare": "is",
+						"qualifier": "Brawling"
+					},
+					"level": {
+						"compare": "at_least",
+						"qualifier": 2
+					},
+					"amount": 1,
+					"per_die": true
+				}
+			],
+			"points": 4,
+			"calc": {
+				"level": 14,
+				"rsl": "DX+2"
+			}
+		},
+		{
+			"id": "s1kRKeeAEtuu-XckU",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "sOyWJEm6hrSyj4al_"
+			},
+			"name": "Innate Attack",
+			"reference": "B201",
+			"tags": [
+				"Combat",
+				"Ranged Combat",
+				"Weapon"
+			],
+			"specialization": "Beam",
+			"difficulty": "dx/e",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Innate Attack",
+					"modifier": -2
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -4,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "DX+2"
+			}
+		},
+		{
+			"id": "sp5eWUvEgETkcCaPO",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "sZnijHP17_9lk1OPG"
+			},
+			"name": "Staff",
+			"reference": "B208",
+			"tags": [
+				"Combat",
+				"Melee Combat",
+				"Weapon"
+			],
+			"difficulty": "dx/a",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Polearm",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Spear",
+					"modifier": -2
+				}
+			],
+			"points": 8,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "DX+2"
+			}
+		},
+		{
+			"id": "smxwpudhdOcxHhWNM",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Basic Set/Basic Set Skills.skl",
+				"id": "svEm7OyeCu_9wJ8Kk"
+			},
+			"name": "Stealth",
+			"reference": "B222",
+			"tags": [
+				"Criminal",
+				"Police",
+				"Spy",
+				"Street"
+			],
+			"difficulty": "dx/a",
+			"encumbrance_penalty_multiplier": 1,
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "dx",
+					"modifier": -5
+				}
+			],
+			"points": 12,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "DX+3"
+			}
+		},
+		{
+			"id": "SzrOhuWEvfXnX3gKD",
+			"name": "Magic Skills",
+			"children": [
+				{
+					"id": "sPEUztD19I4yWtKMu",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Skills.skl",
+						"id": "st6bK-So-48G1WG4f"
+					},
+					"name": "Thaumatology",
+					"reference": "B225",
+					"tags": [
+						"Magical",
+						"Occult"
+					],
+					"difficulty": "iq/vh",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -7
+						}
+					],
+					"points": 8,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -7,
+						"level": 5,
+						"adjusted_level": 5,
+						"points": -5
+					},
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "sXH6Cowjy5bRMphnP",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Skills.skl",
+						"id": "suCycM5oqTOZwurxb"
+					},
+					"name": "Ritual Magic",
+					"reference": "B218",
+					"tags": [
+						"Magical",
+						"Occult"
+					],
+					"specialization": "Alteration",
+					"difficulty": "iq/vh",
+					"points": 8,
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "sr9OlW9-hglbq2Pax",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Skills.skl",
+						"id": "sJvQrh2Zep8wy6taC"
+					},
+					"name": "Ritual Magic",
+					"reference": "B218",
+					"tags": [
+						"Magical",
+						"Occult"
+					],
+					"specialization": "Conjuration",
+					"difficulty": "iq/vh",
+					"points": 8,
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "sHZyp8dKc69G1SOrj",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Skills.skl",
+						"id": "skN1c5VyPcrBraOO_"
+					},
+					"name": "Ritual Magic",
+					"reference": "B218",
+					"tags": [
+						"Magical",
+						"Occult"
+					],
+					"specialization": "Destruction",
+					"difficulty": "iq/vh",
+					"points": 8,
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "sxIxzbLPz8f9Dxm3f",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Skills.skl",
+						"id": "sb46RiELAFyhRbKnO"
+					},
+					"name": "Ritual Magic",
+					"reference": "B218",
+					"tags": [
+						"Magical",
+						"Occult"
+					],
+					"specialization": "Illusion",
+					"difficulty": "iq/vh",
+					"points": 8,
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "snAIqYH9GRyVjkPKb",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Skills.skl",
+						"id": "seEuauSvPNy5bNy1r"
+					},
+					"name": "Ritual Magic",
+					"reference": "B218",
+					"tags": [
+						"Magical",
+						"Occult"
+					],
+					"specialization": "Restoration",
+					"difficulty": "iq/vh",
+					"points": 8,
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+3"
+					}
+				}
+			]
+		}
+	],
+	"spells": [
+		{
+			"id": "rLFOhrSu0NQZQPin-",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Spells.spl",
+				"id": "rvBy5RkNTXoG6Vruc"
+			},
+			"name": "Icy Touch",
+			"reference": "M188",
+			"tags": [
+				"Destruction",
+				"Ritual Magic",
+				"Water"
+			],
+			"difficulty": "h",
+			"college": [
+				"Destruction"
+			],
+			"power_source": "Arcane",
+			"spell_class": "Melee",
+			"casting_cost": "2#",
+			"maintenance_cost": "-",
+			"casting_time": "1 sec#",
+			"duration": "Permanent",
+			"base_skill": "Ritual Magic",
+			"prereq_count": 5,
+			"weapons": [
+				{
+					"id": "wsEuR1OPwrmKMOWXr",
+					"sv": 1,
+					"damage": {
+						"type": "+paralysis",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Punch",
+					"reach": "C",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Boxing"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d-1 +paralysis",
+						"parry": "10"
+					}
+				}
+			],
+			"points": 6,
+			"calc": {
+				"level": 15,
+				"rsl": "+0"
+			}
+		},
+		{
+			"id": "rhox97dK8DOQ5N-Wd",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Spells.spl",
+				"id": "rUhu4s4wnxfaYd_Z5"
+			},
+			"name": "Lightning",
+			"reference": "M196",
+			"tags": [
+				"Air",
+				"Destruction",
+				"Ritual Magic",
+				"Weather"
+			],
+			"difficulty": "h",
+			"college": [
+				"Destruction"
+			],
+			"power_source": "Arcane",
+			"spell_class": "Missile",
+			"casting_cost": "1-Magery",
+			"maintenance_cost": "-",
+			"casting_time": "1-3 sec",
+			"duration": "Instant",
+			"base_skill": "Ritual Magic",
+			"prereq_count": 7,
+			"weapons": [
+				{
+					"id": "WimLGYhpFI4HbY5M4",
+					"sv": 1,
+					"damage": {
+						"type": "burn/point",
+						"base": "1d-1"
+					},
+					"accuracy": "3",
+					"range": "50/100",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Innate Attack",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Innate Attack",
+							"specialization": "Beam"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d-1 burn/point"
+					}
+				}
+			],
+			"points": 8,
+			"calc": {
+				"level": 15,
+				"rsl": "+0"
+			}
+		},
+		{
+			"id": "rD--j6Bf_oXAUCvI7",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Spells.spl",
+				"id": "rEQpHDs8mj0JsO0xW"
+			},
+			"name": "Major Healing",
+			"reference": "M91",
+			"tags": [
+				"Healing",
+				"Restoration",
+				"Ritual Magic"
+			],
+			"difficulty": "h",
+			"college": [
+				"Restoration"
+			],
+			"power_source": "Arcane",
+			"spell_class": "Regular",
+			"casting_cost": "1-4",
+			"maintenance_cost": "-",
+			"casting_time": "1 sec",
+			"duration": "Permanent",
+			"base_skill": "Ritual Magic",
+			"prereq_count": 4,
+			"points": 5,
+			"calc": {
+				"level": 15,
+				"rsl": "+0"
+			}
+		},
+		{
+			"id": "r-qj9_ZF2iR9F4p0p",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Spells.spl",
+				"id": "rAaRiq3iNnxJWARh3"
+			},
+			"name": "Resist Fire",
+			"reference": "M74",
+			"local_notes": "Adds to the Damage Resistance of a living subject to resist damage from Fire and heat, including things like the scalding effects of steam. DR from this spell functions like a forcefield, and is cumulative with DR from armor and the spell Armor.\nThe maximum amount of DR that can be granted by this spell is 20.",
+			"tags": [
+				"Alteration",
+				"Fire",
+				"Ritual Magic"
+			],
+			"difficulty": "h",
+			"college": [
+				"Alteration"
+			],
+			"power_source": "Arcane",
+			"spell_class": "Regular",
+			"casting_cost": "1 per 2 DR",
+			"maintenance_cost": "Half",
+			"casting_time": "1 sec",
+			"duration": "1 min",
+			"base_skill": "Ritual Magic",
+			"prereq_count": 3,
+			"points": 4,
+			"calc": {
+				"level": 15,
+				"rsl": "+0"
+			}
+		},
+		{
+			"id": "rRFmavqobaWdqitxz",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Spells.spl",
+				"id": "rvfSQAHhmvHrhBm67"
+			},
+			"name": "Summon Lesser Undead (Greater Zombie)",
+			"local_notes": "This spell conjures a being of magical essence to fight for or otherwise serve the caster for 3 minutes. The creature vanishes when the duration ends, if slain, or if dismissed (a free action).\nThe maximum power of a lesser summon is no more than 100 character points.\nThe spell lasts for 3 minutes.\n\nEnchantment: Wand, staff, or jewelry. Energy cost to create: 1000",
+			"tags": [
+				"Conjuration",
+				"Necromancy",
+				"Summon",
+				"The Elder Scrolls"
+			],
+			"difficulty": "iq/h",
+			"college": [
+				"Conjuration"
+			],
+			"power_source": "Arcane",
+			"spell_class": "Regular",
+			"casting_cost": "10",
+			"maintenance_cost": "5",
+			"casting_time": "1 sec",
+			"duration": "Instant",
+			"base_skill": "Ritual Magic",
+			"prereq_count": 3,
+			"points": 4,
+			"calc": {
+				"level": 15,
+				"rsl": "+0"
+			}
+		},
+		{
+			"id": "rsVkBdBHfAn8ReJGN",
+			"source": {
+				"library": "richardwilkes/gcs_master_library",
+				"path": "Home Brew/Ptolemy's Elder Scrolls/Elder Scrolls Spells.spl",
+				"id": "rN1gMezXXmlgp3PSf"
+			},
+			"name": "Total Paralysis",
+			"reference": "M40",
+			"tags": [
+				"Body Control",
+				"Illusion",
+				"Ritual Magic"
+			],
+			"difficulty": "h",
+			"college": [
+				"Illusion"
+			],
+			"power_source": "Arcane",
+			"spell_class": "Melee",
+			"casting_cost": "5",
+			"maintenance_cost": "-",
+			"casting_time": "1 sec",
+			"duration": "1 min",
+			"base_skill": "Ritual Magic",
+			"prereq_count": 7,
+			"weapons": [
+				{
+					"id": "wRSWhQkhTZJnweA5N",
+					"sv": 1,
+					"damage": {
+						"type": "cr + Paralysis",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Punch",
+					"reach": "C",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Boxing"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d-1 cr + Paralysis",
+						"parry": "10"
+					}
+				}
+			],
+			"points": 8,
+			"calc": {
+				"level": 15,
+				"rsl": "+0"
+			}
+		}
+	],
+	"equipment": [
+		{
+			"id": "etfSM4hrYFzGcFJwY",
+			"description": "Goblin Totem Staff",
+			"reference": "LT61",
+			"tech_level": "0",
+			"tags": [
+				"Melee Weapon"
+			],
+			"base_value": "10",
+			"base_weight": "4 lb",
+			"weapons": [
+				{
+					"id": "w0rUAxEFtgywu3pid",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "sw",
+						"base": "2"
+					},
+					"strength": "7†",
+					"usage": "Swung",
+					"reach": "1-2",
+					"parry": "2",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Staff"
+						},
+						{
+							"type": "skill",
+							"name": "Polearm",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Spear",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d+3 cr",
+						"parry": "12"
+					}
+				},
+				{
+					"id": "waCa4iTvmIN0IxPga",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "2"
+					},
+					"strength": "7†",
+					"usage": "Thrust",
+					"reach": "1-2",
+					"parry": "2",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Staff"
+						},
+						{
+							"type": "skill",
+							"name": "Polearm",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Spear",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d+1 cr",
+						"parry": "12"
+					}
+				}
+			],
+			"modifiers": [
+				{
+					"id": "fuTqOv88i8KVNuF9z",
+					"name": "Magic Staff",
+					"cost_type": "to_final_cost",
+					"cost": "+40"
+				}
+			],
+			"quantity": 1,
+			"equipped": true,
+			"calc": {
+				"value": 50,
+				"extended_value": 50,
+				"weight": "4 lb",
+				"extended_weight": "4 lb"
+			}
+		},
+		{
+			"id": "E03oeHgawWlYwosL0",
+			"description": "Hardened Medium Leather Armor",
+			"legality_class": "4",
+			"quantity": 1,
+			"equipped": true,
+			"children": [
+				{
+					"id": "eV2z4SXOV7N93kUkH",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Low Tech/Low Tech Instant Armor.eqp",
+						"id": "ez68BX8J4tGtQJGCt"
+					},
+					"description": "Hardened Leather, Medium Pot Helm",
+					"reference": "LTIA13",
+					"local_notes": "Don: 6 secs; Holdout: -4; Reaction Pen.-1",
+					"tech_level": "1",
+					"tags": [
+						"Pot Helm"
+					],
+					"base_value": "25",
+					"base_weight": "3 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"skull"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 25,
+						"extended_value": 25,
+						"weight": "3 lb",
+						"extended_weight": "3 lb"
+					}
+				},
+				{
+					"id": "eE_tnicmNN88kVucn",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Low Tech/Low Tech Instant Armor.eqp",
+						"id": "elCA18hfudd_BMLop"
+					},
+					"description": "Hardened Leather, Medium Torso Armor",
+					"reference": "LTIA5",
+					"local_notes": "Don: 30 secs; Holdout: -3; Reaction Pen.-2",
+					"tech_level": "1",
+					"tags": [
+						"Body Armor"
+					],
+					"base_value": "125",
+					"base_weight": "15 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"abdomen"
+							],
+							"amount": 2
+						},
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"torso"
+							],
+							"amount": 2
+						},
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"vitals"
+							],
+							"amount": 2
+						},
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"groin"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 125,
+						"extended_value": 125,
+						"weight": "15 lb",
+						"extended_weight": "15 lb"
+					}
+				},
+				{
+					"id": "eB0XlSw-eE5f09K4o",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Low Tech/Low Tech Instant Armor.eqp",
+						"id": "eZ52fni9bDiz7STYh"
+					},
+					"description": "Hardened Leather, Medium Arm Armor",
+					"reference": "LTIA7",
+					"local_notes": "Don: 15 secs; Holdout: -3; Reaction Pen.-1",
+					"tech_level": "1",
+					"tags": [
+						"Limb Armor"
+					],
+					"base_value": "63",
+					"base_weight": "7.5 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"arm"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 63,
+						"extended_value": 63,
+						"weight": "7.5 lb",
+						"extended_weight": "7.5 lb"
+					}
+				},
+				{
+					"id": "epU4BY6z7XhlZvtut",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Low Tech/Low Tech Instant Armor.eqp",
+						"id": "eAGTRRqWt8WZIVwP9"
+					},
+					"description": "Gauntlets, Hardened Leather ",
+					"reference": "LTIA15",
+					"local_notes": "Don: 10 secs; Holdout: -4; Gives Ham-Fisted 2 (p. B138).",
+					"tech_level": "1",
+					"tags": [
+						"Gloves"
+					],
+					"base_value": "13",
+					"base_weight": "1.5 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"hand"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 13,
+						"extended_value": 13,
+						"weight": "1.5 lb",
+						"extended_weight": "1.5 lb"
+					}
+				},
+				{
+					"id": "eDE3JyQMpNEoDpgW1",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Low Tech/Low Tech Instant Armor.eqp",
+						"id": "eV1KAi8XLJ8MmCuX2"
+					},
+					"description": "Hardened Leather, Medium Leg Armor",
+					"reference": "LTIA10",
+					"local_notes": "Don: 30 secs; Holdout: -3; Reaction Pen.-1",
+					"tech_level": "1",
+					"tags": [
+						"Limb Armor"
+					],
+					"base_value": "125",
+					"base_weight": "15 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"leg"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 125,
+						"extended_value": 125,
+						"weight": "15 lb",
+						"extended_weight": "15 lb"
+					}
+				},
+				{
+					"id": "eczAMmqI4iegejA-X",
+					"source": {
+						"library": "richardwilkes/gcs_master_library",
+						"path": "Low Tech/Low Tech Instant Armor.eqp",
+						"id": "e8lwgtkMSuZ5kldYB"
+					},
+					"description": "Boots, Leather ",
+					"reference": "LTIA16",
+					"local_notes": "Don: 6 secs; Holdout: -4; Flexible and susceptible to blunt trauma (p. B379); -1 DR vs. impaling.",
+					"tech_level": "1",
+					"tags": [
+						"Footwear"
+					],
+					"base_value": "80",
+					"base_weight": "3 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"foot"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 80,
+						"extended_value": 80,
+						"weight": "3 lb",
+						"extended_weight": "3 lb"
+					}
+				}
+			],
+			"calc": {
+				"value": 0,
+				"extended_value": 431,
+				"weight": "0 lb",
+				"extended_weight": "45 lb"
+			}
+		}
+	],
+	"notes": [
+		{
+			"id": "nJQXlg5FOWBNq50x8",
+			"markdown": "Goblins are small, cunning humanoids that dwell in caves and ruins, fighting in tribes with crude weapons and ambush tactics."
+		},
+		{
+			"id": "nR5ZCAVMz1bxl0y-b",
+			"markdown": "Greater Soul"
+		}
+	],
+	"created_date": "2023-11-26T21:44:08-05:00",
+	"modified_date": "2025-11-17T19:37:40Z",
+	"calc": {
+		"swing": "1d+1",
+		"thrust": "1d-1",
+		"basic_lift": "29 lb",
+		"lifting_st_bonus": 1,
+		"move": [
+			7,
+			5,
+			4,
+			2,
+			1
+		],
+		"dodge": [
+			9,
+			8,
+			7,
+			6,
+			5
+		]
+	}
+}
