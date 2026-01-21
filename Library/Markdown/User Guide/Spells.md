@@ -1,4 +1,4 @@
-The **Spell list** on your [character sheet](Character%20Sheet%20Overview) shows all of your character’s **spells** (p. B242), their levels, points spent, and notes on how they work.
+The **Spell list** on your [character sheet](Character%20Sheet%20Overview) shows all of your character’s **spells** ([B242](B242)), their levels, points spent, and notes on how they work.
 
 GCS does **not** automate spellcasting. You must manually:
 
@@ -48,13 +48,13 @@ When you add a spell:
 - GCS highlights the block where it can be dropped. No matter where you drag it, it goes to the right location.
 - The **Points block** updates automatically. Points spent on spells reduce your unspent points.
 - The spell’s starting level is calculated automatically, based on its controlling attribute. Changing an attribute can change the skill level.
-- **Ritual information:** Casting time, cost, and other ritual details (p. B237) are automatically calculated based on your spell level. These appear as notes under the spell on your character sheet.
+- **Ritual information:** Casting time, cost, and other ritual details ([B237](B237)) are automatically calculated based on your spell level. These appear as notes under the spell on your character sheet.
 - **Magery modifiers:** If your character has **Magery**, the appropriate modifiers are automatically applied to spells.
 
 ### Points and costs
 
 - Most spells require at least **1 point** to purchase.
-- Higher spell levels cost more points, based on the **Skill Cost Table** (p. B170).
+- Higher spell levels cost more points, based on the **Skill Cost Table** ([B170](B170)).
 
 ## Managing spells
 
@@ -65,7 +65,7 @@ You can change spells on your sheet in a few ways.
 **Increment:**
 
 - Adds (or removes) **one point** at a time.
-- Depending on the skill cost table (p. B170), several points may be required before the spell increases to the next level.
+- Depending on the skill cost table ([B170](B170)), several points may be required before the spell increases to the next level.
 
 To add (or remove) points:
 
@@ -90,7 +90,7 @@ To increase (or decrease) the spell level:
 You can also track study time for spells. See [Study time](Study%20time) for more details.
 
 > [!TIP]
-> When tracking study time for spells, don’t forget that **Magery** reduces the required hours (p. B66). Update the **Standard learning hours** setting in the Study section to reflect this reduction.
+> When tracking study time for spells, don’t forget that **Magery** reduces the required hours ([B66](B66)). Update the **Standard learning hours** setting in the Study section to reflect this reduction.
 
 ### Organizing spells with containers
 
@@ -143,19 +143,19 @@ The Spell Detail Editor includes the following fields:
 | **VTT Notes**                            | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                       |
 | **Tech Level**                           | The Tech Level associated with the spell, if applicable. This field is greyed out unless **Required** is checked.                                                                                  |
 | **Required**                             | If checked, the Tech Level must match for the spell to be available.                                                                                                                               |
-| **College**                              | The spell’s college (p. B239). Separate multiple colleges with commas.                                                                                                                             |
-| **Class**                                | The spell’s class, such as Regular, Area, Melee, Missile, Blocking, or Information (p. B239).                                                                                                      |
+| **College**                              | The spell’s college ([B239](B239)). Separate multiple colleges with commas.                                                                                                                        |
+| **Class**                                | The spell’s class, such as Regular, Area, Melee, Missile, Blocking, or Information ([B239](B239)).                                                                                                 |
 | **Power Source**                         | The source of magical energy (for example, Arcane, Divine, or Psionic). This is used exclusively for Dungeon Fantasy characters.                                                                   |
 | **Base Skill** (Ritual Magic Spell only) | For Ritual Magic spells, choose the skill (typically _Ritual Magic_) on which the spell is based. Note: This field is hidden unless the spell type is Ritual Magic. See Ritual Magic Spells above. |
-| **Difficulty**                           | Select the controlling attribute (usually IQ) and the difficulty level (most spells are Hard or Very Hard) (p. B235).                                                                              |
+| **Difficulty**                           | Select the controlling attribute (usually IQ) and the difficulty level (most spells are Hard or Very Hard) ([B235](B235)).                                                                         |
 | **Points**                               | Total character points invested in this spell.                                                                                                                                                     |
-| **Level**                                | Read-only. Shows the calculated spell level and relative skill level (`IQ+2`). Levels are calculated based on the GURPS skill cost table (p. B170).                                                |
-| **Resistance**                           | Notes on how the spell is resisted (p. B241)                                                                                                                                                       |
-| **Casting Cost**                         | The cost to cast the spell (p. B236).                                                                                                                                                              |
-| **Maintenance Cost**                     | The cost to maintain the spell (p. B237).                                                                                                                                                          |
-| **Casting Time**                         | How long it takes to cast the spell (p. B236). Usually 1 second (`1 sec`).                                                                                                                         |
-| **Duration**                             | How long the spell lasts (p. B237).                                                                                                                                                                |
-| **Item**                                 | Notes on how this spell can be enchanted into an item (p. M16).                                                                                                                                    |
+| **Level**                                | Read-only. Shows the calculated spell level and relative skill level (`IQ+2`). Levels are calculated based on the GURPS skill cost table ([B170](B170)).                                           |
+| **Resistance**                           | Notes on how the spell is resisted ([B241](B241))                                                                                                                                                  |
+| **Casting Cost**                         | The cost to cast the spell ([B236](B236)).                                                                                                                                                         |
+| **Maintenance Cost**                     | The cost to maintain the spell ([B237](B237)).                                                                                                                                                     |
+| **Casting Time**                         | How long it takes to cast the spell ([B236](B236)). Usually 1 second (`1 sec`).                                                                                                                    |
+| **Duration**                             | How long the spell lasts ([B237](B237)).                                                                                                                                                           |
+| **Item**                                 | Notes on how this spell can be enchanted into an item ([M16](M16)).                                                                                                                                |
 | **Tags**                                 | Comma-separated [Tags](Tags) to help organize spells.                                                                                                                                              |
 | **Page Reference**                       | The page number where the spell appears. See [Page References](Page%20References).                                                                                                                 |
 | **Page Highlight**                       | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                      |

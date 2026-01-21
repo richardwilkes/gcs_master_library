@@ -1,4 +1,4 @@
-You can use GCS to track study hours for [Skills](Skills), [Spells](Spells), or [Traits](Traits). This helps you follow the **Improvement Through Study** rules (p. B292).
+You can use GCS to track study hours for [Skills](Skills), [Spells](Spells), or [Traits](Traits). This helps you follow the **Improvement Through Study** rules ([B292](B292)).
 
 ## Changing total hours needed for study
 

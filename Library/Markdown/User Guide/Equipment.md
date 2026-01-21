@@ -1,4 +1,4 @@
-The **Equipment list** is where you add your character's gear (p. B264), including weapons and armor, to your [character sheet](Character%20Sheet%20Overview).
+The **Equipment list** is where you add your character's gear ([B264](B264)), including weapons and armor, to your [character sheet](Character%20Sheet%20Overview).
 
 Equipment is divided into two sections:
 
@@ -10,7 +10,7 @@ Equipment is divided into two sections:
 
 ## Tracking encumbrance
 
-Carried items count toward encumbrance (p. B17). The Equipment list automatically totals the weight of all carried gear and highlights your current encumbrance level ![](./images/icons/icn-weight.svg) in the **Encumbrance, Move & Dodge block**.
+Carried items count toward encumbrance ([B17](B17)). The Equipment list automatically totals the weight of all carried gear and highlights your current encumbrance level ![](./images/icons/icn-weight.svg) in the **Encumbrance, Move & Dodge block**.
 
 ### Master Library
 
@@ -29,8 +29,8 @@ Each section (Carried Equipment and Other Equipment) includes the **total weight
 | **![](./images/icons/icn-applyChanges.svg)**                             | If checked, the equipment is **equipped** and any bonuses apply to your character. Available only for Carried Equipment.                                       |
 | **#**                                                                    | Quantity of the item. Equipment with a quantity of zero won't add weapons to the [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons) table.             |
 | **Carried Equipment**                                                    | The item's name and any notes, including usage information. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes.          |
-| **TL**                                                                   | Tech level (p. B22)                                                                                                                                            |
-| **LC**                                                                   | Legality class (p. B267)                                                                                                                                       |
+| **TL**                                                                   | Tech level ([B22](B22))                                                                                                                                        |
+| **LC**                                                                   | Legality class ([B267](B267))                                                                                                                                  |
 | **![](./images/icons/icn-value.svg)**                                    | Value of one item                                                                                                                                              |
 | **![](./images/icons/icn-weight.svg)**                                   | Weight of one item                                                                                                                                             |
 | **![](./images/icons/icn-stack.svg) ![](./images/icons/icn-value.svg)**  | Total value, including any contained items.                                                                                                                    |
@@ -56,8 +56,8 @@ You can also [create new custom equipment](Custom%20Content):
 
 When adding weapons or armor:
 
-- **Weapons (p. B267):** Equipped weapons appear on the **Melee Weapon** and/or **Ranged Weapon** lists with their weapon stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons) for more details.
-- **Armor (p. B282):** Equipped armor updates the **Damage Resistance (DR)** values on the **Body type (Humanoid) block** based on the protection the armor provides.
+- **Weapons ([B267](B267)):** Equipped weapons appear on the **Melee Weapon** and/or **Ranged Weapon** lists with their weapon stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons) for more details.
+- **Armor ([B282](B282)):** Equipped armor updates the **Damage Resistance (DR)** values on the **Body type (Humanoid) block** based on the protection the armor provides.
 
 ## Managing equipment
 
@@ -136,8 +136,8 @@ The Equipment Detail Editor includes the following fields:
 | **Name**                     | The item’s name.                                                                                                                                                                                                      |
 | **Notes**                    | Notes about the item. These appear below the item in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on including JavaScript. Supports [Markdown](Markdown%20Guide). |
 | **VTT Notes**                | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                          |
-| **Tech Level**               | The Tech Level (p. B22) associated with the item, if applicable.                                                                                                                                                      |
-| **Legality Class**           | The Legality Class (p. B267).                                                                                                                                                                                         |
+| **Tech Level**               | The Tech Level ([B22](B22)) associated with the item, if applicable.                                                                                                                                                  |
+| **Legality Class**           | The Legality Class ([B267](B267)).                                                                                                                                                                                    |
 | **Quantity**                 | How many of the item you have.                                                                                                                                                                                        |
 | **Equipped**                 | Whether the item is equipped. Equipped items apply any bonuses to your character.                                                                                                                                     |
 | **Value**                    | Value of one item.                                                                                                                                                                                                    |

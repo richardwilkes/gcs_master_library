@@ -1,4 +1,4 @@
-The **Point pools block** tracks your current and total **Hit Points (HP)** and **Fatigue Points (FP)** (p. B16). You can also create custom pools for other resources your character uses.
+The **Point pools block** tracks your current and total **Hit Points (HP)** and **Fatigue Points (FP)** ([B16](B16)). You can also create custom pools for other resources your character uses.
 
 Each pool follows this format: `[current]` of `[total]` points `[EFFECT]`.
 

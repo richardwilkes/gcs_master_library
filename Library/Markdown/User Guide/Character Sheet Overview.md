@@ -1,4 +1,4 @@
-In GCS, the **character sheet** is where you add your traits, skills, spells, equipment, and other information from the [Library Explorer](Library%20Explorer) when building your GURPS character (p. B10).
+In GCS, the **character sheet** is where you add your traits, skills, spells, equipment, and other information from the [Library Explorer](Library%20Explorer) when building your GURPS character ([B10](B10)).
 
 See [Create your first character](Create%20your%20first%20character) for a step-by-step guide in building a character without overwhelming you with details.
 
@@ -53,7 +53,7 @@ The table below gives an overview of each block. You can click through to indivi
 |--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Portrait**                         | Add an image for your character. Supports `.gif`, `.jpg`, and `.png` image formats.                                                                                                                        |
 | **Identity**                         | Holds your character’s name, title, and organization.                                                                                                                                                      |
-| **Description**                      | Age, appearance, birthday, religion, and tech level (p. B22). Select **Randomize** ![](images/icons/icn-randomize.svg) to generate a random entry for each field.                                          |
+| **Description**                      | Age, appearance, birthday, religion, and tech level ([B22](B22)). Select **Randomize** ![](images/icons/icn-randomize.svg) to generate a random entry for each field.                                      |
 | **Miscellaneous**                    | Shows created/last updated dates and the player’s name.                                                                                                                                                    |
 | **Points**                           | Tracks your [character points](character%20points).                                                                                                                                                        |
 | **Primary and Secondary Attributes** | Shows your basic attributes and secondary characteristics. See [Attributes](attributes) for details.                                                                                                       |

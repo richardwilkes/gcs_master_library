@@ -1,4 +1,4 @@
-**Trait Modifiers** (p. B101) can be applied to [Traits](Traits) as either **enhancements** or **limitations**. These adjust the base cost of a trait.
+**Trait Modifiers** ([B101](B101)) can be applied to [Traits](Traits) as either **enhancements** or **limitations**. These adjust the base cost of a trait.
 
 ### Master Library
 

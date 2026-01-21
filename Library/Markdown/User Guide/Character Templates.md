@@ -1,4 +1,4 @@
-Character templates (p. B258) are **collections of elements** that you can apply to your [character sheet](Character%20Sheet%20Overview). They make it easy to build consistent characters quickly, enforce choices, and bundle common options.
+Character templates ([B258](B258)) are **collections of elements** that you can apply to your [character sheet](Character%20Sheet%20Overview). They make it easy to build consistent characters quickly, enforce choices, and bundle common options.
 
 Templates can represent:
 

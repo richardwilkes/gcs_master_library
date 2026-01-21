@@ -1,4 +1,4 @@
-**Equipment Modifiers** (p. B101 or B345) can be applied to [Equipment](Equipment) as either **enhancements** or **limitations**. These adjust the base cost and weight of items and allow you to add [Features](Features) to equipment.
+**Equipment Modifiers** ([B101](B101) or [B345](B345)) can be applied to [Equipment](Equipment) as either **enhancements** or **limitations**. These adjust the base cost and weight of items and allow you to add [Features](Features) to equipment.
 
 ### Master Library
 

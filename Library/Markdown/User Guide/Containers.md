@@ -51,7 +51,7 @@ This ensures that GCS applies the correct metadata (like random names, height, a
 
 ## Template Choices
 
-When creating [Character templates](Character%20Templates), (p. B258), containers can also act as **choice groups**. This lets you enforce that a character picks a certain **number of options** or spends a certain **amount of points** from the container’s contents.
+When creating [Character templates](Character%20Templates), ([B258](B258)), containers can also act as **choice groups**. This lets you enforce that a character picks a certain **number of options** or spends a certain **amount of points** from the container’s contents.
 
 You can set the Template Choice type to:
 
@@ -88,7 +88,7 @@ Containers for [Traits](Traits) include the following fields:
 | **User Description**  | Additional notes for your reference. These appear as a tooltip when you hover.                                                                              |
 | **Tags**              | Comma-separated [Tags](Tags) for organizaiton.                                                                                                              |
 | **Enabled**           | If checked, the container and its contents are active on your character sheet.                                                                              |
-| **Self-Control Roll** | The self-control roll to resist (p. B120). The CR rating will show in parenthesis on your character sheet.                                                  |
+| **Self-Control Roll** | The self-control roll to resist ([B120](B120)). The CR rating will show in parenthesis on your character sheet.                                             |
 | **CR Adjustment**     | Adjustments tied to self-control rolls, such as reaction or fright check penalties.                                                                         |
 | **Container Type**    | Defines special grouping rules: Group, Alternate Abilities, Ancestry, Attributes, or Meta-Trait.                                                            |
 | **Ancestry**          | Available when Container Type is Ancestry. Choose ancestry type (for example, Human or Elf).                                                                |

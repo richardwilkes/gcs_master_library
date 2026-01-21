@@ -2,12 +2,12 @@ The **Body Type block** shows your hit locations and updates automatically as yo
 
 It includes:
 
-- **Random roll table** for determining hit locations (p. B400).
-- **Hit locations** (p. B398) with attack roll penalties.
-- **Damage Resistance (DR)** values (p. B378) based on armor or protections.
+- **Random roll table** for determining hit locations ([B400](B400)).
+- **Hit locations** ([B398](B398)) with attack roll penalties.
+- **Damage Resistance (DR)** values ([B378](B378)) based on armor or protections.
 - **Notes** for any important damage information.
 
-Hover over a hit location to see tooltips for special damage effects (p. B552).
+Hover over a hit location to see tooltips for special damage effects ([B552](B552)).
 
 ## Changing your body type
 

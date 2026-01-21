@@ -1,4 +1,4 @@
-The **Trait list** on your [character sheet](Character%20Sheet%20Overview) includes all your **advantages** (p. B32) and **disadvantages** (p. B119).
+The **Trait list** on your [character sheet](Character%20Sheet%20Overview) includes all your **advantages** ([B32](B32)) and **disadvantages** ([B119](B119)).
 
 ### Master Library
 
@@ -108,9 +108,9 @@ The Trait Detail Editor includes the following fields:
 | **Base Cost**               | The cost before modifiers or levels.                                                                                                                                                                                                   |
 | **Levels**                  | If checked, the trait uses levels.                                                                                                                                                                                                     |
 | **Cost Per Level**          | Point cost per level.                                                                                                                                                                                                                  |
-| **Self-Control Roll**       | The self-control roll to resist (p. B120). The CR rating will show in parenthesis on your character sheet.                                                                                                                             |
+| **Self-Control Roll**       | The self-control roll to resist ([B120](B120)). The CR rating will show in parenthesis on your character sheet.                                                                                                                        |
 | **Self-Control Adjustment** | Adjustments tied to self-control rolls, such as reaction or fright check penalties.                                                                                                                                                    |
-| **Frequency of Appearance** | Sets how often the trait’s subject (such as an Ally, Contact, or Enemy) appears in play (p. B36).                                                                                                                                      |
+| **Frequency of Appearance** | Sets how often the trait’s subject (such as an Ally, Contact, or Enemy) appears in play ([B36](B36)).                                                                                                                                  |
 | **Page Reference**          | Page number for the trait. See [Page References](Page%20References) for details.                                                                                                                                                       |
 | **Page Highlight**          | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                                                          |
 | **ID**                      | The trait’s unique ID.                                                                                                                                                                                                                 |
@@ -120,8 +120,8 @@ The Trait Detail Editor includes the following fields:
 | **Prerequisites**           | Any requirements for this trait. See [Prerequisites](Prerequisites).                                                                                                                                                                   |
 | **Features**                | Lists attribute, conditions, skill, spell, reaction, or weapon changes applied by the trait. See [Features](Features).                                                                                                                 |
 | **Trait Modifier**          | Modifiers that apply to the trait. You can enable a modifier to apply it to your sheet. See [Trait Modifiers](Trait%20Modifiers).                                                                                                      |
-| **Melee Weapon Usage**      | Lists melee weapon statistics (p. B268), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                     |
-| **Ranged Weapon Usage**     | Lists ranged weapon statistics (p. B268), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                    |
+| **Melee Weapon Usage**      | Lists melee weapon statistics ([B268](B268)), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                |
+| **Ranged Weapon Usage**     | Lists ranged weapon statistics ([B268](B268)), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                               |
 | **Study**                   | Allows you to track study time for this trait. See [Study time](Study%20time).                                                                                                                                                         |
 
 ## Trait toolbar

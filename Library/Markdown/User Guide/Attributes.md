@@ -1,8 +1,8 @@
-The **Primary and Secondary Attribute blocks** track your character’s Basic Attributes (p. B14) and Secondary Characteristics (p. B15). These values form the foundation of your [character sheet](Character%20Sheet%20Overview) and affect many other parts of GCS, including [Traits](Traits), [Skills](Skills), and [Spells](Spells).
+The **Primary and Secondary Attribute blocks** track your character’s Basic Attributes ([B14](B14)) and Secondary Characteristics ([B15](B15)). These values form the foundation of your [character sheet](Character%20Sheet%20Overview) and affect many other parts of GCS, including [Traits](Traits), [Skills](Skills), and [Spells](Spells).
 
 ## Primary attributes
 
-Your **Primary Attributes** are the four basic attributes (p. B14): ST, DX, IQ, and HT.
+Your **Primary Attributes** are the four basic attributes ([B14](B14)): ST, DX, IQ, and HT.
 
 To set your primary attributes:
 
@@ -17,7 +17,7 @@ As you change these values, GCS will:
 
 ## Secondary attributes
 
-Your **Secondary Attributes** are your secondary characteristics (p. B15) that depend on your primary attributes.
+Your **Secondary Attributes** are your secondary characteristics ([B15](B15)) that depend on your primary attributes.
 
 To set your secondary attributes:
 
@@ -41,17 +41,17 @@ To switch your attributes:
 5. Select **Import**.
 6. On the Attribute toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
 
-| Attribute option                            | Notes                                                                                                                                                                |
-|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **After the End**                           | Adds Radiation Threshold Points (RP) (p. ATE1:24).                                                                                                                   |
-| **Fantastic Dungeon Grappling**             | Adds Control Maximum (CM) levels to Secondary Attributes.                                                                                                            |
-| **PY83 HT-based Per**                       | Perception based on HT instead of IQ (p. PY83:21).                                                                                                                   |
-| **QN and HT-based Per**                     | Adds Quintessence (QN) and Quintessence Points (QP) (p. PY120:21); Perception based on HT (p. PY83:21).                                                              |
-| **Quintessence**                            | Adds Quintessence (QN) and Quintessence Points (QP) (p. PY120:21).                                                                                                   |
-| **Separate Will and Per from IQ**           | Will and Perception become Primary Attributes, independent of IQ.                                                                                                    |
-| **Star Wars**                               | Adds Force Sight to Secondary Attributes.                                                                                                                            |
-| **Star Wars – with Energy Reserve (Force)** | Adds Force Sight to Secondary Attributes and Energy Reserve (Force) Points (ER).                                                                                     |
-| **Threshold Magic**                         | Adds Threshold and Recharge Rate (Primary Attributes), plus Excess Power Tally and Calamity Roll Bonus (Secondary Attributes), and Power Tally Points (PT) (p. T76). |
+| Attribute option                            | Notes                                                                                                                                                                    |
+|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **After the End**                           | Adds Radiation Threshold Points (RP) ([ATE1:24](ATE1:24)).                                                                                                               |
+| **Fantastic Dungeon Grappling**             | Adds Control Maximum (CM) levels to Secondary Attributes.                                                                                                                |
+| **PY83 HT-based Per**                       | Perception based on HT instead of IQ ([PY83:21](PY83:21)).                                                                                                               |
+| **QN and HT-based Per**                     | Adds Quintessence (QN) and Quintessence Points (QP) ([PY120:21](PY120:21)); Perception based on HT ([PY83:21](PY83:21)).                                                 |
+| **Quintessence**                            | Adds Quintessence (QN) and Quintessence Points (QP) ([PY120:21](PY120:21)).                                                                                              |
+| **Separate Will and Per from IQ**           | Will and Perception become Primary Attributes, independent of IQ.                                                                                                        |
+| **Star Wars**                               | Adds Force Sight to Secondary Attributes.                                                                                                                                |
+| **Star Wars – with Energy Reserve (Force)** | Adds Force Sight to Secondary Attributes and Energy Reserve (Force) Points (ER).                                                                                         |
+| **Threshold Magic**                         | Adds Threshold and Recharge Rate (Primary Attributes), plus Excess Power Tally and Calamity Roll Bonus (Secondary Attributes), and Power Tally Points (PT) ([T76](T76)). |
 
 ## Importing and exporting attributes
 
