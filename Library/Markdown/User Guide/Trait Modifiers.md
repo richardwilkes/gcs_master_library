@@ -68,7 +68,7 @@ The Trait Modifier Detail Editor includes the following fields:
 | **Also show notes in weapon usage** | If checked, notes also appear in the weapon usage section.                                                                                 |
 | **VTT Notes**                       | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                               |
 | **Enabled**                         | If checked, the modifier is active and applies its effects.                                                                                |
-| **Cost**                            | The modifier’s cost. Can be a percentage, a flat point cost (±), an adjustment to base cost, leveled cost, or a multiple (×2 or ×2/3).       |
+| **Cost**                            | The modifier’s cost. Can be a percentage, a flat point cost (±), an adjustment to base cost, leveled cost, or a multiple (×2 or ×2/3).     |
 | **Level**                           | The level of the modifier, if applicable.                                                                                                  |
 | **Use level from owner**            | If checked, the modifier’s level is linked to the parent trait’s level.                                                                    |
 | **Total**                           | Read-only. The total calculated cost adjustment from this modifier.                                                                        |
