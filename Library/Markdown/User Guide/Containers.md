@@ -86,7 +86,7 @@ Containers for [Traits](Traits) include the following fields:
 | **Notes**             | Notes that appear under the container. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on how to include JavaScript. |
 | **VTT Notes**         | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                |
 | **User Description**  | Additional notes for your reference. These appear as a tooltip when you hover.                                                                              |
-| **Tags**              | Comma-separated [Tags](Tags) for organizaiton.                                                                                                              |
+| **Tags**              | Comma-separated [Tags](Tags) for organization.                                                                                                              |
 | **Enabled**           | If checked, the container and its contents are active on your character sheet.                                                                              |
 | **Self-Control Roll** | The self-control roll to resist ([B120](B120)). The CR rating will show in parenthesis on your character sheet.                                             |
 | **CR Adjustment**     | Adjustments tied to self-control rolls, such as reaction or fright check penalties.                                                                         |
@@ -116,7 +116,7 @@ Containers for [Traits](Traits) include the following fields:
 | **Page Reference**            | The page number in the source book. See [Page References](Page%20References).                        |
 | **Page Highlight**            | Text to highlight in the PDF. Leave blank unless the default highlights fail.                        |
 | **ID**                        | The container’s unique ID.                                                                           |
-| **Source ID**                 | The unique ID for this contianer in the source library.                                              |
+| **Source ID**                 | The unique ID for this container in the source library.                                              |
 | **Source Library**            | The name of the source library.                                                                      |
 | **Source Path**               | The path to the source library.                                                                      |
 

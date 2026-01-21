@@ -76,7 +76,7 @@ To edit or add hit locations:
 | **Slots**       | Defines dice spans for the random roll table. For example, if **Roll = 3d**, there are 16 results (3–18). Slots assign each range (For example, 2 slots = 3–4; 1 slot = 5; 6 slots = 7–12). |
 | **Hit Penalty** | Penalty to attack rolls to hit this location.                                                                                                                                               |
 | **DR Bonus**    | Starting Damage Resistance for the location.                                                                                                                                                |
-| **Decription**  | Notes or special damage effects. Displays as a tooltip when hovered.                                                                                                                        |
+| **Description** | Notes or special damage effects. Displays as a tooltip when hovered.                                                                                                                        |
 | **Sub-Roll**    | Used when adding a sub-table. Defines the dice rolled for the sub-location.                                                                                                                 |
 
 ### Sub Tables
