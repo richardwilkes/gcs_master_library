@@ -22,7 +22,7 @@ You can also create your own custom weapons.
 The **Melee Weapon list** on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column           | Description                                                      |
-| ---------------- | ---------------------------------------------------------------- |
+|------------------|------------------------------------------------------------------|
 | **Melee Weapon** | The item's name (from equipment).                                |
 | **Usage**        | Name for the entry. A weapon can have multiple usages.           |
 | **SL**           | The calculated skill level with the weapon.                      |
@@ -37,7 +37,7 @@ The **Melee Weapon list** on your character sheet includes the following columns
 The **Ranged Weapon list** on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column            | Description                                                       |
-| ----------------- | ----------------------------------------------------------------- |
+|-------------------|-------------------------------------------------------------------|
 | **Ranged Weapon** | The item's name (from equipment).                                 |
 | **Usage**         | Name for the entry. A weapon can have multiple usages.            |
 | **SL**            | The calculated skill level with the weapon.                       |
@@ -81,7 +81,7 @@ To edit a weapon’s details:
 The Melee Weapon Detail Editor includes the following fields:
 
 | Field                    | Description                                                                           |
-| ------------------------ | ------------------------------------------------------------------------------------- |
+|--------------------------|---------------------------------------------------------------------------------------|
 | **Hide**                 | If checked, hides the weapon stat from the melee weapon list on your character sheet. |
 | **Usage**                | Name for the entry. A weapon can have multiple usages.                                |
 | **Notes**                | Notes that appear with the weapon entry. Supports [Markdown](Markdown%20Guide).       |
@@ -112,7 +112,7 @@ The Melee Weapon Detail Editor includes the following fields:
 The Ranged Weapon Detail Editor includes the following fields:
 
 | Field                             | Description                                                                            |
-| --------------------------------- | -------------------------------------------------------------------------------------- |
+|-----------------------------------|----------------------------------------------------------------------------------------|
 | **Hide**                          | If checked, hides the weapon stat from the ranged weapon list on your character sheet. |
 | **Usage**                         | Name for the entry. A weapon can have multiple usages.                                 |
 | **Notes**                         | Notes that appear with the weapon entry. Supports [Markdown](Markdown%20Guide).        |
@@ -161,7 +161,7 @@ The Ranged Weapon Detail Editor includes the following fields:
 The toolbar above the Weapon Editor gives you quick access to common actions:
 
 | Button                                     | Name                | Description                                    |
-| :----------------------------------------- | ------------------- | ---------------------------------------------- |
+|:-------------------------------------------|---------------------|------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**            | Opens the help page from the User Guide.       |
 | 100%                                       | **Zoom**            | Adjusts the display size of the Weapon Editor. |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**   | Saves and closes the Weapon Editor.            |

@@ -11,7 +11,7 @@ You can also create your own custom skills.
 The skill list on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                    | Description                                                                                                                                                                           |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Skill / Technique**                     | The skill or technique name, specialization (in parentheses), and any notes. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes for this skill. |
 | **SL**                                    | The calculated skill level, based on its controlling attribute and points spent.                                                                                                      |
 | **Rsl**                                   | The relative skill level compared to its controlling attribute. For example, `DX+2`.                                                                                                  |
@@ -111,7 +111,7 @@ Save your changes when you're done from the **Skill toolbar** (see below).
 The Skill Detail Editor includes the following fields:
 
 | Skill Editor Field      | Description                                                                                                                                                                                                             |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                | The skill’s name.                                                                                                                                                                                                       |
 | **Specialization**      | The specific specialty of the skill, if required (p. B169).                                                                                                                                                             |
 | **Tech Level**          | The Tech Level associated with the skill, if applicable. This field is greyed out unless **Required** is checked.                                                                                                       |
@@ -141,7 +141,7 @@ The Skill Detail Editor includes the following fields:
 The toolbar above the Skill Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                                          |
-| :----------------------------------------- | --------------------- | ------------------------------------------------------------------------------------ |
+|:-------------------------------------------|-----------------------|--------------------------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                                             |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Skill Editor.                                        |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Skill Editor.                                                   |

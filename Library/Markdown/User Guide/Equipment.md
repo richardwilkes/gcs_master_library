@@ -25,7 +25,7 @@ The Equipment list on your character sheet includes the following columns. Selec
 Each section (Carried Equipment and Other Equipment) includes the **total weight and value** for all items in that section.
 
 | Column                                                                   | Description                                                                                                                                                    |
-| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **![](./images/icons/icn-applyChanges.svg)**                             | If checked, the equipment is **equipped** and any bonuses apply to your character. Available only for Carried Equipment.                                       |
 | **#**                                                                    | Quantity of the item. Equipment with a quantity of zero won't add weapons to the [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons) table.             |
 | **Carried Equipment**                                                    | The item's name and any notes, including usage information. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes.          |
@@ -132,7 +132,7 @@ Save your changes when you're done from the **Equipment toolbar** (see below).
 The Equipment Detail Editor includes the following fields:
 
 | Equipment Editor Field       | Description                                                                                                                                                                                                           |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                     | The item’s name.                                                                                                                                                                                                      |
 | **Notes**                    | Notes about the item. These appear below the item in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on including JavaScript. Supports [Markdown](Markdown%20Guide). |
 | **VTT Notes**                | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                          |
@@ -167,7 +167,7 @@ The Equipment Detail Editor includes the following fields:
 The toolbar above the Equipment Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                           |
-| :----------------------------------------- | --------------------- | --------------------------------------------------------------------- |
+|:-------------------------------------------|-----------------------|-----------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                              |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Equipment Editor.                     |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Equipment Editor.                                |

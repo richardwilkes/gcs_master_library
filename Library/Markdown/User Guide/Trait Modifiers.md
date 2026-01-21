@@ -11,7 +11,7 @@ You can also create your own custom trait modifiers.
 The **Trait Modifier** section in the Trait Detail Editor includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                    | Description                                                                                                                                                    |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ![](./images/icons/icn-applyChanges.svg)  | If checked, the modifier is **enabled** and its effects apply to the trait.                                                                                    |
 | **Trait Modifier**                        | The modifier’s name and any notes. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes.                                   |
 | **Cost Adjustment**                       | The calculated adjustment to the trait’s [character point](Character%20points) cost.                                                                           |
@@ -62,7 +62,7 @@ Save your changes when you're done from the **Trait modifier toolbar** (see belo
 The Trait Modifier Detail Editor includes the following fields:
 
 | Trait Modifier field                | Description                                                                                                                                |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                            | The trait modifier's name.                                                                                                                 |
 | **Notes**                           | Notes about what the trait modifier does. These appear below the trait on your character sheet. Supports [Markdown](Markdown%20Guide).     |
 | **Also show notes in weapon usage** | If checked, notes also appear in the weapon usage section.                                                                                 |
@@ -86,7 +86,7 @@ The Trait Modifier Detail Editor includes the following fields:
 The toolbar above the Trait Modifier Editor gives you quick access to common actions:
 
 | Button                                     | Name                | Description                                            |
-| ------------------------------------------ | ------------------- | ------------------------------------------------------ |
+|--------------------------------------------|---------------------|--------------------------------------------------------|
 | ![](./images/icons/icn-help.svg)           | **Help**            | Opens the help page from the User Guide.               |
 | 100%                                       | **Zoom**            | Adjusts the display size of the Trait Modifier Editor. |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**   | Saves and closes the Trait Modifier Editor.            |

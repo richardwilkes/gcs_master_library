@@ -20,7 +20,7 @@ Changes are applied immediately. You don’t need to save.
 The following settings are available.
 
 | Setting                                     | Description                                                                                                                                                                      |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Default Player Name**                     | Sets the name that appears on new character sheets.                                                                                                                              |
 | **Restore workspace arrangement on start**  | Reopens sheets, libraries, and documents from your last session when you restart GCS.                                                                                            |
 | **Fill in initial description**             | Randomly fills the identity and description blocks on new [character sheets](Character%20Sheet%20Overview).                                                                      |

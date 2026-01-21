@@ -21,7 +21,7 @@ To change your body type:
 4. On the Body Type toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
 
 | Body Type Option        | Description                                                             |
-| ----------------------- | ----------------------------------------------------------------------- |
+|-------------------------|-------------------------------------------------------------------------|
 | **Arachnoid**           | Spider-like body with eight legs.                                       |
 | **Avian**               | Bird-like body with wings and two legs, no arms.                        |
 | **Cancroid**            | Crab- or lobster-like body with pincers as forelimbs.                   |
@@ -67,7 +67,7 @@ To edit or add hit locations:
 ### Body Type fields
 
 | Field           | Description                                                                                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**        | The body type name (for example, Humanoid).                                                                                                                                                 |
 | **Roll**        | Number of dice rolled for the hit location (for example, 3d).                                                                                                                               |
 | **ID**          | Unique variable name used for references.                                                                                                                                                   |

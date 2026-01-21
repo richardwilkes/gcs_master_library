@@ -11,7 +11,7 @@ You can also create your own custom Equipment modifiers.
 The **Equipment Modifier** section in the Equipment Detail Editor includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                        | Description                                                                                                                                                    |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **![](./images/icons/icn-applyChanges.svg)**  | If checked, the modifier is **enabled** and its effects apply to the item.                                                                                     |
 | **Equipment Modifier**                        | The modifier’s name and any notes. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes.                                   |
 | **TL**                                        | The Tech Level.                                                                                                                                                |
@@ -58,7 +58,7 @@ Save your changes when you're done from the **Equipment modifier toolbar** (see 
 The Equipment Modifier Detail Editor includes the following fields:
 
 | Equipment Modifier field            | Description                                                                                                                                    |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                            | The Equipment modifier's name.                                                                                                                 |
 | **Tech Level**                      | The Tech Level.                                                                                                                                |
 | **Notes**                           | Notes about what the Equipment modifier does. These appear below the Equipment on your character sheet. Supports [Markdown](Markdown%20Guide). |
@@ -124,7 +124,7 @@ For example, a $500 Broadsword with **+2 CF** (Fine quality) costs: `$500 base +
 The toolbar above the Equipment Modifier Editor gives you quick access to common actions:
 
 | Button                                     | Name                | Description                                                |
-| ------------------------------------------ | ------------------- | ---------------------------------------------------------- |
+|--------------------------------------------|---------------------|------------------------------------------------------------|
 | ![](./images/icons/icn-help.svg)           | **Help**            | Opens the help page from the User Guide.                   |
 | 100%                                       | **Zoom**            | Adjusts the display size of the Equipment Modifier Editor. |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**   | Saves and closes the Equipment Modifier Editor.            |

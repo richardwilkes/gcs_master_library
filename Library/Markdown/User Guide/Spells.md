@@ -18,7 +18,7 @@ You can also create your own custom spells.
 The spell list on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                        | Description                                                                                                                                                                |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Spell**                                     | The spell name and any notes, including Magic Ritual information. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes for this spell. |
 | **SL**                                        | The calculated skill level, based on its controlling attribute and points spent.                                                                                           |
 | **Rsl**                                       | The relative skill level compared to its controlling attribute. For example, `IQ+2`.                                                                                       |
@@ -137,7 +137,7 @@ Save your changes when you're done from the **Spell toolbar** (see below).
 The Spell Detail Editor includes the following fields:
 
 | Spell Editor Field                       | Description                                                                                                                                                                                        |
-| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                                 | The spell’s name.                                                                                                                                                                                  |
 | **Notes**                                | Notes about the spell. These appear below the spell in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on including JavaScript.                   |
 | **VTT Notes**                            | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                       |
@@ -173,7 +173,7 @@ The Spell Detail Editor includes the following fields:
 The toolbar above the Spell Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                        |
-| :----------------------------------------- | --------------------- | ------------------------------------------------------------------ |
+|:-------------------------------------------|-----------------------|--------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                           |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Spell Editor.                      |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Spell Editor.                                 |

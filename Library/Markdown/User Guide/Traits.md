@@ -11,7 +11,7 @@ You can also create your own custom traits.
 The trait list on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                    | Description                                                                                                                                                 |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Trait**                                 | The trait name and any notes or control rolls. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes for this trait.     |
 | **Pts**                                   | Total [character point](Character%20points) cost for the trait.                                                                                             |
 | ![](./images/icons/icn-pageReference.svg) | Page reference for the trait. See [Page References](Page%20References) for more details.                                                                    |
@@ -96,7 +96,7 @@ Save your changes when you're done from the **Trait toolbar** (see below).
 The Trait Detail Editor includes the following fields:
 
 | Trait Editor Field          | Description                                                                                                                                                                                                                            |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                    | The trait's name.                                                                                                                                                                                                                      |
 | **Notes**                   | Notes about what the trait does. These appear below the trait in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on how to include JavaScript. Supports [Markdown](Markdown%20Guide). |
 | **VTT Notes**               | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                                           |
@@ -129,7 +129,7 @@ The Trait Detail Editor includes the following fields:
 The toolbar above the Trait Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                                                                                                |
-| :----------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+|:-------------------------------------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                                                                                                   |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Trait Editor.                                                                                              |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Trait Editor.                                                                                                         |

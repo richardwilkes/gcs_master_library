@@ -42,7 +42,7 @@ To switch your attributes:
 6. On the Attribute toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
 
 | Attribute option                            | Notes                                                                                                                                                                |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **After the End**                           | Adds Radiation Threshold Points (RP) (p. ATE1:24).                                                                                                                   |
 | **Fantastic Dungeon Grappling**             | Adds Control Maximum (CM) levels to Secondary Attributes.                                                                                                            |
 | **PY83 HT-based Per**                       | Perception based on HT instead of IQ (p. PY83:21).                                                                                                                   |
@@ -83,7 +83,7 @@ To edit or add attributes:
 ### Attribute fields
 
 | Field              | Description                                                                                                                                                                                                                                 |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **ID**             | Unique variable name used for references.                                                                                                                                                                                                   |
 | **Attribute type** | Choose from integer, decimal, point pool, or separator. “Display only” creates a read-only field. Anything below a separator can be collapsed/expanded.                                                                                     |
 | **Placement**      | Where the attribute appears on the character sheet. You can also set it to hidden. If **Automatic** is selected, the attribute appears in the Primary or Secondary block depending on whether its base value is a Primary attribute or not. |

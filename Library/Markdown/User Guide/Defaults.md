@@ -36,7 +36,7 @@ Each default entry in GCS reads like a sentence composed of:
 The editor uses a mix of **dropdowns** and **text/number fields**. Pick from the dropdowns, then type names or numbers where prompted.
 
 | Default Field       | Description                                                                                           |
-| ------------------- | ----------------------------------------------------------------------------------------------------- |
+|---------------------|-------------------------------------------------------------------------------------------------------|
 | **Source**          | What this default is based on: **Attribute**, **FP**, **HP**, **Parry**, **Block**, or **Skill**.     |
 | **Name**            | Only appears when the source is **Skill**. Enter the exact skill name.                                |
 | **Specialization**  | Optional, for **Skill** sources only. Use when a specific specialty is required.                      |

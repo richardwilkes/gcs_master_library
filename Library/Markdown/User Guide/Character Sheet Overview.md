@@ -50,7 +50,7 @@ Your character sheet in GCS is divided into blocks, each focusing on a specific 
 The table below gives an overview of each block. You can click through to individual pages for a deeper dive into how each one works.
 
 | Block                                | Description                                                                                                                                                                                                |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Portrait**                         | Add an image for your character. Supports `.gif`, `.jpg`, and `.png` image formats.                                                                                                                        |
 | **Identity**                         | Holds your character’s name, title, and organization.                                                                                                                                                      |
 | **Description**                      | Age, appearance, birthday, religion, and tech level (p. B22). Select **Randomize** ![](images/icons/icn-randomize.svg) to generate a random entry for each field.                                          |
@@ -97,7 +97,7 @@ The toolbar above the character sheet gives you quick access to common actions:
 ![Character Sheet Toolbar](./images/screenshots/scrn-toolbar-characterSheet.png)
 
 | Button                                   | Name                    | Description                                                                                  |
-| :--------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
+|:-----------------------------------------|-------------------------|----------------------------------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)           | **Help**                | Open the help page from the User Guide.                                                      |
 | 100%                                     | **Zoom**                | Adjust the display size of your character sheet.                                             |
 | ![](images/icons/icn-expand.svg)         | **Expand/Collapse All** | Show or hide all items within containers at once.                                            |

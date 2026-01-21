@@ -24,7 +24,7 @@ Changes are applied immediately. You don’t need to save.
 The following sheet settings are available:
 
 | Setting                                               | Description                                                                                                                                                                                 |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Damage Progression**                                | Choose a damage progression table. See **Damage Progression** below.                                                                                                                        |
 | **Show library source column**                        | Displays the library source column ![](./images/icons/icn-source.svg). See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview) for more details.           |
 | **Show page reference column**                        | Displays the Page Reference column ![](./images/icons/icn-pageReference.svg). See [Page References](Page%20References) for more details.                                                    |
@@ -54,7 +54,7 @@ Choose how damage scales with Strength.
 > If you’re not sure which option to use, stick with **Basic Set**. The other tables are optional house-rules.
 
 | Damage Progression Option                          | Description                                                                                                                                                                                                                                                     |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Basic Set**                                      | Standard GURPS damage table from B16.                                                                                                                                                                                                                           |
 | **Knowing Your Own Strength**                      | An alternative rule from PY83:16 that smooths out high-ST damage scaling, making progression more gradual and balanced.                                                                                                                                         |
 | **No School Gognard Damage**                       | A house-rule that reduces swing damage to narrow the gap with thrust. Intended for Dungeon Fantasy play. See [No School Grognard](https://noschoolgrognard.blogspot.com/2013/04/adjusting-swing-damage-in-dungeon.html?utm_source=chatgpt.com).                 |
@@ -74,7 +74,7 @@ Adjust paper size, orientation, and margins.
 > Page size names must be entered exactly as shown in the table.
 
 | Page Name | Size                           |
-| --------- | ------------------------------ |
+|-----------|--------------------------------|
 | `letter`  | 8.5 x 11 in (216 x 279 mm)     |
 | `legal`   | 8.5 x 14 in (216 x 356 mm)     |
 | `tabloid` | 11 x 17 in (279 x 432 mm)      |
@@ -101,7 +101,7 @@ Customize which blocks appear on your character sheet and where.
 > Block names must be entered exactly as shown in the table.
 
 | Blocks Names            | Description                                      |
-| ----------------------- | ------------------------------------------------ |
+|-------------------------|--------------------------------------------------|
 | `reactions`             | Reactions                                        |
 | `conditional_modifiers` | Conditions                                       |
 | `melee`                 | [Melee weapons](Melee%20and%20Ranged%20Weapons)  |

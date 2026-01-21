@@ -55,7 +55,7 @@ To add a point threshold:
 Each threshold includes the following fields:
 
 | Field             | Description                                                                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **State**         | The effect name, such as _Reeling_ or _Rested_.                                                                                                                                   |
 | **Threshold**     | The number (or equation) that triggers the effect. This uses variables like `$hp` and equations like `Math.ceil($hp / 3) - 1`. Thresholds must be ordered from lowest to highest. |
 | **Halve options** | If checked, this halves your Move, Dodge, and Strength for this threshold.                                                                                                        |

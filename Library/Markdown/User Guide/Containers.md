@@ -64,7 +64,7 @@ The template choices use [Operators](Operators) (`is at least`, `is at most`, `i
 ### Example Template Choices
 
 | Statement                                           | Select                 |
-| --------------------------------------------------- | ---------------------- |
+|-----------------------------------------------------|------------------------|
 | **Advantages**: _X points chosen from among..._     | `Points` `is at most`  |
 | **Disadvantages**: _-X points chosen from among..._ | `Points` `is at least` |
 | **Skills**: _Select X skills from:_                 | `Count` `is`           |
@@ -81,7 +81,7 @@ For recommendations on how to structure Template Choices effectively, see **Best
 Containers for [Traits](Traits) include the following fields:
 
 | Trait Container Field | Description                                                                                                                                                 |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**              | The container’s name (e.g., “Advantages,” “Psionic Powers,” “Alternate Form”).                                                                              |
 | **Notes**             | Notes that appear under the container. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on how to include JavaScript. |
 | **VTT Notes**         | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                |
@@ -107,7 +107,7 @@ Containers for [Traits](Traits) include the following fields:
 [Skills](Skills) and [Spells](Spells) containers support the following fields:
 
 | Skill / Spell Container Field | Description                                                                                          |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+|-------------------------------|------------------------------------------------------------------------------------------------------|
 | **Name**                      | The container’s name (for example, “Combat Skills” or “Fire Spells”).                                |
 | **Notes**                     | Notes that appear under the container.                                                               |
 | **VTT Notes**                 | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                         |
@@ -131,7 +131,7 @@ See _Organizing items with containers_ in [Equipment](Equipment) for more on con
 Containers for [Notes](Notes) support the following fields:
 
 | Note Container Field | Description                                                                             |
-| -------------------- | --------------------------------------------------------------------------------------- |
+|----------------------|-----------------------------------------------------------------------------------------|
 | **Notes**            | A multi-line text field for notes. Supports scripting and [Markdown](Markdown%20Guide). |
 | **Page Reference**   | The page number in the source. See [Page References](Page%20References).                |
 | **Page Highlight**   | Text to highlight in the PDF. Leave blank unless the default highlights fail.           |
@@ -146,7 +146,7 @@ Containers for [Notes](Notes) support the following fields:
 The toolbar above a Container Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                       |
-| :----------------------------------------- | --------------------- | ----------------------------------------------------------------- |
+|:-------------------------------------------|-----------------------|-------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                          |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Container Editor.                 |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Container Editor.                            |
