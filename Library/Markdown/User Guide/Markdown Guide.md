@@ -5,7 +5,7 @@ Markdown is also supported in the notes field in the **Detail Editors** for [Tra
 ## Quick Reference
 
 | **Element**             | Syntax                                                                          | Output                                                      |
-| ----------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+|-------------------------|---------------------------------------------------------------------------------|-------------------------------------------------------------|
 | **Headings**            | `# Heading 1`<br>`## Heading 2`<br>`### Heading 3`                              | (headings shown below)                                      |
 | **Bold**                | `**bold**` or `__bold__`                                                        | **bold text**                                               |
 | **Italic**              | `*italic*` or `_italic_`                                                        | _italic text_                                               |
@@ -360,7 +360,7 @@ Use pipes `|` and hyphens `-` to make tables:
 ```
 
 | First  | Second   |
-| ------ | -------- |
+|--------|----------|
 | Line 1 | Column 2 |
 | Line 2 | Column 2 |
 
@@ -375,7 +375,7 @@ Use `:` for alignment in header rows:
 ```
 
 | Left | Right | Center |
-| :--- | ----: | :----: |
+|:-----|------:|:------:|
 | aa   |    bb |   cc   |
 
 Note that tables don't have to have consistent column sizing:
@@ -388,7 +388,7 @@ Note that tables don't have to have consistent column sizing:
 ```
 
 | Left | Right | Centered |
-| :--- | ----: | :------: |
+|:-----|------:|:--------:|
 | aa   |    bb |    cc    |
 | aaaa |  bbbb |   cccc   |
 

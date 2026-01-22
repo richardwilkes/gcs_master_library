@@ -44,7 +44,7 @@ Then copper is **100× more likely** to be selected than gold, and silver is **1
 The **Loot Sheet** includes the following fields:
 
 | Loot Sheet Field | Description                                                                                                          |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
+|------------------|----------------------------------------------------------------------------------------------------------------------|
 | **Name**         | The loot sheet's name.                                                                                               |
 | **Location**     | Notes about where the loot was obtained.                                                                             |
 | **Session**      | Notes about the game session when the loot was found.                                                                |
@@ -56,7 +56,7 @@ The **Loot Sheet** includes the following fields:
 The toolbar above the Loot Sheet gives you quick access to common actions:
 
 | Button                                   | Name                      | Description                                                               |
-| :--------------------------------------- | ------------------------- | ------------------------------------------------------------------------- |
+|:-----------------------------------------|---------------------------|---------------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)           | **Help**                  | Open the help page from the User Guide.                                   |
 | 100%                                     | **Zoom**                  | Adjust the display size of your loot sheet.                               |
 | ![](images/icons/icn-expand.svg)         | **Expand/Collapse All**   | Show or hide all items within containers at once.                         |

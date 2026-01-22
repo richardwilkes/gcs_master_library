@@ -33,7 +33,7 @@ At the top of the window, choose how GCS uses **light** and **dark** colors:
 Theme colors define the look of the GCS interface. For each, you can set separate values for **light mode** and **dark mode**.
 
 | Theme Color | Description                                  |
-| ----------- | -------------------------------------------- |
+|-------------|----------------------------------------------|
 | **Surface** | The background color of most windows.        |
 | **Header**  | Background of headers and section titles.    |
 | **Banding** | Alternating row backgrounds for readability. |
@@ -78,7 +78,7 @@ Each section of the character sheet (labels, fields, notes, etc.) can have its o
 ### Font uses
 
 | Field                                        | Description                                                   |
-| -------------------------------------------- | ------------------------------------------------------------- |
+|----------------------------------------------|---------------------------------------------------------------|
 | **System / System (Emphasized)**             | Fonts used by GCS interface text.                             |
 | **Label**                                    | Text labels on the character sheet.                           |
 | **Field / Secondary Fields**                 | Values entered by the user in the GCS interface.              |

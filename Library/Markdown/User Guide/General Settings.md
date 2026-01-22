@@ -20,7 +20,7 @@ Changes are applied immediately. You don’t need to save.
 The following settings are available.
 
 | Setting                                     | Description                                                                                                                                                                      |
-| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Default Player Name**                     | Sets the name that appears on new character sheets.                                                                                                                              |
 | **Restore workspace arrangement on start**  | Reopens sheets, libraries, and documents from your last session when you restart GCS.                                                                                            |
 | **Fill in initial description**             | Randomly fills the identity and description blocks on new [character sheets](Character%20Sheet%20Overview).                                                                      |
@@ -28,7 +28,7 @@ The following settings are available.
 | **Add natural attacks to new sheets**       | Automatically adds Bite, Kick, and Punch as Melee Weapons on new character sheets.                                                                                               |
 | **Initial click on text field selects all** | Highlights all text when you first click inside a field.                                                                                                                         |
 | **Initial Points**                          | Sets starting points for a new character. See [Character points](Character%20Points).                                                                                            |
-| **Default Tech Level**                      | Sets your most commonly used Tech Level (p. B22).                                                                                                                                |
+| **Default Tech Level**                      | Sets your most commonly used Tech Level ([B22](B22)).                                                                                                                            |
 | **Calendar**                                | Sets the calendar used to generate random birthdays (options: Gregorian, Golarion).                                                                                              |
 | **Initial Scales (for various areas)**      | Sets default zoom values for lists, editors, sheets, and PDFs (for PDFs you can specify fit to width or fit to page).                                                            |
 | **Max Auto Column Width**                   | Sets the maximum width columns can expand when auto-sizing.                                                                                                                      |

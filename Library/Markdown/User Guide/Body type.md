@@ -2,12 +2,12 @@ The **Body Type block** shows your hit locations and updates automatically as yo
 
 It includes:
 
-- **Random roll table** for determining hit locations (p. B400).
-- **Hit locations** (p. B398) with attack roll penalties.
-- **Damage Resistance (DR)** values (p. B378) based on armor or protections.
+- **Random roll table** for determining hit locations ([B400](B400)).
+- **Hit locations** ([B398](B398)) with attack roll penalties.
+- **Damage Resistance (DR)** values ([B378](B378)) based on armor or protections.
 - **Notes** for any important damage information.
 
-Hover over a hit location to see tooltips for special damage effects (p. B552).
+Hover over a hit location to see tooltips for special damage effects ([B552](B552)).
 
 ## Changing your body type
 
@@ -21,7 +21,7 @@ To change your body type:
 4. On the Body Type toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
 
 | Body Type Option        | Description                                                             |
-| ----------------------- | ----------------------------------------------------------------------- |
+|-------------------------|-------------------------------------------------------------------------|
 | **Arachnoid**           | Spider-like body with eight legs.                                       |
 | **Avian**               | Bird-like body with wings and two legs, no arms.                        |
 | **Cancroid**            | Crab- or lobster-like body with pincers as forelimbs.                   |
@@ -67,7 +67,7 @@ To edit or add hit locations:
 ### Body Type fields
 
 | Field           | Description                                                                                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**        | The body type name (for example, Humanoid).                                                                                                                                                 |
 | **Roll**        | Number of dice rolled for the hit location (for example, 3d).                                                                                                                               |
 | **ID**          | Unique variable name used for references.                                                                                                                                                   |
@@ -76,7 +76,7 @@ To edit or add hit locations:
 | **Slots**       | Defines dice spans for the random roll table. For example, if **Roll = 3d**, there are 16 results (3–18). Slots assign each range (For example, 2 slots = 3–4; 1 slot = 5; 6 slots = 7–12). |
 | **Hit Penalty** | Penalty to attack rolls to hit this location.                                                                                                                                               |
 | **DR Bonus**    | Starting Damage Resistance for the location.                                                                                                                                                |
-| **Decription**  | Notes or special damage effects. Displays as a tooltip when hovered.                                                                                                                        |
+| **Description** | Notes or special damage effects. Displays as a tooltip when hovered.                                                                                                                        |
 | **Sub-Roll**    | Used when adding a sub-table. Defines the dice rolled for the sub-location.                                                                                                                 |
 
 ### Sub Tables

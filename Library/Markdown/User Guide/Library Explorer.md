@@ -96,7 +96,7 @@ The toolbar above the Library Explorer gives you quick access to common actions 
 ![Library Explorer toolbar](images/screenshots/scrn-toolbar-libraryExplorer.png)
 
 | Button                                                             | Name                      | Description                                         |
-| ------------------------------------------------------------------ | ------------------------- | --------------------------------------------------- |
+|--------------------------------------------------------------------|---------------------------|-----------------------------------------------------|
 | ![Help](images/icons/icn-help.svg)                                 | **Help**                  | Open the help page from the User Guide.             |
 | 100%                                                               | **Zoom**                  | Change the text size in the Library Explorer.       |
 | ![Expand](images/icons/icn-expand.svg)                             | **Expand/Collapse All**   | Show or hide all folders at once.                   |
@@ -115,7 +115,7 @@ The toolbar above the Library Explorer gives you quick access to common actions 
 Each library and document type in GCS has its own file extension and icon. Here’s what you’ll see in the Library Explorer:
 
 | Document Type              | Icon                                                              | Extension(s)           | Description                                                                                           |
-| -------------------------- | ----------------------------------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------- |
+|----------------------------|-------------------------------------------------------------------|------------------------|-------------------------------------------------------------------------------------------------------|
 | **Character Sheet**        | ![Character Sheet](images/icons/icn-gcsSheet.svg)                 | `.gcs`                 | Complete characters you build and play. See [Character Sheet Overview](Character%20Sheet%20Overview). |
 | **Character Template**     | ![Template](images/icons/icn-gcsTemplate.svg)                     | `.gct`                 | Templates you can reuse for new characters. See [Character templates](Character%20Templates).         |
 | **Loot Sheet**             | ![](images/icons/icn-loot.svg)                                    | `.loot`                | List to track [Loot](Loot%20Sheets) obtained during play.                                             |
