@@ -1,4 +1,4 @@
-The **Trait list** on your [character sheet](Character%20Sheet%20Overview) includes all your **advantages** (p. B32) and **disadvantages** (p. B119).
+The **Trait list** on your [character sheet](Character%20Sheet%20Overview) includes all your **advantages** ([B32](B32)) and **disadvantages** ([B119](B119)).
 
 ### Master Library
 
@@ -11,7 +11,7 @@ You can also create your own custom traits.
 The trait list on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                    | Description                                                                                                                                                 |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Trait**                                 | The trait name and any notes or control rolls. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes for this trait.     |
 | **Pts**                                   | Total [character point](Character%20points) cost for the trait.                                                                                             |
 | ![](./images/icons/icn-pageReference.svg) | Page reference for the trait. See [Page References](Page%20References) for more details.                                                                    |
@@ -96,7 +96,7 @@ Save your changes when you're done from the **Trait toolbar** (see below).
 The Trait Detail Editor includes the following fields:
 
 | Trait Editor Field          | Description                                                                                                                                                                                                                            |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                    | The trait's name.                                                                                                                                                                                                                      |
 | **Notes**                   | Notes about what the trait does. These appear below the trait in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on how to include JavaScript. Supports [Markdown](Markdown%20Guide). |
 | **VTT Notes**               | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                                           |
@@ -108,9 +108,9 @@ The Trait Detail Editor includes the following fields:
 | **Base Cost**               | The cost before modifiers or levels.                                                                                                                                                                                                   |
 | **Levels**                  | If checked, the trait uses levels.                                                                                                                                                                                                     |
 | **Cost Per Level**          | Point cost per level.                                                                                                                                                                                                                  |
-| **Self-Control Roll**       | The self-control roll to resist (p. B120). The CR rating will show in parenthesis on your character sheet.                                                                                                                             |
+| **Self-Control Roll**       | The self-control roll to resist ([B120](B120)). The CR rating will show in parenthesis on your character sheet.                                                                                                                        |
 | **Self-Control Adjustment** | Adjustments tied to self-control rolls, such as reaction or fright check penalties.                                                                                                                                                    |
-| **Frequency of Appearance** | Sets how often the trait’s subject (such as an Ally, Contact, or Enemy) appears in play (p. B36).                                                                                                                                      |
+| **Frequency of Appearance** | Sets how often the trait’s subject (such as an Ally, Contact, or Enemy) appears in play ([B36](B36)).                                                                                                                                  |
 | **Page Reference**          | Page number for the trait. See [Page References](Page%20References) for details.                                                                                                                                                       |
 | **Page Highlight**          | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                                                          |
 | **ID**                      | The trait’s unique ID.                                                                                                                                                                                                                 |
@@ -120,8 +120,8 @@ The Trait Detail Editor includes the following fields:
 | **Prerequisites**           | Any requirements for this trait. See [Prerequisites](Prerequisites).                                                                                                                                                                   |
 | **Features**                | Lists attribute, conditions, skill, spell, reaction, or weapon changes applied by the trait. See [Features](Features).                                                                                                                 |
 | **Trait Modifier**          | Modifiers that apply to the trait. You can enable a modifier to apply it to your sheet. See [Trait Modifiers](Trait%20Modifiers).                                                                                                      |
-| **Melee Weapon Usage**      | Lists melee weapon statistics (p. B268), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                     |
-| **Ranged Weapon Usage**     | Lists ranged weapon statistics (p. B268), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                    |
+| **Melee Weapon Usage**      | Lists melee weapon statistics ([B268](B268)), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                |
+| **Ranged Weapon Usage**     | Lists ranged weapon statistics ([B268](B268)), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                               |
 | **Study**                   | Allows you to track study time for this trait. See [Study time](Study%20time).                                                                                                                                                         |
 
 ## Trait toolbar
@@ -129,7 +129,7 @@ The Trait Detail Editor includes the following fields:
 The toolbar above the Trait Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                                                                                                |
-| :----------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+|:-------------------------------------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                                                                                                   |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Trait Editor.                                                                                              |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Trait Editor.                                                                                                         |

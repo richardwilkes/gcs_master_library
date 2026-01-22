@@ -8,25 +8,25 @@ To open the calculator from your [character sheet](Character%20Sheet%20Overview)
 
 ## Jumping
 
-To calculate your character's jumping distance (p. B352), enter the **running start** and any **penalty for extra effort**. The calculator shows:
+To calculate your character's jumping distance ([B352](B352)), enter the **running start** and any **penalty for extra effort**. The calculator shows:
 
 - **High Jump** distance (vertical leap).
 - **Broad Jump** distance (horizontal leap).
 
 ## Throwing
 
-To calculate your character's throwing distance (p. B355), enter the object’s **weight** and any **extra effort penalty**. The calculator shows:
+To calculate your character's throwing distance ([B355](B355)), enter the object’s **weight** and any **extra effort penalty**. The calculator shows:
 
 - **Throwing Distance** in yards.
 - **Throwing Damage** (based on ST and object weight).
 
 ## Hiking
 
-To calculate your character's hiking distance (p. B351), choose the **terrain** and **weather**, and check modifiers that apply:
+To calculate your character's hiking distance ([B351](B351)), choose the **terrain** and **weather**, and check modifiers that apply:
 
 - **Roads cleared** (depends on weather).
 - **Using skis** or **skates**.
-- **Successful Hiking roll** (p. B200).
+- **Successful Hiking roll** ([B200](B200)).
 - **Penalty for extra effort**.
 
 The calculator then shows your **daily travel distance** in miles.
