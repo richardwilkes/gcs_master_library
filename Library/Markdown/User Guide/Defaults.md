@@ -1,6 +1,6 @@
 **Defaults** appear in the **Detail Editor** of [Skills](Skills) and [Equipment](Equipment) items that define weapon usage (see [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons)).
 
-**Defaults** represent **Skill Defaults** (p. B173), not GCS [Default Settings](Default%20Settings). They describe what a skill, spell, or weapon usage falls back on if you don’t spend points on it directly.
+**Defaults** represent **Skill Defaults** ([B173](B173)), not GCS [Default Settings](Default%20Settings). They describe what a skill, spell, or weapon usage falls back on if you don’t spend points on it directly.
 
 For example:
 
@@ -36,7 +36,7 @@ Each default entry in GCS reads like a sentence composed of:
 The editor uses a mix of **dropdowns** and **text/number fields**. Pick from the dropdowns, then type names or numbers where prompted.
 
 | Default Field       | Description                                                                                           |
-| ------------------- | ----------------------------------------------------------------------------------------------------- |
+|---------------------|-------------------------------------------------------------------------------------------------------|
 | **Source**          | What this default is based on: **Attribute**, **FP**, **HP**, **Parry**, **Block**, or **Skill**.     |
 | **Name**            | Only appears when the source is **Skill**. Enter the exact skill name.                                |
 | **Specialization**  | Optional, for **Skill** sources only. Use when a specific specialty is required.                      |
@@ -57,7 +57,7 @@ Defaults from **Fatigue Points** or **Hit Points** with a modifier.
 
 ### Parry / Block
 
-Defaults from the **Parry** or **Block** score with a modifier (p. B374).
+Defaults from the **Parry** or **Block** score with a modifier ([B374](B374)).
 
 ### Skill
 
