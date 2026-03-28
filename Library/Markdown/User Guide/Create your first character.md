@@ -47,7 +47,7 @@ Change the default name and description to something you like.
 
 ### Changing starting points
 
-To change your unspent starting points (p. B10):
+To change your unspent starting points ([B10](B10)):
 
 1. On the **Points block**, select **Edit** ![](images/icons/icn-edit.svg) to open the Points Record.
 2. Enter a new value for the **Initial points**.
@@ -62,7 +62,7 @@ Now that your character sheet is created and your starting points are set, it’
 
 ## Step 2: Set your attributes
 
-Your **Primary Attributes** are your basic [attributes](Attributes) (p. B14) that form the foundation of your character. They influence secondary attributes, skill levels, and other calculations throughout the sheet.
+Your **Primary Attributes** are your basic [attributes](Attributes) ([B14](B14)) that form the foundation of your character. They influence secondary attributes, skill levels, and other calculations throughout the sheet.
 
 ### Setting primary attributes
 
@@ -85,7 +85,7 @@ As you change these values, GCS will:
 
 ### Adjusting secondary attributes and point pools
 
-You can also edit your **Secondary Attributes** (p. B15), **FP**, and **HP** (p. B16) .
+You can also edit your **Secondary Attributes** ([B15](B15)), **FP**, and **HP** ([B16](B16)) .
 
 > **_Example:_** Increase Aelric's FP to 12 for a small boost when casting spells.
 
@@ -98,7 +98,7 @@ With your primary and secondary attributes in place, you can give your character
 
 ## Step 3: Add a few traits
 
-The **Trait list** is where you add **advantages** (p. B32) and **disadvantages** (p. B119), called [Traits](Traits) in GCS.
+The **Trait list** is where you add **advantages** ([B32](B32)) and **disadvantages** ([B119](B119)), called [Traits](Traits) in GCS.
 
 ### Master Library
 
@@ -123,7 +123,7 @@ To open a library from the Master Library:
 
 ### Adding advantages and disadvantages
 
-To add an advantage (p. B32) or disadvantage (p. B119):
+To add an advantage ([B32](B32)) or disadvantage ([B119](B119)):
 
 1. Open a Trait library from the **Master Library**.
 2. Choose the trait you want.
@@ -154,7 +154,7 @@ Quirks are added the same way as traits. Some will prompt you to enter details t
 
 Some traits open a Modifiers window when added. You can choose options to customize the trait, which changes its point cost. Some modifiers also allow a short note.
 
-> **_Example:_** Search for **Magery** and drag the **Magery 1** trait to Aelric's sheet (make sure you clear the Tag filter). The Modifier window shows the special limitations for Magery (p. B67). Leave the modifiers blank and select **OK**.
+> **_Example:_** Search for **Magery** and drag the **Magery 1** trait to Aelric's sheet (make sure you clear the Tag filter). The Modifier window shows the special limitations for Magery ([B67](B67)). Leave the modifiers blank and select **OK**.
 
 ### Increasing a trait's level
 
@@ -170,7 +170,7 @@ Once you’ve locked in your traits, you can round out your character’s abilit
 
 ## Step 4: Add a few skills
 
-The **Skills list** is where you can add [skills](Skills) (p. B167) and techniques (p. B229).
+The **Skills list** is where you can add [skills](Skills) ([B167](B167)) and techniques ([B229](B229)).
 
 ### Adding skills
 
@@ -200,7 +200,7 @@ Skills use your **Primary Attributes** to determine their base level, so changin
 As you add skills:
 
 - Skills cost at least 1 point.
-- Higher skill levels cost more points based on the buying skills rules and Skill Cost Table (p. B170).
+- Higher skill levels cost more points based on the buying skills rules and Skill Cost Table ([B170](B170)).
 - When added, a skill's starting level is calculated automatically.
 
 To increase the skill level:
@@ -226,9 +226,9 @@ If your character can use magic, the next step is to add spells, which work just
 
 ## Step 5: Add a few spells
 
-The **Spell list** is where you add [spells](Spells) (p. B242), if you character can cast them.
+The **Spell list** is where you add [spells](Spells) ([B242](B242)), if you character can cast them.
 
-Spells in GCS work the same way as skills, but follow the special learning rules for magic (p. B235), which may change your point cost.
+Spells in GCS work the same way as skills, but follow the special learning rules for magic ([B235](B235)), which may change your point cost.
 
 If a spell has unmet prerequisites, GCS will display an error icon with details.
 
@@ -256,7 +256,7 @@ With your magical or mundane abilities set, it’s time to give your character t
 
 ## Step 6: Add equipment
 
-The **Equipment list** is where you add your character's gear (p. B264), including weapons and armor.
+The **Equipment list** is where you add your character's gear ([B264](B264)), including weapons and armor.
 
 [Equipment](Equipment) is divided into two sections:
 
@@ -265,7 +265,7 @@ The **Equipment list** is where you add your character's gear (p. B264), includi
 
 ### Tracking encumbrance
 
-Carried items counts toward encumbrance (p. B17). The Equipment list calculates the total weight of all carried equipment and updates your current encumbrance level ![](./images/icons/icn-weight.svg) on the **Encumbrance, Move & Dodge block**.
+Carried items counts toward encumbrance ([B17](B17)). The Equipment list calculates the total weight of all carried equipment and updates your current encumbrance level ![](./images/icons/icn-weight.svg) on the **Encumbrance, Move & Dodge block**.
 
 ### Adding equipment
 
@@ -305,9 +305,9 @@ Some items can hold other items (like a backpack). [Containers](Containers) show
 
 ### Weapons and armor
 
-- **Weapons (p. B267):** Equipped [weapons](Melee%20and%20Ranged%20Weapons) appear on the **Melee Weapon** and/or **Ranged Weapon** lists with their weapon stats.
+- **Weapons ([B267](B267)):** Equipped [weapons](Melee%20and%20Ranged%20Weapons) appear on the **Melee Weapon** and/or **Ranged Weapon** lists with their weapon stats.
   > **_Example:_** Add a **Dagger** and a **Quarterstaff** to Aelric's equipment (these are in the Basic Set Equipment library). The dagger appears for both melee and ranged weapons (since it can be stabbed or thrown).
-- **Armor (p. B282):** Equipped armor updates the **Damage Resistance (DR)** values on the **Body type (Humanoid) block** based on the protection the armor provides.
+- **Armor ([B282](B282)):** Equipped armor updates the **Damage Resistance (DR)** values on the **Body type (Humanoid) block** based on the protection the armor provides.
   > **_Example:_** Add **Leather Armor** to Aelric's equipment and note the DR changes.
 
 ---

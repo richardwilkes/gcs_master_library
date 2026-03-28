@@ -100,7 +100,7 @@ The available features types are chosen from a dropdown.
 ### Other modifiers
 
 | Feature type                      | Description                                                             |
-| --------------------------------- | ----------------------------------------------------------------------- |
+|-----------------------------------|-------------------------------------------------------------------------|
 | **Set the weapon flag**           | Marks the item as a weapon. Includes settings for whether it can block. |
 | **Reduces the attribute cost of** | Lowers the cost of the chosen attribute by a percentage.                |
 

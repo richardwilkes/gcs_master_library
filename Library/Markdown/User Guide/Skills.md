@@ -1,4 +1,4 @@
-The **Skill list** on your [character sheet](Character%20Sheet%20Overview) shows all of your character’s skills (p. B167), their levels, and points spent.
+The **Skill list** on your [character sheet](Character%20Sheet%20Overview) shows all of your character’s skills ([B167](B167)), their levels, and points spent.
 
 ### Master Library
 
@@ -11,7 +11,7 @@ You can also create your own custom skills.
 The skill list on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
 
 | Column                                    | Description                                                                                                                                                                           |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Skill / Technique**                     | The skill or technique name, specialization (in parentheses), and any notes. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes for this skill. |
 | **SL**                                    | The calculated skill level, based on its controlling attribute and points spent.                                                                                                      |
 | **Rsl**                                   | The relative skill level compared to its controlling attribute. For example, `DX+2`.                                                                                                  |
@@ -45,7 +45,7 @@ When you add a skill:
 ### Points and costs
 
 - Most skills require at least **1 point** to purchase.
-- Higher skill levels cost more points, based on the buying skills rules and the **Skill Cost Table** (p. B170).
+- Higher skill levels cost more points, based on the buying skills rules and the **Skill Cost Table** ([B170](B170)).
 
 ## Managing skills
 
@@ -56,7 +56,7 @@ You can change skills on your sheet in a few ways.
 **Increment/Decrement:**
 
 - Adds or removes **one point** at a time.
-- Depending on the skill cost table (p. B170), several points may be required before the skill increases to the next level.
+- Depending on the skill cost table ([B170](B170)), several points may be required before the skill increases to the next level.
 
 To add or remove points:
 
@@ -111,18 +111,18 @@ Save your changes when you're done from the **Skill toolbar** (see below).
 The Skill Detail Editor includes the following fields:
 
 | Skill Editor Field      | Description                                                                                                                                                                                                             |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                | The skill’s name.                                                                                                                                                                                                       |
-| **Specialization**      | The specific specialty of the skill, if required (p. B169).                                                                                                                                                             |
+| **Specialization**      | The specific specialty of the skill, if required ([B169](B169)).                                                                                                                                                        |
 | **Tech Level**          | The Tech Level associated with the skill, if applicable. This field is greyed out unless **Required** is checked.                                                                                                       |
 | **Required**            | If checked, the Tech Level must match for the skill to be available.                                                                                                                                                    |
 | **Notes**               | Notes about the skill. These appear below the skill in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on including JavaScript. Supports [Markdown](Markdown%20Guide). |
 | **VTT Notes**           | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                            |
 | **Tags**                | Comma-separated [Tags](Tags) to help organize skills.                                                                                                                                                                   |
-| **Difficulty**          | Select the controlling attribute (p. B167) and the difficulty level (p. B168). Options include Easy, Average, Hard, Very Hard, and Wildcard (p. B175).                                                                  |
-| **Encumbrance Penalty** | Multiplies the current encumbrance level. Applies to skills like Stealth, Climbing, and Swimming (p. B17).                                                                                                              |
+| **Difficulty**          | Select the controlling attribute ([B167](B167)) and the difficulty level ([B168](B168)). Options include Easy, Average, Hard, Very Hard, and Wildcard ([B175](B175)).                                                   |
+| **Encumbrance Penalty** | Multiplies the current encumbrance level. Applies to skills like Stealth, Climbing, and Swimming ([B17](B17)).                                                                                                          |
 | **Points**              | Total character points invested in this skill.                                                                                                                                                                          |
-| **Level**               | Read-only. Shows the calculated skill level and relative skill level (`DX+2`). Levels are calculated based on the GURPS skill cost table (p. B170).                                                                     |
+| **Level**               | Read-only. Shows the calculated skill level and relative skill level (`DX+2`). Levels are calculated based on the GURPS skill cost table ([B170](B170)).                                                                |
 | **Page Reference**      | The page number where the skill appears. See [Page References](Page%20References).                                                                                                                                      |
 | **Page Highlight**      | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                                           |
 | **ID**                  | The skill’s unique ID.                                                                                                                                                                                                  |
@@ -130,10 +130,10 @@ The Skill Detail Editor includes the following fields:
 | **Source Library**      | The name of the source library.                                                                                                                                                                                         |
 | **Source Path**         | The path to the source library.                                                                                                                                                                                         |
 | **Prerequisites**       | Requirements for this skill. See [Prerequisites](Prerequisites).                                                                                                                                                        |
-| **Defaults**            | Lists default skills and values (p. B173). See [Defaults](Defaults).                                                                                                                                                    |
+| **Defaults**            | Lists default skills and values ([B173](B173)). See [Defaults](Defaults).                                                                                                                                               |
 | **Features**            | Lists attribute, condition, skill, spell, reaction, or weapon changes applied by the skill. See [Features](Features).                                                                                                   |
-| **Melee Weapon Usage**  | Melee weapon statistics (p. B268), including defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                  |
-| **Ranged Weapon Usage** | Ranged weapon statistics (p. B268), including defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                 |
+| **Melee Weapon Usage**  | Melee weapon statistics ([B268](B268)), including defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                             |
+| **Ranged Weapon Usage** | Ranged weapon statistics ([B268](B268)), including defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                            |
 | **Study**               | Tracks study time for this skill. See [Study time](Study%20time).                                                                                                                                                       |
 
 ## Skill toolbar
@@ -141,7 +141,7 @@ The Skill Detail Editor includes the following fields:
 The toolbar above the Skill Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                                          |
-| :----------------------------------------- | --------------------- | ------------------------------------------------------------------------------------ |
+|:-------------------------------------------|-----------------------|--------------------------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                                             |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Skill Editor.                                        |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Skill Editor.                                                   |

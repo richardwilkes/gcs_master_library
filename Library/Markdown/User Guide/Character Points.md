@@ -1,4 +1,4 @@
-The **Points block** keeps a running total of your character points (p. B10). It automatically tracks changes from attributes, traits, skills, spells, and other entries when you update your [character sheet](Character%20Sheet%20Overview).
+The **Points block** keeps a running total of your character points ([B10](B10)). It automatically tracks changes from attributes, traits, skills, spells, and other entries when you update your [character sheet](Character%20Sheet%20Overview).
 
 The **Points block toolbar** gives you quick access to common actions used below.
 
@@ -14,7 +14,7 @@ To change your starting points for your current sheet:
 
 ## Tracking bonus points
 
-You can also record bonus points (p. B498) your GM awards during play.
+You can also record bonus points ([B498](B498)) your GM awards during play.
 
 To add bonus points:
 

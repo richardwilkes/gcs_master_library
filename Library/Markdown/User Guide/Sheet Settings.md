@@ -23,28 +23,28 @@ Changes are applied immediately. You don’t need to save.
 
 The following sheet settings are available:
 
-| Setting                                               | Description                                                                                                                                                                       |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Damage Progression**                                | Choose a damage progression table. See **Damage Progression** below.                                                                                                              |
-| **Show library source column**                        | Displays the library source column ![](./images/icons/icn-source.svg). See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview) for more details. |
-| **Show page reference column**                        | Displays the Page Reference column ![](./images/icons/icn-pageReference.svg). See [Page References](Page%20References) for more details.                                          |
-| **Show tech level (TL) column**                       | Displays the Tech Level (p. B22) column in the equipment list.                                                                                                                    |
-| **Show legality class (LC) column**                   | Displays the Legality Class (p. B267) column in the equipment list.                                                                                                               |
-| **Show trait modifier cost adjustments**              | Shows modifier cost in a Trait's notes.                                                                                                                                           |
-| **Show equipment modifier cost & weight adjustments** | Shows cost and weight changes in Equipment notes. For example: `[x2 to original cost; x2 to base weight]`.                                                                        |
-| **Show all weapons**                                  | Displays every weapon entry on your sheet, even if isn’t carried or equipped. Weapons from unequipped or uncarried items are marked as `(not carried)` or `(not equipped)`, as appropriate.                           |
-| **Show spell ritual, cost & time adjustments**        | Displays casting details for spells (p. B237).                                                                                                                                    |
-| **Show the title instead of the name in the footer**  | Displays the character’s title from the Description list instead of their name.                                                                                                   |
-| **Use Multiplicative Modifiers**                      | Applies the optional rule for Multiplicative Modifiers (p. P102) which lets you total and apply enhancements, then total and apply limitations.                                   |
-| **Use Half-State Defaults**                           | Applies the optional rule for Half-State Defaulting (PY65:30), which reduces the effect of very high attributes when defaulting on hard skills.                                   |
-| **Use Modifying Dice + Adds**                         | Applies the optional rule (p. B269), converting damage adds to dice. Example: `2d+5` becomes `3d+1`.                                                                              |
-| **Exclude unspent points from total**                 | If checked, your unspent [Character points](Character%20Points) won't be included in the total.                                                                                   |
-| **Show Lifting ST-based damage**                      | Displays damage based on Lifting ST.                                                                                                                                              |
-| **Show IQ-based damage**                              | Displays IQ-based damage on the Basic Damage list (PY120:7).                                                                                                                      |
-| **Units of Measurement (Length and Weight)**          | Switch between imperial and metric. Metric uses simplified conversions (1 yard = 1 meter) for readability. Internal calculations are always in imperial units.                    |
-| **Where to display**                                  | Controls how to display user descriptions, modifiers, notes, and skill level adjustments. Options include tooltips, inline, both, or neither.                                     |
-| **Page Settings**                                     | Sets default paper size, orientation, and margins. See **Page Settings** below.                                                                                                   |
-| **Block Layout**                                      | Customizes which blocks appear on your sheet and their placement. See **Block Layout** below.                                                                                     |
+| Setting                                               | Description                                                                                                                                                                                 |
+|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Damage Progression**                                | Choose a damage progression table. See **Damage Progression** below.                                                                                                                        |
+| **Show library source column**                        | Displays the library source column ![](./images/icons/icn-source.svg). See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview) for more details.           |
+| **Show page reference column**                        | Displays the Page Reference column ![](./images/icons/icn-pageReference.svg). See [Page References](Page%20References) for more details.                                                    |
+| **Show tech level (TL) column**                       | Displays the Tech Level ([B22](B22)) column in the equipment list.                                                                                                                          |
+| **Show legality class (LC) column**                   | Displays the Legality Class ([B267](B267)) column in the equipment list.                                                                                                                    |
+| **Show trait modifier cost adjustments**              | Shows modifier cost in a Trait's notes.                                                                                                                                                     |
+| **Show equipment modifier cost & weight adjustments** | Shows cost and weight changes in Equipment notes. For example: `[x2 to original cost; x2 to base weight]`.                                                                                  |
+| **Show all weapons**                                  | Displays every weapon entry on your sheet, even if isn’t carried or equipped. Weapons from unequipped or uncarried items are marked as `(not carried)` or `(not equipped)`, as appropriate. |
+| **Show spell ritual, cost & time adjustments**        | Displays casting details for spells ([B237](B237)).                                                                                                                                         |
+| **Show the title instead of the name in the footer**  | Displays the character’s title from the Description list instead of their name.                                                                                                             |
+| **Use Multiplicative Modifiers**                      | Applies the optional rule for Multiplicative Modifiers ([P102](P102)) which lets you total and apply enhancements, then total and apply limitations.                                        |
+| **Use Half-State Defaults**                           | Applies the optional rule for Half-State Defaulting (PY65:30), which reduces the effect of very high attributes when defaulting on hard skills.                                             |
+| **Use Modifying Dice + Adds**                         | Applies the optional rule ([B269](B269)), converting damage adds to dice. Example: `2d+5` becomes `3d+1`.                                                                                   |
+| **Exclude unspent points from total**                 | If checked, your unspent [Character points](Character%20Points) won't be included in the total.                                                                                             |
+| **Show Lifting ST-based damage**                      | Displays damage based on Lifting ST.                                                                                                                                                        |
+| **Show IQ-based damage**                              | Displays IQ-based damage on the Basic Damage list (PY120:7).                                                                                                                                |
+| **Units of Measurement (Length and Weight)**          | Switch between imperial and metric. Metric uses simplified conversions (1 yard = 1 meter) for readability. Internal calculations are always in imperial units.                              |
+| **Where to display**                                  | Controls how to display user descriptions, modifiers, notes, and skill level adjustments. Options include tooltips, inline, both, or neither.                                               |
+| **Page Settings**                                     | Sets default paper size, orientation, and margins. See **Page Settings** below.                                                                                                             |
+| **Block Layout**                                      | Customizes which blocks appear on your sheet and their placement. See **Block Layout** below.                                                                                               |
 
 ## Damage Progression
 
@@ -54,7 +54,7 @@ Choose how damage scales with Strength.
 > If you’re not sure which option to use, stick with **Basic Set**. The other tables are optional house-rules.
 
 | Damage Progression Option                          | Description                                                                                                                                                                                                                                                     |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Basic Set**                                      | Standard GURPS damage table from B16.                                                                                                                                                                                                                           |
 | **Knowing Your Own Strength**                      | An alternative rule from PY83:16 that smooths out high-ST damage scaling, making progression more gradual and balanced.                                                                                                                                         |
 | **No School Gognard Damage**                       | A house-rule that reduces swing damage to narrow the gap with thrust. Intended for Dungeon Fantasy play. See [No School Grognard](https://noschoolgrognard.blogspot.com/2013/04/adjusting-swing-damage-in-dungeon.html?utm_source=chatgpt.com).                 |
@@ -74,7 +74,7 @@ Adjust paper size, orientation, and margins.
 > Page size names must be entered exactly as shown in the table.
 
 | Page Name | Size                           |
-| --------- | ------------------------------ |
+|-----------|--------------------------------|
 | `letter`  | 8.5 x 11 in (216 x 279 mm)     |
 | `legal`   | 8.5 x 14 in (216 x 356 mm)     |
 | `tabloid` | 11 x 17 in (279 x 432 mm)      |
@@ -101,7 +101,7 @@ Customize which blocks appear on your character sheet and where.
 > Block names must be entered exactly as shown in the table.
 
 | Blocks Names            | Description                                      |
-| ----------------------- | ------------------------------------------------ |
+|-------------------------|--------------------------------------------------|
 | `reactions`             | Reactions                                        |
 | `conditional_modifiers` | Conditions                                       |
 | `melee`                 | [Melee weapons](Melee%20and%20Ranged%20Weapons)  |

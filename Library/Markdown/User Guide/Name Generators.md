@@ -45,7 +45,7 @@ The examples below all use `training_data`, but could have easily been written t
 
 #### Simple
 
-As the name suggests, this is the simpliest of the name generators.
+As the name suggests, this is the simplest of the name generators.
 
 ```json
 {

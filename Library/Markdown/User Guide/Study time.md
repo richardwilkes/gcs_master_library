@@ -1,4 +1,4 @@
-You can use GCS to track study hours for [Skills](Skills), [Spells](Spells), or [Traits](Traits). This helps you follow the **Improvement Through Study** rules (p. B292).
+You can use GCS to track study hours for [Skills](Skills), [Spells](Spells), or [Traits](Traits). This helps you follow the **Improvement Through Study** rules ([B292](B292)).
 
 ## Changing total hours needed for study
 
@@ -32,7 +32,7 @@ Save your changes when you’re done. See **Saving study entries** below.
 Each study entry includes the following fields:
 
 | Field             | Description                                                                  |
-| ----------------- | ---------------------------------------------------------------------------- |
+|-------------------|------------------------------------------------------------------------------|
 | **Study type**    | How you studied. Choose from the **Study types** table below.                |
 | **Hours studied** | Enter the number of hours spent studying.                                    |
 | **Hours learned** | Read-only. Shows the calculated total hours learned based on the study type. |
@@ -50,7 +50,7 @@ You can also enter **negative study hours** to track when study time was _conver
 ### Study types
 
 | Study type               | Multiplier | Description                                |
-| ------------------------ | ---------- | ------------------------------------------ |
+|--------------------------|------------|--------------------------------------------|
 | **Self-taught**          | ×0.5       | Every 2 hours count as 1 hour of learning. |
 | **On-the-job training**  | ×0.25      | Every 4 hours count as 1 hour of learning. |
 | **Professional teacher** | ×1.0       | Counts at full value.                      |

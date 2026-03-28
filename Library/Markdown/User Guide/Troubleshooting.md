@@ -65,7 +65,7 @@ See [Page References](Page%20References) for more details.
 > This message may appear each time you [update](Installing%20and%20Updating%20GCS) GCS to a new version.
 
 | Warning Window - More info                      | Warning Window - Run anyway                     |
-| ----------------------------------------------- | ----------------------------------------------- |
+|-------------------------------------------------|-------------------------------------------------|
 | ![](./images/screenshots/scrn-WinProtect01.png) | ![](./images/screenshots/scrn-WinProtect02.png) |
 
 ---

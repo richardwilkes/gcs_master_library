@@ -5,7 +5,7 @@ Some operators are used with **text fields** (names, notes, tags), while others 
 ## Available operators
 
 | Operator                              | Works with   | Description                               |
-| ------------------------------------- | ------------ | ----------------------------------------- |
+|---------------------------------------|--------------|-------------------------------------------|
 | `is anything`                         | Text, Number | Always passes                             |
 | `is` / `is not`                       | Text, Number | Matches exactly / does not match          |
 | `is at least` / `is at most`          | Number       | Minimum or maximum value                  |

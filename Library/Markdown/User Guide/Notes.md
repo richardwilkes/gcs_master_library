@@ -47,7 +47,7 @@ Save your changes when you're done from the **Note Editor toolbar** (see below).
 The Note Editor includes the following fields:
 
 | Note Field           | Description                                                                             |
-| -------------------- | --------------------------------------------------------------------------------------- |
+|----------------------|-----------------------------------------------------------------------------------------|
 | **Notes**            | A multi-line text field for notes. Supports scripting and [Markdown](Markdown%20Guide). |
 | **Page Reference**   | The page number in the source. See [Page References](Page%20References).                |
 | **Page Highlight**   | Text to highlight in the PDF. Leave blank unless the default highlights fail.           |
@@ -62,7 +62,7 @@ The Note Editor includes the following fields:
 The toolbar above the Note Editor gives you quick access to common actions:
 
 | Button                                     | Name                  | Description                                                       |
-| :----------------------------------------- | --------------------- | ----------------------------------------------------------------- |
+|:-------------------------------------------|-----------------------|-------------------------------------------------------------------|
 | ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                          |
 | 100%                                       | **Zoom**              | Adjusts the display size of the Note Editor.                      |
 | ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Note Editor.                                 |
