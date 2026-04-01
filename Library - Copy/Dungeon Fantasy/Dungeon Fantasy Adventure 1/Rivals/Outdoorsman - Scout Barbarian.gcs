@@ -1,0 +1,3499 @@
+{
+	"version": 5,
+	"id": "AGK9Mlj5mBlZgH_fN",
+	"total_points": 300,
+	"points_record": [
+		{
+			"when": "2022-11-25T23:47:25-05:00",
+			"points": 300,
+			"reason": "Initial points"
+		}
+	],
+	"profile": {
+		"name": "Shomari",
+		"age": "36",
+		"birthday": "March 8",
+		"eyes": "Blue",
+		"hair": "Salt \u0026 Pepper, short",
+		"skin": "Lined \u0026 Leathery",
+		"handedness": "Right",
+		"gender": "Male",
+		"height": "5'9\"",
+		"weight": "181 lb",
+		"player_name": "Mirror of the Fire Demon",
+		"title": "The Outdoorsman (Scout-Barbarian)",
+		"organization": "Rival Adventure Group",
+		"tech_level": "3"
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions conditional_modifiers",
+			"melee",
+			"ranged",
+			"traits skills",
+			"spells",
+			"equipment",
+			"other_equipment",
+			"notes"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"base": "($dx + $ht) / 4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"base": "Math.floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"value": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. Will to do anything besides talk or rest; failure causes unconsciousness\nEach FP you lose below 0 also causes 1 HP of injury\nMove, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"value": "Math.round($fp / 3)",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"value": "$fp - 1"
+					},
+					{
+						"state": "Rested",
+						"value": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"value": "Math.round(-$hp * 5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"value": "Math.round(-$hp * 4)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-4 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"value": "Math.round(-$hp * 3)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-3 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"value": "Math.round(-$hp * 2)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-2 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"value": "-$hp",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-1 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. HT every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"value": "Math.round($hp / 3)",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"value": "$hp - 1"
+					},
+					{
+						"state": "Healthy",
+						"value": "$hp"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Humanoid",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 6
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Right Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "6-7",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Right Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "8",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 2,
+					"calc": {
+						"roll_range": "9-10",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "11",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Left Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Left Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "hand",
+					"choice_name": "Hand",
+					"table_name": "Hand",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "If holding a shield, double the penalty to hit: -8 for\nshield hand instead of -4. Reduce the wounding multiplier of\nlarge piercing (pi+), huge piercing (pi++), and impaling\n(imp) damage to x1. Any major wound (loss of over ⅓ HP\nfrom one blow) cripples the extremity. Damage beyond that\nthreshold is lost.",
+					"calc": {
+						"roll_range": "15",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "16",
+						"dr": {
+							"all": 1
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 2,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 2
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": 0,
+			"calc": {
+				"value": 16,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 1,
+			"calc": {
+				"value": 14,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": 0.75,
+			"calc": {
+				"value": 7,
+				"points": 15
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 0,
+			"calc": {
+				"value": 7,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"current": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 0,
+			"calc": {
+				"value": 16,
+				"current": 16,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "TF5MKnJ3icIfBoi39",
+			"name": "Advantages",
+			"reference": "DF1:10",
+			"children": [
+				{
+					"id": "tM7GLbMzYpNK2p_9Y",
+					"name": "Absolute Direction",
+					"reference": "B34",
+					"tags": [
+						"Advantage",
+						"Mental",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mEaeEgBxKdZLh7sIi",
+							"name": "Requires signal",
+							"reference": "B34",
+							"cost_adj": "-20%",
+							"disabled": true
+						},
+						{
+							"id": "mIeEhCdZBNaaDtmxk",
+							"name": "3D Spatial Sense",
+							"reference": "B34",
+							"cost_adj": "5",
+							"features": [
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "starts_with",
+										"qualifier": "piloting"
+									},
+									"amount": 1
+								},
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "aerobatics"
+									},
+									"amount": 2
+								},
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "free fall"
+									},
+									"amount": 2
+								},
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "navigation"
+									},
+									"specialization": {
+										"compare": "is",
+										"qualifier": "hyperspace"
+									},
+									"amount": 2
+								},
+								{
+									"type": "skill_bonus",
+									"selection_type": "skills_with_name",
+									"name": {
+										"compare": "is",
+										"qualifier": "navigation"
+									},
+									"specialization": {
+										"compare": "is",
+										"qualifier": "space"
+									},
+									"amount": 2
+								}
+							],
+							"disabled": true
+						}
+					],
+					"base_points": 5,
+					"features": [
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "is",
+								"qualifier": "body sense"
+							},
+							"amount": 3
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "is",
+								"qualifier": "navigation"
+							},
+							"specialization": {
+								"compare": "is",
+								"qualifier": "air"
+							},
+							"amount": 3
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "is",
+								"qualifier": "navigation"
+							},
+							"specialization": {
+								"compare": "is",
+								"qualifier": "land"
+							},
+							"amount": 3
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "is",
+								"qualifier": "navigation"
+							},
+							"specialization": {
+								"compare": "is",
+								"qualifier": "sea"
+							},
+							"amount": 3
+						}
+					],
+					"calc": {
+						"points": 5
+					}
+				},
+				{
+					"id": "tVq-reB0AbgoHce_S",
+					"name": "Danger Sense",
+					"reference": "B47",
+					"tags": [
+						"Advantage",
+						"Mental"
+					],
+					"base_points": 15,
+					"calc": {
+						"points": 15
+					}
+				},
+				{
+					"id": "tQjxbe1OCloV_n3_v",
+					"name": "Heroic Archer",
+					"reference": "DF1:14",
+					"local_notes": "Reduce arrow ready time by one round with roll/penalty and Acc bonus without aiming or ignore bulk",
+					"tags": [
+						"Advantage",
+						"Cinematic",
+						"Physical"
+					],
+					"base_points": 20,
+					"calc": {
+						"points": 20
+					}
+				},
+				{
+					"id": "tsVD4vQVtIMDI7yhh",
+					"name": "High Pain Threshold",
+					"reference": "B59",
+					"local_notes": "Never suffer shock penalties when injured; +3 on all HT rolls to avoid knockdown and stunning; +3 to resist torture",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"base_points": 10,
+					"calc": {
+						"points": 10
+					}
+				},
+				{
+					"id": "twstfrHvEGU8Anamo",
+					"name": "Talent (Outdoorsman)",
+					"reference": "B91",
+					"tags": [
+						"Advantage",
+						"Mental"
+					],
+					"points_per_level": 10,
+					"features": [
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "is",
+								"qualifier": "camouflage"
+							},
+							"amount": 1,
+							"per_level": true
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "contains",
+								"qualifier": "fishing"
+							},
+							"amount": 1,
+							"per_level": true
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "contains",
+								"qualifier": "mimicry"
+							},
+							"amount": 1,
+							"per_level": true
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "contains",
+								"qualifier": "naturalist"
+							},
+							"amount": 1,
+							"per_level": true
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "contains",
+								"qualifier": "navigation"
+							},
+							"amount": 1,
+							"per_level": true
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "contains",
+								"qualifier": "survival"
+							},
+							"amount": 1,
+							"per_level": true
+						},
+						{
+							"type": "skill_bonus",
+							"selection_type": "skills_with_name",
+							"name": {
+								"compare": "is",
+								"qualifier": "tracking"
+							},
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 2,
+					"calc": {
+						"points": 20,
+						"current_level": 2
+					}
+				}
+			],
+			"calc": {
+				"points": 70
+			}
+		},
+		{
+			"id": "TZKS7dK319DdpDi4L",
+			"name": "Disadvantages",
+			"reference": "DF1:10",
+			"children": [
+				{
+					"id": "tkOO1qfwrdhs-eu2T",
+					"name": "Bloodlust",
+					"reference": "B125",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"cr": 12,
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "tolpv0MVoSm8mL2-z",
+					"name": "Code of Honor (Pirate's)",
+					"reference": "B127",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "t8E7aAGbtdj32lgFG",
+					"name": "Intolerance (Urbaniets)",
+					"reference": "B140",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"modifiers": [
+						{
+							"id": "mAjVKBfQwsBN2LlG4",
+							"name": "Scope: Common",
+							"reference": "B140",
+							"cost_adj": "-5"
+						},
+						{
+							"id": "mTbkhG3j9xXSYsE05",
+							"name": "Scope: Occasional",
+							"reference": "B140",
+							"cost_adj": "-2",
+							"disabled": true
+						},
+						{
+							"id": "mgbSZ1PXGsdjSb1h2",
+							"name": "Scope: Rare",
+							"reference": "B140",
+							"cost_adj": "-1",
+							"disabled": true
+						},
+						{
+							"id": "msVbeWRvmsIo7BZXU",
+							"name": "Scope: Anyone unlike you",
+							"reference": "B140",
+							"cost_adj": "-10",
+							"disabled": true
+						}
+					],
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "toTcJ1uuNnzvF6B3d",
+					"name": "Odious Personal Habit",
+					"reference": "B22",
+					"local_notes": "Unwashed bushwhacker; -1 Reaction",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"base_points": -5,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from others for being an unwashed bushwacker",
+							"amount": -1
+						}
+					],
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "tRH7E8wpF9aziQVXw",
+					"name": "Overconfidence",
+					"reference": "B148",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"cr": 12,
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "tSqGkJCOXhX4RElQ_",
+					"name": "Sense of Duty",
+					"reference": "B153",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"modifiers": [
+						{
+							"id": "m5tsiUW6-FAbs8ipP",
+							"name": "Friends and Companions",
+							"reference": "B153",
+							"cost_adj": "-5",
+							"disabled": true
+						},
+						{
+							"id": "mpXnDVlSXhzuf3PkK",
+							"name": "Adventuring Companions",
+							"reference": "B153",
+							"cost_adj": "-5"
+						},
+						{
+							"id": "mXru90Kmce14Y7BFW",
+							"name": "@Individual@",
+							"reference": "B153",
+							"cost_adj": "-2",
+							"disabled": true
+						},
+						{
+							"id": "mzGcTl8FSZWO-ga7K",
+							"name": "@Large Group@",
+							"reference": "B153",
+							"cost_adj": "-10",
+							"disabled": true
+						},
+						{
+							"id": "m_0B7y1lVTOZOK5GP",
+							"name": "@Entire Race@",
+							"reference": "B153",
+							"cost_adj": "-15",
+							"disabled": true
+						},
+						{
+							"id": "ms_mEEvD1ecrYdxj5",
+							"name": "Every Living Being",
+							"reference": "B153",
+							"cost_adj": "-20",
+							"disabled": true
+						}
+					],
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "t-vLHcbBo6mdl576e",
+					"name": "Stubbornness",
+					"reference": "B157",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "ttUE5_Twve3N_hTCg",
+					"name": "Vow (Own no more than what can be carried)",
+					"reference": "B161",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mzwATLf4iKLqf9h4r",
+							"name": "Minor",
+							"reference": "B161",
+							"cost_adj": "-5",
+							"disabled": true
+						},
+						{
+							"id": "mS2L3RNHJFm-eOgOS",
+							"name": "Major",
+							"reference": "B161",
+							"cost_adj": "-10"
+						},
+						{
+							"id": "mYuw65Ujbx-O2vL1L",
+							"name": "Great",
+							"reference": "B161",
+							"cost_adj": "-15",
+							"disabled": true
+						}
+					],
+					"calc": {
+						"points": -10
+					}
+				}
+			],
+			"calc": {
+				"points": -50
+			}
+		},
+		{
+			"id": "thGtEKR16YdhqMWnS",
+			"name": "Natural Attacks",
+			"reference": "B271",
+			"weapons": [
+				{
+					"id": "w7umXyChBr6K7-329",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Bite",
+					"reach": "C",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d cr"
+					}
+				},
+				{
+					"id": "wQbVXo3eqs0iyTWkx",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Punch",
+					"reach": "C",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Boxing"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate"
+						}
+					],
+					"calc": {
+						"level": 14,
+						"damage": "1d cr",
+						"parry": "11"
+					}
+				},
+				{
+					"id": "wH73oVXwBsvqSEwj5",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr"
+					},
+					"usage": "Kick",
+					"reach": "C,1",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Brawling",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Kicking"
+						},
+						{
+							"type": "skill",
+							"name": "Karate",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 12,
+						"damage": "1d+1 cr"
+					}
+				}
+			],
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "TtocpGqlaoMXmOJUA",
+			"name": "Attributes",
+			"children": [
+				{
+					"id": "t9ftlLd6LbgZb-lbS",
+					"name": "Increased Intelligence",
+					"reference": "B15",
+					"tags": [
+						"Advantage",
+						"Attribute",
+						"Mental"
+					],
+					"points_per_level": 20,
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "iq",
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 1,
+					"calc": {
+						"points": 20,
+						"current_level": 1
+					}
+				},
+				{
+					"id": "tboqhvyG5Cvpw4YMC",
+					"name": "Increased Dexterity",
+					"reference": "B15",
+					"tags": [
+						"Advantage",
+						"Attribute",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mbtfxthgJm6oXWkiW",
+							"name": "No Fine Manipulators",
+							"cost_adj": "-40%",
+							"disabled": true
+						}
+					],
+					"points_per_level": 20,
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "dx",
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 3,
+					"calc": {
+						"points": 60,
+						"current_level": 3
+					}
+				},
+				{
+					"id": "t13AxEHRf2cXMjR0L",
+					"name": "Increased Health",
+					"reference": "B14",
+					"tags": [
+						"Advantage",
+						"Attribute",
+						"Physical"
+					],
+					"points_per_level": 10,
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "ht",
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 3,
+					"calc": {
+						"points": 30,
+						"current_level": 3
+					}
+				},
+				{
+					"id": "tSeY1REX9qsYND7CM",
+					"name": "Increased Strength",
+					"reference": "B14",
+					"tags": [
+						"Advantage",
+						"Attribute",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mE52CZdPRYdBZ0pbj",
+							"name": "No Fine Manipulators",
+							"reference": "B15",
+							"cost_adj": "-40%",
+							"disabled": true
+						},
+						{
+							"id": "mitGRRQexb_8FaZsZ",
+							"name": "Size",
+							"reference": "B15",
+							"cost_adj": "-10%",
+							"levels": 1,
+							"disabled": true
+						},
+						{
+							"id": "mQzlmfkoyLL_idq5T",
+							"name": "Super-Effort",
+							"reference": "SU24",
+							"cost_adj": "300%",
+							"disabled": true
+						}
+					],
+					"points_per_level": 10,
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "st",
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 6,
+					"calc": {
+						"points": 60,
+						"current_level": 6
+					}
+				},
+				{
+					"id": "tmDr56MLHi4ipQ2ta",
+					"name": "Decreased Basic Speed",
+					"reference": "B17",
+					"tags": [
+						"Attribute",
+						"Disadvantage",
+						"Physical"
+					],
+					"points_per_level": -5,
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "basic_speed",
+							"amount": -0.25,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 2,
+					"calc": {
+						"points": -10,
+						"current_level": 2
+					}
+				},
+				{
+					"id": "tTrfd8kWbziaISVW1",
+					"name": "Increased Perception",
+					"reference": "B16",
+					"tags": [
+						"Advantage",
+						"Attribute",
+						"Mental",
+						"Physical"
+					],
+					"points_per_level": 5,
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "per",
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 3,
+					"calc": {
+						"points": 15,
+						"current_level": 3
+					}
+				}
+			],
+			"calc": {
+				"points": 175
+			}
+		}
+	],
+	"skills": [
+		{
+			"id": "SzX9awInl6WSWy0ha",
+			"name": "Combat",
+			"children": [
+				{
+					"id": "sMtRTGCGWd2jxKNKV",
+					"name": "Broadsword",
+					"reference": "B208",
+					"tags": [
+						"Combat",
+						"Melee Combat",
+						"Weapon"
+					],
+					"difficulty": "dx/a",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Force Sword",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Rapier",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Saber",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Shortsword",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Two-Handed Sword",
+							"modifier": -4
+						},
+						{
+							"type": "dx",
+							"modifier": -5
+						}
+					],
+					"points": 8,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 16,
+						"rsl": "DX+2"
+					}
+				},
+				{
+					"id": "sexNMZhpeABwUqrWf",
+					"name": "Fast-Draw",
+					"reference": "B194",
+					"tags": [
+						"Combat",
+						"Melee Combat",
+						"Weapon"
+					],
+					"specialization": "Sword",
+					"difficulty": "dx/e",
+					"points": 1,
+					"calc": {
+						"level": 14,
+						"rsl": "DX+0"
+					}
+				},
+				{
+					"id": "sC-64Ov1K5NjDEFxz",
+					"name": "Bow",
+					"reference": "B182",
+					"tags": [
+						"Combat",
+						"Ranged Combat",
+						"Weapon"
+					],
+					"difficulty": "dx/a",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -5
+						}
+					],
+					"points": 16,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 18,
+						"rsl": "DX+4"
+					}
+				},
+				{
+					"id": "sSxhyNkj0C9nPk12F",
+					"name": "Fast-Draw",
+					"reference": "B194",
+					"tags": [
+						"Combat",
+						"Ranged Combat",
+						"Weapon"
+					],
+					"specialization": "Arrow",
+					"difficulty": "dx/e",
+					"points": 1,
+					"calc": {
+						"level": 14,
+						"rsl": "DX+0"
+					}
+				},
+				{
+					"id": "sFnxK-_a6M_wnxzvV",
+					"name": "Brawling",
+					"reference": "B182",
+					"tags": [
+						"Combat",
+						"Melee Combat",
+						"Weapon"
+					],
+					"difficulty": "dx/e",
+					"features": [
+						{
+							"type": "weapon_bonus",
+							"selection_type": "weapons_with_required_skill",
+							"name": {
+								"compare": "is",
+								"qualifier": "Brawling"
+							},
+							"level": {
+								"compare": "at_least",
+								"qualifier": 2
+							},
+							"amount": 1,
+							"per_die": true
+						}
+					],
+					"points": 1,
+					"calc": {
+						"level": 14,
+						"rsl": "DX+0"
+					}
+				},
+				{
+					"id": "szTRnFwDwLojPEDE2",
+					"name": "Shield",
+					"reference": "B220",
+					"tags": [
+						"Combat",
+						"Melee Combat",
+						"Weapon"
+					],
+					"specialization": "Shield",
+					"difficulty": "dx/e",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -4
+						}
+					],
+					"points": 4,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -4,
+						"level": 10,
+						"adjusted_level": 10,
+						"points": -10
+					},
+					"calc": {
+						"level": 16,
+						"rsl": "DX+2"
+					}
+				},
+				{
+					"id": "scDLBw_QSnAKMZOMV",
+					"name": "Wrestling",
+					"reference": "B228",
+					"tags": [
+						"Combat",
+						"Melee Combat",
+						"Weapon"
+					],
+					"difficulty": "dx/a",
+					"points": 1,
+					"calc": {
+						"level": 13,
+						"rsl": "DX-1"
+					}
+				}
+			]
+		},
+		{
+			"id": "SNxb0vCqRlVvHDcgX",
+			"name": "Scout",
+			"children": [
+				{
+					"id": "sms7IN2ScaYr0TMnl",
+					"name": "Camouflage",
+					"reference": "B183",
+					"tags": [
+						"Exploration",
+						"Military",
+						"Outdoor"
+					],
+					"difficulty": "iq/e",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"modifier": -2
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "skill",
+						"name": "Survival",
+						"specialization": "Desert",
+						"modifier": -2,
+						"level": 11,
+						"adjusted_level": 11,
+						"points": 1
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "srBY_PPc8wW1q2lqa",
+					"name": "Cartography",
+					"reference": "B183",
+					"tags": [
+						"Exploration",
+						"Humanities",
+						"Outdoor",
+						"Social Sciences"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Geography",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Mathematics",
+							"specialization": "Surveying",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Navigation",
+							"modifier": -4
+						}
+					],
+					"tech_level": "3",
+					"points": 4,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 12,
+						"rsl": "IQ+1"
+					}
+				},
+				{
+					"id": "sIKdkq543Iir66-cG",
+					"name": "Navigation",
+					"reference": "B211",
+					"tags": [
+						"Exploration",
+						"Outdoor",
+						"Technical",
+						"Vehicle"
+					],
+					"specialization": "Land",
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Cartography",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Mathematics",
+							"specialization": "Surveying",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Navigation",
+							"specialization": "Air",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Navigation",
+							"specialization": "Sea",
+							"modifier": -2
+						}
+					],
+					"tech_level": "3",
+					"points": 1,
+					"defaulted_from": {
+						"type": "skill",
+						"name": "Cartography",
+						"modifier": -4,
+						"level": 8,
+						"adjusted_level": 8,
+						"points": -8
+					},
+					"calc": {
+						"level": 15,
+						"rsl": "IQ+4"
+					}
+				},
+				{
+					"id": "sm3YZVC5GX6ScESbI",
+					"name": "Observation",
+					"reference": "B211",
+					"tags": [
+						"Criminal",
+						"Military",
+						"Police",
+						"Spy",
+						"Street"
+					],
+					"difficulty": "per/a",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Shadowing",
+							"modifier": -5
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "Per+0"
+					}
+				},
+				{
+					"id": "segFJR8AqFNVcdROA",
+					"name": "Shadowing",
+					"reference": "B219",
+					"tags": [
+						"Criminal",
+						"Police",
+						"Spy",
+						"Street"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Observation",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Stealth",
+							"modifier": -4
+						}
+					],
+					"points": 4,
+					"defaulted_from": {
+						"type": "skill",
+						"name": "Observation",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 12,
+						"rsl": "IQ+1"
+					}
+				},
+				{
+					"id": "sNYKnPf4RUlcI21YK",
+					"name": "Stealth",
+					"reference": "B222",
+					"tags": [
+						"Criminal",
+						"Police",
+						"Spy",
+						"Street"
+					],
+					"difficulty": "dx/a",
+					"encumbrance_penalty_multiplier": 1,
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "dx",
+							"modifier": -5
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 13,
+						"rsl": "DX-1"
+					}
+				},
+				{
+					"id": "sujzWLkTOvKw_qrAr",
+					"name": "Tracking",
+					"reference": "B226",
+					"tags": [
+						"Exploration",
+						"Outdoor"
+					],
+					"difficulty": "per/a",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Naturalist",
+							"modifier": -5
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 16,
+						"rsl": "Per+2"
+					}
+				}
+			]
+		},
+		{
+			"id": "SVN70dnQZwkc8bK7N",
+			"name": "Outdoorsman",
+			"children": [
+				{
+					"id": "sJzitCOLaFVip8KX4",
+					"name": "Animal Handling",
+					"reference": "B175",
+					"tags": [
+						"Animal"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				},
+				{
+					"id": "sL4doeknLZp6Q8W3n",
+					"name": "Disguise",
+					"reference": "B187",
+					"tags": [
+						"Criminal",
+						"Spy",
+						"Street"
+					],
+					"specialization": "Animals",
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Makeup",
+							"modifier": -3
+						}
+					],
+					"tech_level": "3",
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				},
+				{
+					"id": "sOInVoQjPE6taXz27",
+					"name": "Hiking",
+					"reference": "B200",
+					"tags": [
+						"Athletic",
+						"Exploration",
+						"Outdoor"
+					],
+					"difficulty": "ht/a",
+					"defaults": [
+						{
+							"type": "ht",
+							"modifier": -5
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "ht",
+						"modifier": -5,
+						"level": 8,
+						"adjusted_level": 8,
+						"points": -8
+					},
+					"calc": {
+						"level": 13,
+						"rsl": "HT+0"
+					}
+				},
+				{
+					"id": "s2vvmsxB8Jkjvd7fo",
+					"name": "Knot-Tying",
+					"reference": "B203",
+					"tags": [
+						"Everyman"
+					],
+					"difficulty": "dx/e",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Climbing",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Seamanship",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -4,
+						"level": 10,
+						"adjusted_level": 10,
+						"points": -10
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "DX+0"
+					}
+				},
+				{
+					"id": "so8hOKfIK6z6Sg5CM",
+					"name": "Mimicry",
+					"reference": "B210",
+					"tags": [
+						"Animal",
+						"Arts",
+						"Entertainment",
+						"Exploration",
+						"Outdoor"
+					],
+					"specialization": "Bird Calls",
+					"difficulty": "iq/h",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -6
+						},
+						{
+							"type": "skill",
+							"name": "Naturalist",
+							"modifier": -6
+						},
+						{
+							"type": "skill",
+							"name": "Mimicry",
+							"specialization": "Animal Sounds",
+							"modifier": -6
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -6,
+						"level": 5,
+						"adjusted_level": 5,
+						"points": -5
+					},
+					"calc": {
+						"level": 12,
+						"rsl": "IQ+1"
+					}
+				},
+				{
+					"id": "s5xnqjYhK-14NYIpI",
+					"name": "Naturalist",
+					"reference": "B211",
+					"tags": [
+						"Animal",
+						"Exploration",
+						"Natural Science",
+						"Outdoor",
+						"Plant"
+					],
+					"specialization": "Earthlike",
+					"difficulty": "iq/h",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -6
+						},
+						{
+							"type": "skill",
+							"name": "Biology",
+							"modifier": -3
+						}
+					],
+					"tech_level": "3",
+					"points": 2,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -6,
+						"level": 5,
+						"adjusted_level": 5,
+						"points": -5
+					},
+					"calc": {
+						"level": 12,
+						"rsl": "IQ+1"
+					}
+				},
+				{
+					"id": "sbRh90B2wmapV0NSO",
+					"name": "Riding",
+					"reference": "B217",
+					"tags": [
+						"Animal"
+					],
+					"specialization": "Equines",
+					"difficulty": "dx/a",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Animal Handling",
+							"specialization": "Equines",
+							"modifier": -3
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 13,
+						"rsl": "DX-1"
+					}
+				},
+				{
+					"id": "sQPQwk5Vmwo2fzl3G",
+					"name": "Survival",
+					"reference": "B223",
+					"tags": [
+						"Exploration",
+						"Outdoor"
+					],
+					"specialization": "Desert",
+					"difficulty": "per/a",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Naturalist",
+							"modifier": -3
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Bank",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Deep Ocean Vent",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Fresh-Water Lake",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Open Ocean",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Reef",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "River/Stream",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Tropical Lagoon",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -5,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 15,
+						"rsl": "Per+1"
+					}
+				},
+				{
+					"id": "sRb4k5Kt5WGS2wQsa",
+					"name": "Weather Sense",
+					"reference": "B209",
+					"tags": [
+						"Everyman",
+						"Exploration",
+						"Outdoor"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						}
+					],
+					"tech_level": "3",
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				}
+			]
+		},
+		{
+			"id": "s5HSTzkFMvcIVknKv",
+			"name": "Climbing",
+			"reference": "B183",
+			"tags": [
+				"Athletic",
+				"Criminal",
+				"Exploration",
+				"Outdoor",
+				"Street"
+			],
+			"difficulty": "dx/a",
+			"encumbrance_penalty_multiplier": 1,
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -5
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -5,
+				"level": 9,
+				"adjusted_level": 9,
+				"points": -9
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "DX-1"
+			}
+		},
+		{
+			"id": "slUwejSur9TnsOxWU",
+			"name": "Gesture",
+			"reference": "B198",
+			"tags": [
+				"Social"
+			],
+			"difficulty": "iq/e",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -4
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -4,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+1"
+			}
+		},
+		{
+			"id": "sOOQFxQCsvktAwfdx",
+			"name": "Running",
+			"reference": "B218",
+			"tags": [
+				"Athletic"
+			],
+			"difficulty": "ht/a",
+			"defaults": [
+				{
+					"type": "ht",
+					"modifier": -5
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "ht",
+				"modifier": -5,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "HT-1"
+			}
+		},
+		{
+			"id": "sa7ntgZdKdRZfnKFT",
+			"name": "Search",
+			"reference": "B219",
+			"tags": [
+				"Police",
+				"Spy"
+			],
+			"difficulty": "per/a",
+			"defaults": [
+				{
+					"type": "per",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Criminology",
+					"modifier": -5
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "per",
+				"modifier": -5,
+				"level": 9,
+				"adjusted_level": 9,
+				"points": -9
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "Per-1"
+			}
+		},
+		{
+			"id": "sn1lSy6f79m6HExnK",
+			"name": "Swimming",
+			"reference": "B224",
+			"tags": [
+				"Athletic",
+				"Exploration",
+				"Outdoor"
+			],
+			"difficulty": "ht/e",
+			"encumbrance_penalty_multiplier": 2,
+			"defaults": [
+				{
+					"type": "ht",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "ht",
+				"modifier": -4,
+				"level": 9,
+				"adjusted_level": 9,
+				"points": -9
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "HT+0"
+			}
+		}
+	],
+	"equipment": [
+		{
+			"id": "EsC5BqdWdWwWQdIBm",
+			"description": "Scout-Barbarian (bounty-hunter)",
+			"reference": "DF13:24",
+			"quantity": 1,
+			"equipped": true,
+			"children": [
+				{
+					"id": "e4ZpyWfOTPcpXwy2J",
+					"description": "Broadsword",
+					"reference": "LT55",
+					"tech_level": "2",
+					"tags": [
+						"Melee Weapon"
+					],
+					"base_value": "500",
+					"base_weight": "3 lb",
+					"weapons": [
+						{
+							"id": "w7aMWxT4uZLSt7t3L",
+							"sv": 1,
+							"damage": {
+								"type": "cut",
+								"st": "sw",
+								"base": "1"
+							},
+							"strength": "10",
+							"usage": "Swing",
+							"reach": "1",
+							"parry": "0",
+							"defaults": [
+								{
+									"type": "dx",
+									"modifier": -5
+								},
+								{
+									"type": "skill",
+									"name": "Broadsword"
+								},
+								{
+									"type": "skill",
+									"name": "Force Sword",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Rapier",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Saber",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Shortsword",
+									"modifier": -2
+								},
+								{
+									"type": "skill",
+									"name": "Two-Handed Sword",
+									"modifier": -4
+								}
+							],
+							"calc": {
+								"level": 16,
+								"damage": "2d+3 cut",
+								"parry": "12"
+							}
+						},
+						{
+							"id": "wBgwmEcsppUzbIB3g",
+							"sv": 1,
+							"damage": {
+								"type": "cr",
+								"st": "thr",
+								"base": "1"
+							},
+							"strength": "10",
+							"usage": "Thrust",
+							"reach": "1",
+							"parry": "0",
+							"defaults": [
+								{
+									"type": "dx",
+									"modifier": -5
+								},
+								{
+									"type": "skill",
+									"name": "Broadsword"
+								},
+								{
+									"type": "skill",
+									"name": "Force Sword",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Rapier",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Saber",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Shortsword",
+									"modifier": -2
+								},
+								{
+									"type": "skill",
+									"name": "Two-Handed Sword",
+									"modifier": -4
+								}
+							],
+							"calc": {
+								"level": 16,
+								"damage": "1d+2 cr",
+								"parry": "12"
+							}
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 500,
+						"extended_value": 500,
+						"weight": "3 lb",
+						"extended_weight": "3 lb"
+					}
+				},
+				{
+					"id": "eniP-0d0rHrdyFQjm",
+					"description": "Longbow",
+					"reference": "LT72",
+					"tech_level": "0",
+					"tags": [
+						"Missile Weapon"
+					],
+					"base_value": "200",
+					"base_weight": "3 lb",
+					"weapons": [
+						{
+							"id": "W0FKh1WeMQmqxkyUd",
+							"sv": 1,
+							"damage": {
+								"type": "imp",
+								"st": "thr",
+								"base": "2"
+							},
+							"strength": "11†",
+							"usage": "Shoot",
+							"accuracy": "3",
+							"range": "x15/x20",
+							"rate_of_fire": "1",
+							"shots": "1(2)",
+							"bulk": "-8",
+							"defaults": [
+								{
+									"type": "dx",
+									"modifier": -5
+								},
+								{
+									"type": "skill",
+									"name": "Bow"
+								}
+							],
+							"calc": {
+								"level": 18,
+								"damage": "1d+3 imp",
+								"range": "240/320"
+							}
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 200,
+						"extended_value": 200,
+						"weight": "3 lb",
+						"extended_weight": "3 lb"
+					}
+				},
+				{
+					"id": "EzlP9R8G6SJ2UH5PO",
+					"description": "Hip Quiver, Large",
+					"reference": "DF1:24",
+					"local_notes": "Holds 50 arrows/bolts, 2 Compartments",
+					"tags": [
+						"Combat Accessories"
+					],
+					"base_value": "30",
+					"base_weight": "2 lb",
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "contained_weight_prereq",
+								"has": true,
+								"qualifier": {
+									"compare": "at_most",
+									"qualifier": "5 lb"
+								}
+							}
+						]
+					},
+					"quantity": 1,
+					"equipped": true,
+					"children": [
+						{
+							"id": "ewfU8PdoGKOawaJG-",
+							"description": "Arrow",
+							"reference": "B276",
+							"tech_level": "0",
+							"tags": [
+								"Missile Weapon"
+							],
+							"base_value": "2",
+							"base_weight": "0.1 lb",
+							"quantity": 25,
+							"equipped": true,
+							"calc": {
+								"value": 2,
+								"extended_value": 50,
+								"weight": "0.1 lb",
+								"extended_weight": "2.5 lb"
+							}
+						},
+						{
+							"id": "e0k3y18iWVpX42QIy",
+							"description": "Arrow, Bodkin",
+							"reference": "B277",
+							"local_notes": "Changes damage to piercing with armor divisor of (2).",
+							"tech_level": "3",
+							"tags": [
+								"Missile Weapon"
+							],
+							"base_value": "2",
+							"base_weight": "0.1 lb",
+							"quantity": 25,
+							"equipped": true,
+							"calc": {
+								"value": 2,
+								"extended_value": 50,
+								"weight": "0.1 lb",
+								"extended_weight": "2.5 lb"
+							}
+						}
+					],
+					"calc": {
+						"value": 30,
+						"extended_value": 130,
+						"weight": "2 lb",
+						"extended_weight": "7 lb"
+					}
+				},
+				{
+					"id": "eGmtONLCtX13zz6Zp",
+					"description": "Small Shield",
+					"reference": "B287",
+					"tags": [
+						"Shield"
+					],
+					"base_value": "40",
+					"base_weight": "8 lb",
+					"weapons": [
+						{
+							"id": "wfyRS1g2HldCjuVww",
+							"sv": 1,
+							"damage": {
+								"type": "cr",
+								"st": "thr"
+							},
+							"usage": "Shield Bash",
+							"reach": "1",
+							"block": "0",
+							"defaults": [
+								{
+									"type": "dx",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Shield",
+									"specialization": "Buckler",
+									"modifier": -2
+								},
+								{
+									"type": "skill",
+									"name": "Shield",
+									"specialization": "Force Shield",
+									"modifier": -2
+								},
+								{
+									"type": "skill",
+									"name": "Shield",
+									"specialization": "Shield"
+								}
+							],
+							"calc": {
+								"level": 16,
+								"damage": "1d+1 cr",
+								"block": "12"
+							}
+						}
+					],
+					"features": [
+						{
+							"type": "attribute_bonus",
+							"attribute": "dodge",
+							"amount": 1
+						},
+						{
+							"type": "attribute_bonus",
+							"attribute": "parry",
+							"amount": 1
+						},
+						{
+							"type": "attribute_bonus",
+							"attribute": "block",
+							"amount": 1
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 40,
+						"extended_value": 40,
+						"weight": "8 lb",
+						"extended_weight": "8 lb"
+					}
+				},
+				{
+					"id": "emzIEYCFciqZ9ufb1",
+					"description": "Pot-Helm",
+					"reference": "B284",
+					"tech_level": "3",
+					"tags": [
+						"Headgear"
+					],
+					"base_value": "100",
+					"base_weight": "5 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"skull"
+							],
+							"amount": 4
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 100,
+						"extended_value": 100,
+						"weight": "5 lb",
+						"extended_weight": "5 lb"
+					}
+				},
+				{
+					"id": "esfz2i3UFaLA3XpzW",
+					"description": "Clothing, Ordinary, Freeman (Status 0)",
+					"reference": "LT98",
+					"tech_level": "0",
+					"tags": [
+						"Clothing"
+					],
+					"base_weight": "2 lb",
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 0,
+						"extended_value": 0,
+						"weight": "2 lb",
+						"extended_weight": "2 lb"
+					}
+				},
+				{
+					"id": "eJrd9b2Rw45rQaZRg",
+					"description": "Heavy Leather Sleeves",
+					"reference": "B283",
+					"tech_level": "1",
+					"tags": [
+						"Limb Armor"
+					],
+					"base_value": "50",
+					"base_weight": "2 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"arm"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 50,
+						"extended_value": 50,
+						"weight": "2 lb",
+						"extended_weight": "2 lb"
+					}
+				},
+				{
+					"id": "eT1MdbXSzmme1kGxg",
+					"description": "Leather Armor",
+					"reference": "B283",
+					"tech_level": "1",
+					"tags": [
+						"Body Armor"
+					],
+					"base_value": "100",
+					"base_weight": "10 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"torso"
+							],
+							"amount": 2
+						},
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"vitals"
+							],
+							"amount": 2
+						},
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"groin"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 100,
+						"extended_value": 100,
+						"weight": "10 lb",
+						"extended_weight": "10 lb"
+					}
+				},
+				{
+					"id": "expbNbgOEpNJbH9qw",
+					"description": "Heavy Leather Leggings",
+					"reference": "B283",
+					"tech_level": "1",
+					"tags": [
+						"Limb Armor"
+					],
+					"base_value": "60",
+					"base_weight": "4 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"leg"
+							],
+							"amount": 2
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 60,
+						"extended_value": 60,
+						"weight": "4 lb",
+						"extended_weight": "4 lb"
+					}
+				},
+				{
+					"id": "eyGk_xzFMCGUBTEwQ",
+					"description": "Shoes",
+					"reference": "B284",
+					"local_notes": "Flexible; Concealable",
+					"tech_level": "1",
+					"tags": [
+						"Footwear"
+					],
+					"base_value": "40",
+					"base_weight": "2 lb",
+					"features": [
+						{
+							"type": "dr_bonus",
+							"locations": [
+								"foot"
+							],
+							"amount": 1
+						}
+					],
+					"quantity": 1,
+					"equipped": true,
+					"calc": {
+						"value": 40,
+						"extended_value": 40,
+						"weight": "2 lb",
+						"extended_weight": "2 lb"
+					}
+				}
+			],
+			"calc": {
+				"value": 0,
+				"extended_value": 1220,
+				"weight": "0 lb",
+				"extended_weight": "46 lb"
+			}
+		}
+	],
+	"other_equipment": [
+		{
+			"id": "ETQzqOUwyTJHlIDbI",
+			"description": "Backpack, Small",
+			"reference": "B288",
+			"tech_level": "1",
+			"tags": [
+				"Camping and Survival Gear"
+			],
+			"base_value": "60",
+			"base_weight": "3 lb",
+			"prereqs": {
+				"type": "prereq_list",
+				"all": true,
+				"prereqs": [
+					{
+						"type": "contained_weight_prereq",
+						"has": true,
+						"qualifier": {
+							"compare": "at_most",
+							"qualifier": "40 lb"
+						}
+					}
+				]
+			},
+			"quantity": 1,
+			"children": [
+				{
+					"id": "EBV7P6v_h_YiRIAzv",
+					"description": "Canteen",
+					"reference": "B288",
+					"tech_level": "5",
+					"tags": [
+						"Camping and Survival Gear"
+					],
+					"base_value": "10",
+					"base_weight": "1 lb",
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "contained_weight_prereq",
+								"has": true,
+								"qualifier": {
+									"compare": "at_most",
+									"qualifier": "2 lb"
+								}
+							}
+						]
+					},
+					"quantity": 1,
+					"calc": {
+						"value": 10,
+						"extended_value": 10,
+						"weight": "1 lb",
+						"extended_weight": "1 lb"
+					}
+				},
+				{
+					"id": "erRCUMGtCcSFOK7fN",
+					"description": "Personal Basics",
+					"reference": "B288",
+					"local_notes": "Minimum gear for camping: -2 to any Survival roll without it. Includes utensils, tinderbox or flint and steel, towel, etc., as TL permits.",
+					"tech_level": "0",
+					"tags": [
+						"Camping and Survival Gear"
+					],
+					"base_value": "5",
+					"base_weight": "1 lb",
+					"quantity": 1,
+					"calc": {
+						"value": 5,
+						"extended_value": 5,
+						"weight": "1 lb",
+						"extended_weight": "1 lb"
+					}
+				},
+				{
+					"id": "elkfg-i3Xhi7U4lbu",
+					"description": "Traveler's Rations",
+					"reference": "B288",
+					"local_notes": "One meal",
+					"tech_level": "0",
+					"tags": [
+						"Camping and Survival Gear"
+					],
+					"base_value": "2",
+					"base_weight": "0.5 lb",
+					"quantity": 12,
+					"calc": {
+						"value": 2,
+						"extended_value": 24,
+						"weight": "0.5 lb",
+						"extended_weight": "6 lb"
+					}
+				},
+				{
+					"id": "eKs5XBWEOlhk8bzTy",
+					"description": "Rope, 3/8\", 10 yards",
+					"reference": "B288",
+					"local_notes": "Supports 300 lbs.",
+					"tech_level": "0",
+					"tags": [
+						"Camping and Survival Gear"
+					],
+					"base_value": "5",
+					"base_weight": "1.5 lb",
+					"quantity": 1,
+					"calc": {
+						"value": 5,
+						"extended_value": 5,
+						"weight": "1.5 lb",
+						"extended_weight": "1.5 lb"
+					}
+				},
+				{
+					"id": "eG90C2Rebi7aw7uP6",
+					"description": "Torch",
+					"reference": "B288",
+					"local_notes": "Burns for 1 hour",
+					"tech_level": "0",
+					"tags": [
+						"Camping and Survival Gear"
+					],
+					"base_value": "3",
+					"base_weight": "1 lb",
+					"quantity": 2,
+					"calc": {
+						"value": 3,
+						"extended_value": 6,
+						"weight": "1 lb",
+						"extended_weight": "2 lb"
+					}
+				}
+			],
+			"calc": {
+				"value": 60,
+				"extended_value": 110,
+				"weight": "3 lb",
+				"extended_weight": "14.5 lb"
+			}
+		}
+	],
+	"notes": [
+		{
+			"id": "nUPKWUFOrWQaFTunf",
+			"markdown": "Shomari, the Outdoorsman, is a scout-barbarian. He doesn’t\rsay much, but when he does, it’s worth listening to. The Outdoorsman\ris smart, tough, and grizzled beyond belief. His saltand-\rpepper hair is unkempt but fairly short, and his skin is\rlined and leathery from spending so much time in the sun;\roverall, he looks much older than he really is.",
+			"reference": "DFA1:40"
+		},
+		{
+			"id": "nEaiPMj6iJ3DASrGI",
+			"markdown": "Consider adding the Ally Advantage (Appears most of the time (15), Group 6-10; 50% of starting points).  His\rmerry band includes a basic archer (p. 42), a basic thief (p. 44),\ra support cleric (p. 44), an artillery mage (p. 43) with Fire\rspells, and basic barbarians (p. 42) as necessary to bring the\rtotal number of henchmen up to N+4. Used as a PC, one point\rfrom quirks should be used for extra starting cash to purchase\rthe listed gear. The Outdoorsman can serve as a clever rival – or as a tough\rrival, saving the pristine desert from an infestation of orcs.",
+			"reference": "DFA1:41"
+		},
+		{
+			"id": "Nna_JndaqMjhSPeGq",
+			"markdown": "Rules",
+			"children": [
+				{
+					"id": "nR4q4MGrWOEloD9TT",
+					"markdown": "Climbing",
+					"reference": "BX349"
+				},
+				{
+					"id": "naAPHus2QnZOx8Uqn",
+					"markdown": "Hiking",
+					"reference": "BX351"
+				},
+				{
+					"id": "nruRLNJumnQZgj-rz",
+					"markdown": "Swimming",
+					"reference": "BX354"
+				},
+				{
+					"id": "nABS2ZGogw9pG-7I_",
+					"markdown": "Wrestling",
+					"reference": "MA204"
+				},
+				{
+					"id": "NE1pFMir2zVHwAnrI",
+					"markdown": "Combat Modifiers",
+					"reference": "BX547",
+					"children": [
+						{
+							"id": "n_B5IR-cyRMFEMX4x",
+							"markdown": "Melee Attack Modifiers",
+							"reference": "BX547"
+						},
+						{
+							"id": "ni9CdX4wkJjLDPWMP",
+							"markdown": "Active Defense Modifiers",
+							"reference": "BX548"
+						},
+						{
+							"id": "nceh5tnXDwcPKqIap",
+							"markdown": "Ranged Attack Modifiers",
+							"reference": "BX548"
+						},
+						{
+							"id": "nnW1cELY2l7_PQzdA",
+							"markdown": "Size and Speed/Range Table",
+							"reference": "BX550"
+						},
+						{
+							"id": "n0QLUNsJ8RMKNOQW2",
+							"markdown": "Maneuvers/Manoeuvres",
+							"reference": "BX551"
+						},
+						{
+							"id": "nvu1w437P6I5HCjNq",
+							"markdown": "Postures",
+							"reference": "BX551"
+						}
+					]
+				},
+				{
+					"id": "NdRL0AMWudCh4ywQ6",
+					"markdown": "Grappling",
+					"reference": "BX370",
+					"children": [
+						{
+							"id": "n-7sViC9gi7Az2OKm",
+							"markdown": "Choke or Strangle",
+							"reference": "BX370"
+						},
+						{
+							"id": "ng8-wYwqffF0ClM3N",
+							"markdown": "Pin",
+							"reference": "BX370"
+						},
+						{
+							"id": "n_ChZyjEavkz516Xj",
+							"markdown": "Takedown",
+							"reference": "BX370"
+						},
+						{
+							"id": "nN2kQKKPxMhf9KkJg",
+							"markdown": "Arm Lock",
+							"reference": "BX371"
+						},
+						{
+							"id": "nd9AVQ7Gk0EFU_4KS",
+							"markdown": "Choke Hold",
+							"reference": "BX371"
+						},
+						{
+							"id": "nsH3MNPSrqAdMJHlB",
+							"markdown": "Neck Snap or Wrench Limb",
+							"reference": "BX371"
+						},
+						{
+							"id": "nmn4wIs1xWYjC2Rsz",
+							"markdown": "Other Actions",
+							"reference": "BX371"
+						}
+					]
+				},
+				{
+					"id": "N8DCPy1lNadFNj6rA",
+					"markdown": "Blocking",
+					"reference": "BX375"
+				},
+				{
+					"id": "Np-MhtkVXP5Nb-1EF",
+					"markdown": "Dodging",
+					"reference": "BX374"
+				},
+				{
+					"id": "N3Gb-_V9SKr8nSNGL",
+					"markdown": "Parrying",
+					"reference": "BX376"
+				},
+				{
+					"id": "NxtXbOM2cc2z33_fL",
+					"markdown": "Reaction Table",
+					"reference": "BX560",
+					"children": [
+						{
+							"id": "nz0AF1_R0PbslR-BV",
+							"markdown": "Potental Combat Situations (and Morale Checks)",
+							"reference": "BX561"
+						},
+						{
+							"id": "ngdU7ZVnhhlbTyRzt",
+							"markdown": "Commercial Transactions",
+							"reference": "BX562"
+						},
+						{
+							"id": "n_MtwB3LP0dBtmSKA",
+							"markdown": "Loyalty",
+							"reference": "BX562"
+						},
+						{
+							"id": "nEiUFf9tNLU22FvwV",
+							"markdown": "Requests for Aid",
+							"reference": "BX562"
+						},
+						{
+							"id": "nd7dotc8muCY5EOBJ",
+							"markdown": "Requests for Information",
+							"reference": "BX562"
+						},
+						{
+							"id": "nuWvyU-_o3olFB30G",
+							"markdown": "General Reaction",
+							"reference": "BX651"
+						}
+					]
+				},
+				{
+					"id": "NtsxizLW4O44sSYHF",
+					"markdown": "Exploration",
+					"reference": "DF16:25",
+					"children": [
+						{
+							"id": "N4tjpQOUQd_my22on",
+							"markdown": "Scouting",
+							"reference": "DF16:25",
+							"children": [
+								{
+									"id": "NF6EFuwiFt0uKTJz8",
+									"markdown": "Sneaking",
+									"reference": "DF16:25",
+									"children": [
+										{
+											"id": "npekndOOU1hzxqHTH",
+											"markdown": "Where Did That Come From?",
+											"reference": "DF16:26"
+										},
+										{
+											"id": "nUDYa67-TMhEJsZGV",
+											"markdown": "Size Matters",
+											"reference": "DF16:26"
+										},
+										{
+											"id": "nFX3KWlo86DZlluJi",
+											"markdown": "Stealth from Above",
+											"reference": "DF16:26"
+										},
+										{
+											"id": "nc-zOUrqlwyc2IIcd",
+											"markdown": "It’s Just a Mouse",
+											"reference": "DF16:26"
+										}
+									]
+								},
+								{
+									"id": "NiklsOJBqNnTTBcJ9",
+									"markdown": "Information Gathering",
+									"reference": "DF16:26",
+									"children": [
+										{
+											"id": "nn42-ADErseArhM1L",
+											"markdown": "The Hills Have Ears",
+											"reference": "DF16:26"
+										},
+										{
+											"id": "nnCCo9b2ucpqmOlf7",
+											"markdown": "Lay of the Land",
+											"reference": "DF16:26"
+										},
+										{
+											"id": "nKCknIDtu3o7ux9HP",
+											"markdown": "Look, Footprints!",
+											"reference": "DF16:26"
+										},
+										{
+											"id": "nHUlG5428KuV-OFX6",
+											"markdown": "I See Trouble Up Ahead",
+											"reference": "DF16:26"
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "NdWFfEKdMxRTwRDnd",
+							"markdown": "There and Back Again",
+							"reference": "DF16:26",
+							"children": [
+								{
+									"id": "ngB_ojX6ZWignd5H2",
+									"markdown": "Getting Lost",
+									"reference": "DF16:26"
+								},
+								{
+									"id": "nVy32CxkSkscCSeGO",
+									"markdown": "Getting Separated",
+									"reference": "DF16:26"
+								},
+								{
+									"id": "nzb2PghDDRL3zC9VL",
+									"markdown": "Mapping",
+									"reference": "DF16:27"
+								}
+							]
+						},
+						{
+							"id": "nDVDW1lGn_yMH3UYi",
+							"markdown": "Aerial Scouting and Mapping",
+							"reference": "DF16:27"
+						},
+						{
+							"id": "N7zXQoP-po4zqAw6E",
+							"markdown": "Tracking",
+							"reference": "DF16:27",
+							"children": [
+								{
+									"id": "n1bGmmQxbkRB_NccL",
+									"markdown": "Days on the Trail",
+									"reference": "DF16:27"
+								},
+								{
+									"id": "nEf_PE_C5MmSiXEof",
+									"markdown": "Getting Lost",
+									"reference": "DF16:27"
+								},
+								{
+									"id": "n6K-MtPOjiFYTakm0",
+									"markdown": "Hot on the Trail",
+									"reference": "DF16:27"
+								},
+								{
+									"id": "nqMrUKFLP1Et3SnOc",
+									"markdown": "Losing the Trail",
+									"reference": "DF16:27"
+								},
+								{
+									"id": "ncNC2yg4MaPL7lnuu",
+									"markdown": "Active Countermeasures",
+									"reference": "DF16:28"
+								}
+							]
+						},
+						{
+							"id": "NUnfkkdlnOIBICQEv",
+							"markdown": "Signaling",
+							"reference": "DF16:28",
+							"children": [
+								{
+									"id": "nTS5q3XVHClMPydwI",
+									"markdown": "Noise",
+									"reference": "DF16:28"
+								},
+								{
+									"id": "nx7A04mZiim33xoGN",
+									"markdown": "Smoke and Fire",
+									"reference": "DF16:28"
+								}
+							]
+						},
+						{
+							"id": "NcUIjIKkTz_VZ6GR8",
+							"markdown": "Stunts",
+							"reference": "DF16:28",
+							"children": [
+								{
+									"id": "nlgkqD3VqXV20Ymoj",
+									"markdown": "Balancing",
+									"reference": "DF16:29"
+								},
+								{
+									"id": "nJ_aI-QG7g7CtV5t3",
+									"markdown": "Climbing",
+									"reference": "DF16:29"
+								},
+								{
+									"id": "ntwORFNleHATr_gbW",
+									"markdown": "Hand Over Hand",
+									"reference": "DF16:29"
+								},
+								{
+									"id": "nOHJLFjdb8wat-qXw",
+									"markdown": "Hoisting",
+									"reference": "DF16:29"
+								},
+								{
+									"id": "n4PoUaYIVm9hT8NTY",
+									"markdown": "Skidding",
+									"reference": "DF16:29"
+								},
+								{
+									"id": "nhT9jcEPA2JbQSCJQ",
+									"markdown": "Swinging",
+									"reference": "DF16:29"
+								},
+								{
+									"id": "NaMcq11so4K9XDPfr",
+									"markdown": "Mountaineering",
+									"reference": "DF16:29",
+									"children": [
+										{
+											"id": "nfDAs9EWr6_MU9nQw",
+											"markdown": "All in a Day’s Work",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nh4nKoCpP02gd_nxn",
+											"markdown": "Swinging",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nbK3_uFt67CBIRA3B",
+											"markdown": "United We Climb",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "n0wvf0Pc8aQSj3IWY",
+											"markdown": "Every Man for Himself",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nmO5N9y_LB5G-WhaN",
+											"markdown": "United We (Hopefully Don’t) Fall",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nHku1pnubJNRchUin",
+											"markdown": "Yeti Attack!",
+											"reference": "DF16:29"
+										}
+									]
+								},
+								{
+									"id": "NsU6iMrjTkvahP3mO",
+									"markdown": "Water Hazards",
+									"reference": "DF16:29",
+									"children": [
+										{
+											"id": "nOva6b4dj1WDf-Ozz",
+											"markdown": "Boating Accidents",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nEtdOyqYg-R4fYWl2",
+											"markdown": "Fording",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nzjel-TbqpyXzD9LN",
+											"markdown": "Unscheduled Swims",
+											"reference": "DF16:29"
+										},
+										{
+											"id": "nkBXRLVea1DwwlUjp",
+											"markdown": "Rough Water",
+											"reference": "DF16:29"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "N5XSjCEKZeQAY044F",
+					"markdown": "Food and Water",
+					"reference": "DF16:42",
+					"children": [
+						{
+							"id": "nXiHHH_gKkyJBTTcj",
+							"markdown": "Water Supplies",
+							"reference": "DF16:43"
+						},
+						{
+							"id": "nNJ9LwQ_iaKAtAswb",
+							"markdown": "Starvation",
+							"reference": "DF16:43"
+						},
+						{
+							"id": "nl_proBQFtBE3yjSP",
+							"markdown": "Pet Food",
+							"reference": "DF16:43"
+						}
+					]
+				}
+			]
+		}
+	],
+	"created_date": "2022-11-25T23:47:25-05:00",
+	"modified_date": "2022-11-26T01:17:07-05:00",
+	"calc": {
+		"swing": "2d+2",
+		"thrust": "1d+1",
+		"basic_lift": "51 lb",
+		"dodge_bonus": 1,
+		"parry_bonus": 1,
+		"block_bonus": 1,
+		"move": [
+			7,
+			5,
+			4,
+			2,
+			1
+		],
+		"dodge": [
+			11,
+			10,
+			9,
+			8,
+			7
+		]
+	}
+}

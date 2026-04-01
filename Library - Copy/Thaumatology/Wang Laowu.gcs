@@ -1,0 +1,3311 @@
+{
+	"version": 5,
+	"id": "Ae7adQUslBWwCG7BQ",
+	"total_points": 250,
+	"points_record": [
+		{
+			"when": "2023-02-11T20:43:59Z",
+			"points": 250,
+			"reason": "Initial points"
+		}
+	],
+	"profile": {
+		"name": "Wang Laowu",
+		"gender": "Male",
+		"height": "5'6\"",
+		"weight": "120 lb",
+		"player_name": "NPC",
+		"religion": "Taoism",
+		"tech_level": "3+1"
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions conditional_modifiers",
+			"melee",
+			"ranged",
+			"traits skills",
+			"spells",
+			"equipment",
+			"other_equipment",
+			"notes"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "senses",
+				"type": "secondary_separator",
+				"name": "Senses"
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "movement",
+				"type": "secondary_separator",
+				"name": "Movement"
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"base": "($dx + $ht) / 4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"base": "Math.floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "highjump",
+				"type": "integer_ref",
+				"name": "High Jump (in)",
+				"base": "((6 * Math.max(Math.max($basic_move, Math.floor(entity.skillLevel(\"jumping\") / 2)), $st / 4)) - 10) * entity.currentEncumbrance(false, true) * (2 ** Math.max(0, entity.traitLevel(\"super jump\")))"
+			},
+			{
+				"id": "running_highjump",
+				"type": "integer_ref",
+				"name": "when running",
+				"base": "(((6 * Math.max(Math.max($basic_move, Math.floor(entity.skillLevel(\"jumping\") / 2)), $st / 4)) * (1 + Math.max(0, entity.traitLevel(\"enhanced move (ground)\")))) - 10) * entity.currentEncumbrance(false, true) * iff(entity.traitLevel(\"enhanced move (ground)\") \u003c 1, 2, 1) * (2 ** Math.max(0, entity.traitLevel(\"super jump\")))"
+			},
+			{
+				"id": "broadjump",
+				"type": "integer_ref",
+				"name": "Broad Jump (ft)",
+				"base": "((2 * Math.max(Math.max($basic_move, Math.floor(entity.skillLevel(\"jumping\") / 2)), $st / 4)) - 3) * entity.currentEncumbrance(false, true) * (2 ** Math.max(0, entity.traitLevel(\"super jump\")))"
+			},
+			{
+				"id": "running_broadjump",
+				"type": "integer_ref",
+				"name": "when running",
+				"base": "(((2 * Math.max(Math.max($basic_move, Math.floor(entity.skillLevel(\"jumping\") / 2)), $st / 4)) * (1 + Math.max(0, entity.traitLevel(\"enhanced move (ground)\")))) - 3) * entity.currentEncumbrance(false, true) * iff(entity.traitLevel(\"enhanced move (ground)\") \u003c 1, 2, 1) * (2 ** Math.max(0, entity.traitLevel(\"super jump\")))"
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"value": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. Will to do anything besides talk or rest; failure causes unconsciousness\nEach FP you lose below 0 also causes 1 HP of injury\nMove, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"value": "Math.round($fp / 3)",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"value": "$fp - 1"
+					},
+					{
+						"state": "Rested",
+						"value": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"value": "Math.round(-$hp * 5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"value": "Math.round(-$hp * 4)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-4 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"value": "Math.round(-$hp * 3)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-3 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"value": "Math.round(-$hp * 2)",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-2 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"value": "-$hp",
+						"explanation": "Roll vs. HT to avoid death\nRoll vs. HT-1 every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "Roll vs. HT every second to avoid falling unconscious\nMove and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"value": "Math.round($hp / 3)",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"value": "$hp - 1"
+					},
+					{
+						"state": "Healthy",
+						"value": "$hp"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Humanoid",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Right Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "6-7",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Right Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "8",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 2,
+					"calc": {
+						"roll_range": "9-10",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "11",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Left Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Left Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "hand",
+					"choice_name": "Hand",
+					"table_name": "Hand",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "If holding a shield, double the penalty to hit: -8 for\nshield hand instead of -4. Reduce the wounding multiplier of\nlarge piercing (pi+), huge piercing (pi++), and impaling\n(imp) damage to x1. Any major wound (loss of over ⅓ HP\nfrom one blow) cripples the extremity. Damage beyond that\nthreshold is lost.",
+					"calc": {
+						"roll_range": "15",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "16",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 2,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": -1,
+			"calc": {
+				"value": 9,
+				"points": -10
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 3,
+			"calc": {
+				"value": 13,
+				"points": 60
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 5,
+			"calc": {
+				"value": 15,
+				"points": 50
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 2,
+			"calc": {
+				"value": 13,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "senses",
+			"adj": 0
+		},
+		{
+			"attr_id": "per",
+			"adj": 4,
+			"calc": {
+				"value": 15,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 15,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "movement",
+			"adj": 0
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": -1,
+			"calc": {
+				"value": 6,
+				"points": -20
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 0,
+			"calc": {
+				"value": 6,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "highjump",
+			"adj": 0,
+			"calc": {
+				"value": 26,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "running_highjump",
+			"adj": 0,
+			"calc": {
+				"value": 52,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "broadjump",
+			"adj": 0,
+			"calc": {
+				"value": 9,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "running_broadjump",
+			"adj": 0,
+			"calc": {
+				"value": 18,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 3,
+			"calc": {
+				"value": 18,
+				"current": 18,
+				"points": 9
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 0,
+			"calc": {
+				"value": 9,
+				"current": 9,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "t1aYD-F0-V6Yy54oC",
+			"name": "Natural Attacks",
+			"reference": "B271",
+			"weapons": [
+				{
+					"id": "wfQanzqtMQi9Bt_4p",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Bite",
+					"reach": "C",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 13,
+						"damage": "1d-3 cr"
+					}
+				},
+				{
+					"id": "wLwC9Eo0ECPuSbwR-",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Punch",
+					"reach": "C",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Boxing"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate"
+						}
+					],
+					"calc": {
+						"level": 13,
+						"damage": "1d-3 cr",
+						"parry": "9"
+					}
+				},
+				{
+					"id": "w1ZVEWI8rCQBDmj8k",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr"
+					},
+					"usage": "Kick",
+					"reach": "C,1",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Brawling",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Kicking"
+						},
+						{
+							"type": "skill",
+							"name": "Karate",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 11,
+						"damage": "1d-2 cr"
+					}
+				}
+			],
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "tEf4GGUmgFnigcLKX",
+			"name": "Cultural Familiarity (Han)",
+			"reference": "B23",
+			"local_notes": "Do not suffer the normal -3 penalty for unfamiliarity",
+			"tags": [
+				"Advantage",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "mGM2ePrucJxJtyatC",
+					"name": "Alien",
+					"cost_adj": "1",
+					"disabled": true
+				},
+				{
+					"id": "meXPqRBxgqg6HSs0i",
+					"name": "Native",
+					"cost_adj": "-1"
+				}
+			],
+			"base_points": 1,
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "tRp1ILUw2FnqnIkq-",
+			"name": "Language: Classical Chinese",
+			"reference": "B24",
+			"tags": [
+				"Advantage",
+				"Language",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "m-NgBtOFkrvE1C3sf",
+					"name": "Native",
+					"reference": "B23",
+					"cost_adj": "-6"
+				},
+				{
+					"id": "mY7UPP3nZ0iM72x-s",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "None",
+					"disabled": true
+				},
+				{
+					"id": "mnEgiZRl6M6d0tQkF",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "Broken",
+					"cost_adj": "1",
+					"disabled": true
+				},
+				{
+					"id": "m7A_zL3HTm30pvAQb",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "Accented",
+					"cost_adj": "2",
+					"disabled": true
+				},
+				{
+					"id": "mraTbypEZb7F-z8vc",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "Native",
+					"cost_adj": "3"
+				},
+				{
+					"id": "mgPrEE43i_x_aB4eq",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "None",
+					"disabled": true
+				},
+				{
+					"id": "mgbNsk7i9I1RBBQhF",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "Broken",
+					"cost_adj": "1",
+					"disabled": true
+				},
+				{
+					"id": "mnMWGv3miigP3mK_I",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "Accented",
+					"cost_adj": "2",
+					"disabled": true
+				},
+				{
+					"id": "mwATcWJYO-3OFEMZ1",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "Native",
+					"cost_adj": "3"
+				}
+			],
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "TF6lD0le4p2bvHdzA",
+			"name": "Advantages",
+			"children": [
+				{
+					"id": "tvo0sYwzosJRdGIy4",
+					"name": "Talent (Chinese Water)",
+					"reference": "TCEP16",
+					"tags": [
+						"Advantage",
+						"Mental",
+						"Talent",
+						"Water"
+					],
+					"modifiers": [
+						{
+							"id": "mvD7WQe33hyb1UQdJ",
+							"name": "Internal Only",
+							"reference": "TCEP8",
+							"cost_adj": "-40%",
+							"disabled": true
+						},
+						{
+							"id": "mam2wFKRBa93TCz_l",
+							"name": "External Only",
+							"reference": "TCEP8",
+							"cost_adj": "-40%",
+							"disabled": true
+						}
+					],
+					"points_per_level": 5,
+					"can_level": true,
+					"levels": 4,
+					"calc": {
+						"points": 20,
+						"current_level": 4
+					}
+				},
+				{
+					"id": "tG7kzdouEkkU9uvbg",
+					"name": "Fit",
+					"reference": "B55",
+					"local_notes": "Recover FP at twice the normal rate (but not FP spent for spells or psi powers)",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"base_points": 5,
+					"features": [
+						{
+							"type": "conditional_modifier",
+							"situation": "to all HT rolls to stay conscious, avoid death, resist disease, or resist poison",
+							"amount": 1
+						}
+					],
+					"calc": {
+						"points": 5
+					}
+				},
+				{
+					"id": "tEyiS0E6c4DWrYs3_",
+					"name": "Longevity",
+					"reference": "B66",
+					"local_notes": "You fail aging rolls only on a 17 or 18, or only on an 18 if your modified HT is 17 or better",
+					"tags": [
+						"Advantage",
+						"Physical"
+					],
+					"base_points": 2,
+					"calc": {
+						"points": 2
+					}
+				},
+				{
+					"id": "t8ejVuRvOzXt9or6g",
+					"name": "Signature Gear",
+					"reference": "B85",
+					"local_notes": "Sampan ($1,800)",
+					"tags": [
+						"Advantage",
+						"Social"
+					],
+					"points_per_level": 1,
+					"can_level": true,
+					"levels": 2,
+					"calc": {
+						"points": 2,
+						"current_level": 2
+					}
+				},
+				{
+					"id": "tKO49swb-cZabopnD",
+					"name": "Social Regard",
+					"reference": "B87",
+					"local_notes": "Venerated: Taoist",
+					"tags": [
+						"Advantage",
+						"Social"
+					],
+					"points_per_level": 5,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from those who hold you in high regard for being a Taoist, in a Venerated way.",
+							"amount": 1,
+							"per_level": true
+						}
+					],
+					"can_level": true,
+					"levels": 4,
+					"calc": {
+						"points": 20,
+						"current_level": 4
+					}
+				}
+			],
+			"calc": {
+				"points": 49
+			}
+		},
+		{
+			"id": "TK0N6GSn4uRWY2STu",
+			"name": "Elemental Abilities",
+			"children": [
+				{
+					"id": "ty0NqazhT1Q2c8q4y",
+					"name": "Dragon Swiftness",
+					"reference": "TCEP30",
+					"tags": [
+						"Ability",
+						"Internal",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "External Only"
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Elemental)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "External Only"
+								}
+							}
+						]
+					},
+					"modifiers": [
+						{
+							"id": "mfXJ4ZOhbnvcc9yNV",
+							"name": "Amphibious",
+							"reference": "B39",
+							"cost_adj": "10"
+						},
+						{
+							"id": "mTQeQxLK_uLgex-qZ",
+							"name": "Accessibility",
+							"reference": "TCEP17",
+							"local_notes": "While conscious",
+							"cost_adj": "-5%"
+						},
+						{
+							"id": "mmsumWesvFTZo0NvS",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						}
+					],
+					"calc": {
+						"points": 9
+					}
+				},
+				{
+					"id": "tH8SwSJnRjXG5j8BP",
+					"name": "Inner Awareness",
+					"reference": "TCEP21",
+					"tags": [
+						"Ability",
+						"Elemental",
+						"External"
+					],
+					"modifiers": [
+						{
+							"id": "mNyipw76UdXghW4iD",
+							"name": "Detect (Chi)",
+							"reference": "B48",
+							"cost_adj": "20"
+						},
+						{
+							"id": "mrmUooI85igmXxsjD",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						}
+					],
+					"calc": {
+						"points": 18
+					}
+				},
+				{
+					"id": "t3wTHsreGCfQaRnso",
+					"name": "Knowing Hidden Water",
+					"reference": "TCEP32",
+					"tags": [
+						"Ability",
+						"External",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "Internal Only"
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Elemental)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "Internal Only"
+								}
+							}
+						]
+					},
+					"modifiers": [
+						{
+							"id": "mOo8_BNBt7fS08Aaz",
+							"name": "Detect",
+							"reference": "B48",
+							"local_notes": "Water",
+							"cost_adj": "10"
+						},
+						{
+							"id": "mF4pIoQ_JJ8jJTo5s",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						}
+					],
+					"calc": {
+						"points": 9
+					}
+				},
+				{
+					"id": "t4cbY4JUZ38h244dG",
+					"name": "Resistance to Fire",
+					"reference": "TCEP31",
+					"tags": [
+						"Ability",
+						"Internal",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "External Only"
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Elemental)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "External Only"
+								}
+							}
+						]
+					},
+					"modifiers": [
+						{
+							"id": "mrXfS-iE_EwG7qymY",
+							"name": "Damage Resistance 3",
+							"reference": "B46",
+							"cost_adj": "15"
+						},
+						{
+							"id": "mzKqbZKju5sHnyN2-",
+							"name": "Accessibility",
+							"reference": "TCEP17",
+							"local_notes": "While conscious",
+							"cost_adj": "-5%"
+						},
+						{
+							"id": "mFOca1ej3a3KXDNEn",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "mMXu9wP_r9BLP0MXt",
+							"name": "Force Field",
+							"reference": "B47",
+							"cost_adj": "20%"
+						},
+						{
+							"id": "m3aA9A_ICOPuWiBPk",
+							"name": "Limited",
+							"reference": "B47",
+							"local_notes": "Fire",
+							"cost_adj": "-60%"
+						}
+					],
+					"calc": {
+						"points": 7
+					}
+				},
+				{
+					"id": "tzfQx2UqEglrhJW3i",
+					"name": "Restoring the Body's Water",
+					"reference": "TCEP31",
+					"tags": [
+						"Ability",
+						"Internal",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "prereq_list",
+								"all": true,
+								"prereqs": [
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Inner Fountain"
+										},
+										"level": {
+											"compare": "at_least"
+										}
+									}
+								]
+							},
+							{
+								"type": "prereq_list",
+								"all": false,
+								"prereqs": [
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Water)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										},
+										"notes": {
+											"compare": "does_not_contain",
+											"qualifier": "External Only"
+										}
+									},
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Elemental)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										},
+										"notes": {
+											"compare": "does_not_contain",
+											"qualifier": "External Only"
+										}
+									}
+								]
+							}
+						]
+					},
+					"modifiers": [
+						{
+							"id": "mYosZ551v4R6qsVEu",
+							"name": "Healing",
+							"reference": "B59",
+							"cost_adj": "30"
+						},
+						{
+							"id": "mWcY8jvDLYVD96FMI",
+							"name": "Accessibility",
+							"reference": "TCEP31",
+							"local_notes": "Only dehydration-caused FP",
+							"cost_adj": "-40%"
+						},
+						{
+							"id": "mxAViPPqo9HQOh3GK",
+							"name": "Capped",
+							"reference": "P51",
+							"local_notes": "2 FP",
+							"cost_adj": "-25%"
+						},
+						{
+							"id": "mfzo2OB1AbuAvRlxp",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "maDBSjwsFUjRaZvAG",
+							"name": "Contact Agent",
+							"reference": "B111",
+							"cost_adj": "-30%"
+						},
+						{
+							"id": "mJz8_-hb9U-j1RBjj",
+							"name": "Heals Fatigue only"
+						},
+						{
+							"id": "mKNgNFU14dXjWca0b",
+							"name": "Immediate Preparation Required",
+							"reference": "PSI20",
+							"local_notes": "1 minute",
+							"cost_adj": "-30%"
+						},
+						{
+							"id": "mUXh8eJuPgMMW5uk7",
+							"name": "Once per subject per day",
+							"reference": "TCEP31",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "mH8y0IbwHVN0jT9QU",
+							"name": "Reduced Fatigue Cost",
+							"reference": "B108,P105",
+							"cost_adj": "20%",
+							"levels": 2
+						},
+						{
+							"id": "ma9ggOJQRnbTpLYGB",
+							"name": "Xenohealing",
+							"reference": "B59",
+							"local_notes": "All water-dependent land animals",
+							"cost_adj": "40%"
+						}
+					],
+					"calc": {
+						"points": 11
+					}
+				},
+				{
+					"id": "TULLA7PgDSQDsu4ii",
+					"name": "Storm of Rain",
+					"reference": "TCEP33",
+					"tags": [
+						"Ability",
+						"External",
+						"Water"
+					],
+					"container_type": "meta_trait",
+					"children": [
+						{
+							"id": "tMYvJ0AVHd36-G-vA",
+							"name": "Storm",
+							"reference": "TCEP33",
+							"prereqs": {
+								"type": "prereq_list",
+								"all": false,
+								"prereqs": [
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Water)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										},
+										"notes": {
+											"compare": "does_not_contain",
+											"qualifier": "Internal Only"
+										}
+									},
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Elemental)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										},
+										"notes": {
+											"compare": "does_not_contain",
+											"qualifier": "Internal Only"
+										}
+									}
+								]
+							},
+							"modifiers": [
+								{
+									"id": "m7SLKAPjLbdeuh9Ti",
+									"name": "Innate Attack",
+									"reference": "B61",
+									"local_notes": "Crushing 1d-7",
+									"cost_adj": "4"
+								},
+								{
+									"id": "mRgcPvGtwXybOE20K",
+									"name": "Chi",
+									"reference": "TCEP9,P26",
+									"cost_adj": "-10%"
+								},
+								{
+									"id": "mQG1GrjIGKaCgBn2K",
+									"name": "Double Knockback (dkb)",
+									"reference": "B104",
+									"cost_adj": "20%"
+								},
+								{
+									"id": "mfjUgWuzte0-lfLGi",
+									"name": "Elemental",
+									"reference": "TCEP9",
+									"cost_adj": "-10%"
+								},
+								{
+									"id": "MhPPIWOr22DD9zVkO",
+									"name": "Elemental Storm",
+									"reference": "TCEP17",
+									"children": [
+										{
+											"id": "mLK7O3y-jOVH-pYlC",
+											"name": "Accessibility",
+											"reference": "TCEP17",
+											"local_notes": "Requires dramatic gesture",
+											"cost_adj": "-10%"
+										},
+										{
+											"id": "mtMJUWc0ypDTmj8cJ",
+											"name": "Area effect",
+											"reference": "TCEP17",
+											"local_notes": "16 yards",
+											"cost_adj": "200%"
+										},
+										{
+											"id": "mmkLeFL9vDHwdsHKX",
+											"name": "Bombardment",
+											"reference": "TCEP17",
+											"local_notes": "Skill 14",
+											"cost_adj": "-5%"
+										},
+										{
+											"id": "mQAp2Faa_rAhcMVAo",
+											"name": "Emanation",
+											"reference": "TCEP17",
+											"cost_adj": "-20%"
+										},
+										{
+											"id": "mSaWJOL4BSjD0MCSv",
+											"name": "Limited use",
+											"reference": "TCEP17",
+											"local_notes": "1 / day",
+											"cost_adj": "-40%"
+										},
+										{
+											"id": "mBdeMxC9g9naMs8hx",
+											"name": "Nuisance effect",
+											"reference": "TCEP17",
+											"local_notes": "Exploitable hole in center",
+											"cost_adj": "-5%"
+										},
+										{
+											"id": "mzecp7SGfvteklhUC",
+											"name": "Overhead",
+											"reference": "TCEP17",
+											"cost_adj": "30%"
+										},
+										{
+											"id": "mwmg-TLJ4UnYiwwb2",
+											"name": "Persistent",
+											"reference": "TCEP17",
+											"cost_adj": "40%"
+										}
+									]
+								},
+								{
+									"id": "m7zPRtyW7N9OdJJja",
+									"name": "Extended Duration",
+									"reference": "B105",
+									"local_notes": "3x duration",
+									"cost_adj": "20%"
+								},
+								{
+									"id": "m5xAhutbrBhpZZ7k3",
+									"name": "Link",
+									"reference": "B106",
+									"cost_adj": "10%"
+								},
+								{
+									"id": "mt7AZBxkA6kVpA93v",
+									"name": "No Wounding (nw)",
+									"reference": "B111",
+									"cost_adj": "-50%"
+								}
+							],
+							"calc": {
+								"points": 11
+							}
+						},
+						{
+							"id": "tL9uYWH10ASGaQSRz",
+							"name": "Rain",
+							"reference": "TCEP33",
+							"prereqs": {
+								"type": "prereq_list",
+								"all": false,
+								"prereqs": [
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Water)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										},
+										"notes": {
+											"compare": "does_not_contain",
+											"qualifier": "Internal Only"
+										}
+									},
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Elemental)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										},
+										"notes": {
+											"compare": "does_not_contain",
+											"qualifier": "Internal Only"
+										}
+									}
+								]
+							},
+							"modifiers": [
+								{
+									"id": "mNaGEjgDQ9p5d-Sls",
+									"name": "Innate Attack",
+									"reference": "B61",
+									"local_notes": "Fatigue 0d+1",
+									"cost_adj": "3"
+								},
+								{
+									"id": "mFBfF4Bxh0J9zWA8W",
+									"name": "Chi",
+									"reference": "TCEP9,P26",
+									"cost_adj": "-10%"
+								},
+								{
+									"id": "mqJ1Mg0KO7dX6S6SA",
+									"name": "Hazard",
+									"reference": "B104",
+									"local_notes": "Drowning"
+								},
+								{
+									"id": "m1jpwgSsaiwXihTf1",
+									"name": "Elemental",
+									"reference": "TCEP9",
+									"cost_adj": "-10%"
+								},
+								{
+									"id": "MCyZ5811rEJS8QN7T",
+									"name": "Elemental Storm",
+									"reference": "TCEP17",
+									"children": [
+										{
+											"id": "mgNb-re3t_vD3trt3",
+											"name": "Accessibility",
+											"reference": "TCEP17",
+											"local_notes": "Requires dramatic gesture",
+											"cost_adj": "-10%"
+										},
+										{
+											"id": "meyDQvUf-i-uhmDWA",
+											"name": "Area effect",
+											"reference": "TCEP17",
+											"local_notes": "16 yards",
+											"cost_adj": "200%"
+										},
+										{
+											"id": "m38WIMrxz2z_uz3tW",
+											"name": "Bombardment",
+											"reference": "TCEP17",
+											"local_notes": "Skill 14",
+											"cost_adj": "-5%"
+										},
+										{
+											"id": "mbbjP5TXhx_SWoYak",
+											"name": "Emanation",
+											"reference": "TCEP17",
+											"cost_adj": "-20%"
+										},
+										{
+											"id": "mP3oDdAgZMan6h7Fy",
+											"name": "Limited use",
+											"reference": "TCEP17",
+											"local_notes": "1 / day",
+											"cost_adj": "-40%"
+										},
+										{
+											"id": "mc-ep2ELHZn3y46iV",
+											"name": "Nuisance effect",
+											"reference": "TCEP17",
+											"local_notes": "Exploitable hole in center",
+											"cost_adj": "-5%"
+										},
+										{
+											"id": "mc8mpogqB9pBVfSmc",
+											"name": "Overhead",
+											"reference": "TCEP17",
+											"cost_adj": "30%"
+										},
+										{
+											"id": "mPE-JjDvm7ftISPqH",
+											"name": "Persistent",
+											"reference": "TCEP17",
+											"cost_adj": "40%"
+										}
+									]
+								},
+								{
+									"id": "msirCyYhw-9OWiZRg",
+									"name": "Extended Duration",
+									"reference": "B105",
+									"local_notes": "3x duration",
+									"cost_adj": "20%"
+								},
+								{
+									"id": "mjSzPCH3pvWg0LqiC",
+									"name": "Link",
+									"reference": "B106",
+									"cost_adj": "10%"
+								},
+								{
+									"id": "mjW9x76aZR1rM66vw",
+									"name": "Resistible",
+									"reference": "B115,P105",
+									"local_notes": "HT + (level - 6) to resist",
+									"cost_adj": "-5%",
+									"levels": 8
+								},
+								{
+									"id": "m4XKTyZbQiLzeL5HN",
+									"name": "Respiratory Agent",
+									"reference": "B108",
+									"cost_adj": "50%"
+								}
+							],
+							"calc": {
+								"points": 10
+							}
+						}
+					],
+					"calc": {
+						"points": 21
+					}
+				},
+				{
+					"id": "tPAXUwx2Tjkqgc8vY",
+					"name": "Summoning Fog",
+					"reference": "TCEP33",
+					"tags": [
+						"Ability",
+						"External",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "Internal Only"
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Elemental)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "Internal Only"
+								}
+							}
+						]
+					},
+					"modifiers": [
+						{
+							"id": "mGLpMiPp1WLdxejlt",
+							"name": "Obscure",
+							"reference": "B72",
+							"local_notes": "Vision 5",
+							"cost_adj": "10"
+						},
+						{
+							"id": "mCNI-1cl4f0cbVw_u",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "m2Sff_YnW5I6HXARu",
+							"name": "Elemental",
+							"reference": "TCEP9",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "m5ihaHRx9ezFsynrT",
+							"name": "Extended Duration",
+							"reference": "B105",
+							"local_notes": "30x duration",
+							"cost_adj": "60%"
+						},
+						{
+							"id": "miiufBYtQgR412_0l",
+							"name": "Ranged",
+							"reference": "B72",
+							"cost_adj": "50%"
+						},
+						{
+							"id": "m5DG0rTDw0bJ_Zxp_",
+							"name": "Takes Extra Time",
+							"reference": "B115,P106",
+							"cost_adj": "-10%",
+							"levels": 2
+						}
+					],
+					"weapons": [
+						{
+							"id": "Wg74SR7m5kr0AFDr2",
+							"sv": 1,
+							"damage": {
+								"type": "spec"
+							},
+							"usage": "Beam",
+							"accuracy": "3",
+							"range": "100",
+							"rate_of_fire": "1",
+							"recoil": "1",
+							"defaults": [
+								{
+									"type": "dx",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Innate Attack",
+									"specialization": "Beam"
+								}
+							],
+							"calc": {
+								"level": 14,
+								"damage": "spec"
+							}
+						}
+					],
+					"calc": {
+						"points": 17
+					}
+				},
+				{
+					"id": "tg-byrbDfgNRLhMKP",
+					"name": "Water Spear",
+					"reference": "TCEP33",
+					"tags": [
+						"Ability",
+						"External",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "Internal Only"
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Elemental)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								},
+								"notes": {
+									"compare": "does_not_contain",
+									"qualifier": "Internal Only"
+								}
+							}
+						]
+					},
+					"modifiers": [
+						{
+							"id": "mOdg7gC1EUAJ-9p_L",
+							"name": "Innate Attack",
+							"reference": "B61",
+							"local_notes": "Crushing 1d+2",
+							"cost_adj": "8"
+						},
+						{
+							"id": "mLtQYXelGRd_VCTFn",
+							"name": "Chi",
+							"reference": "TCEP9,P26",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "mlApRrTF_6vWN1IVG",
+							"name": "Double Knockback (dkb)",
+							"reference": "B104",
+							"cost_adj": "20%"
+						},
+						{
+							"id": "mGx4W9xAHV-kIa9n3",
+							"name": "Elemental",
+							"reference": "TCEP9",
+							"cost_adj": "-10%"
+						},
+						{
+							"id": "mFVfG2VxhhZyX9ioy",
+							"name": "Jet",
+							"reference": "B106"
+						},
+						{
+							"id": "mhhZnhK7rhchukEaC",
+							"name": "No Wounding (nw)",
+							"reference": "B111",
+							"cost_adj": "-50%"
+						}
+					],
+					"weapons": [
+						{
+							"id": "Wneb6aQtFqtPbPmAc",
+							"sv": 1,
+							"damage": {
+								"type": "cr dkb nw",
+								"base": "1d+2"
+							},
+							"usage": "Beam",
+							"range": "5/10",
+							"rate_of_fire": "1",
+							"recoil": "1",
+							"defaults": [
+								{
+									"type": "dx",
+									"modifier": -4
+								},
+								{
+									"type": "skill",
+									"name": "Innate Attack",
+									"specialization": "Beam"
+								}
+							],
+							"calc": {
+								"level": 14,
+								"damage": "1d+2 cr dkb nw"
+							}
+						}
+					],
+					"calc": {
+						"points": 4
+					}
+				}
+			],
+			"calc": {
+				"points": 96
+			}
+		},
+		{
+			"id": "TGZ5wctnhHz-D9xVX",
+			"name": "Perks",
+			"children": [
+				{
+					"id": "tzX8Yh9J7KEtVBIuY",
+					"name": "Administrative Rank",
+					"reference": "B29",
+					"tags": [
+						"Advantage",
+						"Social"
+					],
+					"modifiers": [
+						{
+							"id": "m50DRSDiU7BaxYmTy",
+							"name": "Replaces Status",
+							"reference": "B29",
+							"cost_adj": "5",
+							"affects": "levels_only",
+							"disabled": true
+						},
+						{
+							"id": "mi11aQG3MoXQz3-3f",
+							"name": "Courtesy",
+							"reference": "B29",
+							"cost_adj": "-4",
+							"affects": "levels_only"
+						}
+					],
+					"points_per_level": 5,
+					"can_level": true,
+					"levels": 4,
+					"calc": {
+						"points": 4,
+						"current_level": 4
+					}
+				},
+				{
+					"id": "t33lS7hy6s-cQ_bJM",
+					"name": "Inner Fountain",
+					"reference": "TCEP32",
+					"tags": [
+						"Perk",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Elemental)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								}
+							}
+						]
+					},
+					"points_per_level": 1,
+					"can_level": true,
+					"levels": 4,
+					"calc": {
+						"points": 4,
+						"current_level": 4
+					}
+				},
+				{
+					"id": "tqeItQ2K6N-UheUfx",
+					"name": "Quenching Touch",
+					"reference": "TCEP32",
+					"tags": [
+						"Perk",
+						"Water"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "prereq_list",
+								"all": true,
+								"prereqs": [
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Resistance to Fire"
+										},
+										"level": {
+											"compare": "at_least"
+										}
+									}
+								]
+							},
+							{
+								"type": "prereq_list",
+								"all": false,
+								"prereqs": [
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Water)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										}
+									},
+									{
+										"type": "trait_prereq",
+										"has": true,
+										"name": {
+											"compare": "is",
+											"qualifier": "Talent (Chinese Elemental)"
+										},
+										"level": {
+											"compare": "at_least",
+											"qualifier": 1
+										}
+									}
+								]
+							}
+						]
+					},
+					"base_points": 1,
+					"calc": {
+						"points": 1
+					}
+				}
+			],
+			"calc": {
+				"points": 9
+			}
+		},
+		{
+			"id": "TlVCdmZktA0swBLUI",
+			"name": "Disadvantages",
+			"children": [
+				{
+					"id": "tceQKwD8yVICH3uNc",
+					"name": "Compulsive Generosity",
+					"reference": "B128",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": false,
+								"name": {
+									"compare": "is",
+									"qualifier": "miserliness"
+								}
+							}
+						]
+					},
+					"cr_adj": "minor_cost_of_living_increase",
+					"cr": 6,
+					"base_points": -5,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from pious folk",
+							"amount": 1
+						}
+					],
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "tA3hZFbfl83BtPkKi",
+					"name": "Disciplines of Faith (Contemplation)",
+					"reference": "B132",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "t4bfYvb4HM-0sXn9c",
+					"name": "Impulsiveness",
+					"reference": "B139",
+					"local_notes": "Make a self-control roll whenever it would be wise to wait and ponder. If you fail, you must act",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"cr": 12,
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "tVgTo539zsluaQLBZ",
+					"name": "Odious Personal Habit",
+					"reference": "B22",
+					"local_notes": "Crotchety and eccentric",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"modifiers": [
+						{
+							"id": "mQnoTkes7WPPmgRxf",
+							"name": "-1 Reaction",
+							"reference": "B22",
+							"cost_adj": "-5",
+							"disabled": true
+						},
+						{
+							"id": "mJrqOHX-DPE4G734c",
+							"name": "-2 Reaction",
+							"reference": "B22",
+							"cost_adj": "-10"
+						},
+						{
+							"id": "mvhxClYgFpKf0sIRT",
+							"name": "-3 Reaction",
+							"reference": "B22",
+							"cost_adj": "-15",
+							"disabled": true
+						}
+					],
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "t6DgMjmbpfRQ9iJdQ",
+					"name": "Pacifism: Cannot Harm Innocents",
+					"reference": "B148",
+					"local_notes": "You may fight – you may even start fights – but you may only use deadly force on a foe that is attempting to do you serious harm. Capture is not “serious harm” unless you are already under penalty of death or have a Code of Honor that would require suicide if captured. You never intentionally do anything that causes, or even threatens to cause, injury to the uninvolved – particularly if they are “ordinary folks.”",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"modifiers": [
+						{
+							"id": "m9nVgnccD1kjELp-G",
+							"name": "Species-Specific",
+							"reference": "UT32",
+							"cost_adj": "-80%",
+							"disabled": true
+						}
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "tRXaAVrrhObG75q6T",
+					"name": "Low Status ",
+					"reference": "B28",
+					"local_notes": "Poor boatman",
+					"tags": [
+						"Disadvantage",
+						"Social"
+					],
+					"points_per_level": -5,
+					"can_level": true,
+					"levels": 2,
+					"calc": {
+						"points": -10,
+						"current_level": 2
+					}
+				},
+				{
+					"id": "t2lDpgb7-VB69iHp6",
+					"name": "Vow (Three Treasures)",
+					"reference": "TCEP18",
+					"local_notes": "Mercy/Non-agression, Frugality/Economy, Daring not to put oneself first",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "tuLJDUFZL0VBp4RTk",
+					"name": "Poor",
+					"reference": "B25",
+					"local_notes": "Starting wealth is 1/5 normal",
+					"tags": [
+						"Disadvantage",
+						"Social",
+						"Wealth"
+					],
+					"base_points": -15,
+					"calc": {
+						"points": -15
+					}
+				},
+				{
+					"id": "tIQHBtsW5nzLhnPZS",
+					"name": "Weirdness Magnet",
+					"reference": "B161",
+					"tags": [
+						"Disadvantage",
+						"Mental",
+						"Supernatural"
+					],
+					"modifiers": [
+						{
+							"id": "mAZxTsxTkVtq0mALs",
+							"name": "Origins Magnet",
+							"reference": "SU32",
+							"disabled": true
+						}
+					],
+					"base_points": -15,
+					"features": [
+						{
+							"type": "reaction_bonus",
+							"situation": "from others who realize you are a weirdness magnet (except parapsychologists, cultists, conspiracy theorists, thrill-seekers)",
+							"amount": -2
+						}
+					],
+					"calc": {
+						"points": -15
+					}
+				}
+			],
+			"calc": {
+				"points": -90
+			}
+		},
+		{
+			"id": "TZ4S3FQooqtJswkWD",
+			"name": "Quirks",
+			"children": [
+				{
+					"id": "tGIDB6jXBWRKeGOHB",
+					"name": "Broad-Minded",
+					"reference": "B163",
+					"tags": [
+						"Mental",
+						"Quirk"
+					],
+					"base_points": -1,
+					"calc": {
+						"points": -1
+					}
+				},
+				{
+					"id": "tmir-Uq9i_pGSd1Iw",
+					"name": "Likes to sing, even though untrained",
+					"reference": "B163",
+					"tags": [
+						"Mental",
+						"Quirk"
+					],
+					"base_points": -1,
+					"calc": {
+						"points": -1
+					}
+				},
+				{
+					"id": "tJhMjEj1qW-bbRVb-",
+					"name": "Uncongenial",
+					"reference": "B164",
+					"tags": [
+						"Mental",
+						"Quirk"
+					],
+					"base_points": -1,
+					"calc": {
+						"points": -1
+					}
+				}
+			],
+			"calc": {
+				"points": -3
+			}
+		}
+	],
+	"skills": [
+		{
+			"id": "SKMDCk6tXaexvhaXJ",
+			"name": "Skills",
+			"children": [
+				{
+					"id": "sMIFqJMuCvSUFkdsQ",
+					"name": "Administration",
+					"reference": "B174",
+					"tags": [
+						"Business",
+						"Social"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Merchant",
+							"modifier": -3
+						},
+						{
+							"type": "iq",
+							"modifier": -5
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				},
+				{
+					"id": "sINnXfZXJdz0ORs6X",
+					"name": "Area Knowledge",
+					"reference": "B176",
+					"local_notes": "The inhabitants, trails, streams, hiding places, ambush sites, flora, and fauna of a few hundred acres",
+					"tags": [
+						"Everyman",
+						"Knowledge"
+					],
+					"specialization": "Yangtze River; Lived there",
+					"difficulty": "iq/e",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Geography",
+							"modifier": -3
+						}
+					],
+					"points": 8,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -4,
+						"level": 7,
+						"adjusted_level": 7,
+						"points": -7
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "IQ+3"
+					}
+				},
+				{
+					"id": "sh6HFG9mtDEbYPGh_",
+					"name": "Artist",
+					"reference": "B179",
+					"tags": [
+						"Arts",
+						"Entertainment"
+					],
+					"specialization": "Calligraphy",
+					"difficulty": "iq/h",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -6
+						},
+						{
+							"type": "skill",
+							"name": "Artist",
+							"specialization": "Drawing",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Artist",
+							"specialization": "Illumination",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Artist",
+							"specialization": "Painting",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Artist",
+							"specialization": "Body Art",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Artist",
+							"modifier": -6
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -6,
+						"level": 5,
+						"adjusted_level": 5,
+						"points": -5
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				},
+				{
+					"id": "szdeez6Ogt8KiUs3R",
+					"name": "Boating",
+					"reference": "B180",
+					"tags": [
+						"Vehicle"
+					],
+					"specialization": "Unpowered",
+					"difficulty": "dx/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "dx",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Boating",
+							"specialization": "Large Powerboat",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Boating",
+							"specialization": "Motorboat",
+							"modifier": -3
+						},
+						{
+							"type": "skill",
+							"name": "Boating",
+							"specialization": "Sailboat",
+							"modifier": -3
+						}
+					],
+					"tech_level": "3+1",
+					"points": 2,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -5,
+						"level": 8,
+						"adjusted_level": 8,
+						"points": -8
+					},
+					"calc": {
+						"level": 13,
+						"rsl": "DX+0"
+					}
+				},
+				{
+					"id": "s22OjUdKQeldNtOpW",
+					"name": "Breath Control",
+					"reference": "B182",
+					"tags": [
+						"Athletic"
+					],
+					"difficulty": "ht/h",
+					"points": 2,
+					"calc": {
+						"level": 14,
+						"rsl": "HT-1"
+					}
+				},
+				{
+					"id": "sKnfKrf4tm9eCe-EA",
+					"name": "Carousing",
+					"reference": "B183",
+					"tags": [
+						"Criminal",
+						"Social",
+						"Street"
+					],
+					"difficulty": "ht/e",
+					"defaults": [
+						{
+							"type": "ht",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "ht",
+						"modifier": -4,
+						"level": 11,
+						"adjusted_level": 11,
+						"points": -11
+					},
+					"calc": {
+						"level": 15,
+						"rsl": "HT+0"
+					}
+				},
+				{
+					"id": "sL14KUG-puXGANnka",
+					"name": "Carpentry",
+					"reference": "B183",
+					"tags": [
+						"Craft"
+					],
+					"difficulty": "iq/e",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -4,
+						"level": 7,
+						"adjusted_level": 7,
+						"points": -7
+					},
+					"calc": {
+						"level": 11,
+						"rsl": "IQ+0"
+					}
+				},
+				{
+					"id": "sKcCJKPYzvpJ1Kxmd",
+					"name": "Connoisseur",
+					"reference": "B185,MA56",
+					"tags": [
+						"Arts",
+						"Entertainment",
+						"Knowledge",
+						"Social"
+					],
+					"specialization": "Music",
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Group Performance",
+							"specialization": "Conducting",
+							"modifier": -3
+						},
+						{
+							"type": "skill",
+							"name": "Musical Composition",
+							"modifier": -3
+						},
+						{
+							"type": "skill",
+							"name": "Musical Instrument",
+							"modifier": -3
+						},
+						{
+							"type": "iq",
+							"modifier": -5
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				},
+				{
+					"id": "sWfB1Qtx5kKLgVtwH",
+					"name": "First Aid",
+					"reference": "B195",
+					"tags": [
+						"Everyman",
+						"Medical"
+					],
+					"difficulty": "iq/e",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Esoteric Medicine"
+						},
+						{
+							"type": "skill",
+							"name": "Physician"
+						},
+						{
+							"type": "skill",
+							"name": "Veterinary",
+							"modifier": -4
+						}
+					],
+					"tech_level": "3+1",
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -4,
+						"level": 7,
+						"adjusted_level": 7,
+						"points": -7
+					},
+					"calc": {
+						"level": 11,
+						"rsl": "IQ+0"
+					}
+				},
+				{
+					"id": "s3aBCBc_ErUDorju2",
+					"name": "Fishing",
+					"reference": "B195",
+					"tags": [
+						"Exploration",
+						"Outdoor"
+					],
+					"difficulty": "per/e",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -4,
+						"level": 11,
+						"adjusted_level": 11,
+						"points": -11
+					},
+					"calc": {
+						"level": 15,
+						"rsl": "Per+0"
+					}
+				},
+				{
+					"id": "sicovj2H1Jd1fVNRJ",
+					"name": "Hidden Lore",
+					"reference": "B199,MA57",
+					"tags": [
+						"Knowledge",
+						"Magical",
+						"Occult"
+					],
+					"specialization": "Spirit Lore",
+					"difficulty": "iq/a",
+					"points": 1,
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				},
+				{
+					"id": "s3_xPV8g5Va6XE0UJ",
+					"name": "Housekeeping",
+					"reference": "B200",
+					"tags": [
+						"Everyman"
+					],
+					"difficulty": "iq/e",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -4,
+						"level": 7,
+						"adjusted_level": 7,
+						"points": -7
+					},
+					"calc": {
+						"level": 11,
+						"rsl": "IQ+0"
+					}
+				},
+				{
+					"id": "sc9xBEDGX0tk4Q2Br",
+					"name": "Innate Attack",
+					"reference": "B201",
+					"tags": [
+						"Combat",
+						"Ranged Combat",
+						"Weapon"
+					],
+					"specialization": "Beam",
+					"difficulty": "dx/e",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Innate Attack",
+							"modifier": -2
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -4,
+						"level": 9,
+						"adjusted_level": 9,
+						"points": -9
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "DX+1"
+					}
+				},
+				{
+					"id": "s77PlerS7SqcqFC0i",
+					"name": "Judo",
+					"reference": "B203,MA57",
+					"local_notes": "Allows parrying two different attacks per turn, one with each hand.",
+					"tags": [
+						"Combat",
+						"Melee Combat",
+						"Weapon"
+					],
+					"difficulty": "dx/h",
+					"encumbrance_penalty_multiplier": 1,
+					"points": 1,
+					"calc": {
+						"level": 11,
+						"rsl": "DX-2"
+					}
+				},
+				{
+					"id": "ssysw2Y6Qzj9e0sab",
+					"name": "Meditation",
+					"reference": "B207",
+					"tags": [
+						"Esoteric"
+					],
+					"difficulty": "will/h",
+					"defaults": [
+						{
+							"type": "will",
+							"modifier": -6
+						},
+						{
+							"type": "skill",
+							"name": "Autohypnosis",
+							"modifier": -4
+						}
+					],
+					"points": 8,
+					"defaulted_from": {
+						"type": "will",
+						"modifier": -6,
+						"level": 7,
+						"adjusted_level": 7,
+						"points": -7
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "Will+1"
+					}
+				},
+				{
+					"id": "soXY3KlA7iO_2J-fT",
+					"name": "Navigation",
+					"reference": "B211",
+					"tags": [
+						"Exploration",
+						"Outdoor",
+						"Technical",
+						"Vehicle"
+					],
+					"specialization": "Sea",
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Astronomy",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Seamanship",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Navigation",
+							"specialization": "Air",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Navigation",
+							"specialization": "Land",
+							"modifier": -2
+						}
+					],
+					"tech_level": "3+1",
+					"points": 2,
+					"calc": {
+						"level": 11,
+						"rsl": "IQ+0"
+					}
+				},
+				{
+					"id": "sXRfc4om24nSJZVed",
+					"name": "Observation",
+					"reference": "B211",
+					"tags": [
+						"Criminal",
+						"Military",
+						"Police",
+						"Spy",
+						"Street"
+					],
+					"difficulty": "per/a",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Shadowing",
+							"modifier": -5
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -5,
+						"level": 10,
+						"adjusted_level": 10,
+						"points": -10
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "Per-1"
+					}
+				},
+				{
+					"id": "sAZnvesTbe4VdV4jG",
+					"name": "Poetry",
+					"reference": "B214",
+					"tags": [
+						"Arts",
+						"Entertainment"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Writing",
+							"modifier": -5
+						}
+					],
+					"points": 2,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 11,
+						"rsl": "IQ+0"
+					}
+				},
+				{
+					"id": "sJ0WIgpEAjAO4puND",
+					"name": "Push",
+					"reference": "B216,MA59",
+					"tags": [
+						"Esoteric"
+					],
+					"difficulty": "dx/h",
+					"prereqs": {
+						"type": "prereq_list",
+						"all": false,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "Talent (Chinese Water)"
+								},
+								"level": {
+									"compare": "at_least",
+									"qualifier": 1
+								}
+							},
+							{
+								"type": "trait_prereq",
+								"has": true,
+								"name": {
+									"compare": "is",
+									"qualifier": "trained by a master"
+								}
+							}
+						]
+					},
+					"points": 4,
+					"calc": {
+						"level": 13,
+						"rsl": "DX+0"
+					}
+				},
+				{
+					"id": "sQ3lyAOXnXF492_UE",
+					"name": "Savoir-Faire",
+					"reference": "B218,MA59",
+					"tags": [
+						"Business",
+						"Knowledge",
+						"Social"
+					],
+					"specialization": "High Society",
+					"difficulty": "iq/e",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Savoir-Faire",
+							"specialization": "Servant",
+							"modifier": -2
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -4,
+						"level": 7,
+						"adjusted_level": 7,
+						"points": -7
+					},
+					"calc": {
+						"level": 11,
+						"rsl": "IQ+0"
+					}
+				},
+				{
+					"id": "sVo35ZXxROLmG2VW4",
+					"name": "Scrounging",
+					"reference": "B218",
+					"tags": [
+						"Criminal",
+						"Street"
+					],
+					"difficulty": "per/e",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -4,
+						"level": 11,
+						"adjusted_level": 11,
+						"points": -11
+					},
+					"calc": {
+						"level": 15,
+						"rsl": "Per+0"
+					}
+				},
+				{
+					"id": "s90EnHVW5tXBi4AA_",
+					"name": "Singing",
+					"reference": "B220",
+					"tags": [
+						"Arts",
+						"Entertainment"
+					],
+					"difficulty": "ht/e",
+					"defaults": [
+						{
+							"type": "ht",
+							"modifier": -4
+						}
+					],
+					"defaulted_from": {
+						"type": "ht",
+						"modifier": -4,
+						"level": 11,
+						"adjusted_level": 11,
+						"points": -11
+					},
+					"calc": {
+						"level": 11,
+						"rsl": "HT-4"
+					}
+				},
+				{
+					"id": "s2l2Q9ZosfK6LUkkS",
+					"name": "Stealth",
+					"reference": "B222",
+					"tags": [
+						"Criminal",
+						"Police",
+						"Spy",
+						"Street"
+					],
+					"difficulty": "dx/a",
+					"encumbrance_penalty_multiplier": 1,
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						},
+						{
+							"type": "dx",
+							"modifier": -5
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "dx",
+						"modifier": -5,
+						"level": 8,
+						"adjusted_level": 8,
+						"points": -8
+					},
+					"calc": {
+						"level": 12,
+						"rsl": "DX-1"
+					}
+				},
+				{
+					"id": "s30X44SI7MsNB0Jt5",
+					"name": "Survival",
+					"reference": "B223",
+					"tags": [
+						"Exploration",
+						"Outdoor"
+					],
+					"specialization": "River/Stream",
+					"difficulty": "per/a",
+					"defaults": [
+						{
+							"type": "per",
+							"modifier": -5
+						},
+						{
+							"type": "skill",
+							"name": "Naturalist",
+							"modifier": -3
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Swampland",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Bank",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Deep Ocean Vent",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Fresh-Water Lake",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Open Ocean",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Reef",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Salt-Water Sea",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Survival",
+							"specialization": "Tropical Lagoon",
+							"modifier": -4
+						}
+					],
+					"points": 1,
+					"defaulted_from": {
+						"type": "per",
+						"modifier": -5,
+						"level": 10,
+						"adjusted_level": 10,
+						"points": -10
+					},
+					"calc": {
+						"level": 14,
+						"rsl": "Per-1"
+					}
+				},
+				{
+					"id": "sLNivFoe7o6I04ohW",
+					"name": "Weather Sense",
+					"reference": "B209",
+					"tags": [
+						"Everyman",
+						"Exploration",
+						"Outdoor"
+					],
+					"difficulty": "iq/a",
+					"defaults": [
+						{
+							"type": "iq",
+							"modifier": -5
+						}
+					],
+					"tech_level": "3+1",
+					"points": 1,
+					"defaulted_from": {
+						"type": "iq",
+						"modifier": -5,
+						"level": 6,
+						"adjusted_level": 6,
+						"points": -6
+					},
+					"calc": {
+						"level": 10,
+						"rsl": "IQ-1"
+					}
+				}
+			]
+		},
+		{
+			"id": "SdWZ3ml5m_MjE5GKQ",
+			"name": "Techniques",
+			"children": [
+				{
+					"id": "q_K3rVzKKhhVxkQT_",
+					"name": "Deliberate Crippling (Beam)",
+					"reference": "TCEP20",
+					"local_notes": "Fire",
+					"tags": [
+						"Technique"
+					],
+					"difficulty": "h",
+					"default": {
+						"type": "skill",
+						"name": "Innate Attack",
+						"specialization": "Beam",
+						"modifier": -4
+					},
+					"limit": 0,
+					"points": 3,
+					"calc": {
+						"level": 12,
+						"rsl": "-2"
+					}
+				}
+			]
+		}
+	],
+	"notes": [
+		{
+			"id": "nZOopWvOQG7aDhBUd",
+			"markdown": "Sample NPC from back of Thaumatology: Chinese Elemental Powers book",
+			"reference": "TCEP40"
+		}
+	],
+	"created_date": "2023-02-11T20:43:59Z",
+	"modified_date": "2023-02-12T08:08:49Z",
+	"calc": {
+		"swing": "1d-1",
+		"thrust": "1d-2",
+		"basic_lift": "16 lb",
+		"move": [
+			6,
+			4,
+			3,
+			2,
+			1
+		],
+		"dodge": [
+			9,
+			8,
+			7,
+			6,
+			5
+		]
+	}
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--
+	NPC Record Card template by Steve Jackson Games.
+	Implemented by Pizza for use with Richard A. Wilkes' GCS.
+-->
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>NPC Card</title>
+	<style>
+		body {
+			font-size: 9pt;
+		}
+
+		div {
+			display: grid;
+		}
+
+		#border {
+			width: 5in;
+			height: 3in;
+			border: 2px solid black;
+			margin: 0.05in;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			grid-template-columns: 2in 3in;
+		}
+
+		#stats {
+			grid-template:
+				"name name"
+				"appearance appearance"
+				"primary secondary"
+				"will will"
+				"speed speed"
+				"encumbrance encumbrance"
+				"defenses defenses"
+				"lifting lifting"
+				"dr dr";
+			grid-template-rows: repeat(100, 0fr);
+			grid-template-columns: 0fr;
+			gap: 0.05in;
+			margin: 0.05in;
+		}
+
+		.name {
+			grid-area: name;
+			display: inline;
+			font-size: 7pt;
+		}
+
+		.name b {
+			font-size: 9pt;
+		}
+
+		.appearance {
+			grid-area: appearance;
+		}
+
+		.primary_attributes {
+			grid-area: primary;
+			grid-template-columns: 0fr 0fr;
+			white-space: nowrap;
+			align-items: start;
+			gap: 0.05in;
+		}
+
+		.other_attributes {
+			grid-area: secondary;
+			grid-template-columns: 0fr 0fr 1fr;
+			gap: 0.05in;
+		}
+
+		.under {
+			border-bottom: 1px solid black;
+		}
+
+		.label.long {
+			grid-column: span 2;
+		}
+
+		.will_per {
+			grid-area: will;
+			grid-template-columns: 0fr 0fr 0fr 0fr;
+			gap: 0.05in;
+		}
+
+		.speed_move {
+			grid-area: speed;
+			gap: 0.05in;
+			grid-template-columns: repeat(4, 0fr);
+			white-space: nowrap
+		}
+
+		.encumbrance {
+			grid-area: encumbrance;
+			grid-template-columns: 0fr 0fr;
+			gap: 0.05in;
+			white-space: nowrap;
+		}
+
+		.encumbrance .value {
+			display: none;
+		}
+
+		.encumbrance .value.current {
+			display: inline;
+		}
+
+		.defenses {
+			grid-area: defenses;
+			grid-template-columns: repeat(6, 0fr);
+			gap: 0.05in;
+		}
+
+		.lifting {
+			grid-area: lifting;
+			grid-template-columns: repeat(4, 0fr);
+			white-space: nowrap;
+			gap: 0.05in;
+		}
+
+		.dr {
+			grid-area: dr;
+			grid-template-columns: 0fr auto;
+			height: 0.3in;
+			gap: 0.05in;
+		}
+
+		.dr .title {
+			margin-top: 0.15in;
+		}
+
+		.dr .table {
+			max-width: 2in;
+			height: 0.3in;
+			grid-template-columns: repeat(auto-fill, 0.19in);
+			align-items: baseline;
+			gap: 0.025in;
+		}
+
+		.location {
+			width: 0.19in;
+			grid-template:
+				"name"
+				"value";
+			gap: 0.1in;
+			transform: translateY(0.05in);
+			display: none;
+		}
+
+		.location.Eyes,
+		.location.Arm.Right,
+		.location.Leg.Right,
+		.location.Foreleg,
+		.location.Skull,
+		.location.Brain,
+		.location.Hand,
+		.location.Foot,
+		.location.Torso {
+			display: grid;
+		}
+
+		.location.Leg .name span,
+		.location.Foreleg .name span,
+		.location.Arm .name span,
+		.location.Hand .name span,
+		.location.Foot .name span,
+		.location.Brain .name span,
+		.location.Skull .name span {
+			display: none;
+		}
+
+
+		.location.Brain .name::after,
+		.location.Skull .name::after {
+			content: "Head";
+		}
+
+		.location.Foreleg .name::after,
+		.location.Leg .name::after {
+			content: "Legs";
+		}
+
+		.location.Arm .name::after {
+			content: "Arms";
+		}
+
+		.location.Hand .name::after {
+			content: "Hands";
+		}
+
+		.location.Foot .name::after {
+			content: "Feet";
+		}
+
+		.dr .table .location .name {
+			grid-area: name;
+			font-size: 7pt;
+			transform: rotate(-75deg);
+		}
+
+		.dr .table .location .value {
+			grid-area: value;
+			border: 1px solid black;
+			text-align: center;
+			height: 0.19in;
+			width: 0.19in;
+		}
+
+		#embeds {
+			grid-auto-rows: 0fr;
+			gap: 0.05in;
+			margin: 0.05in;
+		}
+
+		.reaction,
+		.advantages,
+		.skills {
+			display: inline;
+		}
+
+		.weapons {
+			gap: 0.02in;
+		}
+
+		.reaction .value,
+		.advantages .value,
+		.skills .value {
+			display: inline;
+			font-size: 7pt;
+		}
+
+		.weapon {
+			display: inline;
+			font-size: 7pt;
+			width: fit-content;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="border">
+		<div id="stats">
+			<div class="name">
+				<b>@NAME</b>
+				<i>@TOTAL_POINTS</i> Points
+			</div>
+			<div class="appearance">
+				Skin: @SKIN; Eyes: @EYES; Hair: @HAIR
+			</div>
+			<div class="primary_attributes">
+				<div class="value"><b>@ST</b></div>
+				<div class="label"><b>ST</b></div>
+				<div class="value"><b>@DX</b></div>
+				<div class="label"><b>DX</b></div>
+				<div class="value"><b>@IQ</b></div>
+				<div class="label"><b>IQ</b></div>
+				<div class="value"><b>@HT</b></div>
+				<div class="label"><b>HT</b></div>
+			</div>
+			<div class="other_attributes">
+				<div class="label">HP:</div>
+				<div class="value"><b>@BASIC_HP</b></div>
+				<div class="under"></div>
+				<div class="label long"><i>Thrust:</i></div>
+				<div class="value">@THRUST</div>
+				<div class="label long"><i>Swing:</i></div>
+				<div class="value">@SWING</div>
+				<div class="label">FP:</div>
+				<div class="value"><b>@BASIC_FP</b></div>
+				<div class="under"></div>
+			</div>
+			<div class="will_per">
+				<div class="label">Will</div>
+				<div class="value"><b>@WILL</b></div>
+				<div class="label">Per</div>
+				<div class="value"><b>@PERCEPTION</b></div>
+			</div>
+			<div class="speed_move">
+				<div class="label">Basic Speed:</div>
+				<div class="value"><b>@BASIC_SPEED</b></div>
+				<div class="label">Move:</div>
+				<div class="value"><b>@BASIC_MOVE</b></div>
+			</div>
+			<div class="encumbrance">
+				<div class="label">Encumbrance:</div>
+				@ENCUMBRANCE_LOOP_START
+				<div class="value @CURRENT_MARKER"><b>@LEVEL</b></div>
+				@ENCUMBRANCE_LOOP_END
+			</div>
+			<div class="defenses">
+				<div class="label">Dodge:</div>
+				<div class="value"><b>@CURRENT_DODGE</b></div>
+				<div class="label">Parry:</div>
+				<div class="value"><b>@BEST_CURRENT_PARRY</b></div>
+				<div class="label">Block:</div>
+				<div class="value"><b>@BEST_CURRENT_BLOCK</b></div>
+			</div>
+			<div class="lifting">
+				<div class="label">Basic Lift</div>
+				<div class="value"><b>@BASIC_LIFT</b></div>
+				<div class="label">SM</div>
+				<div class="value"><b>@SIZE</b></div>
+			</div>
+			<div class="dr">
+				<div class="title"><b>DR</b></div>
+				<div class="table">
+					@HIT_LOCATION_LOOP_START
+					<div class="location @WHERE">
+						<div class="name"><span>@WHERE</span></div>
+						<div class="value">@DR</div>
+					</div>
+					@HIT_LOCATION_LOOP_END
+				</div>
+			</div>
+		</div>
+		<div id="embeds">
+			<div class="reaction">
+				Reaction &#177;:
+				<div class="value">@REACTION_LOOP_START<b>@MODIFIER</b>-@SITUATION, @REACTION_LOOP_END</div>
+			</div>
+			<div class="advantages">
+				Traits:
+				<div class="value">@ADVANTAGES_LOOP_START@DESCRIPTION_PRIMARY, @ADVANTAGES_LOOP_END</div>
+			</div>
+			<div class="skills">
+				Skills:
+				<div class="value">@SKILLS_LOOP_START@DESCRIPTION_PRIMARY-<b>@SL</b>, @SKILLS_LOOP_END,
+					@SPELLS_LOOP_START@DESCRIPTION_PRIMARY-<b>@SL</b>@SPELLS_LOOP_END</div>
+			</div>
+			<div class="weapons">
+				<div class="label">Weapon Statistics:</div>
+				@MELEE_LOOP_START
+				<div class="weapon">@DESCRIPTION_PRIMARY <i>@USAGE</i>: <b>@DAMAGE</b></div>
+				@MELEE_LOOP_END
+				@RANGED_LOOP_START
+				<div class="weapon">@DESCRIPTION_PRIMARY <i>@USAGE</i>: <b>@DAMAGE</b>, Acc <b>@ACCURACY</b>, Range
+					<b>@RANGE</b>, Bulk <b>@BULK</b>, Rcl <b>@RECOIL</b></div>
+				@RANGED_LOOP_END
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

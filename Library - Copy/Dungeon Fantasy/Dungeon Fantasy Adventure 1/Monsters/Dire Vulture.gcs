@@ -1,0 +1,1177 @@
+{
+	"version": 5,
+	"id": "AtjRXpyekC7w8J9Jf",
+	"total_points": 14,
+	"points_record": [
+		{
+			"when": "2022-11-19T12:04:00-08:00",
+			"points": 14,
+			"reason": "Reconciliation"
+		}
+	],
+	"profile": {
+		"weight": "5 lb",
+		"player_name": "Mirror of the Fire Demon",
+		"title": "Dire Vulture",
+		"organization": "Dire Animal",
+		"SM": 1
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions conditional_modifiers",
+			"melee",
+			"ranged",
+			"traits skills",
+			"spells",
+			"equipment",
+			"other_equipment",
+			"notes"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"base": "($dx + $ht) / 4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"base": "Math.floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"value": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. Will\u003c/b\u003e to do anything besides talk or rest; failure causes unconsciousness\u003cbr\u003e\nEach FP you lose below 0 also causes 1 HP of injury\u003cbr\u003e\nMove, Dodge and ST are halved (B426)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"value": "Math.round($fp / 3)",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"value": "$fp - 1"
+					},
+					{
+						"state": "Rested",
+						"value": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"value": "Math.round(-$hp * 5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"value": "Math.round(-$hp * 4)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-4\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"value": "Math.round(-$hp * 3)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-3\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"value": "Math.round(-$hp * 2)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-2\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"value": "-$hp",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-1\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"value": "Math.round($hp / 3)",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"value": "$hp - 1"
+					},
+					{
+						"state": "Healthy",
+						"value": "$hp"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Avian",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "6",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "wing",
+					"choice_name": "Wing",
+					"table_name": "Wing",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. A flyer with a\ncrippled wing cannot fly.",
+					"calc": {
+						"roll_range": "7-8",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 3,
+					"calc": {
+						"roll_range": "9-11",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 2,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "15-16",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "tail",
+					"choice_name": "Tail",
+					"table_name": "Tail",
+					"slots": 2,
+					"hit_penalty": -3,
+					"description": "If a tail counts as an Extra Arm or a Striker, or is a fish\ntail, treat it as a limb (arm, leg) for crippling purposes;\notherwise, treat it as an extremity (hand, foot). A crippled\ntail affects balance. For a ground creature, this gives -1\nDX. For a swimmer or flyer, this gives -2 DX and halves\nMove. If the creature has no tail, or a very short one (like\na rabbit), treat as torso.",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "tooltip",
+		"show_spell_adj": true
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 5
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 4,
+			"calc": {
+				"value": 14,
+				"points": 48
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": -4,
+			"calc": {
+				"value": 6,
+				"points": -80
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 4,
+			"calc": {
+				"value": 10,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 8,
+			"calc": {
+				"value": 14,
+				"points": 40
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": 0,
+			"calc": {
+				"value": 6.25,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": -3,
+			"calc": {
+				"value": 3,
+				"points": -15
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"current": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"current": 11,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "tcOkAqGdawDkg0CDB",
+			"name": "Claws, Sharp (Feet)",
+			"reference": "B42",
+			"tags": [
+				"Advantage",
+				"Physical"
+			],
+			"base_points": 5,
+			"weapons": [
+				{
+					"id": "wIYISb1g_Q-7dMxUZ",
+					"sv": 1,
+					"damage": {
+						"type": "cut",
+						"st": "thr",
+						"base": "-2"
+					},
+					"usage": "Claws",
+					"reach": "C",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 16,
+						"damage": "1d-1 cut"
+					}
+				}
+			],
+			"calc": {
+				"points": 5
+			}
+		},
+		{
+			"id": "trQE6gKiUqMr-aeJG",
+			"name": "Enhanced Move (Air)",
+			"reference": "B52",
+			"local_notes": "Multiply normal Air Move by 1 + level",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "my_nbEAEAORvM3ZDj",
+					"name": "Handling Bonus",
+					"reference": "B52",
+					"cost_adj": "5%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "mtZr5qjQI0MTOOOAR",
+					"name": "Handling Penalty",
+					"reference": "B52",
+					"cost_adj": "-5%",
+					"levels": 1,
+					"disabled": true
+				},
+				{
+					"id": "m1zBGY5eIcplh4xl1",
+					"name": "Newtonian",
+					"reference": "B52",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "m7DGf4lvltjvL6ag2",
+					"name": "Road-Bound",
+					"reference": "B52",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mqaYSjb4Q8djHndC0",
+					"name": "All-Out",
+					"reference": "P49",
+					"cost_adj": "-20%",
+					"disabled": true
+				},
+				{
+					"id": "mn271jsRVU0e1tLtW",
+					"name": "Cosmic",
+					"reference": "SU26",
+					"local_notes": "Instantaneous Acceleration",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "m72k0aqK0CB6fWvVD",
+					"name": "Cosmic",
+					"reference": "SU27",
+					"local_notes": "Complete Maneuverability",
+					"cost_adj": "50%",
+					"disabled": true
+				}
+			],
+			"points_per_level": 20,
+			"can_level": true,
+			"levels": 1,
+			"calc": {
+				"points": 20,
+				"current_level": 1
+			}
+		},
+		{
+			"id": "tP19xsVG-exTnqwd6",
+			"name": "Flight",
+			"reference": "B56",
+			"local_notes": "Air Move is 12 (x2 Basic Speed)",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "mt2YpPGtHQevB0ykA",
+					"name": "Newtonian Space Flight",
+					"reference": "B56",
+					"cost_adj": "25%",
+					"disabled": true
+				},
+				{
+					"id": "meT9U7ga4D207GfAZ",
+					"name": "Space Flight",
+					"reference": "B56",
+					"cost_adj": "50%",
+					"disabled": true
+				},
+				{
+					"id": "maxYxv577jvw_F3U8",
+					"name": "Cannot Hover",
+					"reference": "B56",
+					"cost_adj": "-15%",
+					"disabled": true
+				},
+				{
+					"id": "mzChTivBIlqwlOJRd",
+					"name": "Controlled Gliding",
+					"reference": "B56",
+					"cost_adj": "-45%",
+					"disabled": true
+				},
+				{
+					"id": "mGQI4VQvi6oIDI3fK",
+					"name": "Gliding",
+					"reference": "B56",
+					"cost_adj": "-50%",
+					"disabled": true
+				},
+				{
+					"id": "mn2wTkQU_vX-Mv3Gr",
+					"name": "Lighter Than Air",
+					"reference": "B56",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "my-wiCUF5YPjYbGoP",
+					"name": "Low Ceiling",
+					"reference": "B56",
+					"local_notes": "30'",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "mOBBbwVSRZcEhZ5iY",
+					"name": "Low Ceiling",
+					"reference": "B56",
+					"local_notes": "10'",
+					"cost_adj": "-20%",
+					"disabled": true
+				},
+				{
+					"id": "mEV0ACWGgoEQz1kV2",
+					"name": "Low Ceiling",
+					"reference": "B56",
+					"local_notes": "5'",
+					"cost_adj": "-25%",
+					"disabled": true
+				},
+				{
+					"id": "mf4ZzZvkEyMnGcey0",
+					"name": "Small Wings",
+					"reference": "B56",
+					"cost_adj": "-10%",
+					"disabled": true
+				},
+				{
+					"id": "mTfgdl5r-65R3GKUR",
+					"name": "Space Flight Only",
+					"reference": "B56",
+					"cost_adj": "-75%",
+					"disabled": true
+				},
+				{
+					"id": "mwjUlbmb32LHarwPy",
+					"name": "Winged",
+					"reference": "B56",
+					"cost_adj": "-25%"
+				},
+				{
+					"id": "mLeNzAgZjAR-Jh5iG",
+					"name": "Planetary",
+					"reference": "P50",
+					"cost_adj": "-5%",
+					"disabled": true
+				},
+				{
+					"id": "mWXNjNUaWnRvxKTAq",
+					"name": "Requires Surface",
+					"reference": "P50",
+					"cost_adj": "-20%",
+					"disabled": true
+				},
+				{
+					"id": "mNFmzQm6vVLr9yhJA",
+					"name": "Slow",
+					"reference": "PSI14",
+					"local_notes": "Basic Speed",
+					"cost_adj": "-25%",
+					"disabled": true
+				},
+				{
+					"id": "mykR_LgxYgqzmvcJD",
+					"name": "Slow, Move 1",
+					"reference": "PSI14",
+					"cost_adj": "-45%",
+					"disabled": true
+				}
+			],
+			"base_points": 40,
+			"calc": {
+				"points": 30
+			}
+		},
+		{
+			"id": "TVfK2HBMzcMU3gRr2",
+			"name": "Meta-Trait: Wild Animal",
+			"reference": "B263",
+			"children": [
+				{
+					"id": "tAIKvfyo_NYDCgjy2",
+					"name": "Bestial",
+					"reference": "B124",
+					"tags": [
+						"Disadvantage",
+						"Exotic",
+						"Mental"
+					],
+					"base_points": -10,
+					"calc": {
+						"points": -10
+					}
+				},
+				{
+					"id": "txcRS03caZV9nd1WL",
+					"name": "Cannot Speak",
+					"reference": "B125",
+					"tags": [
+						"Disadvantage",
+						"Physical"
+					],
+					"prereqs": {
+						"type": "prereq_list",
+						"all": true,
+						"prereqs": [
+							{
+								"type": "trait_prereq",
+								"has": false,
+								"name": {
+									"compare": "is",
+									"qualifier": "stuttering"
+								}
+							}
+						]
+					},
+					"base_points": -15,
+					"calc": {
+						"points": -15
+					}
+				},
+				{
+					"id": "tI2hR6bA1sosYhrfS",
+					"name": "Hidebound",
+					"reference": "B138",
+					"local_notes": "-2 penalty on any task that requires creativity or invention, including most rolls against Artist skill, all Engineer rolls for new inventions, and all skill rolls made to use the Gadgeteer advantage.",
+					"tags": [
+						"Disadvantage",
+						"Mental"
+					],
+					"base_points": -5,
+					"calc": {
+						"points": -5
+					}
+				},
+				{
+					"id": "tEnoUh7GCzmV1rl1y",
+					"name": "Taboo Trait (Fixed IQ)",
+					"reference": "B263",
+					"tags": [
+						"Physical"
+					],
+					"calc": {
+						"points": 0
+					}
+				}
+			],
+			"calc": {
+				"points": -30
+			}
+		},
+		{
+			"id": "t66bS5s9DzVIfXh5K",
+			"name": "No Fine Manipulators",
+			"reference": "B145",
+			"tags": [
+				"Disadvantage",
+				"Physical"
+			],
+			"base_points": -30,
+			"features": [
+				{
+					"type": "cost_reduction",
+					"attribute": "st",
+					"percentage": 40
+				},
+				{
+					"type": "cost_reduction",
+					"attribute": "dx",
+					"percentage": 40
+				}
+			],
+			"calc": {
+				"points": -30
+			}
+		},
+		{
+			"id": "tTY6Z4xvgm3v7wWHK",
+			"name": "Teeth, Sharp Beak",
+			"reference": "B91",
+			"tags": [
+				"Exotic",
+				"Perk",
+				"Physical"
+			],
+			"base_points": 1,
+			"weapons": [
+				{
+					"id": "wllV22bE3Ey8UuVrH",
+					"sv": 1,
+					"damage": {
+						"type": "pi+",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Beak",
+					"reach": "C,1",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 16,
+						"damage": "1d pi+"
+					}
+				}
+			],
+			"calc": {
+				"points": 1
+			}
+		},
+		{
+			"id": "tnCs6xgrkg2nn4fEp",
+			"name": "Cowardice",
+			"reference": "B129",
+			"local_notes": "Make a self-control roll any time you are called on to risk physical danger. Roll at -5 if you must risk death.",
+			"tags": [
+				"Disadvantage",
+				"Mental"
+			],
+			"cr": 12,
+			"base_points": -10,
+			"calc": {
+				"points": -10
+			}
+		},
+		{
+			"id": "tZ_sNCglCZo454PJh",
+			"name": "Kleptomania",
+			"reference": "B141",
+			"local_notes": "Make a self-control roll whenever you are presented with a chance to steal, at up to -3 if the item is especially interesting to you (not necessarily valuable, unless you are poor or have Greed). If you fail, you must try to steal it. You may keep or sell stolen items, but you may not return or discard them.",
+			"tags": [
+				"Disadvantage",
+				"Mental"
+			],
+			"cr": 12,
+			"base_points": -15,
+			"calc": {
+				"points": -15
+			}
+		},
+		{
+			"id": "t5odYXb7roDeJe2FZ",
+			"name": "Striking ST",
+			"reference": "B88,P78",
+			"tags": [
+				"Advantage",
+				"Exotic",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "m-HxuK-i8xRvR4QJP",
+					"name": "No Fine Manipulators",
+					"cost_adj": "-40%",
+					"disabled": true
+				},
+				{
+					"id": "mKdx8mozHQGb7ztCN",
+					"name": "Size",
+					"cost_adj": "-10%",
+					"levels": 1
+				},
+				{
+					"id": "mRuoy9p02y_cd5Yi4",
+					"name": "Super Effort",
+					"reference": "SU24",
+					"cost_adj": "400%",
+					"disabled": true
+				},
+				{
+					"id": "mZuADBr9PJoJ3AwbU",
+					"name": "One Attack Only",
+					"reference": "P79",
+					"local_notes": "Beak",
+					"cost_adj": "-60%"
+				},
+				{
+					"id": "mgbLpr7dsn8aTiFSB",
+					"name": "Know Your Own Strength Pricing Variant",
+					"reference": "PY83:18",
+					"cost_adj": "-4",
+					"affects": "levels_only",
+					"disabled": true
+				}
+			],
+			"points_per_level": 5,
+			"features": [
+				{
+					"type": "attribute_bonus",
+					"limitation": "striking_only",
+					"attribute": "st",
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 2,
+			"calc": {
+				"points": 3,
+				"current_level": 2
+			}
+		}
+	],
+	"skills": [
+		{
+			"id": "sA7aI1JCuKY_1cWRP",
+			"name": "Brawling",
+			"reference": "B182",
+			"tags": [
+				"Combat",
+				"Melee Combat",
+				"Weapon"
+			],
+			"difficulty": "dx/e",
+			"features": [
+				{
+					"type": "weapon_bonus",
+					"selection_type": "weapons_with_required_skill",
+					"name": {
+						"compare": "is",
+						"qualifier": "Brawling"
+					},
+					"level": {
+						"compare": "at_least",
+						"qualifier": 2
+					},
+					"amount": 1,
+					"per_die": true
+				}
+			],
+			"points": 4,
+			"calc": {
+				"level": 16,
+				"rsl": "DX+2"
+			}
+		},
+		{
+			"id": "sVXY_t_rfLU2jzSg4",
+			"name": "Intimidation",
+			"reference": "B202",
+			"tags": [
+				"Criminal",
+				"Police",
+				"Social",
+				"Street"
+			],
+			"difficulty": "will/a",
+			"defaults": [
+				{
+					"type": "will",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Acting",
+					"modifier": -3
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "will",
+				"modifier": -5,
+				"level": 5,
+				"adjusted_level": 5,
+				"points": -5
+			},
+			"calc": {
+				"level": 10,
+				"rsl": "Will+0"
+			}
+		},
+		{
+			"id": "seA2rM813J8Q8VWtR",
+			"name": "Stealth",
+			"reference": "B222",
+			"tags": [
+				"Criminal",
+				"Police",
+				"Spy",
+				"Street"
+			],
+			"difficulty": "dx/vh",
+			"encumbrance_penalty_multiplier": 1,
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "dx",
+					"modifier": -4
+				}
+			],
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -4,
+				"level": 10,
+				"adjusted_level": 10,
+				"points": -10
+			},
+			"calc": {
+				"level": 10,
+				"rsl": "DX-4"
+			}
+		}
+	],
+	"notes": [
+		{
+			"id": "nwXbVpim9pE6BO0g2",
+			"markdown": "The dire vulture is a moderate annoyance for well-equipped\rdesert travelers, but a frightful scourge for the less fit.",
+			"reference": "DFA1:46"
+		},
+		{
+			"id": "nOvBg5or3r4jUsPWG",
+			"markdown": "Dire vultures can parry with their iron-hard beaks.\rThey will flee after losing half their HP. However, they are\rvery good a spotting the weak and vulnerable and will\rfocus their attacks accordingly. They will attack the least\rheavily armored targets and may, on a successful Per roll,\rnotice recent wounds as well. Instead of striking for damage,\rthey may, on a failed Kleptomania roll, grab at a\rprominent interesting object (a helmet, a jeweled staff,\retc.) and try to fly off with it.",
+			"reference": "DFA1:46"
+		}
+	],
+	"created_date": "2020-05-16T00:00:00-07:00",
+	"modified_date": "2022-12-03T01:06:30-05:00",
+	"calc": {
+		"swing": "2d-1",
+		"thrust": "1d",
+		"basic_lift": "24 lb",
+		"striking_st_bonus": 2,
+		"move": [
+			3,
+			2,
+			1,
+			1,
+			1
+		],
+		"dodge": [
+			9,
+			8,
+			7,
+			6,
+			5
+		]
+	}
+}

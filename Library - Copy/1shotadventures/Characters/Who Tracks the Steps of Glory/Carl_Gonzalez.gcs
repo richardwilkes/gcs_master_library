@@ -1,0 +1,2698 @@
+{
+	"version": 5,
+	"id": "A61ZC6YuMtWZjDgX2",
+	"total_points": 174,
+	"points_record": [
+		{
+			"when": "2024-06-13T14:21:36-07:00",
+			"points": 174,
+			"reason": "Reconciliation"
+		}
+	],
+	"profile": {
+		"name": "Carl \"Grizzly\" Gonzalez",
+		"age": "84",
+		"birthday": "December 13",
+		"eyes": "Brown",
+		"hair": "Gray",
+		"skin": "Ruddy",
+		"handedness": "Right",
+		"gender": "Male",
+		"height": "5'11\"",
+		"weight": "195 lb",
+		"title": "Admiral (retired)",
+		"organization": "Starfleet",
+		"tech_level": "12"
+	},
+	"settings": {
+		"page": {
+			"paper_size": "letter",
+			"orientation": "portrait",
+			"top_margin": "0.25 in",
+			"left_margin": "0.25 in",
+			"bottom_margin": "0.25 in",
+			"right_margin": "0.25 in"
+		},
+		"block_layout": [
+			"reactions",
+			"melee",
+			"ranged",
+			"traits skills",
+			"spells",
+			"equipment",
+			"other_equipment",
+			"notes",
+			"conditional_modifiers"
+		],
+		"attributes": [
+			{
+				"id": "st",
+				"type": "integer",
+				"name": "ST",
+				"full_name": "Strength",
+				"base": "10",
+				"cost_per_point": 10,
+				"cost_adj_percent_per_sm": 10
+			},
+			{
+				"id": "dx",
+				"type": "integer",
+				"name": "DX",
+				"full_name": "Dexterity",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "iq",
+				"type": "integer",
+				"name": "IQ",
+				"full_name": "Intelligence",
+				"base": "10",
+				"cost_per_point": 20
+			},
+			{
+				"id": "ht",
+				"type": "integer",
+				"name": "HT",
+				"full_name": "Health",
+				"base": "10",
+				"cost_per_point": 10
+			},
+			{
+				"id": "will",
+				"type": "integer",
+				"name": "Will",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fright_check",
+				"type": "integer",
+				"name": "Fright Check",
+				"base": "$will",
+				"cost_per_point": 2
+			},
+			{
+				"id": "per",
+				"type": "integer",
+				"name": "Per",
+				"full_name": "Perception",
+				"base": "$iq",
+				"cost_per_point": 5
+			},
+			{
+				"id": "vision",
+				"type": "integer",
+				"name": "Vision",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "hearing",
+				"type": "integer",
+				"name": "Hearing",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "taste_smell",
+				"type": "integer",
+				"name": "Taste \u0026 Smell",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "touch",
+				"type": "integer",
+				"name": "Touch",
+				"base": "$per",
+				"cost_per_point": 2
+			},
+			{
+				"id": "basic_speed",
+				"type": "decimal",
+				"name": "Basic Speed",
+				"base": "($dx + $ht) / 4",
+				"cost_per_point": 20
+			},
+			{
+				"id": "basic_move",
+				"type": "integer",
+				"name": "Basic Move",
+				"base": "Math.floor($basic_speed)",
+				"cost_per_point": 5
+			},
+			{
+				"id": "fp",
+				"type": "pool",
+				"name": "FP",
+				"full_name": "Fatigue Points",
+				"base": "$ht",
+				"cost_per_point": 3,
+				"thresholds": [
+					{
+						"state": "Unconscious",
+						"value": "-$fp",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. Will\u003c/b\u003e to do anything besides talk or rest; failure causes unconsciousness\u003cbr\u003e\nEach FP you lose below 0 also causes 1 HP of injury\u003cbr\u003e\nMove, Dodge and ST are halved (B426)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tired",
+						"value": "Math.round($fp / 3)",
+						"explanation": "Move, Dodge and ST are halved (B426)",
+						"ops": [
+							"halve_move",
+							"halve_dodge",
+							"halve_st"
+						]
+					},
+					{
+						"state": "Tiring",
+						"value": "$fp - 1"
+					},
+					{
+						"state": "Rested",
+						"value": "$fp"
+					}
+				]
+			},
+			{
+				"id": "hp",
+				"type": "pool",
+				"name": "HP",
+				"full_name": "Hit Points",
+				"base": "$st",
+				"cost_per_point": 2,
+				"cost_adj_percent_per_sm": 10,
+				"thresholds": [
+					{
+						"state": "Dead",
+						"value": "Math.round(-$hp * 5)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #4",
+						"value": "Math.round(-$hp * 4)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-4\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #3",
+						"value": "Math.round(-$hp * 3)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-3\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #2",
+						"value": "Math.round(-$hp * 2)",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-2\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Dying #1",
+						"value": "-$hp",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e to avoid death\u003cbr\u003e\n\u003cb\u003eRoll vs. HT-1\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Collapse",
+						"value": "0",
+						"explanation": "\u003chtml\u003e\u003cbody\u003e\n\u003cb\u003eRoll vs. HT\u003c/b\u003e every second to avoid falling unconscious\u003cbr\u003e\nMove and Dodge are halved (B419)\n\u003c/body\u003e\u003c/html\u003e",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Reeling",
+						"value": "Math.round($hp / 3)",
+						"explanation": "Move and Dodge are halved (B419)",
+						"ops": [
+							"halve_move",
+							"halve_dodge"
+						]
+					},
+					{
+						"state": "Wounded",
+						"value": "$hp - 1"
+					},
+					{
+						"state": "Healthy",
+						"value": "$hp"
+					}
+				]
+			}
+		],
+		"body_type": {
+			"name": "Humanoid",
+			"roll": "3d",
+			"locations": [
+				{
+					"id": "eye",
+					"choice_name": "Eyes",
+					"table_name": "Eyes",
+					"hit_penalty": -9,
+					"description": "An attack that misses by 1 hits the torso instead. Only\nimpaling (imp), piercing (pi-, pi, pi+, pi++), and\ntight-beam burning (burn) attacks can target the eye – and\nonly from the front or sides. Injury over HP÷10 blinds the\neye. Otherwise, treat as skull, but without the extra DR!",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "skull",
+					"choice_name": "Skull",
+					"table_name": "Skull",
+					"slots": 2,
+					"hit_penalty": -7,
+					"dr_bonus": 2,
+					"description": "An attack that misses by 1 hits the torso instead. Wounding\nmodifier is x4. Knockdown rolls are at -10. Critical hits\nuse the Critical Head Blow Table (B556). Exception: These\nspecial effects do not apply to toxic (tox) damage.",
+					"calc": {
+						"roll_range": "3-4",
+						"dr": {
+							"all": 2
+						}
+					}
+				},
+				{
+					"id": "face",
+					"choice_name": "Face",
+					"table_name": "Face",
+					"slots": 1,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Jaw,\ncheeks, nose, ears, etc. If the target has an open-faced\nhelmet, ignore its DR. Knockdown rolls are at -5. Critical\nhits use the Critical Head Blow Table (B556). Corrosion\n(cor) damage gets a x1½ wounding modifier, and if it\ninflicts a major wound, it also blinds one eye (both eyes on\ndamage over full HP). Random attacks from behind hit the\nskull instead.",
+					"calc": {
+						"roll_range": "5",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Right Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "6-7",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Right Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "8",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "torso",
+					"choice_name": "Torso",
+					"table_name": "Torso",
+					"slots": 2,
+					"calc": {
+						"roll_range": "9-10",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "groin",
+					"choice_name": "Groin",
+					"table_name": "Groin",
+					"slots": 1,
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Human\nmales and the males of similar species suffer double shock\nfrom crushing (cr) damage, and get -5 to knockdown rolls.\nOtherwise, treat as a torso hit.",
+					"calc": {
+						"roll_range": "11",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "arm",
+					"choice_name": "Arm",
+					"table_name": "Left Arm",
+					"slots": 1,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost. If holding a shield,\ndouble the penalty to hit: -4 for shield arm instead of -2.",
+					"calc": {
+						"roll_range": "12",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "leg",
+					"choice_name": "Leg",
+					"table_name": "Left Leg",
+					"slots": 2,
+					"hit_penalty": -2,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ½ HP from one blow) cripples the limb.\nDamage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "13-14",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "hand",
+					"choice_name": "Hand",
+					"table_name": "Hand",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "If holding a shield, double the penalty to hit: -8 for\nshield hand instead of -4. Reduce the wounding multiplier of\nlarge piercing (pi+), huge piercing (pi++), and impaling\n(imp) damage to x1. Any major wound (loss of over ⅓ HP\nfrom one blow) cripples the extremity. Damage beyond that\nthreshold is lost.",
+					"calc": {
+						"roll_range": "15",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "foot",
+					"choice_name": "Foot",
+					"table_name": "Foot",
+					"slots": 1,
+					"hit_penalty": -4,
+					"description": "Reduce the wounding multiplier of large piercing (pi+), huge\npiercing (pi++), and impaling (imp) damage to x1. Any major\nwound (loss of over ⅓ HP from one blow) cripples the\nextremity. Damage beyond that threshold is lost.",
+					"calc": {
+						"roll_range": "16",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "neck",
+					"choice_name": "Neck",
+					"table_name": "Neck",
+					"slots": 2,
+					"hit_penalty": -5,
+					"description": "An attack that misses by 1 hits the torso instead. Neck and\nthroat. Increase the wounding multiplier of crushing (cr)\nand corrosion (cor) attacks to x1½, and that of cutting\n(cut) damage to x2. At the GM’s option, anyone killed by a\ncutting (cut) blow to the neck is decapitated!",
+					"calc": {
+						"roll_range": "17-18",
+						"dr": {
+							"all": 0
+						}
+					}
+				},
+				{
+					"id": "vitals",
+					"choice_name": "Vitals",
+					"table_name": "Vitals",
+					"hit_penalty": -3,
+					"description": "An attack that misses by 1 hits the torso instead. Heart,\nlungs, kidneys, etc. Increase the wounding modifier for an\nimpaling (imp) or any piercing (pi-, pi, pi+, pi++) attack\nto x3. Increase the wounding modifier for a tight-beam\nburning (burn) attack to x2. Other attacks cannot target the\nvitals.",
+					"calc": {
+						"roll_range": "-",
+						"dr": {
+							"all": 0
+						}
+					}
+				}
+			]
+		},
+		"damage_progression": "basic_set",
+		"default_length_units": "ft_in",
+		"default_weight_units": "lb",
+		"user_description_display": "tooltip",
+		"modifiers_display": "inline",
+		"notes_display": "inline",
+		"skill_level_adj_display": "not_shown",
+		"show_spell_adj": true
+	},
+	"attributes": [
+		{
+			"attr_id": "st",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "dx",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 20
+			}
+		},
+		{
+			"attr_id": "iq",
+			"adj": 2,
+			"calc": {
+				"value": 12,
+				"points": 40
+			}
+		},
+		{
+			"attr_id": "ht",
+			"adj": 1,
+			"calc": {
+				"value": 11,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "will",
+			"adj": 2,
+			"calc": {
+				"value": 14,
+				"points": 10
+			}
+		},
+		{
+			"attr_id": "fright_check",
+			"adj": 0,
+			"calc": {
+				"value": 14,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "per",
+			"adj": 1,
+			"calc": {
+				"value": 13,
+				"points": 5
+			}
+		},
+		{
+			"attr_id": "vision",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hearing",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "taste_smell",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "touch",
+			"adj": 0,
+			"calc": {
+				"value": 13,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_speed",
+			"adj": 0,
+			"calc": {
+				"value": 5.5,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "basic_move",
+			"adj": 0,
+			"calc": {
+				"value": 5,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "fp",
+			"adj": 0,
+			"calc": {
+				"value": 11,
+				"current": 11,
+				"points": 0
+			}
+		},
+		{
+			"attr_id": "hp",
+			"adj": 0,
+			"calc": {
+				"value": 10,
+				"current": 10,
+				"points": 0
+			}
+		}
+	],
+	"traits": [
+		{
+			"id": "tG4Ha09Kc4wGIIK27",
+			"name": "Chronic Pain",
+			"reference": "B126",
+			"local_notes": "Chest",
+			"tags": [
+				"Disadvantage",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "mHpwKreSGillroj2d",
+					"name": "1 hour interval",
+					"reference": "B126",
+					"cost_adj": "x0.5",
+					"disabled": true
+				},
+				{
+					"id": "mtlQyyDXC9Hm98rNr",
+					"name": "2 hour interval",
+					"reference": "B126",
+					"cost_adj": "x1"
+				},
+				{
+					"id": "m_tTXFnDrAV8tACEP",
+					"name": "4 hour interval",
+					"reference": "B126",
+					"cost_adj": "x1.5",
+					"disabled": true
+				},
+				{
+					"id": "mXsX2vHnTb_iTZNEZ",
+					"name": "8 hour interval",
+					"reference": "B126",
+					"cost_adj": "x2",
+					"disabled": true
+				},
+				{
+					"id": "m_LWPKTacxwtC1vkr",
+					"name": "FR: 6",
+					"cost_adj": "x0.5",
+					"disabled": true
+				},
+				{
+					"id": "m8Csmt9NfziMrB4XW",
+					"name": "FR: 9",
+					"cost_adj": "x1"
+				},
+				{
+					"id": "m3n6WEYU-JBHLXwco",
+					"name": "FR: 12",
+					"cost_adj": "x2",
+					"disabled": true
+				},
+				{
+					"id": "mg1k1MEAnndtQetrz",
+					"name": "FR: 15",
+					"cost_adj": "x3",
+					"disabled": true
+				},
+				{
+					"id": "m2mD5CQiybnfadjes",
+					"name": "Mild",
+					"reference": "B126",
+					"local_notes": "-2 to DX, IQ, and self-control rolls",
+					"cost_adj": "-5",
+					"disabled": true
+				},
+				{
+					"id": "mtwnRkzm0YElaIAej",
+					"name": "Severe",
+					"reference": "B126",
+					"local_notes": "-4 to DX, IQ, and self-control rolls",
+					"cost_adj": "-10"
+				},
+				{
+					"id": "msZ1bcMBZRJRVnBxJ",
+					"name": "Agonizing",
+					"reference": "B126",
+					"local_notes": "-6 to DX, IQ, and self-control rolls",
+					"cost_adj": "-15",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": -10
+			}
+		},
+		{
+			"id": "toNHa12VluqDaiVsR",
+			"name": "Short Attention Span",
+			"reference": "B153",
+			"local_notes": "Make a self-control roll whenever you must maintain interest in something for an extended period of time, or whenever a distraction is offered. If you fail, you automatically fail at the task at hand.",
+			"tags": [
+				"Disadvantage",
+				"Mental"
+			],
+			"cr": 12,
+			"base_points": -10,
+			"calc": {
+				"points": -10
+			}
+		},
+		{
+			"id": "tmf2h_j9TXKs6jlab",
+			"name": "Sense of Duty",
+			"reference": "B153",
+			"tags": [
+				"Disadvantage",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "mHTSYfmh72-E2ehcj",
+					"name": "Friends and Companions",
+					"reference": "B153",
+					"cost_adj": "-5",
+					"disabled": true
+				},
+				{
+					"id": "mTQskd92XZCmVSRBs",
+					"name": "Starfleet Officers",
+					"reference": "B153",
+					"cost_adj": "-5"
+				},
+				{
+					"id": "mBcKgrdKmpFgNjgAk",
+					"name": "@Individual@",
+					"reference": "B153",
+					"cost_adj": "-2",
+					"disabled": true
+				},
+				{
+					"id": "m0Wj-4WBfeqZfr3EY",
+					"name": "@Large Group@",
+					"reference": "B153",
+					"cost_adj": "-10",
+					"disabled": true
+				},
+				{
+					"id": "mf1inaqnFrk76HQY0",
+					"name": "@Entire Race@",
+					"reference": "B153",
+					"cost_adj": "-15",
+					"disabled": true
+				},
+				{
+					"id": "mmfyvqVzqgRBGX9jE",
+					"name": "Every Living Being",
+					"reference": "B153",
+					"cost_adj": "-20",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": -5
+			}
+		},
+		{
+			"id": "tRMuE0VxRhf-KrA0j",
+			"name": "Stubbornness",
+			"reference": "B157",
+			"tags": [
+				"Disadvantage",
+				"Mental"
+			],
+			"base_points": -5,
+			"features": [
+				{
+					"type": "reaction_bonus",
+					"situation": "from others",
+					"amount": -1
+				}
+			],
+			"calc": {
+				"points": -5
+			}
+		},
+		{
+			"id": "tR-sq-jaGIcABzDYQ",
+			"name": "Bad temper when tired",
+			"reference": "B162",
+			"tags": [
+				"Mental",
+				"Quirk"
+			],
+			"base_points": -1,
+			"calc": {
+				"points": -1
+			}
+		},
+		{
+			"id": "tIneXWh2C8CxeDI9a",
+			"name": "Can't resist visiting rugged and dangerous planets",
+			"reference": "B162",
+			"tags": [
+				"Mental",
+				"Quirk"
+			],
+			"base_points": -1,
+			"calc": {
+				"points": -1
+			}
+		},
+		{
+			"id": "t0nyir2KE4wwqWonC",
+			"name": "Extra tough on first officers and department chiefs",
+			"reference": "B162",
+			"tags": [
+				"Mental",
+				"Quirk"
+			],
+			"base_points": -1,
+			"calc": {
+				"points": -1
+			}
+		},
+		{
+			"id": "tzl2X8rnpAERqlTLG",
+			"name": "Hates not being the main decision maker",
+			"reference": "B162",
+			"tags": [
+				"Mental",
+				"Quirk"
+			],
+			"base_points": -1,
+			"calc": {
+				"points": -1
+			}
+		},
+		{
+			"id": "t8H95sTPqSmSr9833",
+			"name": "Soft spot for science officers",
+			"reference": "B162",
+			"tags": [
+				"Mental",
+				"Quirk"
+			],
+			"base_points": -1,
+			"calc": {
+				"points": -1
+			}
+		},
+		{
+			"id": "tdwelHpyc6KjoPGxO",
+			"name": "Natural Attacks",
+			"reference": "B271",
+			"tags": [
+				"Physical"
+			],
+			"weapons": [
+				{
+					"id": "w_2ptzwt3KXwxRNuI",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Bite",
+					"reach": "C",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						}
+					],
+					"calc": {
+						"level": 11,
+						"damage": "1d-3 cr"
+					}
+				},
+				{
+					"id": "wKKxw9A7XmKuTyYLZ",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr",
+						"base": "-1"
+					},
+					"usage": "Punch",
+					"reach": "C",
+					"parry": "0",
+					"defaults": [
+						{
+							"type": "dx"
+						},
+						{
+							"type": "skill",
+							"name": "Boxing"
+						},
+						{
+							"type": "skill",
+							"name": "Brawling"
+						},
+						{
+							"type": "skill",
+							"name": "Karate"
+						}
+					],
+					"calc": {
+						"level": 12,
+						"damage": "1d-2 cr",
+						"parry": "9"
+					}
+				},
+				{
+					"id": "wZxvpLOv5y112ga2m",
+					"sv": 1,
+					"damage": {
+						"type": "cr",
+						"st": "thr"
+					},
+					"usage": "Kick",
+					"reach": "C,1",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Brawling",
+							"modifier": -2
+						},
+						{
+							"type": "skill",
+							"name": "Karate",
+							"modifier": -2
+						}
+					],
+					"calc": {
+						"level": 9,
+						"damage": "1d-2 cr"
+					}
+				}
+			],
+			"calc": {
+				"points": 0
+			}
+		},
+		{
+			"id": "twOlmJ3ftEMiVbN82",
+			"name": "Sea Legs",
+			"reference": "PU2:14",
+			"tags": [
+				"Mental",
+				"Perk"
+			],
+			"base_points": 1,
+			"calc": {
+				"points": 1
+			}
+		},
+		{
+			"id": "tEc6MDVOMGYGuqaZ8",
+			"name": "Language: Klingon",
+			"reference": "B24",
+			"tags": [
+				"Advantage",
+				"Language",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "mA8ucuUAe9U4LGB_a",
+					"name": "Native",
+					"reference": "B23",
+					"cost_adj": "-6",
+					"disabled": true
+				},
+				{
+					"id": "mDVtFzBhRYjsXPwU8",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "None",
+					"disabled": true
+				},
+				{
+					"id": "mcRrBekV_mVFuuXHk",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "Broken",
+					"cost_adj": "1",
+					"disabled": true
+				},
+				{
+					"id": "mpHvmMJE8PzyWMWvo",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "Accented",
+					"cost_adj": "2"
+				},
+				{
+					"id": "mh2AqhdAsbGKr_EJd",
+					"name": "Spoken",
+					"reference": "B24",
+					"local_notes": "Native",
+					"cost_adj": "3",
+					"disabled": true
+				},
+				{
+					"id": "m-JqcX4uBzjhIIgWW",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "None",
+					"disabled": true
+				},
+				{
+					"id": "ms_86U-wl5dYqMgrX",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "Broken",
+					"cost_adj": "1",
+					"disabled": true
+				},
+				{
+					"id": "mHFLNFHb8hie_xCYM",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "Accented",
+					"cost_adj": "2",
+					"disabled": true
+				},
+				{
+					"id": "mY-JkMGPxviY1bPFE",
+					"name": "Written",
+					"reference": "B24",
+					"local_notes": "Native",
+					"cost_adj": "3",
+					"disabled": true
+				}
+			],
+			"calc": {
+				"points": 2
+			}
+		},
+		{
+			"id": "tw2kKZz6oXW44RBcW",
+			"name": "Social Regard",
+			"reference": "B87",
+			"local_notes": "Respected: ",
+			"tags": [
+				"Advantage",
+				"Social"
+			],
+			"points_per_level": 5,
+			"features": [
+				{
+					"type": "reaction_bonus",
+					"situation": "from those who hold you in high regard for being a , in a Respected way.",
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 1,
+			"calc": {
+				"points": 5,
+				"current_level": 1
+			}
+		},
+		{
+			"id": "tYN7JNBG7qUS7vmti",
+			"name": "Military Rank",
+			"reference": "B29",
+			"tags": [
+				"Advantage",
+				"Physical"
+			],
+			"modifiers": [
+				{
+					"id": "mU1Pio1CZfWVmx_pA",
+					"name": "Replaces Status",
+					"reference": "B29",
+					"cost_adj": "5",
+					"affects": "levels_only",
+					"disabled": true
+				},
+				{
+					"id": "m2pz1K-Gna4WZ2lgd",
+					"name": "Courtesy",
+					"reference": "B29",
+					"cost_adj": "-4",
+					"affects": "levels_only"
+				}
+			],
+			"points_per_level": 5,
+			"can_level": true,
+			"levels": 6,
+			"calc": {
+				"points": 6,
+				"current_level": 6
+			}
+		},
+		{
+			"id": "ts1KiLkvh-Cs8Klir",
+			"name": "Common Sense",
+			"reference": "B43",
+			"tags": [
+				"Advantage",
+				"Mental"
+			],
+			"modifiers": [
+				{
+					"id": "m3k4OOsOxEbb8cL3F",
+					"name": "Concious",
+					"reference": "P45",
+					"cost_adj": "50%",
+					"disabled": true
+				}
+			],
+			"base_points": 10,
+			"calc": {
+				"points": 10
+			}
+		},
+		{
+			"id": "tsnpm3XPYW3c3ZCxx",
+			"name": "Talent (Intuitive Admiral (Space))",
+			"reference": "PU3:12",
+			"tags": [
+				"Advantage",
+				"Mental",
+				"Talent"
+			],
+			"modifiers": [
+				{
+					"id": "mc2Tj8gE1liiMjFrm",
+					"name": "Reaction Bonus",
+					"local_notes": "Anyone you serve with or command"
+				},
+				{
+					"id": "m6fyUIiIw7EJ8blQd",
+					"name": "Alternate Benefit",
+					"local_notes": "Bonus to initiative roll if leader",
+					"disabled": true
+				},
+				{
+					"id": "mU5p7lAoe5IAGWxIS",
+					"name": "Alternative Cost",
+					"cost_adj": "-2",
+					"affects": "levels_only",
+					"disabled": true
+				}
+			],
+			"points_per_level": 10,
+			"features": [
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Expert Skill"
+					},
+					"specialization": {
+						"compare": "is",
+						"qualifier": "Military Science"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "History"
+					},
+					"specialization": {
+						"compare": "ends_with",
+						"qualifier": "Military"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Intelligence Analysis"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Leadership"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Savoir-Faire"
+					},
+					"specialization": {
+						"compare": "is",
+						"qualifier": "Military"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Shiphandling"
+					},
+					"specialization": {
+						"compare": "is",
+						"qualifier": "Spaceship"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Shiphandling"
+					},
+					"specialization": {
+						"compare": "is",
+						"qualifier": "Starship"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Spacer"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Strategy"
+					},
+					"specialization": {
+						"compare": "is",
+						"qualifier": "Space"
+					},
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 1,
+			"calc": {
+				"points": 10,
+				"current_level": 1
+			}
+		},
+		{
+			"id": "tv7bYDt_bla-wQD79",
+			"name": "Talent (Outdoorsman)",
+			"reference": "PU3:14",
+			"tags": [
+				"Advantage",
+				"Mental",
+				"Talent"
+			],
+			"modifiers": [
+				{
+					"id": "m0ks8Hny9KvA738cz",
+					"name": "Reaction Bonus",
+					"local_notes": "Explorers and nature lovers"
+				},
+				{
+					"id": "mp1FPhrqAzWXcP1Aw",
+					"name": "Alternate Benefit",
+					"local_notes": "Bonus to HT rolls to avoid harm from failure of covered skills",
+					"disabled": true
+				},
+				{
+					"id": "mSUSnSEEORNXvN9f0",
+					"name": "Alternative Cost",
+					"cost_adj": "-3",
+					"affects": "levels_only",
+					"disabled": true
+				}
+			],
+			"points_per_level": 10,
+			"features": [
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Camouflage"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Fishing"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Mimicry"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Naturalist"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Navigation"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Survival"
+					},
+					"amount": 1,
+					"per_level": true
+				},
+				{
+					"type": "skill_bonus",
+					"selection_type": "skills_with_name",
+					"name": {
+						"compare": "is",
+						"qualifier": "Tracking"
+					},
+					"amount": 1,
+					"per_level": true
+				}
+			],
+			"can_level": true,
+			"levels": 1,
+			"calc": {
+				"points": 10,
+				"current_level": 1
+			}
+		}
+	],
+	"skills": [
+		{
+			"id": "sLtgn9NZ8Jpa0Scjj",
+			"name": "Administration",
+			"reference": "B174",
+			"tags": [
+				"Business",
+				"Social"
+			],
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "skill",
+					"name": "Merchant",
+					"modifier": -3
+				},
+				{
+					"type": "iq",
+					"modifier": -5
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "IQ+1"
+			}
+		},
+		{
+			"id": "s8-Cs-P4I-4gqCvB4",
+			"name": "Beam Weapons",
+			"reference": "B179",
+			"tags": [
+				"Combat",
+				"Ranged Combat",
+				"Weapon"
+			],
+			"specialization": "Pistol",
+			"difficulty": "dx/e",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Beam Weapons",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Guns",
+					"specialization": "Pistol",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -4,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 11,
+				"rsl": "DX+0"
+			}
+		},
+		{
+			"id": "shix2qx6_OgnpQYuR",
+			"name": "Boating",
+			"reference": "B180",
+			"tags": [
+				"Vehicle"
+			],
+			"specialization": "Sailboat",
+			"difficulty": "dx/a",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -5
+				},
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Boating",
+					"specialization": "Large Powerboat",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Boating",
+					"specialization": "Motorboat",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Boating",
+					"specialization": "Unpowered",
+					"modifier": -3
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 11,
+				"rsl": "DX+0"
+			}
+		},
+		{
+			"id": "s83L-jXklZAS5dgpD",
+			"name": "Boxing",
+			"reference": "B182",
+			"tags": [
+				"Combat",
+				"Melee Combat",
+				"Weapon"
+			],
+			"difficulty": "dx/a",
+			"features": [
+				{
+					"type": "weapon_bonus",
+					"selection_type": "weapons_with_required_skill",
+					"name": {
+						"compare": "is",
+						"qualifier": "Boxing"
+					},
+					"level": {
+						"compare": "at_least",
+						"qualifier": 1
+					},
+					"amount": 1,
+					"per_die": true
+				},
+				{
+					"type": "weapon_bonus",
+					"selection_type": "weapons_with_required_skill",
+					"name": {
+						"compare": "is",
+						"qualifier": "Boxing"
+					},
+					"level": {
+						"compare": "at_least",
+						"qualifier": 2
+					},
+					"amount": 1,
+					"per_die": true
+				}
+			],
+			"points": 4,
+			"calc": {
+				"level": 12,
+				"rsl": "DX+1"
+			}
+		},
+		{
+			"id": "sBG9HDDXDgdEbk33d",
+			"name": "Computer Operation",
+			"reference": "B184",
+			"tags": [
+				"Everyman",
+				"Scholarly",
+				"Technical"
+			],
+			"difficulty": "iq/e",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -4,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "smJ6E5UEXP9cKwRF0",
+			"name": "Current Affairs",
+			"reference": "B186",
+			"tags": [
+				"Everyman",
+				"Knowledge",
+				"Social"
+			],
+			"specialization": "Politics",
+			"difficulty": "iq/e",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Research",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Current Affairs",
+					"modifier": -4
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -4,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "IQ+2"
+			}
+		},
+		{
+			"id": "sgNzVHH0H9eURYFMI",
+			"name": "Diplomacy",
+			"reference": "B187",
+			"tags": [
+				"Business",
+				"Police",
+				"Social"
+			],
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Politics",
+					"modifier": -6
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -6,
+				"level": 6,
+				"adjusted_level": 6,
+				"points": -6
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "shx2BDZUFcQYxAld8",
+			"name": "Electronics Operation",
+			"reference": "B189",
+			"tags": [
+				"Technical"
+			],
+			"specialization": "Sensors",
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Electronics Repair",
+					"specialization": "Sensors",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Engineer",
+					"specialization": "Electronics",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Electronics Operation",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "skill",
+				"name": "Electronics Operation",
+				"specialization": "Surveillance",
+				"modifier": -4,
+				"level": 9,
+				"adjusted_level": 9,
+				"points": -9
+			},
+			"calc": {
+				"level": 11,
+				"rsl": "IQ-1"
+			}
+		},
+		{
+			"id": "s19by0Q7hFj4iVHNj",
+			"name": "Electronics Operation",
+			"reference": "B189",
+			"tags": [
+				"Police",
+				"Spy",
+				"Technical"
+			],
+			"specialization": "Surveillance",
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Electronics Repair",
+					"specialization": "Surveillance",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Engineer",
+					"specialization": "Electronics",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Electronics Operation",
+					"modifier": -4
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "IQ+1"
+			}
+		},
+		{
+			"id": "snwYl1p0UONPFZlVm",
+			"name": "Electronics Repair",
+			"reference": "B190",
+			"tags": [
+				"Maintainance",
+				"Repair"
+			],
+			"specialization": "Sensors",
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Electronics Operation",
+					"specialization": "Sensors",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Engineer",
+					"specialization": "Electronics",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Electronics Repair",
+					"modifier": -4
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "skill",
+				"name": "Electronics Operation",
+				"specialization": "Sensors",
+				"modifier": -3,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "sGyHfRScKxD4K_YcC",
+			"name": "Gunner",
+			"reference": "B198",
+			"tags": [
+				"Combat",
+				"Ranged Combat",
+				"Weapon"
+			],
+			"specialization": "Phasers",
+			"difficulty": "dx/e",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Gunner",
+					"modifier": -4
+				}
+			],
+			"tech_level": "12",
+			"points": 2,
+			"defaulted_from": {
+				"type": "skill",
+				"name": "Gunner",
+				"specialization": "Photon Torpedoes",
+				"modifier": -4,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "DX+1"
+			}
+		},
+		{
+			"id": "seP5wKWcKdsz4R6Gp",
+			"name": "Gunner",
+			"reference": "B198",
+			"tags": [
+				"Combat",
+				"Ranged Combat",
+				"Weapon"
+			],
+			"specialization": "Photon Torpedoes",
+			"difficulty": "dx/e",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Gunner",
+					"modifier": -4
+				}
+			],
+			"tech_level": "12",
+			"points": 2,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -4,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "DX+1"
+			}
+		},
+		{
+			"id": "srwFbGyC5U6ppYkRc",
+			"name": "Intelligence Analysis",
+			"reference": "B201",
+			"tags": [
+				"Military",
+				"Police",
+				"Spy"
+			],
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Strategy",
+					"modifier": -6
+				}
+			],
+			"points": 8,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -6,
+				"level": 6,
+				"adjusted_level": 6,
+				"points": -6
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "IQ+2"
+			}
+		},
+		{
+			"id": "s_YpiK76KXWqpNxqS",
+			"name": "Intimidation",
+			"reference": "B202",
+			"tags": [
+				"Criminal",
+				"Police",
+				"Social",
+				"Street"
+			],
+			"difficulty": "will/a",
+			"defaults": [
+				{
+					"type": "will",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Acting",
+					"modifier": -3
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "will",
+				"modifier": -5,
+				"level": 9,
+				"adjusted_level": 9,
+				"points": -9
+			},
+			"calc": {
+				"level": 15,
+				"rsl": "Will+1"
+			}
+		},
+		{
+			"id": "s_5inPQxQm-y5RUkw",
+			"name": "Law",
+			"reference": "B204",
+			"tags": [
+				"Business",
+				"Humanities",
+				"Police",
+				"Social Sciences"
+			],
+			"specialization": "Federation",
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -6,
+				"level": 6,
+				"adjusted_level": 6,
+				"points": -6
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "sPrXZU-ANgdy2ftLY",
+			"name": "Leadership",
+			"reference": "B204",
+			"tags": [
+				"Military",
+				"Social"
+			],
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "sIbRMe9ucVOQu40KG",
+			"name": "Meteorology",
+			"reference": "B209",
+			"tags": [
+				"Natural Science"
+			],
+			"specialization": "Earthlike",
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "sL7AbenAWdQmyJWoO",
+			"name": "Meteorology",
+			"reference": "B209",
+			"tags": [
+				"Natural Science"
+			],
+			"specialization": "Gas Giants",
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -5
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "s2utDk_1AHY2Ez5P7",
+			"name": "Naturalist",
+			"reference": "B211",
+			"tags": [
+				"Animal",
+				"Exploration",
+				"Natural Science",
+				"Outdoor",
+				"Plant"
+			],
+			"specialization": "Earthlike",
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Biology",
+					"modifier": -3
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -6,
+				"level": 6,
+				"adjusted_level": 6,
+				"points": -6
+			},
+			"calc": {
+				"level": 11,
+				"rsl": "IQ-1"
+			}
+		},
+		{
+			"id": "sJlYyYooPsoaaVjd-",
+			"name": "Navigation",
+			"reference": "B211",
+			"tags": [
+				"Exploration",
+				"Outdoor",
+				"Technical",
+				"Vehicle"
+			],
+			"specialization": "Space",
+			"difficulty": "iq/a",
+			"defaults": [
+				{
+					"type": "skill",
+					"name": "Astronomy",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Mathematics",
+					"specialization": "Applied",
+					"modifier": -4
+				},
+				{
+					"type": "skill",
+					"name": "Navigation",
+					"specialization": "Hyperspace",
+					"modifier": -5
+				}
+			],
+			"tech_level": "12",
+			"points": 1,
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		},
+		{
+			"id": "somE2aUdL4z55x6BK",
+			"name": "Piloting",
+			"reference": "B214",
+			"tags": [
+				"Vehicle"
+			],
+			"specialization": "Shuttles",
+			"difficulty": "dx/a",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Piloting",
+					"specialization": "High-Performance Airplane",
+					"modifier": -2
+				},
+				{
+					"type": "skill",
+					"name": "Piloting",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -6,
+				"level": 6,
+				"adjusted_level": 6,
+				"points": -6
+			},
+			"calc": {
+				"level": 10,
+				"rsl": "DX-1"
+			}
+		},
+		{
+			"id": "su9DPhdMvnrrDv5Xm",
+			"name": "Riding",
+			"reference": "B217",
+			"tags": [
+				"Animal"
+			],
+			"specialization": "Equine",
+			"difficulty": "dx/a",
+			"defaults": [
+				{
+					"type": "dx",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Animal Handling",
+					"specialization": "Equine",
+					"modifier": -3
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "dx",
+				"modifier": -5,
+				"level": 6,
+				"adjusted_level": 6,
+				"points": -6
+			},
+			"calc": {
+				"level": 10,
+				"rsl": "DX-1"
+			}
+		},
+		{
+			"id": "sQqC7aUIlcCvXXzXD",
+			"name": "Savoir-Faire",
+			"reference": "B218",
+			"tags": [
+				"Knowledge",
+				"Military",
+				"Social"
+			],
+			"specialization": "Military",
+			"difficulty": "iq/e",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -4
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -4,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 15,
+				"rsl": "IQ+3"
+			}
+		},
+		{
+			"id": "sdR67EI_vFdvhOSzk",
+			"name": "Shiphandling",
+			"reference": "B220",
+			"tags": [
+				"Vehicle"
+			],
+			"specialization": "Starship",
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Spacer",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Piloting",
+					"specialization": "Low-Performance Spacecraft",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Piloting",
+					"specialization": "High-Performance Spacecraft",
+					"modifier": -5
+				}
+			],
+			"prereqs": {
+				"type": "prereq_list",
+				"all": true,
+				"prereqs": [
+					{
+						"type": "skill_prereq",
+						"has": true,
+						"name": {
+							"compare": "is",
+							"qualifier": "spacer"
+						}
+					},
+					{
+						"type": "skill_prereq",
+						"has": true,
+						"name": {
+							"compare": "is",
+							"qualifier": "navigation"
+						},
+						"specialization": {
+							"compare": "is",
+							"qualifier": "space"
+						}
+					},
+					{
+						"type": "skill_prereq",
+						"has": true,
+						"name": {
+							"compare": "is",
+							"qualifier": "leadership"
+						}
+					}
+				]
+			},
+			"tech_level": "12",
+			"points": 4,
+			"defaulted_from": {
+				"type": "skill",
+				"name": "Spacer",
+				"modifier": -5,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "IQ+1"
+			}
+		},
+		{
+			"id": "s-O3NG33Ls0Ypwtni",
+			"name": "Spacer",
+			"reference": "B185",
+			"tags": [
+				"Vehicle"
+			],
+			"difficulty": "iq/e",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "iq",
+				"modifier": -4,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 13,
+				"rsl": "IQ+1"
+			}
+		},
+		{
+			"id": "sxnQHQiVOQjDd1xln",
+			"name": "Strategy",
+			"reference": "B222",
+			"tags": [
+				"Military"
+			],
+			"specialization": "Space",
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Intelligence Analysis",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Tactics",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Strategy",
+					"modifier": -4
+				}
+			],
+			"points": 8,
+			"defaulted_from": {
+				"type": "skill",
+				"name": "Intelligence Analysis",
+				"modifier": -6,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "IQ+2"
+			}
+		},
+		{
+			"id": "sXsikdJ_aQ17JF7Ns",
+			"name": "Survival",
+			"reference": "B223",
+			"tags": [
+				"Exploration",
+				"Outdoor"
+			],
+			"specialization": "Mountain",
+			"difficulty": "per/a",
+			"defaults": [
+				{
+					"type": "per",
+					"modifier": -5
+				},
+				{
+					"type": "skill",
+					"name": "Naturalist",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Arctic",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Desert",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Island/Beach",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Jungle",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Plains",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Swampland",
+					"modifier": -3
+				},
+				{
+					"type": "skill",
+					"name": "Survival",
+					"specialization": "Woodlands",
+					"modifier": -3
+				}
+			],
+			"points": 2,
+			"defaulted_from": {
+				"type": "per",
+				"modifier": -5,
+				"level": 8,
+				"adjusted_level": 8,
+				"points": -8
+			},
+			"calc": {
+				"level": 14,
+				"rsl": "Per+1"
+			}
+		},
+		{
+			"id": "su9SpD8Nlm0WIeIqQ",
+			"name": "Swimming",
+			"reference": "B224",
+			"tags": [
+				"Athletic",
+				"Exploration",
+				"Outdoor"
+			],
+			"difficulty": "ht/e",
+			"encumbrance_penalty_multiplier": 2,
+			"defaults": [
+				{
+					"type": "ht",
+					"modifier": -4
+				}
+			],
+			"points": 1,
+			"defaulted_from": {
+				"type": "ht",
+				"modifier": -4,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 11,
+				"rsl": "HT+0"
+			}
+		},
+		{
+			"id": "sL2HZQ_ZIpCugeFr5",
+			"name": "Tactics",
+			"reference": "B224",
+			"tags": [
+				"Military",
+				"Police"
+			],
+			"difficulty": "iq/h",
+			"defaults": [
+				{
+					"type": "iq",
+					"modifier": -6
+				},
+				{
+					"type": "skill",
+					"name": "Strategy",
+					"modifier": -6
+				}
+			],
+			"points": 4,
+			"defaulted_from": {
+				"type": "skill",
+				"name": "Strategy",
+				"specialization": "Space",
+				"modifier": -6,
+				"level": 7,
+				"adjusted_level": 7,
+				"points": -7
+			},
+			"calc": {
+				"level": 12,
+				"rsl": "IQ+0"
+			}
+		}
+	],
+	"equipment": [
+		{
+			"id": "ewS3nJKCv1aj40nQ6",
+			"description": "Communicator",
+			"reference": "PD266",
+			"local_notes": "Range 250 miles on surface",
+			"base_value": "100",
+			"base_weight": "0.25 lb",
+			"quantity": 1,
+			"equipped": true,
+			"calc": {
+				"value": 100,
+				"extended_value": 100,
+				"weight": "0.25 lb",
+				"extended_weight": "0.25 lb"
+			}
+		},
+		{
+			"id": "elO7RPObC5oPqrcxI",
+			"description": "Dress Uniform",
+			"base_value": "1000",
+			"base_weight": "3 lb",
+			"quantity": 1,
+			"equipped": true,
+			"calc": {
+				"value": 1000,
+				"extended_value": 1000,
+				"weight": "3 lb",
+				"extended_weight": "3 lb"
+			}
+		},
+		{
+			"id": "eofMe8UvgZBAq6KYo",
+			"description": "Phaser-II",
+			"reference": "PD281",
+			"local_notes": "1s to switch setting.  DR/3 adds to HT roll.",
+			"tech_level": "10",
+			"legality_class": "1",
+			"base_value": "3000",
+			"base_weight": "1 lb",
+			"weapons": [
+				{
+					"id": "WJoreogi3bVs4m26Q",
+					"sv": 1,
+					"damage": {
+						"type": "R-HT-2 or KO"
+					},
+					"strength": "4",
+					"usage": "Stun",
+					"accuracy": "5",
+					"range": "200/500",
+					"rate_of_fire": "3",
+					"shots": "30(2)",
+					"bulk": "-2",
+					"recoil": "1",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Beam Weapons",
+							"specialization": "Pistol"
+						},
+						{
+							"type": "dx",
+							"modifier": -4
+						}
+					],
+					"calc": {
+						"level": 11,
+						"damage": "R-HT-2 or KO"
+					}
+				},
+				{
+					"id": "WUQDwbYqvsbSIh2FN",
+					"sv": 1,
+					"damage": {
+						"type": "burn",
+						"base": "2d"
+					},
+					"strength": "4",
+					"usage": "Kill",
+					"accuracy": "5",
+					"range": "200/500",
+					"rate_of_fire": "3",
+					"shots": "30(2)",
+					"bulk": "-2",
+					"recoil": "1",
+					"defaults": [
+						{
+							"type": "skill",
+							"name": "Beam Weapons",
+							"specialization": "Pistol"
+						},
+						{
+							"type": "dx",
+							"modifier": -4
+						}
+					],
+					"calc": {
+						"level": 11,
+						"damage": "2d burn"
+					}
+				},
+				{
+					"id": "Wc1BPp_8Eq1OvuMib",
+					"sv": 1,
+					"damage": {
+						"type": "burn",
+						"base": "4d",
+						"armor_divisor": 3
+					},
+					"strength": "4",
+					"usage": "Disintegrate",
+					"accuracy": "5",
+					"range": "200/500",
+					"rate_of_fire": "3",
+					"shots": "30(2)",
+					"bulk": "-2",
+					"recoil": "1",
+					"defaults": [
+						{
+							"type": "dx",
+							"modifier": -4
+						},
+						{
+							"type": "skill",
+							"name": "Beam Weapons",
+							"specialization": "Pistol"
+						}
+					],
+					"calc": {
+						"level": 11,
+						"damage": "4d(3) burn"
+					}
+				}
+			],
+			"quantity": 1,
+			"equipped": true,
+			"calc": {
+				"value": 3000,
+				"extended_value": 3000,
+				"weight": "1 lb",
+				"extended_weight": "1 lb"
+			}
+		}
+	],
+	"notes": [
+		{
+			"id": "n-Blxo7t8LQkj_AD_",
+			"markdown": "After you retired, you turned down an academy position and decided to uproot to Delta Vega with your new wife, build a cabin on the Dehner River, and spend a couple of years studying its famous Catatumbo lightning storms. It was glorious. You even hosted a couple of seminars at the cabin for new first officers in training. Nothing like waking them up at dawn for a little woodchopping! Two months ago, however, your old student Commander Isaacs at Outpost 7 told you that a rare boson micro-nebula was migrating into Federation space. You’ve wanted to study one for decades. You pulled a few favors and rendevouzed with the USS Renown to investigate the anomaly. Your first impression of the crew is that they’re inexperienced and impetuous... but nothing you can’t help the captain fix.\n"
+		},
+		{
+			"id": "n_4_kzR0i_JArP80c",
+			"markdown": "Reluctantly retired admiral and intelligence agent – desperately misses the action.  Nicknamed \"Grizzly\"."
+		}
+	],
+	"created_date": "2021-06-21T15:31:00-07:00",
+	"modified_date": "2021-06-28T09:42:00-07:00",
+	"calc": {
+		"swing": "1d",
+		"thrust": "1d-2",
+		"basic_lift": "20 lb",
+		"move": [
+			5,
+			4,
+			3,
+			2,
+			1
+		],
+		"dodge": [
+			8,
+			7,
+			6,
+			5,
+			4
+		]
+	}
+}
