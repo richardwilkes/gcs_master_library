@@ -1,3 +1,5 @@
+# Default Settings
+
 You can adjust the **default settings** GCS applies when creating a new [Character Sheet](Character%20Sheet%20Overview).
 
 For other settings options, see [General Settings](General%20Settings).
@@ -8,8 +10,9 @@ For building skill defaults, see [Defaults](Defaults).
 
 You can manage default settings the same way as other settings:
 
-- **Reset settings to defaults:** Select **Reset** ![](./images/icons/icn-reset.svg).
-- **Import or export settings:** On the Settings toolbar, select **Menu** ![](./images/icons/icn-menu.svg), then choose:
+- **Reset settings to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg).
+- **Import or export settings:** On the Settings toolbar, select **Menu** ![menu](images/icons/icn-menu.svg), then
+  choose:
   - **Import:** Load saved settings into GCS.
   - **Export:** Save your current settings as a file.
 

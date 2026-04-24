@@ -1,4 +1,7 @@
-You can customize the appearance of your [character sheet](Character%20Sheet%20Overview) with **colors** and **fonts**. This allows you to highlight important sections, match your group’s style, or just make your sheet easier to read.
+# Colors and Fonts
+
+You can customize the appearance of your [character sheet](Character%20Sheet%20Overview) with **colors** and **fonts**.
+This allows you to highlight important sections, match your group’s style, or just make your sheet easier to read.
 
 For other settings options, see [General Settings](General%20Settings).
 
@@ -11,8 +14,9 @@ To open the **Colors** and **Fonts** settings:
 
 You can manage color and font settings the same way as other settings:
 
-- **Reset settings to defaults:** Select **Reset** ![](./images/icons/icn-reset.svg).
-- **Import or export settings:** On the Colors or Fonts toolbars, select **Menu** ![](./images/icons/icn-menu.svg), then choose:
+- **Reset settings to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg).
+- **Import or export settings:** On the Colors or Fonts toolbars, select **Menu** ![menu](images/icons/icn-menu.svg),
+  then choose:
   - **Import:** Load saved settings into GCS.
   - **Export:** Save your current settings as a file.
 
@@ -30,7 +34,8 @@ At the top of the window, choose how GCS uses **light** and **dark** colors:
 
 ### Theme Colors
 
-Theme colors define the look of the GCS interface. For each, you can set separate values for **light mode** and **dark mode**.
+Theme colors define the look of the GCS interface. For each, you can set separate values for **light mode** and **dark
+mode**.
 
 | Theme Color | Description                                  |
 |-------------|----------------------------------------------|
@@ -44,7 +49,8 @@ Theme colors define the look of the GCS interface. For each, you can set separat
 
 ### Sheet Block Tints
 
-You can also apply **tints** to specific blocks on the character sheet (for example, [Traits](Traits), [Skills](Skills), or [Spells](Spells)).
+You can also apply **tints** to specific blocks on the character sheet (for example, [Traits](Traits), [Skills](Skills),
+or [Spells](Spells)).
 
 - Each block can have its own color.
 - **Alpha** (transparency) must be greater than `0` to enable the tint.
@@ -67,7 +73,8 @@ You can set colors in several ways:
 
 The preview panel shows both the **new color** and the **original color**.
 
-Next to every color option is a **reset button** ![](./images/icons/icn-reset.svg). Select this to return that color to the GCS default
+Next to every color option is a **reset button** ![reset](images/icons/icn-reset.svg). Select this to return that color
+to the GCS default
 
 ## Fonts
 
@@ -99,7 +106,8 @@ Each font entry lets you choose:
 - **Style**: _Upright_ or _Italic_.
 - **Variant**: Standard (default) or other available options.
 
-Next to every font option is a **reset button** ![](./images/icons/icn-reset.svg). Select this to return that font to the GCS default
+Next to every font option is a **reset button** ![reset](images/icons/icn-reset.svg). Select this to return that font to
+the GCS default
 
 > [!IMPORTANT]
 > Changing fonts usually requires restarting GCS to display content correctly.

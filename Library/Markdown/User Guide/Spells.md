@@ -1,30 +1,36 @@
-The **Spell list** on your [character sheet](Character%20Sheet%20Overview) shows all of your character’s **spells** ([B242](B242)), their levels, points spent, and notes on how they work.
+# Spells
+
+The **Spell list** on your [character sheet](Character%20Sheet%20Overview) shows all of your character’s **spells**
+([B242](B242)), their levels, points spent, and notes on how they work.
 
 GCS does **not** automate spellcasting. You must manually:
 
 - Subtract **FP** (or **HP**) costs from your [Point pools](Point%20pools).
 - Apply any effects or conditions from the spell to your character sheet.
 
-You can add important reminders as [Notes](Notes), or use the [Page References](Page%20References) to jump directly to the rules in your PDF.
+You can add important reminders as [Notes](Notes), or use the [Page References](Page%20References) to jump directly to
+the rules in your PDF.
 
-### Master Library
+## Master Library
 
-GCS includes hundreds of official spells in the **Master Library**. See [Library Explorer](Library%20Explorer) for more details.
+GCS includes hundreds of official spells in the **Master Library**. See [Library Explorer](Library%20Explorer) for more
+details.
 
 You can also create your own custom spells.
 
 ## Spell list
 
-The spell list on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
+The spell list on your character sheet includes the following columns. Select a column heading to sort ascending ![sort
+ascending](images/icons/icn-sortAscending.svg) or descending ![sort descending](images/icons/icn-sortDescending.svg).
 
-| Column                                        | Description                                                                                                                                                                |
-|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Spell**                                     | The spell name and any notes, including Magic Ritual information. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes for this spell. |
-| **SL**                                        | The calculated skill level, based on its controlling attribute and points spent.                                                                                           |
-| **Rsl**                                       | The relative skill level compared to its controlling attribute. For example, `IQ+2`.                                                                                       |
-| **Pts**                                       | The total points you’ve invested in the spell.                                                                                                                             |
-| **![](./images/icons/icn-pageReference.svg)** | Page reference for the skill. See [Page References](Page%20References) for more details.                                                                                   |
-| **![](./images/icons/icn-source.svg)**        | Tracks whether the skill matches the official **Master Library**. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview)                 |
+| Column                                                    | Description                                                                                                                                                                          |
+|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Spell**                                                 | The spell name and any notes, including Magic Ritual information. Select the notes icon ![notes expand](images/icons/icn-notesExpand.svg) to open or close the notes for this spell. |
+| **SL**                                                    | The calculated skill level, based on its controlling attribute and points spent.                                                                                                     |
+| **Rsl**                                                   | The relative skill level compared to its controlling attribute. For example, `IQ+2`.                                                                                                 |
+| **Pts**                                                   | The total points you’ve invested in the spell.                                                                                                                                       |
+| **![page reference](images/icons/icn-pageReference.svg)** | Page reference for the skill. See [Page References](Page%20References) for more details.                                                                                             |
+| **![source](images/icons/icn-source.svg)**                | Tracks whether the skill matches the official **Master Library**. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview)                           |
 
 ## Adding spells
 
@@ -41,14 +47,17 @@ You can also [create a new custom spell](Custom%20Content):
 - On your character sheet, go to **Item > New Spell**.
 
 > [!IMPORTANT]
-> Many spells have [prerequisites](Prerequisites). If you add one without meeting its requirements, GCS shows an error below it. Hover over the error to see what’s missing.
+> Many spells have [prerequisites](Prerequisites). If you add one without meeting its requirements, GCS shows an error
+> below it. Hover over the error to see what’s missing.
 
 When you add a spell:
 
 - GCS highlights the block where it can be dropped. No matter where you drag it, it goes to the right location.
 - The **Points block** updates automatically. Points spent on spells reduce your unspent points.
-- The spell’s starting level is calculated automatically, based on its controlling attribute. Changing an attribute can change the skill level.
-- **Ritual information:** Casting time, cost, and other ritual details ([B237](B237)) are automatically calculated based on your spell level. These appear as notes under the spell on your character sheet.
+- The spell’s starting level is calculated automatically, based on its controlling attribute. Changing an attribute can
+  change the skill level.
+- **Ritual information:** Casting time, cost, and other ritual details ([B237](B237)) are automatically calculated based
+  on your spell level. These appear as notes under the spell on your character sheet.
 - **Magery modifiers:** If your character has **Magery**, the appropriate modifiers are automatically applied to spells.
 
 ### Points and costs
@@ -65,7 +74,8 @@ You can change spells on your sheet in a few ways.
 **Increment:**
 
 - Adds (or removes) **one point** at a time.
-- Depending on the skill cost table ([B170](B170)), several points may be required before the spell increases to the next level.
+- Depending on the skill cost table ([B170](B170)), several points may be required before the spell increases to the
+  next level.
 
 To add (or remove) points:
 
@@ -83,14 +93,16 @@ To increase (or decrease) the spell level:
 - Go to **Edit > Increase Skill Level** (or **Decrease Skill Level**).
 
 > [!TIP]
-> Use **Increment** when you’re tracking gradual training. Use **Increase Skill Level** if you want to jump directly to the next full level.
+> Use **Increment** when you’re tracking gradual training. Use **Increase Skill Level** if you want to jump directly to
+> the next full level.
 
 ### Tracking study time
 
 You can also track study time for spells. See [Study time](Study%20time) for more details.
 
 > [!TIP]
-> When tracking study time for spells, don’t forget that **Magery** reduces the required hours ([B66](B66)). Update the **Standard learning hours** setting in the Study section to reflect this reduction.
+> When tracking study time for spells, don’t forget that **Magery** reduces the required hours ([B66](B66)). Update the
+> **Standard learning hours** setting in the Study section to reflect this reduction.
 
 ### Organizing spells with containers
 
@@ -99,7 +111,8 @@ Spells can be grouped into [Containers](Containers) to keep related magic togeth
 For example:
 
 - Group all **Fire College** spells into one container.
-- You can also use containers when building [Character templates](Character%20Templates) to require a caster picks a certain number of spells.
+- You can also use containers when building [Character templates](Character%20Templates) to require a caster picks a
+  certain number of spells.
 
 ### Deleting a spell
 
@@ -115,10 +128,12 @@ GCS also supports **Ritual Magic Spells**, which work similarly to standard spel
 - **Creating Ritual Magic Spells:**
   - On your character sheet, go to **Edit > New Ritual Magic Spell**.
 - **Field differences:**
-  - Ritual Magic spells include a **Base Skill** field. This is usually the _Ritual Magic_ skill, but you can select another if appropriate.
+  - Ritual Magic spells include a **Base Skill** field. This is usually the _Ritual Magic_ skill, but you can select
+    another if appropriate.
   - The **Difficulty** field is restricted to **Average (A)** or **Hard (H)**, per the Ritual Magic rules.
 - **Automatic calculation:**
-  - GCS automatically handles the math for Ritual Magic in the background, so you only need to enter the Base Skill and points.
+  - GCS automatically handles the math for Ritual Magic in the background, so you only need to enter the Base Skill and
+    points.
 
 Ritual Magic spells behave like standard spells. You can edit them, track study time, and manage them in the same way.
 
@@ -139,7 +154,7 @@ The Spell Detail Editor includes the following fields:
 | Spell Editor Field                       | Description                                                                                                                                                                                        |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                                 | The spell’s name.                                                                                                                                                                                  |
-| **Notes**                                | Notes about the spell. These appear below the spell in the list. Select the Scripting Guide ![](./images/icons/icn-scriptingGuide.svg) for instructions on including JavaScript.                   |
+| **Notes**                                | Notes about the spell. These appear below the spell in the list. Select the Scripting Guide ![scripting guide](images/icons/icn-scriptingGuide.svg) for instructions on including JavaScript.      |
 | **VTT Notes**                            | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                       |
 | **Tech Level**                           | The Tech Level associated with the spell, if applicable. This field is greyed out unless **Required** is checked.                                                                                  |
 | **Required**                             | If checked, the Tech Level must match for the spell to be available.                                                                                                                               |
@@ -172,13 +187,13 @@ The Spell Detail Editor includes the following fields:
 
 The toolbar above the Spell Editor gives you quick access to common actions:
 
-| Button                                     | Name                  | Description                                                        |
-|:-------------------------------------------|-----------------------|--------------------------------------------------------------------|
-| ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                           |
-| 100%                                       | **Zoom**              | Adjusts the display size of the Spell Editor.                      |
-| ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Spell Editor.                                 |
-| ![](./images/icons/icn-discardChanges.svg) | **Discard Changes**   | Exits without saving changes.                                      |
-| ![](./images/icons/icn-substitutions.svg)  | **Set Substitutions** | Lets you enter values for spells with placeholders in their notes. |
+| Button                                                  | Name                  | Description                                                        |
+|:--------------------------------------------------------|-----------------------|--------------------------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                      | **Help**              | Opens the help page from the User Guide.                           |
+| 100%                                                    | **Zoom**              | Adjusts the display size of the Spell Editor.                      |
+| ![apply changes](images/icons/icn-applyChanges.svg)     | **Apply Changes**     | Saves and closes the Spell Editor.                                 |
+| ![discard changes](images/icons/icn-discardChanges.svg) | **Discard Changes**   | Exits without saving changes.                                      |
+| ![substitutions](images/icons/icn-substitutions.svg)    | **Set Substitutions** | Lets you enter values for spells with placeholders in their notes. |
 
 ---
 

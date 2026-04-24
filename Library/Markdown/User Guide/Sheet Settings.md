@@ -1,3 +1,5 @@
+# Sheet Settings
+
 You can adjust how your [Character Sheet](Character%20Sheet%20Overview) behaves using the **Sheet Settings** menu.
 
 > [!NOTE]
@@ -14,8 +16,9 @@ Changes are applied immediately. You don’t need to save.
 
 ## Managing Settings
 
-- **Reset settings to defaults:** Select **Reset** ![](./images/icons/icn-reset.svg).
-- **Import or export settings:** On the Settings toolbar, select **Menu** ![](./images/icons/icn-menu.svg), then choose:
+- **Reset settings to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg).
+- **Import or export settings:** On the Settings toolbar, select **Menu** ![menu](images/icons/icn-menu.svg), then
+  choose:
   - **Import:** Load saved settings into GCS.
   - **Export:** Save your current settings as a file.
 
@@ -26,8 +29,8 @@ The following sheet settings are available:
 | Setting                                               | Description                                                                                                                                                                                 |
 |-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Damage Progression**                                | Choose a damage progression table. See **Damage Progression** below.                                                                                                                        |
-| **Show library source column**                        | Displays the library source column ![](./images/icons/icn-source.svg). See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview) for more details.           |
-| **Show page reference column**                        | Displays the Page Reference column ![](./images/icons/icn-pageReference.svg). See [Page References](Page%20References) for more details.                                                    |
+| **Show library source column**                        | Displays the library source column ![source](images/icons/icn-source.svg). See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview) for more details.       |
+| **Show page reference column**                        | Displays the Page Reference column ![page reference](images/icons/icn-pageReference.svg). See [Page References](Page%20References) for more details.                                        |
 | **Show tech level (TL) column**                       | Displays the Tech Level ([B22](B22)) column in the equipment list.                                                                                                                          |
 | **Show legality class (LC) column**                   | Displays the Legality Class ([B267](B267)) column in the equipment list.                                                                                                                    |
 | **Show trait modifier cost adjustments**              | Shows modifier cost in a Trait's notes.                                                                                                                                                     |

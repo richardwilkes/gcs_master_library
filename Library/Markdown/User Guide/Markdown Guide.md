@@ -1,6 +1,10 @@
-Use **Markdown syntax** to add structure and style to your [Notes](Notes) in GCS. This page shows the most common formatting options with examples.
+# Markdown Guide
 
-Markdown is also supported in the notes field in the **Detail Editors** for [Traits](Traits), [Skills](Skills), [Spells](Spells), [Equipment](Equipment), and other advanced features.
+Use **Markdown syntax** to add structure and style to your [Notes](Notes) in GCS. This page shows the most common
+formatting options with examples.
+
+Markdown is also supported in the notes field in the **Detail Editors** for [Traits](Traits), [Skills](Skills),
+[Spells](Spells), [Equipment](Equipment), and other advanced features.
 
 ## Quick Reference
 
@@ -33,6 +37,8 @@ Headings create titles and organize your content. Use `#` symbols before the tex
 # Heading 1
 ## Heading 2
 ### Heading 3
+#### Heading 4
+##### Heading 5
 ###### Heading 6 (smallest)
 ```
 
@@ -41,6 +47,10 @@ Headings create titles and organize your content. Use `#` symbols before the tex
 ## Heading 2
 
 ### Heading 3
+
+#### Heading 4
+
+##### Heading 5
 
 ###### Heading 6
 
@@ -54,9 +64,11 @@ Heading 2
 ---------
 ```
 
-# Heading 1
+Heading 1
+=========
 
-## Heading 2
+Heading 2
+---------
 
 ---
 
@@ -88,10 +100,10 @@ First line<br>
 Second line
 ```
 
-First line (with two spaces)  
+First line (with two spaces)
 Second line
 
-First line<br>  
+First line<br>
 Second line
 
 ---
@@ -129,7 +141,8 @@ Use `>` to mark quoted text. Add more `>` for nested quotes.
 
 ## Alerts
 
-Use alerts to emphasize critical information. Alerts are displayed with distinctive colors and icons to indicate the significance of the content.
+Use alerts to emphasize critical information. Alerts are displayed with distinctive colors and icons to indicate the
+significance of the content.
 
 ```
 
@@ -210,7 +223,7 @@ ___
 
 ## Links
 
-Plain links are auto-detected:  
+Plain links are auto-detected:
 [https://gurpscharactersheet.com](https://gurpscharactersheet.com)
 
 To add custom text, use `[text](URL)`:
@@ -334,9 +347,9 @@ Indent items to nest them (and mix and match ordered and unordered lists):
 
 ```
 1. First list item
-	- First nested list item
-		- Second nested list item
-	- More...
+   - First nested list item
+     - Second nested list item
+   - More...
 2. Another...
 ```
 
