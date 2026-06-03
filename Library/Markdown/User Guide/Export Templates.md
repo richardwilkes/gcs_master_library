@@ -256,6 +256,7 @@ numbers.
 - `.Dec` — Returns the value decremented by 1
 - `.Div` — Returns the result of dividing this number by `value`
   - Parameter: `value` (Number)
+- `.Floor` — Returns the value rounded down to the nearest whole number
 - `.Inc` — Returns the value incremented by 1
 - `.Max` — Returns the maximum of this value or `value`
   - Parameter: `value` (Number)
@@ -270,7 +271,6 @@ numbers.
 - `.StringWithSign` — Same as `.String`, but prefixes the value with a '+' if it is positive
 - `.Sub` — Returns the result of subtracting `value` from this number
   - Parameter: `value` (Number)
-- `.Trunc` — Returns a value which has everything to the right of the decimal place truncated
 
 ### Page
 
