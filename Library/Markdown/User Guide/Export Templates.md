@@ -114,14 +114,12 @@ The remainder of this document details the various data types that the data is m
 #### Attributes Fields
 
 - `.Pools` ([]Pool)
-- `.PoolsByID` (map[string]Pool)<br>
-  *NOTE: This did not exist prior to v5.33.0*
 - `.Primary` ([]Attribute)
-- `.PrimaryByID` (map[string]Attribute)<br>
-  *NOTE: This did not exist prior to v5.33.0*
 - `.Secondary` ([]Attribute)
-- `.SecondaryByID` (map[string]Attribute)<br>
-  *NOTE: This did not exist prior to v5.33.0*
+- Added in v5.33.0:
+  - `.PoolsByID` (map[string]Pool)
+  - `.PrimaryByID` (map[string]Attribute)
+  - `.SecondaryByID` (map[string]Attribute)
 
 ### BodyType
 
@@ -220,13 +218,17 @@ The remainder of this document details the various data types that the data is m
 #### MeleeWeapon Fields
 
 - `.Block` (string)
+- `.BlockParts` (WeaponBlock)
 - `.Damage` (string)
 - `.Description` (string)
 - `.Level` (Number)
 - `.Notes` (string)
 - `.Parry` (string)
+- `.ParryParts` (WeaponParry)
 - `.Reach` (string)
+- `.ReachParts` (WeaponReach)
 - `.Strength` (string)
+- `.StrengthParts` (WeaponStrength)
 - `.Usage` (string)
 
 ### Note
@@ -311,16 +313,23 @@ numbers.
 #### RangedWeapon Fields
 
 - `.Accuracy` (string)
+- `.AccuracyParts` (WeaponAccuracy)
 - `.Bulk` (string)
+- `.BulkParts` (WeaponBulk)
 - `.Damage` (string)
 - `.Description` (string)
 - `.Level` (Number)
 - `.Notes` (string)
 - `.Range` (string)
+- `.RangeParts` (WeaponRange)
 - `.RateOfFire` (string)
+- `.RateOfFireParts` (WeaponRoF)
 - `.Recoil` (string)
+- `.RecoilParts` (WeaponRecoil)
 - `.Shots` (string)
+- `.ShotsParts` (WeaponShots)
 - `.Strength` (string)
+- `.StrengthParts` (WeaponStrength)
 - `.Usage` (string)
 
 ### Sheet
@@ -434,3 +443,133 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Type` (string)
 - `.UnsatisfiedReason` (string)
 - `.UserDescription` (string)
+- Added in v5.43.0:
+  - `.CR` (int) — The self-control roll target number, or 0 if there is no self-control roll.
+  - `.CRFull` (string) — The full self-control roll description (e.g. "CR: 12 (Quite Often)"), or an empty string if
+    there is no self-control roll.
+  - `.FR` (int) — The frequency-of-appearance roll target number, or 0 if there is no frequency roll.
+  - `.FRFull` (string) — The full frequency-of-appearance roll description, or an empty string if there is no frequency
+    roll.
+  - `.ModifierNotesNoCR` (string) — Same as `.ModifierNotes`, but without the self-control roll portion.
+  - `.ModifierNotesNoFR` (string) — Same as `.ModifierNotes`, but without the frequency-of-appearance roll portion.
+  - `.ModifierNotesNoRolls` (string) — Same as `.ModifierNotes`, but without either the self-control or
+    frequency-of-appearance roll portions.
+
+### WeaponAccuracy
+
+The component parts of a ranged weapon's accuracy.
+
+#### WeaponAccuracy Fields
+
+- `.Base` (Number)
+- `.Jet` (boolean)
+- `.Scope` (Number)
+
+### WeaponBlock
+
+The component parts of a melee weapon's block.
+
+#### WeaponBlock Fields
+
+- `.CanBlock` (boolean)
+- `.Modifier` (Number)
+
+### WeaponBulk
+
+The component parts of a ranged weapon's bulk.
+
+#### WeaponBulk Fields
+
+- `.Giant` (Number)
+- `.Normal` (Number)
+- `.RetractingStock` (boolean)
+
+### WeaponParry
+
+The component parts of a melee weapon's parry.
+
+#### WeaponParry Fields
+
+- `.CanParry` (boolean)
+- `.Fencing` (boolean)
+- `.Modifier` (Number)
+- `.Unbalanced` (boolean)
+
+### WeaponRange
+
+The component parts of a ranged weapon's range.
+
+#### WeaponRange Fields
+
+- `.HalfDamage` (Number)
+- `.InMiles` (boolean)
+- `.Max` (Number)
+- `.Min` (Number)
+- `.MusclePowered` (boolean)
+
+### WeaponReach
+
+The component parts of a melee weapon's reach.
+
+#### WeaponReach Fields
+
+- `.ChangeRequiresReady` (boolean)
+- `.CloseCombat` (boolean)
+- `.Max` (Number)
+- `.Min` (Number)
+
+### WeaponRecoil
+
+The component parts of a ranged weapon's recoil.
+
+#### WeaponRecoil Fields
+
+- `.Shot` (Number)
+- `.Slug` (Number)
+
+### WeaponRoF
+
+The component parts of a ranged weapon's rate of fire.
+
+#### WeaponRoF Fields
+
+- `.Jet` (boolean)
+- `.Mode1` (WeaponRoFMode)
+- `.Mode2` (WeaponRoFMode)
+
+### WeaponRoFMode
+
+The component parts of a single rate of fire mode.
+
+#### WeaponRoFMode Fields
+
+- `.FullAutoOnly` (boolean)
+- `.HighCyclicControlledBursts` (boolean)
+- `.SecondaryProjectiles` (Number)
+- `.ShotsPerAttack` (Number)
+
+### WeaponShots
+
+The component parts of a ranged weapon's shots.
+
+#### WeaponShots Fields
+
+- `.Count` (Number)
+- `.Duration` (Number)
+- `.InChamber` (Number)
+- `.ReloadTime` (Number)
+- `.ReloadTimeIsPerShot` (boolean)
+- `.Thrown` (boolean)
+
+### WeaponStrength
+
+The component parts of a weapon's minimum strength.
+
+#### WeaponStrength Fields
+
+- `.Bipod` (boolean)
+- `.Min` (Number)
+- `.Mounted` (boolean)
+- `.MusketRest` (boolean)
+- `.TwoHanded` (boolean)
+- `.TwoHandedUnready` (boolean)
