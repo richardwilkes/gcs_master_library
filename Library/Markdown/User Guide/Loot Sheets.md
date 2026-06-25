@@ -1,4 +1,7 @@
-Loot Sheets are a special type of sheet in GCS used to **track treasure, rewards, or collected items** during gameplay. They’re especially useful for GMs to generate treasure hoards or for players to keep a shared record of loot.
+# Loot Sheets
+
+Loot Sheets are a special type of sheet in GCS used to **track treasure, rewards, or collected items** during gameplay.
+They’re especially useful for GMs to generate treasure hoards or for players to keep a shared record of loot.
 
 ## Creating a loot sheet
 
@@ -27,9 +30,10 @@ Loot Sheets can also generate **random treasure hoards** based on weighted proba
 
 1. Create a Loot Sheet with the items you want as possible treasure.
 2. For each item, set the **Quantity** to weight its likelihood of being chosen (higher quantities = more common).
-3. Select **Generate Treasure** ![](images/icons/icn-wand.svg).
+3. Select **Generate Treasure** ![treasure](images/icons/icn-wand.svg).
 4. Enter a **Minimum Value** and **Maximum Value** for the treasure hoard, then select **OK**.
-5. GCS creates a **new Loot Sheet** with a randomized selection of items that fits within the chosen value range. The old loot sheet remains unchanged.
+5. GCS creates a **new Loot Sheet** with a randomized selection of items that fits within the chosen value range. The
+   old loot sheet remains unchanged.
 
 For example, if your Loot Sheet contains:
 
@@ -55,16 +59,16 @@ The **Loot Sheet** includes the following fields:
 
 The toolbar above the Loot Sheet gives you quick access to common actions:
 
-| Button                                   | Name                      | Description                                                               |
-|:-----------------------------------------|---------------------------|---------------------------------------------------------------------------|
-| ![](images/icons/icn-help.svg)           | **Help**                  | Open the help page from the User Guide.                                   |
-| 100%                                     | **Zoom**                  | Adjust the display size of your loot sheet.                               |
-| ![](images/icons/icn-expand.svg)         | **Expand/Collapse All**   | Show or hide all items within containers at once.                         |
-| ![](images/icons/icn-openCloseNotes.svg) | **Open/Close All Notes**  | Show or hide all embedded notes on your sheet.                            |
-| ![](images/icons/icn-syncSources.svg)    | **Sync with all sources** | Sync all items on the loot sheet with the Master Library.                 |
-| ![](images/icons/icn-wand.svg)           | **Generate Treasure**     | Generate a random treasure hoard based on the sheet’s items and settings. |
-| N/A                                      | **Search**                | Search for content on your loot sheet.                                    |
-| Checkbox                                 | **Names only**            | Limit searches to names only, ignoring notes or other details.            |
+| Button                                               | Name                      | Description                                                               |
+|:-----------------------------------------------------|---------------------------|---------------------------------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                   | **Help**                  | Open the help page from the User Guide.                                   |
+| 100%                                                 | **Zoom**                  | Adjust the display size of your loot sheet.                               |
+| ![toggle expansion](images/icons/icn-expand.svg)     | **Expand/Collapse All**   | Show or hide all items within containers at once.                         |
+| ![toggle notes](images/icons/icn-openCloseNotes.svg) | **Open/Close All Notes**  | Show or hide all embedded notes on your sheet.                            |
+| ![sync sources](images/icons/icn-syncSources.svg)    | **Sync with all sources** | Sync all items on the loot sheet with the Master Library.                 |
+| ![treasure](images/icons/icn-wand.svg)               | **Generate Treasure**     | Generate a random treasure hoard based on the sheet’s items and settings. |
+| N/A                                                  | **Search**                | Search for content on your loot sheet.                                    |
+| Checkbox                                             | **Names only**            | Limit searches to names only, ignoring notes or other details.            |
 
 ---
 

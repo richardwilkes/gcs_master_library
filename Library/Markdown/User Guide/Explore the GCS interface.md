@@ -1,3 +1,5 @@
+# Explore the GCS Interface
+
 When you open GCS, you’ll see its main window with three key areas that you’ll use often:
 
 - **Menu bar:** Your main control center for commands and tools.
@@ -20,7 +22,8 @@ It includes:
 
 ## Library Explorer
 
-The [Library Explorer](Library%20Explorer) appears in the left sidebar and displays folders containing traits, skills, spells, and equipment, among other content.
+The [Library Explorer](Library%20Explorer) appears in the left sidebar and displays folders containing traits, skills,
+spells, and equipment, among other content.
 
 It contains:
 
@@ -28,7 +31,8 @@ It contains:
 - **User Library:** Your personal collection of custom content.
 - **Master Library:** The official library of lists aligned with GURPS books.
 
-The **Library Explorer toolbar** gives you buttons to expand or collapse folders, create or delete a library or folder, update the Master Library, and manage favorites.
+The **Library Explorer toolbar** gives you buttons to expand or collapse folders, create or delete a library or folder,
+update the Master Library, and manage favorites.
 
 For more details, see [Library Explorer](Library%20Explorer).
 
@@ -45,18 +49,21 @@ You can:
 - Resize windows by dragging the dividers
 - Scroll horizontally or vertically within a window
 - Maximize a window to fill the width of GCS:
-  - Select **Maximize** ![](./images/icons/icn-windowMaximize.svg) on the top-right corner of the window.
-  - Select **Restore** ![](./images/icons/icn-windowRestore.svg) to return to side-by-side view.
+  - Select **Maximize** ![maximize](images/icons/icn-windowMaximize.svg) on the top-right corner of the window.
+  - Select **Restore** ![restore](images/icons/icn-windowRestore.svg) to return to side-by-side view.
 
 ### Tabs
 
-When you open multiple documents, each appears in its own **tab** within a window and has its own **toolbar** for relevant actions, such as searching and filtering. Tabs make it easy to switch between documents without closing them.
+When you open multiple documents, each appears in its own **tab** within a window and has its own **toolbar** for
+relevant actions, such as searching and filtering. Tabs make it easy to switch between documents without closing them.
 
-- **Unsaved Changes:** An asterisk (`*`) in a tab's name means the document has unsaved changes. Save to remove the asterisk.
+- **Unsaved Changes:** An asterisk (`*`) in a tab's name means the document has unsaved changes. Save to remove the
+  asterisk.
 - **Rearranging Tabs:** Drag tabs to reorder them within a window.
 - **Moving Tabs Between Windows:** Drag a tab to another window to group documents together.
 - **Splitting into New Windows:** Drag a tab away from the current window to create a separate one.
-- **Docking Options:** While dragging, a highlight shows where the window will be placed: side-by-side, top, bottom, or any combination. This lets you customize your workspace layout.
+- **Docking Options:** While dragging, a highlight shows where the window will be placed: side-by-side, top, bottom, or
+  any combination. This lets you customize your workspace layout.
 
 > [!tip]
 > Quickly close tabs by right-clicking:
@@ -66,7 +73,8 @@ When you open multiple documents, each appears in its own **tab** within a windo
 
 ## Next steps
 
-Now that you’re familiar with the layout and tools, the next step is to [Create your first character](Create%20your%20first%20character).
+Now that you’re familiar with the layout and tools, the next step is to [Create your first
+character](Create%20your%20first%20character).
 
 ---
 
