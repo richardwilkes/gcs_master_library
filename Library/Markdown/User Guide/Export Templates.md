@@ -48,7 +48,7 @@ manipulate strings.
   - Parameter: `str` (string)
   - Parameter: `suffix` (string)
 - `indexStr` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
-  *NOTE: This was named `index` prior to GCS v5.33.0, but was renamed due to conflicts with built-in functions that Go supplies.*
+  *NOTE: This was named `index` prior to GCS v5.33, but was renamed due to conflicts with built-in functions that Go supplies.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
 - `join` — Returns a new string by concatenating the elements of `elems` to create a single string, placing `substr`
@@ -56,7 +56,7 @@ manipulate strings.
   - Parameter: `elems`, ([]string)
   - Parameter: `sep` (string)
 - `lastIndexStr` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
-  *NOTE: This was named `lastIndex` prior to GCS v5.33.0, but was renamed to be consistent with `indexStr`.*
+  *NOTE: This was named `lastIndex` prior to GCS v5.33, but was renamed to be consistent with `indexStr`.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
 - `lower` — Returns the lowercase version of `str`
@@ -116,7 +116,7 @@ The remainder of this document details the various data types that the data is m
 - `.Pools` ([]Pool)
 - `.Primary` ([]Attribute)
 - `.Secondary` ([]Attribute)
-- Added in v5.33.0:
+- Added in GCS v5.33:
   - `.PoolsByID` (map[string]Pool)
   - `.PrimaryByID` (map[string]Attribute)
   - `.SecondaryByID` (map[string]Attribute)
@@ -443,7 +443,7 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Type` (string)
 - `.UnsatisfiedReason` (string)
 - `.UserDescription` (string)
-- Added in v5.43.0:
+- Added in GCS v5.43:
   - `.CR` (int) — The self-control roll target number, or 0 if there is no self-control roll.
   - `.CRFull` (string) — The full self-control roll description (e.g. "CR: 12 (Quite Often)"), or an empty string if
     there is no self-control roll.

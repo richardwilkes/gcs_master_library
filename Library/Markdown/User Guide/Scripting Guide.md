@@ -1,6 +1,6 @@
 # Scripting Guide
 
-> Available in GCS 5.36.0 and later.
+> Available in GCS v5.36.0 and later.
 
 Some fields, such as notes, support using Javascript to resolve their content. Versions of GCS prior to v5.36.0 used a simple expression evaluator instead. Expressions from those old data files will be automatically transformed into the equivalent Javascript.
 

@@ -10,12 +10,12 @@ For convenience, if you pass the attribute object as a value, it will resolve as
 
 | Property  | Type    | Value                                                                                                                | Availability |
 |-----------|---------|----------------------------------------------------------------------------------------------------------------------|--------------|
-| id        | string  | The ID for this attribute.                                                                                           | GCS 5.36+    |
-| kind      | string  | The kind of attribute this refers to. One of **primary, secondary,** or **pool.**                                    | GCS 5.36+    |
-| name      | string  | The short name of the attribute.                                                                                     | GCS 5.36+    |
-| fullName  | string  | The full name of the attribute.                                                                                      | GCS 5.36+    |
-| maximum   | number  | The maximum value of the attribute.                                                                                  | GCS 5.36+    |
-| current   | number  | The current value of the attribute. For attributes other than **pool**, this will always be the same as the maximum. | GCS 5.36+    |
-| isDecimal | boolean | True if values other than whole numbers might be present.                                                            | GCS 5.36+    |
+| id        | string  | The ID for this attribute.                                                                                           | GCS v5.36+    |
+| kind      | string  | The kind of attribute this refers to. One of **primary, secondary,** or **pool.**                                    | GCS v5.36+    |
+| name      | string  | The short name of the attribute.                                                                                     | GCS v5.36+    |
+| fullName  | string  | The full name of the attribute.                                                                                      | GCS v5.36+    |
+| maximum   | number  | The maximum value of the attribute.                                                                                  | GCS v5.36+    |
+| current   | number  | The current value of the attribute. For attributes other than **pool**, this will always be the same as the maximum. | GCS v5.36+    |
+| isDecimal | boolean | True if values other than whole numbers might be present.                                                            | GCS v5.36+    |
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)

@@ -6,6 +6,6 @@ These are additions to the standard Javascript [Math](https://developer.mozilla.
 
 | Method | Arguments     | Result Type | Result                                          | Availability |
 |--------|---------------|-------------|-------------------------------------------------|--------------|
-| exp2   | value: number | number      | Returns 2 raised to the power of the **value.** | GCS 5.41+    |
+| exp2   | value: number | number      | Returns 2 raised to the power of the **value.** | GCS v5.41+    |
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)
