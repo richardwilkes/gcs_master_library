@@ -1,6 +1,9 @@
+# General Settings
+
 You can adjust how GCS behaves using the **General Settings** menu.
 
-For other settings options, see [Default Settings](Default%20Settings), [Sheet Settings](Sheet%20Settings), [Colors and Fonts](Colors%20and%20Fonts), and [Menu Keys](Menu%20Keys).
+For other settings options, see [Default Settings](Default%20Settings), [Sheet Settings](Sheet%20Settings),
+[Colors and Fonts](Colors%20and%20Fonts), and [Menu Keys](Menu%20Keys).
 
 To open General Settings:
 
@@ -10,8 +13,9 @@ Changes are applied immediately. You don’t need to save.
 
 ## Managing Settings
 
-- **Reset settings to defaults:** Select **Reset** ![](./images/icons/icn-reset.svg).
-- **Import or export settings:** On the Settings toolbar, select **Menu** ![](./images/icons/icn-menu.svg), then choose:
+- **Reset settings to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg).
+- **Import or export settings:** On the Settings toolbar, select **Menu** ![menu](images/icons/icn-menu.svg), then
+  choose:
   - **Import:** Load saved settings into GCS.
   - **Export:** Save your current settings as a file.
 
@@ -48,7 +52,8 @@ The following settings are available.
 
 ## External PDF Settings
 
-By default, PDFs for [Page References](Page%20References) open within GCS. You can set GCS to use your system’s PDF viewer (for example, Adobe Acrobat).
+By default, PDFs for [Page References](Page%20References) open within GCS. You can set GCS to use your system’s PDF
+viewer (for example, Adobe Acrobat).
 
 > [!IMPORTANT]
 > You must use the executable (`.exe`) file path, not a shortcut path.
@@ -75,9 +80,12 @@ To use GCS as the PDF viewer:
 
 ## Monitor Resolution
 
-This setting controls how GCS scales its interface based on your monitor’s pixel density (PPI). You usually won’t need to adjust this unless GCS appears scaled incorrectly.
+This setting controls how GCS scales its interface based on your monitor’s pixel density (PPI). You usually won’t need
+to adjust this unless GCS appears scaled incorrectly.
 
-Normally, GCS detects your monitor resolution automatically. However, on some systems, especially Windows setups with multiple monitors or custom scaling, the reported PPI can be inaccurate. When that happens, the interface or character sheets may appear too small or too large.
+Normally, GCS detects your monitor resolution automatically. However, on some systems, especially Windows setups with
+multiple monitors or custom scaling, the reported PPI can be inaccurate. When that happens, the interface or character
+sheets may appear too small or too large.
 
 If you notice incorrect scaling:
 
@@ -85,12 +93,15 @@ If you notice incorrect scaling:
 2. Enter that value in **Monitor Resolution**.
 3. Restart GCS to apply the change.
 
-> [!TIP]
-> **Windows:** Right-click your desktop, select **Display settings**, and check the **Display resolution** value under **Scale and layout**. If your **Scale** setting is higher than 100%, try reducing the **Monitor Resolution** value slightly in GCS.
+> [!TIP] **Windows:** Right-click your desktop, select **Display settings**, and check the **Display resolution** value
+> under **Scale and layout**. If your **Scale** setting is higher than 100%, try reducing the **Monitor Resolution**
+> value slightly in GCS.
 >
-> **macOS:** Go to **System Settings > Displays**, then check your **Resolution** and **Scale** options. Choose **Default for display** or **Scaled** and note the resolution used.
+> **macOS:** Go to **System Settings > Displays**, then check your **Resolution** and **Scale** options. Choose
+> **Default for display** or **Scaled** and note the resolution used.
 >
-> **Linux:** Open your display settings (for example, **Settings > Displays** in GNOME) and confirm your **Resolution** and **Scale** values.
+> **Linux:** Open your display settings (for example, **Settings > Displays** in GNOME) and confirm your **Resolution**
+> and **Scale** values.
 
 ---
 
