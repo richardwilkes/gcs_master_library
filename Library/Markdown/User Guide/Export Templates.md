@@ -454,6 +454,7 @@ This is the object passed in to the template. All other data is derived from it.
   - `.ModifierNotesNoFR` (string) — Same as `.ModifierNotes`, but without the frequency-of-appearance roll portion.
   - `.ModifierNotesNoRolls` (string) — Same as `.ModifierNotes`, but without either the self-control or
     frequency-of-appearance roll portions.
+  - `.Level` (Number) - Will be -1 if the trait is a container or is not leveled.
 
 ### WeaponAccuracy
 
