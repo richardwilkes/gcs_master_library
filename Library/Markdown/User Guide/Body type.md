@@ -1,4 +1,7 @@
-The **Body Type block** shows your hit locations and updates automatically as you equip armor or change other details on your [character sheet](Character%20Sheet%20Overview).
+# Body Type
+
+The **Body Type block** shows your hit locations and updates automatically as you equip armor or change other details on
+your [character sheet](Character%20Sheet%20Overview).
 
 It includes:
 
@@ -11,14 +14,15 @@ Hover over a hit location to see tooltips for special damage effects ([B552](B55
 
 ## Changing your body type
 
-By default, GCS sets your body type to **Humanoid**. You can change it to another type, such as quadruped, avian, or arachnoid.
+By default, GCS sets your body type to **Humanoid**. You can change it to another type, such as quadruped, avian, or
+arachnoid.
 
 To change your body type:
 
-1. On the character sheet toolbar, select **Body Type** ![](./images/icons/icn-bodyType.svg).
-2. On the Body Type toolbar, select **Menu** ![](./images/icons/icn-menu.svg).
+1. On the character sheet toolbar, select **Body Type** ![body type](images/icons/icn-bodyType.svg).
+2. On the Body Type toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 3. Choose an option from the table below.
-4. On the Body Type toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
+4. On the Body Type toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
 | Body Type Option        | Description                                                             |
 |-------------------------|-------------------------------------------------------------------------|
@@ -46,7 +50,7 @@ You can share body type settings between characters or reuse them in different s
 
 To import or export a body type:
 
-1. On the Body Type toolbar, select **Menu** ![](./images/icons/icn-menu.svg).
+1. On the Body Type toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 2. Select one of the following:
    - **Import:** Load a saved body type into your sheet.
    - **Export:** Save the current body type as a file.
@@ -57,12 +61,12 @@ You can edit your existing hit locations or add new ones.
 
 To edit or add hit locations:
 
-1. On the character sheet toolbar, select **Body Type** ![](./images/icons/icn-bodyType.svg).
+1. On the character sheet toolbar, select **Body Type** ![body type](images/icons/icn-bodyType.svg).
 2. In the editor, do one of the following:
    - **Edit** an existing location.
-   - Select **Add** ![](./images/icons/icn-add.svg) to add a new hit location.
+   - Select **Add** ![add](images/icons/icn-add.svg) to add a new hit location.
 3. Enter values in the form using the fields below.
-4. On the Body Type toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
+4. On the Body Type toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
 ### Body Type fields
 
@@ -81,20 +85,23 @@ To edit or add hit locations:
 
 ### Sub Tables
 
-You can create sub-tables for any hit location. These work the same way as normal hit locations and can be expanded or collapsed on the Body Type block.
+You can create sub-tables for any hit location. These work the same way as normal hit locations and can be expanded or
+collapsed on the Body Type block.
 
 To add a sub hit location:
 
-1. On the parent hit location, select **Add Sub Table** ![](./images/icons/icn-add.svg).
+1. On the parent hit location, select **Add Sub Table** ![add](images/icons/icn-add.svg).
 2. Enter values in the form using the fields above.
-3. On the Body Type toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
+3. On the Body Type toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
 ## Managing hit locations
 
-- **Discard changes:** Select **Discard changes** ![](./images/icons/icn-discardChanges.svg).
-- **Delete a hit location:** Select **Delete** ![](./images/icons/icn-delete.svg).
-- **Reorder hit locations:** Drag a hit location using its grip ![](./images/icons/icn-grip.svg). Note: the order affects the dice roll table.
-- **Reset body type to defaults:** Select **Reset** ![](./images/icons/icn-reset.svg) to restore your hit locations to the default settings.
+- **Discard changes:** Select **Discard changes** ![discard changes](images/icons/icn-discardChanges.svg).
+- **Delete a hit location:** Select **Delete** ![delete](images/icons/icn-delete.svg).
+- **Reorder hit locations:** Drag a hit location using its grip ![grip](images/icons/icn-grip.svg). Note: the order
+  affects the dice roll table.
+- **Reset body type to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg) to restore your hit locations
+  to the default settings.
 
 ## Default body type
 

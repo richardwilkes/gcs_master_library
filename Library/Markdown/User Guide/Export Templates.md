@@ -1,3 +1,5 @@
+# Export Templates
+
 As of GCS v5.15, GCS introduced two new ways of exporting textual versions of character sheets, while retaining the
 old (and now deprecated) method used in previous releases:
 
@@ -24,7 +26,7 @@ There are a number of top-level, GCS-specific, functions that have been made acc
 divided into two general categories, those that manipulate GCS's internal fixed-point numbers (`Number`) and those that
 manipulate strings.
 
-### Number Functions
+## Number Functions
 
 - `numberFrom` — Returns the equivalent `Number` value of `value`
   - Parameter: `value` (int, float64, or string that contains a number)
@@ -33,7 +35,7 @@ manipulate strings.
 - `numberToInt` — Returns the equivalent integer value of `value`
   - Parameter: `value` (`Number`)
 
-### String Functions
+## String Functions
 
 - `caselessEqual` — Returns true if `left` and `right` are the same when case isn't considered
   - Parameter: `left` (string)
@@ -48,15 +50,17 @@ manipulate strings.
   - Parameter: `str` (string)
   - Parameter: `suffix` (string)
 - `indexStr` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
-  *NOTE: This was named `index` prior to GCS v5.33.0, but was renamed due to conflicts with built-in functions that Go supplies.*
+  *NOTE: This was named `index` prior to GCS v5.33, but was renamed due to conflicts with built-in functions that Go
+  supplies.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
 - `join` — Returns a new string by concatenating the elements of `elems` to create a single string, placing `substr`
   between each element in the resulting string
   - Parameter: `elems`, ([]string)
   - Parameter: `sep` (string)
-- `lastIndexStr` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
-  *NOTE: This was named `lastIndex` prior to GCS v5.33.0, but was renamed to be consistent with `indexStr`.*
+- `lastIndexStr` — Returns an index into `str` where the last `substr` starts, or -1 if `substr` isn't contained in
+  `str`.<br>
+  *NOTE: This was named `lastIndex` prior to GCS v5.33, but was renamed to be consistent with `indexStr`.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
 - `lower` — Returns the lowercase version of `str`
@@ -88,9 +92,9 @@ manipulate strings.
 
 The remainder of this document details the various data types that the data is made up of.
 
-### AllEquipment
+## AllEquipment
 
-#### AllEquipment Fields
+### AllEquipment Fields
 
 - `.Carried` ([]Equipment)
 - `.CarriedValue` (Number)
@@ -98,9 +102,9 @@ The remainder of this document details the various data types that the data is m
 - `.Other` ([]Equipment)
 - `.OtherValue` (Number)
 
-### Attribute
+## Attribute
 
-#### Attribute Fields
+### Attribute Fields
 
 - `.CombinedName` (string)
 - `.FullName` (string)
@@ -109,39 +113,37 @@ The remainder of this document details the various data types that the data is m
 - `.Points` (Number)
 - `.Value` (Number)
 
-### Attributes
+## Attributes
 
-#### Attributes Fields
+### Attributes Fields
 
 - `.Pools` ([]Pool)
-- `.PoolsByID` (map[string]Pool)<br>
-  *NOTE: This did not exist prior to v5.33.0*
 - `.Primary` ([]Attribute)
-- `.PrimaryByID` (map[string]Attribute)<br>
-  *NOTE: This did not exist prior to v5.33.0*
 - `.Secondary` ([]Attribute)
-- `.SecondaryByID` (map[string]Attribute)<br>
-  *NOTE: This did not exist prior to v5.33.0*
+- Added in GCS v5.33:
+  - `.PoolsByID` (map[string]Pool)
+  - `.PrimaryByID` (map[string]Attribute)
+  - `.SecondaryByID` (map[string]Attribute)
 
-### BodyType
+## BodyType
 
-#### BodyType Fields
+### BodyType Fields
 
 - `.Locations` ([]HitLocation)
 - `.Name` (string)
 
-### ConditionalModifier
+## ConditionalModifier
 
-#### ConditionalModifier Fields
+### ConditionalModifier Fields
 
 - `.ID` (string)
 - `.Situation` (string)
 - `.Sources` ([]Source)
 - `.Total` (Number)
 
-### Encumbrance
+## Encumbrance
 
-#### Encumbrance Fields
+### Encumbrance Fields
 
 - `.Dodge` (int)
 - `.IsCurrent` (boolean)
@@ -151,9 +153,9 @@ The remainder of this document details the various data types that the data is m
 - `.Name` (string)
 - `.Penalty` (int)
 
-### Equipment
+## Equipment
 
-#### Equipment Fields
+### Equipment Fields
 
 - `.Cost` (Number)
 - `.Depth` (int)
@@ -176,9 +178,9 @@ The remainder of this document details the various data types that the data is m
 - `.Uses` (int)
 - `.Weight` (string)
 
-### HitLocation
+## HitLocation
 
-#### HitLocation Fields
+### HitLocation Fields
 
 - `.Depth` (int)
 - `.DR` (string)
@@ -187,9 +189,9 @@ The remainder of this document details the various data types that the data is m
 - `.RollRange` (string)
 - `.Where` (string)
 
-### Lift
+## Lift
 
-#### Lift Fields
+### Lift Fields
 
 - `.Basic` (string)
 - `.CarryOnBack` (string)
@@ -199,39 +201,43 @@ The remainder of this document details the various data types that the data is m
 - `.Shove` (string)
 - `.TwoHanded` (string)
 
-### Mana
+## Mana
 
-#### Mana Fields
+### Mana Fields
 
 - `.Cast` (string)
 - `.Maintain` (string)
 
-### Margins
+## Margins
 
-#### Margins Fields
+### Margins Fields
 
 - `.Bottom` (string)
 - `.Left` (string)
 - `.Right` (string)
 - `.Top` (string)
 
-### MeleeWeapon
+## MeleeWeapon
 
-#### MeleeWeapon Fields
+### MeleeWeapon Fields
 
 - `.Block` (string)
+- `.BlockParts` (WeaponBlock)
 - `.Damage` (string)
 - `.Description` (string)
 - `.Level` (Number)
 - `.Notes` (string)
 - `.Parry` (string)
+- `.ParryParts` (WeaponParry)
 - `.Reach` (string)
+- `.ReachParts` (WeaponReach)
 - `.Strength` (string)
+- `.StrengthParts` (WeaponStrength)
 - `.Usage` (string)
 
-### Note
+## Note
 
-#### Note Fields
+### Note Fields
 
 - `.Depth` (int)
 - `.Description` (string)
@@ -239,13 +245,15 @@ The remainder of this document details the various data types that the data is m
 - `.PageRef` (string)
 - `.ParentID` (string)
 - `.Type` (string)
+- Added in GCS v5.43:
+  - `.Tags` ([]string)
 
-### Number
+## Number
 
 A special type of number that uses a fixed number of decimal digits for calculations, unlike traditional floating-point
 numbers.
 
-#### Number Methods
+### Number Methods
 
 - `.Abs` — Returns the absolute value of this value
 - `.Add` — Returns the result of adding this number to `value`
@@ -256,6 +264,7 @@ numbers.
 - `.Dec` — Returns the value decremented by 1
 - `.Div` — Returns the result of dividing this number by `value`
   - Parameter: `value` (Number)
+- `.Floor` — Returns the value rounded down to the nearest whole number
 - `.Inc` — Returns the value incremented by 1
 - `.Max` — Returns the maximum of this value or `value`
   - Parameter: `value` (Number)
@@ -270,19 +279,18 @@ numbers.
 - `.StringWithSign` — Same as `.String`, but prefixes the value with a '+' if it is positive
 - `.Sub` — Returns the result of subtracting `value` from this number
   - Parameter: `value` (Number)
-- `.Trunc` — Returns a value which has everything to the right of the decimal place truncated
 
-### Page
+## Page
 
-#### Page Fields
+### Page Fields
 
 - `.Height` (string)
 - `.Margins` (Margins)
 - `.Width` (string)
 
-### Points
+## Points
 
-#### Points Fields
+### Points Fields
 
 - `.Advantages` (Number)
 - `.Ancestry` (Number)
@@ -294,9 +302,9 @@ numbers.
 - `.Total` (Number)
 - `.Unspent` (Number)
 
-### Pool
+## Pool
 
-#### Pool Fields
+### Pool Fields
 
 - `.CombinedName` (string)
 - `.Current` (Number)
@@ -306,28 +314,35 @@ numbers.
 - `.Name` (string)
 - `.Points` (Number)
 
-### RangedWeapon
+## RangedWeapon
 
-#### RangedWeapon Fields
+### RangedWeapon Fields
 
 - `.Accuracy` (string)
+- `.AccuracyParts` (WeaponAccuracy)
 - `.Bulk` (string)
+- `.BulkParts` (WeaponBulk)
 - `.Damage` (string)
 - `.Description` (string)
 - `.Level` (Number)
 - `.Notes` (string)
 - `.Range` (string)
+- `.RangeParts` (WeaponRange)
 - `.RateOfFire` (string)
+- `.RateOfFireParts` (WeaponRoF)
 - `.Recoil` (string)
+- `.RecoilParts` (WeaponRecoil)
 - `.Shots` (string)
+- `.ShotsParts` (WeaponShots)
 - `.Strength` (string)
+- `.StrengthParts` (WeaponStrength)
 - `.Usage` (string)
 
-### Sheet
+## Sheet
 
 This is the object passed in to the template. All other data is derived from it.
 
-#### Sheet Fields
+### Sheet Fields
 
 - `.Age` (string)
 - `.Attributes` (Attributes)
@@ -367,9 +382,9 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Traits` ([]Trait)
 - `.Weight` (string)
 
-### Skill
+## Skill
 
-#### Skill Fields
+### Skill Fields
 
 - `.Depth` (int)
 - `.Description` (string)
@@ -386,16 +401,16 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Type` (string)
 - `.UnsatisfiedReason` (string)
 
-### Source
+## Source
 
-#### Source Fields
+### Source Fields
 
 - `.Amount` (Number)
 - `.Source` (string)
 
-### Spell
+## Spell
 
-#### Spell Fields
+### Spell Fields
 
 - `.Class` (string)
 - `.Colleges` ([]string)
@@ -418,9 +433,9 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Type` (string)
 - `.UnsatisfiedReason` (string)
 
-### Trait
+## Trait
 
-#### Trait Fields
+### Trait Fields
 
 - `.Depth` (int)
 - `.Description` (string)
@@ -434,3 +449,134 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Type` (string)
 - `.UnsatisfiedReason` (string)
 - `.UserDescription` (string)
+- Added in GCS v5.43:
+  - `.CR` (int) — The self-control roll target number, or 0 if there is no self-control roll.
+  - `.CRFull` (string) — The full self-control roll description (e.g. "CR: 12 (Quite Often)"), or an empty string if
+    there is no self-control roll.
+  - `.FR` (int) — The frequency-of-appearance roll target number, or 0 if there is no frequency roll.
+  - `.FRFull` (string) — The full frequency-of-appearance roll description, or an empty string if there is no frequency
+    roll.
+  - `.ModifierNotesNoCR` (string) — Same as `.ModifierNotes`, but without the self-control roll portion.
+  - `.ModifierNotesNoFR` (string) — Same as `.ModifierNotes`, but without the frequency-of-appearance roll portion.
+  - `.ModifierNotesNoRolls` (string) — Same as `.ModifierNotes`, but without either the self-control or
+    frequency-of-appearance roll portions.
+  - `.Level` (Number) - Will be -1 if the trait is a container or is not leveled.
+
+## WeaponAccuracy
+
+The component parts of a ranged weapon's accuracy.
+
+### WeaponAccuracy Fields
+
+- `.Base` (Number)
+- `.Jet` (boolean)
+- `.Scope` (Number)
+
+## WeaponBlock
+
+The component parts of a melee weapon's block.
+
+### WeaponBlock Fields
+
+- `.CanBlock` (boolean)
+- `.Modifier` (Number)
+
+## WeaponBulk
+
+The component parts of a ranged weapon's bulk.
+
+### WeaponBulk Fields
+
+- `.Giant` (Number)
+- `.Normal` (Number)
+- `.RetractingStock` (boolean)
+
+## WeaponParry
+
+The component parts of a melee weapon's parry.
+
+### WeaponParry Fields
+
+- `.CanParry` (boolean)
+- `.Fencing` (boolean)
+- `.Modifier` (Number)
+- `.Unbalanced` (boolean)
+
+## WeaponRange
+
+The component parts of a ranged weapon's range.
+
+### WeaponRange Fields
+
+- `.HalfDamage` (Number)
+- `.InMiles` (boolean)
+- `.Max` (Number)
+- `.Min` (Number)
+- `.MusclePowered` (boolean)
+
+## WeaponReach
+
+The component parts of a melee weapon's reach.
+
+### WeaponReach Fields
+
+- `.ChangeRequiresReady` (boolean)
+- `.CloseCombat` (boolean)
+- `.Max` (Number)
+- `.Min` (Number)
+
+## WeaponRecoil
+
+The component parts of a ranged weapon's recoil.
+
+### WeaponRecoil Fields
+
+- `.Shot` (Number)
+- `.Slug` (Number)
+
+## WeaponRoF
+
+The component parts of a ranged weapon's rate of fire.
+
+### WeaponRoF Fields
+
+- `.Jet` (boolean)
+- `.Mode1` (WeaponRoFMode)
+- `.Mode2` (WeaponRoFMode)
+
+## WeaponRoFMode
+
+The component parts of a single rate of fire mode.
+
+### WeaponRoFMode Fields
+
+- `.FullAutoOnly` (boolean)
+- `.HighCyclicControlledBursts` (boolean)
+- `.SecondaryProjectiles` (Number)
+- `.ShotsPerAttack` (Number)
+
+## WeaponShots
+
+The component parts of a ranged weapon's shots.
+
+### WeaponShots Fields
+
+- `.Count` (Number)
+- `.Duration` (Number)
+- `.InChamber` (Number)
+- `.ReloadTime` (Number)
+- `.ReloadTimeIsPerShot` (boolean)
+- `.Thrown` (boolean)
+
+## WeaponStrength
+
+The component parts of a weapon's minimum strength.
+
+### WeaponStrength Fields
+
+- `.Bipod` (boolean)
+- `.Min` (Number)
+- `.Mounted` (boolean)
+- `.MusketRest` (boolean)
+- `.TwoHanded` (boolean)
+- `.TwoHandedUnready` (boolean)

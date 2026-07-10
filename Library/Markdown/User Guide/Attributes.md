@@ -1,4 +1,8 @@
-The **Primary and Secondary Attribute blocks** track your character’s Basic Attributes ([B14](B14)) and Secondary Characteristics ([B15](B15)). These values form the foundation of your [character sheet](Character%20Sheet%20Overview) and affect many other parts of GCS, including [Traits](Traits), [Skills](Skills), and [Spells](Spells).
+# Attributes
+
+The **Primary and Secondary Attribute blocks** track your character’s Basic Attributes ([B14](B14)) and Secondary
+Characteristics ([B15](B15)). These values form the foundation of your [character sheet](Character%20Sheet%20Overview)
+and affect many other parts of GCS, including [Traits](Traits), [Skills](Skills), and [Spells](Spells).
 
 ## Primary attributes
 
@@ -32,14 +36,14 @@ Some GURPS supplements and house rules use different attributes or point pools. 
 
 To switch your attributes:
 
-1. On the character sheet toolbar, select **Attributes** ![](./images/icons/icn-attributes.svg).
-2. On the Attribute toolbar, select **Menu** ![](./images/icons/icn-menu.svg).
+1. On the character sheet toolbar, select **Attributes** ![attributes](images/icons/icn-attributes.svg).
+2. On the Attribute toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 3. Choose an option from the table below.
 4. Choose whether to:
    - **Replace** existing attributes with the new items, or
    - **Merge** the selected attributes into existing ones.
 5. Select **Import**.
-6. On the Attribute toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
+6. On the Attribute toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
 | Attribute option                            | Notes                                                                                                                                                                    |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -59,7 +63,7 @@ You can share custom attribute settings between characters or reuse them in diff
 
 To import or export an attribute:
 
-1. On the Attribute toolbar, select **Menu** ![](./images/icons/icn-menu.svg).
+1. On the Attribute toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 2. Select one of the following:
    - **Import:** Load a saved attributes into your sheet.
    - **Export:** Save the current attributes as a file.
@@ -68,17 +72,17 @@ To import or export an attribute:
 
 You can edit the underlying calculations for attributes or create custom attributes.
 
-> [!WARNING]  
+> [!WARNING]
 > Editing attributes can affect calculations across your character sheet. Proceed with caution.
 
 To edit or add attributes:
 
-1. On the character sheet toolbar, select **Attributes** ![](./images/icons/icn-attributes.svg).
+1. On the character sheet toolbar, select **Attributes** ![attributes](images/icons/icn-attributes.svg).
 2. On the editor, do one of the following:
    - **Edit** an existing attribute.
-   - Select **Add** ![](./images/icons/icn-add.svg) to add a new attribute.
+   - Select **Add** ![add](images/icons/icn-add.svg) to add a new attribute.
 3. Enter values in the form using the fields below.
-4. On the Attribute toolbar, select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
+4. On the Attribute toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
 ### Attribute fields
 
@@ -99,10 +103,11 @@ See [Point pools](Point%20pools) for details on customizing your pools.
 
 ## Managing attributes
 
-- **Discard changes:** Select **Discard changes** ![](./images/icons/icn-discardChanges.svg).
-- **Delete an attribute:** Select **Delete** ![](./images/icons/icn-delete.svg).
-- **Reorder attributes:** Drag an attribute using its grip ![](./images/icons/icn-grip.svg).
-- **Reset attributes to defaults:** Select **Reset** ![](./images/icons/icn-reset.svg) to restore your attributes to the default settings.
+- **Discard changes:** Select **Discard changes** ![discard changes](images/icons/icn-discardChanges.svg).
+- **Delete an attribute:** Select **Delete** ![delete](images/icons/icn-delete.svg).
+- **Reorder attributes:** Drag an attribute using its grip ![grip](images/icons/icn-grip.svg).
+- **Reset attributes to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg) to restore your attributes to
+  the default settings.
 
 ## Default attributes
 

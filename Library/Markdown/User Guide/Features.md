@@ -1,4 +1,8 @@
-Features appear in the **Detail Editor** of [Traits](Traits), [Skills](Skills), [Spells](Spells), and [Equipment](Equipment) and provide your character with specific benefits. They’re different from [Prerequisites](Prerequisites):
+# Features
+
+Features appear in the **Detail Editor** of [Traits](Traits), [Skills](Skills), [Spells](Spells), and
+[Equipment](Equipment) and provide your character with specific benefits. They’re different from
+[Prerequisites](Prerequisites):
 
 - **Prerequisites** determine _who can take_ something.
 - **Features** determine _what it does_ once you have it.
@@ -10,7 +14,7 @@ Features are edited directly in the **Detail Editor** under the **Features** lis
 To add a feature:
 
 1. Open the **Detail Editor** for the trait, skill, spell, or equipment.
-2. In the Features list, select **Add** ![](./images/icons/icn-add.svg).
+2. In the Features list, select **Add** ![add](images/icons/icn-add.svg).
 3. Choose a feature type from the dropdown (see list below).
 4. Fill in any required details (text or number fields).
 
@@ -20,7 +24,7 @@ You can apply **multiple features** to the same trait, skill, spell, or piece of
 
 To delete a feature:
 
-- Select **Delete** ![](./images/icons/icn-delete.svg).
+- Select **Delete** ![delete](images/icons/icn-delete.svg).
 
 When you select a feature type from the dropdown, GCS adds more fields to define the effect.
 
@@ -28,15 +32,18 @@ When you select a feature type from the dropdown, GCS adds more fields to define
 
 Most features include these options:
 
-- **Number field:** Enter the amount of the modifier. You can apply numbers as flat values, per level, per die, or as a percentage, depending on the feature.
-- **Target selectors:** Choose whether the effect applies to a skill, spell, a weapon, “this weapon,” a specialization, usage, tag, or relative skill. Use [Operators](Operators) (see below) to refine matches.
+- **Number field:** Enter the amount of the modifier. You can apply numbers as flat values, per level, per die, or as a
+  percentage, depending on the feature.
+- **Target selectors:** Choose whether the effect applies to a skill, spell, a weapon, “this weapon,” a specialization,
+  usage, tag, or relative skill. Use [Operators](Operators) (see below) to refine matches.
 
 ### Special cases
 
 Some feature types also include:
 
 - **Attribute selectors:** Choose which attribute the feature applies to.
-- **Location selectors:** For DR bonuses, choose “all locations” or specific hit locations (arm, face, torso) and damage type.
+- **Location selectors:** For DR bonuses, choose “all locations” or specific hit locations (arm, face, torso) and damage
+  type.
 - **Condition text fields:** For conditional modifiers, enter the triggering condition.
 - **Reaction sources:** For reaction modifiers, specify who the reaction is from.
 - **Colleges** or **power sources:** For spells, restrict by college or source.
@@ -45,7 +52,8 @@ Some feature types also include:
 
 Operators define how the feature is applied. These appear in dropdowns when you select how to compare values.
 
-Some are for numbers, others for text. The available operators depend on the type of field (text vs. numeric) and target.
+Some are for numbers, others for text. The available operators depend on the type of field (text vs. numeric) and
+target.
 
 See [Operators](Operators) for a full list.
 
@@ -108,8 +116,9 @@ The available features types are chosen from a dropdown.
 
 On the Detail Editor toolbar:
 
-- **Apply changes:** Select **Apply Changes** ![](images/icons/icn-applyChanges.svg) to save.
-- **Discard changes:** Select **Discard changes** ![](./images/icons/icn-discardChanges.svg) to exit without saving.
+- **Apply changes:** Select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
+- **Discard changes:** Select **Discard changes** ![discard changes](images/icons/icn-discardChanges.svg) to exit
+  without saving.
 
 ---
 

@@ -1,4 +1,7 @@
-You can add **Notes** to your [character sheet](Character%20Sheet%20Overview) for extra details, reminders, or references.
+# Notes
+
+You can add **Notes** to your [character sheet](Character%20Sheet%20Overview) for extra details, reminders, or
+references.
 
 Notes are useful for:
 
@@ -6,7 +9,8 @@ Notes are useful for:
 - Notes for your gameplay.
 - Quick rules references or house rules.
 
-Notes always show their **full content** at the bottom of your character sheet (you don’t have to open them separately to read). Notes support **[Markdown](Markdown%20Guide)** and **Scripting** for formatting and automation.
+Notes always show their **full content** at the bottom of your character sheet (you don’t have to open them separately
+to read). Notes support **[Markdown](Markdown%20Guide)** and **Scripting** for formatting and automation.
 
 ## Adding notes
 
@@ -61,13 +65,13 @@ The Note Editor includes the following fields:
 
 The toolbar above the Note Editor gives you quick access to common actions:
 
-| Button                                     | Name                  | Description                                                       |
-|:-------------------------------------------|-----------------------|-------------------------------------------------------------------|
-| ![](images/icons/icn-help.svg)             | **Help**              | Opens the help page from the User Guide.                          |
-| 100%                                       | **Zoom**              | Adjusts the display size of the Note Editor.                      |
-| ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**     | Saves and closes the Note Editor.                                 |
-| ![](./images/icons/icn-discardChanges.svg) | **Discard Changes**   | Exits without saving changes.                                     |
-| ![](./images/icons/icn-substitutions.svg)  | **Set Substitutions** | Lets you enter values for items with placeholders in their notes. |
+| Button                                                  | Name                  | Description                                                       |
+|:--------------------------------------------------------|-----------------------|-------------------------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                      | **Help**              | Opens the help page from the User Guide.                          |
+| 100%                                                    | **Zoom**              | Adjusts the display size of the Note Editor.                      |
+| ![apply changes](images/icons/icn-applyChanges.svg)     | **Apply Changes**     | Saves and closes the Note Editor.                                 |
+| ![discard changes](images/icons/icn-discardChanges.svg) | **Discard Changes**   | Exits without saving changes.                                     |
+| ![substitutions](images/icons/icn-substitutions.svg)    | **Set Substitutions** | Lets you enter values for items with placeholders in their notes. |
 
 ---
 
