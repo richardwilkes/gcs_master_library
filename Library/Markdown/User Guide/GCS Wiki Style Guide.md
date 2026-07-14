@@ -1,27 +1,35 @@
+# GCS Wiki Style Guide
+
 ## Purpose of this style guide
 
-This style guide explains how to write and format pages for the **GURPS Character Sheet (GCS) Wiki**. It sets standards for language, structure, tone, and formatting so all wiki content is clear, consistent, and easy to navigate.
+This style guide explains how to write and format pages for the **GURPS Character Sheet (GCS) Wiki**. It sets standards
+for language, structure, tone, and formatting so all wiki content is clear, consistent, and easy to navigate.
 
-If you’re adding or updating a page, follow these guidelines to make sure your contribution matches the rest of the wiki and provides the best possible experience for readers.
+If you’re adding or updating a page, follow these guidelines to make sure your contribution matches the rest of the wiki
+and provides the best possible experience for readers.
 
 ## Writing principles
 
 When creating or updating a wiki page, follow these guidelines:
 
-1. **Write in plain language:** Follow the [Five Steps to Plain Language](https://centerforplainlanguage.org/learning-training/five-steps-plain-language/), focusing on:
+1. **Write in plain language:** Follow the [Five Steps to Plain
+   Language](https://centerforplainlanguage.org/learning-training/five-steps-plain-language/), focusing on:
    - Organizing information so it’s easy to follow.
    - Using common, everyday words.
    - Displaying information visually with lists, tables, and headings.
-2. **Start with the “why”:** Begin each page with a short explanation of the feature and why a user might use it. Keep the explanation focused on **GCS**, not on teaching GURPS rules.
-3. **Reference GURPS pages, don’t explain them:** Use short inline citations like `(B10)` or `(B242)` to connect features to _GURPS Basic Set_ or other books. Don’t explain the rule itself, the citation is enough.
+2. **Start with the “why”:** Begin each page with a short explanation of the feature and why a user might use it. Keep
+   the explanation focused on **GCS**, not on teaching GURPS rules.
+3. **Reference GURPS pages, don’t explain them:** Use short inline links like `[B10](B10)` or `[B242](B242)` to
+   connect features to _GURPS Basic Set_ or other books. Don’t explain the rule itself, the citation is enough.
 4. **Match the doc type:**
    - **Reference** (comprehensive details, often with tables)
    - **Tutorial** (step-by-step, with an example character)
    - **Orientation** (high-level overview of UI or workflows)
-   - **Feature guide** (focused explanation of one feature, with context, tasks, and settings)  
+   - **Feature guide** (focused explanation of one feature, with context, tasks, and settings)
       Structure and level of detail should follow the type.
 5. **Link and cross-reference:** Link to related pages for context. Link externally only when necessary.
-6. **Use visuals when helpful:** Add screenshots or icons to illustrate steps or identify UI elements. Keep images up to date with the current GCS version.
+6. **Use visuals when helpful:** Add screenshots or icons to illustrate steps or identify UI elements. Keep images up to
+   date with the current GCS version.
 
 ## Formatting & conventions
 
@@ -56,7 +64,8 @@ Follow the [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/sty
 - Use **bold** for UI elements (**OK**, **Save As…**).
 - Use inline icons to reinforce what the user should click. Add the icon after the name.
 - When showing menu paths, use a right angle bracket (>) with spaces: **File > Save As**.
-- Follow [Microsoft’s UI interaction guidance](https://learn.microsoft.com/en-us/style-guide/procedures-instructions/describing-interactions-with-ui).
+- Follow [Microsoft’s UI interaction
+  guidance](https://learn.microsoft.com/en-us/style-guide/procedures-instructions/describing-interactions-with-ui).
 
 ### Lists
 
@@ -84,26 +93,26 @@ Tables are ideal when readers need to compare or scan structured information qui
 - Add screenshots only if they clarify toolbars, menus, or layouts.
 - For toolbar buttons without labels, add the **icon** after the name.
 - Omit alt text for icons (name already provides context).
-- Save all screenshots and icons to the `/images` folder.
-- Use relative paths in Markdown: `![](./images/icons/icn-add.svg)`
+- Save all screenshots and icons to the `images` folder.
+- Use relative paths in Markdown: `![add](images/icons/icn-add.svg)`
 
 ### Alerts
 
 Use alerts consistently to highlight information:
 
-> [!NOTE]  
+> [!NOTE]
 > Useful information the reader should know, even when skimming.
 
-> [!TIP]  
+> [!TIP]
 > Helpful advice for doing things better or more easily.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Key information needed to achieve a goal.
 
-> [!WARNING]  
+> [!WARNING]
 > Urgent info that needs immediate attention to avoid problems.
 
-> [!CAUTION]  
+> [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
 ---

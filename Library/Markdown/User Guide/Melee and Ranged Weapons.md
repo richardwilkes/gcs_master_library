@@ -1,4 +1,7 @@
-The **Melee Weapon list** and **Ranged Weapon list** on your [character sheet](Character%20Sheet%20Overview) show all of your character’s weapons ([B268–B276](B268–B276)), their usage statistics, and related notes.
+# Melee and Ranged Weapons
+
+The **Melee Weapon list** and **Ranged Weapon list** on your [character sheet](Character%20Sheet%20Overview) show all of
+your character’s weapons ([B268–B276](B268–B276)), their usage statistics, and related notes.
 
 These lists include:
 
@@ -6,20 +9,27 @@ These lists include:
 - **Weapons** from [Equipment](Equipment).
 - **Melee and missile spells** from [Spells](Spells).
 
-Weapons are added through the **Equipment list**. An item with a **Melee** or **Ranged Weapon Usage** automatically appears in the appropriate weapon list. To change or delete a weapon, edit or remove the item from the **Equipment list**.
+Weapons are added through the **Equipment list**. An item with a **Melee** or **Ranged Weapon Usage** automatically
+appears in the appropriate weapon list. To change or delete a weapon, edit or remove the item from the **Equipment
+list**.
 
 > [!NOTE]
-> Normally, only **carried** _and_ **equipped** weapons appear here. If you enable **Show all weapons** in [Sheet Settings](Sheet%20Settings), GCS will also display weapons from items that are _not_ carried or equipped. These are clearly marked as `(not carried)` or `(not equipped)`, as appropriate.
+> Normally, only **carried** _and_ **equipped** weapons appear here. If you enable **Show all weapons** in [Sheet
+> Settings](Sheet%20Settings), GCS will also display weapons from items that are _not_ carried or equipped. These are
+> clearly marked as `(not carried)` or `(not equipped)`, as appropriate.
 
-### Master Library
+## Master Library
 
-GCS includes hundreds of official weapons in the **Master Library**. See [Library Explorer](Library%20Explorer) for more details.
+GCS includes hundreds of official weapons in the **Master Library**. See [Library Explorer](Library%20Explorer) for more
+details.
 
 You can also create your own custom weapons.
 
 ## Melee Weapon list
 
-The **Melee Weapon list** on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
+The **Melee Weapon list** on your character sheet includes the following columns. Select a column heading to sort
+ascending ![sort ascending](images/icons/icn-sortAscending.svg) or descending ![sort
+descending](images/icons/icn-sortDescending.svg).
 
 | Column           | Description                                                           |
 |------------------|-----------------------------------------------------------------------|
@@ -34,7 +44,9 @@ The **Melee Weapon list** on your character sheet includes the following columns
 
 ## Ranged Weapon list
 
-The **Ranged Weapon list** on your character sheet includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
+The **Ranged Weapon list** on your character sheet includes the following columns. Select a column heading to sort
+ascending ![sort ascending](images/icons/icn-sortAscending.svg) or descending ![sort
+descending](images/icons/icn-sortDescending.svg).
 
 | Column            | Description                                                            |
 |-------------------|------------------------------------------------------------------------|
@@ -55,9 +67,11 @@ The **Ranged Weapon list** on your character sheet includes the following column
 Weapons are not created directly in the Melee or Ranged Weapon lists. Instead:
 
 - Add a weapon the same way you add [Equipment](Equipment) or [Spells](Spells).
-- If the item has **Melee Weapon Usage** or **Ranged Weapon Usage** fields filled out in the Detail Editor, it automatically appears in the appropriate weapon list.
+- If the item has **Melee Weapon Usage** or **Ranged Weapon Usage** fields filled out in the Detail Editor, it
+  automatically appears in the appropriate weapon list.
 
-Some weapons can have **multiple usages**. For example, a spear may have a **thrust impaling** attack and a **swing cutting** attack, which appear as separate rows.
+Some weapons can have **multiple usages**. For example, a spear may have a **thrust impaling** attack and a **swing
+cutting** attack, which appear as separate rows.
 
 To add natural attacks (bite, kick, and punch):
 
@@ -67,14 +81,16 @@ To add natural attacks (bite, kick, and punch):
 
 You manage and edit melee or ranged weapons the same way you edit [Equipment](Equipment).
 
-Weapon stats are controlled by the **Melee Weapon Usage** and **Ranged Weapon Usage** fields in the **Equipment Detail Editor**. For [Spells](Spells), these fields are available in the **Spell Detail Editor**.
+Weapon stats are controlled by the **Melee Weapon Usage** and **Ranged Weapon Usage** fields in the **Equipment Detail
+Editor**. For [Spells](Spells), these fields are available in the **Spell Detail Editor**.
 
 To edit a weapon’s details:
 
 - Open the weapon’s source item from the **Equipment list**, then edit its **Weapon Usage fields**.
 
 > [!NOTE]
-> A weapon must have at least one **default skill** (e.g., Broadsword, Spear) to calculate its skill level. See [Defaults](Defaults).
+> A weapon must have at least one **default skill** (e.g., Broadsword, Spear) to calculate its skill level. See
+> [Defaults](Defaults).
 
 ## Melee Weapon Usage fields
 
@@ -160,12 +176,12 @@ The Ranged Weapon Detail Editor includes the following fields:
 
 The toolbar above the Weapon Editor gives you quick access to common actions:
 
-| Button                                     | Name                | Description                                    |
-|:-------------------------------------------|---------------------|------------------------------------------------|
-| ![](images/icons/icn-help.svg)             | **Help**            | Opens the help page from the User Guide.       |
-| 100%                                       | **Zoom**            | Adjusts the display size of the Weapon Editor. |
-| ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**   | Saves and closes the Weapon Editor.            |
-| ![](./images/icons/icn-discardChanges.svg) | **Discard Changes** | Exits without saving changes.                  |
+| Button                                                  | Name                | Description                                    |
+|:--------------------------------------------------------|---------------------|------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                      | **Help**            | Opens the help page from the User Guide.       |
+| 100%                                                    | **Zoom**            | Adjusts the display size of the Weapon Editor. |
+| ![apply changes](images/icons/icn-applyChanges.svg)     | **Apply Changes**   | Saves and closes the Weapon Editor.            |
+| ![discard changes](images/icons/icn-discardChanges.svg) | **Discard Changes** | Exits without saving changes.                  |
 
 ---
 

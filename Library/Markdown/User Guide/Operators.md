@@ -1,6 +1,10 @@
-Operators define how GCS compares values in fields for [Prerequisites](Prerequisites), [Features](Features), [Defaults](Defaults), [Trait Modifiers](Trait%20Modifiers), and [Equipment Modifiers](Equipment%20Modifiers).
+# Operators
 
-Some operators are used with **text fields** (names, notes, tags), while others are used with **numbers** (levels, modifiers).
+Operators define how GCS compares values in fields for [Prerequisites](Prerequisites), [Features](Features),
+[Defaults](Defaults), [Trait Modifiers](Trait%20Modifiers), and [Equipment Modifiers](Equipment%20Modifiers).
+
+Some operators are used with **text fields** (names, notes, tags), while others are used with **numbers** (levels,
+modifiers).
 
 ## Available operators
 

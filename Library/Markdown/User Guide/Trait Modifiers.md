@@ -1,23 +1,29 @@
-**Trait Modifiers** ([B101](B101)) can be applied to [Traits](Traits) as either **enhancements** or **limitations**. These adjust the base cost of a trait.
+# Trait Modifiers
 
-### Master Library
+**Trait Modifiers** ([B101](B101)) can be applied to [Traits](Traits) as either **enhancements** or **limitations**.
+These adjust the base cost of a trait.
 
-GCS includes libraries of official trait modifiers in the **Master Library** that are taken from GURPS books and other supplements. See [Library Explorer](Library%20Explorer) for more details.
+## Master Library
+
+GCS includes libraries of official trait modifiers in the **Master Library** that are taken from GURPS books and other
+supplements. See [Library Explorer](Library%20Explorer) for more details.
 
 You can also create your own custom trait modifiers.
 
 ## Trait Modifier list
 
-The **Trait Modifier** section in the Trait Detail Editor includes the following columns. Select a column heading to sort ascending ![](./images/icons/icn-sortAscending.svg) or descending ![](./images/icons/icn-sortDescending.svg).
+The **Trait Modifier** section in the Trait Detail Editor includes the following columns. Select a column heading to
+sort ascending ![sort ascending](images/icons/icn-sortAscending.svg) or descending ![sort
+descending](images/icons/icn-sortDescending.svg).
 
-| Column                                    | Description                                                                                                                                                    |
-|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ![](./images/icons/icn-applyChanges.svg)  | If checked, the modifier is **enabled** and its effects apply to the trait.                                                                                    |
-| **Trait Modifier**                        | The modifier’s name and any notes. Select the notes icon ![](./images/icons/icn-notesExpand.svg) to open or close the notes.                                   |
-| **Cost Adjustment**                       | The calculated adjustment to the trait’s [character point](Character%20points) cost.                                                                           |
-| **Tags**                                  | Tags used to help organize modifiers.                                                                                                                          |
-| ![](./images/icons/icn-pageReference.svg) | Page reference for the modifier. See [Page References](Page%20References).                                                                                     |
-| ![](./images/icons/icn-source.svg)        | Tracks whether the modifier matches the official **Master Library**. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview). |
+| Column                                                | Description                                                                                                                                                    |
+|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![apply changes](images/icons/icn-applyChanges.svg)   | If checked, the modifier is **enabled** and its effects apply to the trait.                                                                                    |
+| **Trait Modifier**                                    | The modifier’s name and any notes. Select the notes icon ![notes expand](images/icons/icn-notesExpand.svg) to open or close the notes.                         |
+| **Cost Adjustment**                                   | The calculated adjustment to the trait’s [character point](Character%20points) cost.                                                                           |
+| **Tags**                                              | Tags used to help organize modifiers.                                                                                                                          |
+| ![page reference](images/icons/icn-pageReference.svg) | Page reference for the modifier. See [Page References](Page%20References).                                                                                     |
+| ![source](images/icons/icn-source.svg)                | Tracks whether the modifier matches the official **Master Library**. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview). |
 
 ## Adding trait modifiers
 
@@ -27,7 +33,8 @@ To add a modifier:
 
 1. Open the **Trait Detail Editor** for the trait you want to modify.
 2. Open a Modifier library from the **Master Library**.
-3. Drag the modifier to the **Trait Modifier** section in the editor (note: you must drag it to the precise location on the Detail Editor).
+3. Drag the modifier to the **Trait Modifier** section in the editor (note: you must drag it to the precise location on
+   the Detail Editor).
 
 You can also create a new custom modifier:
 
@@ -35,17 +42,20 @@ You can also create a new custom modifier:
 - Go to **Item > New Trait Modifier**.
 
 > [!NOTE]
-> Some traits support multiple modifiers. When you first add a trait that has modifiers, GCS prompts you to select them. You can select one, several, or none. If you skip this step, you can add or edit modifiers later in the **Trait Detail Editor**.
+> Some traits support multiple modifiers. When you first add a trait that has modifiers, GCS prompts you to select them.
+> You can select one, several, or none. If you skip this step, you can add or edit modifiers later in the **Trait Detail
+> Editor**.
 
 ## Managing modifiers
 
 You can manage modifiers directly in the Trait Detail Editor:
 
 - **Enable/disable:** Check or uncheck the box to apply or remove a modifier’s effects.
-- **Delete:** Select the modifier and choose **Delete** ![](./images/icons/icn-delete.svg).
+- **Delete:** Select the modifier and choose **Delete** ![delete](images/icons/icn-delete.svg).
 
 > [!TIP]
-> Some modifiers include **placeholders** (for example, `@condition@`). You can set these when first adding the modifier, or later with **Set Substitutions** ![](./images/icons/icn-substitutions.svg) in the toolbar.
+> Some modifiers include **placeholders** (for example, `@condition@`). You can set these when first adding the
+> modifier, or later with **Set Substitutions** ![substitutions](images/icons/icn-substitutions.svg) in the toolbar.
 
 ## Editing trait modifiers
 
@@ -85,12 +95,12 @@ The Trait Modifier Detail Editor includes the following fields:
 
 The toolbar above the Trait Modifier Editor gives you quick access to common actions:
 
-| Button                                     | Name                | Description                                            |
-|--------------------------------------------|---------------------|--------------------------------------------------------|
-| ![](./images/icons/icn-help.svg)           | **Help**            | Opens the help page from the User Guide.               |
-| 100%                                       | **Zoom**            | Adjusts the display size of the Trait Modifier Editor. |
-| ![](./images/icons/icn-applyChanges.svg)   | **Apply Changes**   | Saves and closes the Trait Modifier Editor.            |
-| ![](./images/icons/icn-discardChanges.svg) | **Discard Changes** | Exits without saving changes.                          |
+| Button                                                  | Name                | Description                                            |
+|---------------------------------------------------------|---------------------|--------------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                      | **Help**            | Opens the help page from the User Guide.               |
+| 100%                                                    | **Zoom**            | Adjusts the display size of the Trait Modifier Editor. |
+| ![apply changes](images/icons/icn-applyChanges.svg)     | **Apply Changes**   | Saves and closes the Trait Modifier Editor.            |
+| ![discard changes](images/icons/icn-discardChanges.svg) | **Discard Changes** | Exits without saving changes.                          |
 
 ---
 
