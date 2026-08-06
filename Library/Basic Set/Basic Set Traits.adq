@@ -32518,15 +32518,60 @@
 			"id": "touwUIFalnae02BUl",
 			"name": "Temperature Tolerance",
 			"reference": "B93",
+			"local_notes": "<script>\nif (entity.exists) {\n  var degreesHotter = 0;\n  var degreesColder = 0;\n  const hotMod = self.findActiveModifier(\"Hot\");\n  const coldMod = self.findActiveModifier(\"Cold\");\n  const degreesHotterMod = self.findActiveModifier(\"Degrees Hotter\");\n  const degreesColderMod = self.findActiveModifier(\"Degrees Colder\");\n  if (hotMod) {\n    degreesHotter = $ht * self.level;\n  }\n  if (coldMod) {\n    degreesColder = $ht *self.level;\n  } \n  if (degreesHotterMod) {\n    degreesHotter = degreesHotterMod.level;\n  }\n  if (degreesColderMod) {\n    degreesColder = degreesColderMod.level;\n  }\n  if (degreesHotter == 0 && degreesColder == 0) {\n    degreesHotter = $ht *self.level / 2;\n    degreesColder = $ht *self.level / 2;\n  }\n  var strings = [];\n  if (degreesHotter != 0) {\n    strings.push(degreesHotter + \"° hotter\");\n  }\n  if (degreesColder != 0) {\n    strings.push(degreesColder +\"° colder\");;\n  }\n  strings.join(\" and \")\n} else {\n  \"Will calculate how much the comfort zone is expanded when added to a character sheet\"\n}\n</script>",
 			"tags": [
 				"Advantage",
 				"Physical"
+			],
+			"prereqs": {
+				"type": "prereq_list",
+				"all": true,
+				"prereqs": [
+					{
+						"type": "script_prereq",
+						"script": "var msgs = [];\nvar modifierCount = 0;\nconst hotMod = self.findActiveModifier(\"Hot\");\nconst coldMod = self.findActiveModifier(\"Cold\");\nconst degreesHotterMod = self.findActiveModifier(\"Degrees Hotter\");\nconst degreesColderMod = self.findActiveModifier(\"Degrees Colder\");\nif (hotMod) {\n  modifierCount++;\n}\nif (coldMod) {\n  modifierCount++;\n}\nif (degreesHotterMod || degreesColderMod) {\n  modifierCount++;\n}\nif (modifierCount > 1) {\n  msgs.push(\"Hot, Cold, and Degrees Hotter/Colder must not be mixed\")\n}\nif (entity.exists) {\n  const expectedLevels = $ht * self.level;\n  var foundLevels = 0;\n  if (degreesHotterMod) {\n    foundLevels += degreesHotterMod.level;\n  }\n  if (degreesColderMod) {\n    foundLevels += degreesColderMod.level;\n  }\n  if (foundLevels != 0 && expectedLevels != foundLevels) {\n    msgs.push(`Total levels of Degrees Hotter and Degrees Colder should be ${expectedLevels} not ${foundLevels}`)\n  }\n}\nmsgs.join(\"\\n* \")"
+					}
+				]
+			},
+			"modifiers": [
+				{
+					"id": "MI1VcdSeblizJBfA0",
+					"name": "Choose how to distribute degrees to the character's comfort zone",
+					"reference": "B93",
+					"reference_highlight": "Each level of TemperatureTolerance adds HT degrees to yourcomfort zone, distributed in any wayyou wish between the “cold” and “hot”ends of the zone.",
+					"local_notes": "Cold means it all goes to tolerating colder temperatures, Hot means it all goes to tolerating hotter temperatures, and Degrees Hotter and Degrees Colder allocate degrees to expanding the temperature range manually. If no modifiers are picked then degrees are distributed evenly",
+					"children": [
+						{
+							"id": "mvjyobEJOxYbZW4m6",
+							"name": "Hot",
+							"disabled": true
+						},
+						{
+							"id": "mPS-5mvnutZR3JDmq",
+							"name": "Cold",
+							"disabled": true
+						},
+						{
+							"id": "mHi-iuFBpG3_YxV-6",
+							"name": "Degrees Hotter",
+							"levels": 1,
+							"disabled": true
+						},
+						{
+							"id": "m8AT5TarZDUhOwxBf",
+							"name": "Degrees Colder",
+							"levels": 1,
+							"disabled": true
+						}
+					]
+				}
 			],
 			"points_per_level": 1,
 			"can_level": true,
 			"levels": 1,
 			"calc": {
 				"points": 1,
+				"resolved_notes": "Will calculate how much the comfort zone is expanded when added to a character sheet",
 				"current_level": 1
 			}
 		},
