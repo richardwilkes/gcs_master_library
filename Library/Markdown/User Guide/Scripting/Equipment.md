@@ -24,6 +24,7 @@ The **For** column indicates whether the property or method is defined for a con
 | CL  | extendedWeight         | number                | The weight in pounds of this item (with its full quantity) and any items it contains.                   | GCS v5.36+   |
 | CL  | weightIgnoredForSkills | boolean               | True if this item's weight doesn't count against skill usage.                                           | GCS v5.36+   |
 | CL  | equipped               | boolean               | True if the item is equipped.                                                                           | GCS v5.36+   |
+| CL  | switchedOn             | boolean               | True if the switch controlling any switchable features of this item (or its modifiers) is on.           | GCS v5.47+   |
 | CL  | weapons                | object[]              | Returns a list of [Weapons](Weapon) attached to this item.                                              | GCS v5.41+   |
 | CL  | notes                  | string                | The notes.                                                                                              | GCS v5.39+   |
 | CL  | tags                   | string[]              | The associated tags.                                                                                    | GCS v5.36+   |
