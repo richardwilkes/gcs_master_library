@@ -1,0 +1,1839 @@
+GCS HTML Template v1
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{.Name}} - GURPS Character Sheet</title>
+	<style>
+		:root {
+			--ink: #231f20;
+			--paper: #ffffff;
+			--rule: #797979;
+			--stripe: #e8e8e8;
+			--serif: Georgia, "Times New Roman", serif;
+			--sans: Arial, Helvetica, sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		.template-source { display: none !important; }
+
+		html {
+			background: #555;
+			color: var(--ink);
+			font-family: var(--serif);
+			font-size: 10px;
+			line-height: 1.12;
+		}
+
+		body {
+			margin: 0;
+			padding: 18px 0 36px;
+		}
+
+		.print-button {
+			position: fixed;
+			z-index: 10;
+			top: 12px;
+			right: 16px;
+			border: 1px solid #fff8;
+			border-radius: 3px;
+			background: #292929;
+			color: #fff;
+			padding: 8px 13px;
+			font: 700 11px var(--sans);
+			cursor: pointer;
+			box-shadow: 0 2px 10px #0005;
+		}
+
+		.page {
+			width: 8.5in;
+			min-height: 11in;
+			margin: 0 auto 18px;
+			padding: .28in .56in .24in;
+			background: var(--paper);
+			box-shadow: 0 4px 22px #0008;
+			break-after: page;
+		}
+
+		.page:last-of-type { break-after: auto; }
+
+		.page-one-header {
+			display: grid;
+			grid-template-columns: 1fr;
+			height: .62in;
+			margin-bottom: .05in;
+		}
+
+		.identity {
+			display: grid;
+			grid-template-rows: repeat(3, 1fr);
+			align-content: stretch;
+			padding-top: 2px;
+		}
+
+		.identity-row {
+			display: flex;
+			align-items: flex-end;
+			gap: 6px;
+			min-width: 0;
+		}
+
+		.identity-row .grow { flex: 1 1 0; }
+		.identity-row .short { flex: 0 0 .88in; }
+		.identity-row .medium { flex: 0 0 1.22in; }
+
+		.line-field {
+			display: flex;
+			align-items: baseline;
+			min-width: 0;
+			font-size: 9px;
+			font-weight: 700;
+			white-space: nowrap;
+		}
+
+		.line-field .value {
+			flex: 1 1 auto;
+			min-width: 18px;
+			height: 13px;
+			margin-left: 3px;
+			border-bottom: 1px solid var(--rule);
+			padding: 0 2px;
+			overflow: hidden;
+			font-family: var(--sans);
+			font-size: 9px;
+			font-weight: 600;
+			text-overflow: ellipsis;
+		}
+
+		.page-one-top {
+			display: grid;
+			grid-template-columns: 3.45in 3.55in;
+			gap: .06in;
+			height: 3.72in;
+			min-height: 0;
+		}
+
+		.stats-column,
+		.reference-column {
+			min-width: 0;
+		}
+
+		.stat-matrix {
+			display: grid;
+			grid-template-columns: .42in .48in .34in .55in .46in .46in .34in;
+			grid-auto-rows: .49in;
+			gap: 0 .05in;
+			align-items: center;
+			margin-bottom: .02in;
+		}
+
+		.stat-label {
+			font: 900 24px/.9 var(--serif);
+			letter-spacing: -.035em;
+			text-align: right;
+		}
+
+		.stat-label.secondary {
+			padding-left: 2px;
+			font-size: 18px;
+		}
+
+		.stat-box {
+			display: grid;
+			place-items: center;
+			height: .49in;
+			border: 1.4px solid var(--ink);
+			font: 800 15px/1 var(--sans);
+		}
+
+		.current-box {
+			position: relative;
+		}
+
+		.current-box::before {
+			content: "CURRENT";
+			position: absolute;
+			top: -10px;
+			left: 0;
+			width: 100%;
+			font: 700 5.5px/1 var(--serif);
+			text-align: center;
+		}
+
+		.stat-points {
+			font: 700 13px/1 var(--serif);
+			white-space: nowrap;
+			text-align: center;
+		}
+
+		.stat-spacer { height: 1px; }
+
+		.basic-row {
+			display: grid;
+			grid-template-columns: auto 1fr auto .55in auto .45in;
+			align-items: baseline;
+			gap: 3px;
+			height: .25in;
+			border-top: 1px solid var(--ink);
+			padding-top: 3px;
+			font-size: 8.6px;
+			font-weight: 800;
+			white-space: nowrap;
+		}
+
+		.basic-value {
+			min-width: 0;
+			border-bottom: 1px solid var(--rule);
+			padding: 0 2px 1px;
+			font: 700 9px var(--sans);
+			text-align: center;
+		}
+
+		.basic-row .points {
+			font-size: 8.5px;
+			font-weight: 700;
+		}
+
+		.box {
+			border: 1.3px solid var(--ink);
+			background: #fff;
+			overflow: hidden;
+		}
+
+		.box-title {
+			margin: 0;
+			padding: 2px 4px 1px;
+			background: #fff;
+			font: 800 10px/1 var(--serif);
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			font-size: 8.6px;
+		}
+
+		thead { display: table-header-group; }
+		tr { break-inside: avoid; }
+
+		th,
+		td {
+			padding: 2px 3px;
+			vertical-align: top;
+		}
+
+		th { font-weight: 800; text-align: left; }
+		.num { white-space: nowrap; text-align: right; }
+		.center { text-align: center; }
+		.pts { white-space: nowrap; text-align: right; }
+
+		.encumbrance {
+			height: 1.17in;
+			margin-top: 2px;
+		}
+
+		.encumbrance table { font-size: 8.2px; }
+		.encumbrance thead th {
+			padding: 1px 3px;
+			font-size: 8.8px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		.encumbrance tbody tr.current { background: var(--stripe); font-weight: 800; }
+		.encumbrance tbody tr.current td:first-child::before { content: "◆ "; font-size: 5px; }
+
+		.reference-column {
+			display: grid;
+			grid-template-rows: 1.18in .89in 1.55in;
+			gap: .05in;
+		}
+
+		.ruled {
+			background: #fff;
+		}
+
+		.ruled thead tr,
+		.ruled tbody tr,
+		.ruled .reaction-list li,
+		.ruled .tl-line {
+			background: #fff;
+		}
+
+		.languages table,
+		.cultural table {
+			background: #fff;
+			font-size: 8.2px;
+		}
+
+		.languages thead th,
+		.cultural thead th {
+			font-size: 9px;
+			padding: 1px 3px;
+		}
+
+		.languages tbody td,
+		.cultural tbody td {
+			border-bottom: 1px solid var(--rule);
+			height: 14px;
+			padding: 1px 3px;
+		}
+
+		.languages td:first-child,
+		.cultural td:first-child {
+			max-width: 1.8in;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.middle-row,
+		.reaction-row {
+			display: grid;
+			grid-template-columns: .74in 1fr;
+			gap: .05in;
+			min-height: 0;
+		}
+
+		.dr-box {
+			display: grid;
+			place-items: start center;
+			padding-top: 3px;
+			font: 800 10px/1 var(--serif);
+		}
+
+		.dr-value {
+			display: grid;
+			place-items: center;
+			flex: 1;
+			width: 100%;
+			min-height: .55in;
+			font: 800 18px/1 var(--sans);
+		}
+
+		.tl-line {
+			display: flex;
+			gap: 3px;
+			padding: 2px 4px 0;
+			font-size: 8px;
+			font-weight: 800;
+		}
+
+		.tl-line span {
+			flex: 1;
+			border-bottom: 1px solid var(--rule);
+			font-family: var(--sans);
+			text-align: center;
+		}
+
+		.defenses {
+			display: grid;
+			grid-template-rows: 1fr 1fr;
+		}
+
+		.defense-half {
+			min-height: 0;
+			padding: 3px 3px 1px;
+			border-bottom: 1px solid var(--ink);
+		}
+
+		.defense-half:last-child { border-bottom: 0; }
+
+		.defense-title {
+			font: 800 10px/1 var(--serif);
+			text-align: center;
+		}
+
+		.defense-list {
+			display: grid;
+			place-items: center;
+			min-height: .34in;
+			margin-top: 2px;
+			overflow: hidden;
+			font: 800 16px/1 var(--sans);
+		}
+
+		.defense-list span { grid-area: 1 / 1; }
+		.defense-list span:not(:first-child) { display: none; }
+
+		.reaction-list {
+			margin: 0;
+			padding: 2px 5px 4px;
+			list-style: none;
+			font: 600 8.2px/1.2 var(--sans);
+		}
+
+		.reaction-list li {
+			display: grid;
+			grid-template-columns: .28in 1fr;
+			gap: 3px;
+			min-height: 14px;
+			border-bottom: 1px solid var(--rule);
+			padding-top: 2px;
+		}
+
+		.reaction-list .mod {
+			font-weight: 800;
+			text-align: center;
+		}
+
+		.page-one-lists {
+			display: grid;
+			grid-template-columns: 3.45in 3.55in;
+			gap: .06in;
+			height: 5.63in;
+			min-height: 0;
+			margin-top: .05in;
+		}
+
+		.trait-column {
+			display: grid;
+			grid-template-rows: 2.45in 3.13in;
+			min-height: 0;
+		}
+
+		.trait-half {
+			min-height: 0;
+			overflow: hidden;
+			border-bottom: 1px solid var(--ink);
+		}
+
+		.trait-half:last-child { border-bottom: 0; }
+
+		.list-body {
+			min-height: calc(100% - 19px);
+			padding: 0 4px 3px;
+		}
+
+		.list-row {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: 4px;
+			min-height: 16px;
+			border-bottom: 1px solid var(--rule);
+			padding: 2px 2px 1px;
+			background: #fff;
+			font: 600 8.4px/1.15 var(--sans);
+			break-inside: avoid;
+		}
+
+		.list-row .indent {
+			padding-left: calc(var(--depth, 0) * 8px);
+		}
+
+		.list-row > span:first-child {
+			min-width: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		.skills .list-row {
+			grid-template-columns: 1fr .34in .68in .26in;
+		}
+
+		.list-head {
+			display: grid;
+			grid-template-columns: 1fr .34in .68in .26in;
+			padding: 0 6px 2px;
+			background: #fff;
+			font: 800 9px/1 var(--serif);
+		}
+
+		.page-two-header {
+			display: grid;
+			grid-template-columns: 1fr 1.25in;
+			gap: .05in;
+			height: 1.22in;
+			min-height: 0;
+			margin-bottom: .05in;
+		}
+
+		.weapon-heading {
+			display: grid;
+			grid-template-columns: 1fr 2.25in;
+			align-items: baseline;
+			gap: 6px;
+			background: #fff;
+		}
+
+		.name-line {
+			display: flex;
+			align-items: baseline;
+			gap: 3px;
+			margin: 0;
+			padding: 1px 4px 1px 0;
+			font-size: 8px;
+			font-weight: 800;
+		}
+
+		.name-line span {
+			flex: 1;
+			border-bottom: 1px solid var(--rule);
+			padding: 0 2px;
+			font: 600 8px var(--sans);
+		}
+
+		.weapon-box table { font-size: 7.8px; }
+		.weapon-box th { font-size: 8.5px; }
+		.weapon-box th,
+		.weapon-box td { border-bottom: 1px solid var(--rule); }
+
+		.cost-weight {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.cost-weight > div {
+			min-height: 100%;
+			border-left: 1px solid var(--ink);
+			padding: 3px 4px;
+		}
+
+		.cost-weight > div:first-child { border-left: 0; }
+
+		.cw-title {
+			font: 800 8px/1 var(--serif);
+			text-align: center;
+		}
+
+		.cw-lines {
+			min-height: calc(100% - 13px);
+			margin-top: 3px;
+			background: #fff;
+		}
+
+		.ranged-row {
+			display: grid;
+			grid-template-columns: 5.84in 1.25in;
+			gap: .05in;
+			height: 2.18in;
+			min-height: 0;
+			margin-bottom: .05in;
+		}
+
+		.page-two-lower {
+			display: grid;
+			grid-template-columns: 3.12in 4.02in;
+			gap: .05in;
+			height: 6.83in;
+			min-height: 0;
+		}
+
+		.left-reference {
+			display: grid;
+			grid-template-rows: 3.43in 3.35in;
+			gap: .05in;
+			min-height: 0;
+		}
+
+		.quick-reference {
+			display: grid;
+			grid-template-columns: 1.77in 1.3in;
+			gap: .05in;
+		}
+
+		.speed-table .subtitle {
+			padding: 0 3px 4px;
+			font-size: 7px;
+			font-weight: 700;
+		}
+
+		.speed-table table {
+			font-size: 7.8px;
+			text-align: center;
+		}
+
+		.speed-table th { text-align: center; }
+		.speed-table tbody tr:nth-child(3n+1) { background: var(--stripe); }
+		.speed-table td { padding: 1px 3px; }
+
+		.hit-table table { font-size: 7.8px; }
+		.hit-table th { text-align: center; }
+		.hit-table tbody tr:nth-child(odd) { background: var(--stripe); }
+		.hit-table td { padding: 1px 3px; }
+
+		.hit-note {
+			margin: 5px 3px 0;
+			font-size: 7.4px;
+			font-style: italic;
+			line-height: 1.25;
+		}
+
+		.notes-summary {
+			display: grid;
+			grid-template-rows: minmax(0, 1fr) auto;
+			min-height: 3.35in;
+		}
+
+		.notes-summary > .notes-block {
+			min-height: 0;
+			overflow: hidden;
+		}
+
+		.notes-area {
+			min-height: 2.15in;
+			padding: 0 4px;
+		}
+
+		.note-row {
+			min-height: 17px;
+			border-bottom: 1px solid var(--rule);
+			padding: 2px;
+			background: #fff;
+			font: 600 8.2px/1.15 var(--sans);
+		}
+
+		.points-summary {
+			padding: 4px 3px 3px;
+		}
+
+		.points-summary h3 {
+			margin: 0 0 3px;
+			font-size: 9px;
+			text-transform: uppercase;
+		}
+
+		.summary-row {
+			display: grid;
+			grid-template-columns: 1fr .33in;
+			gap: 3px;
+			min-height: 15px;
+			font-size: 8px;
+			font-weight: 700;
+		}
+
+		.summary-row span:last-child {
+			border-bottom: 1px solid var(--rule);
+			font-family: var(--sans);
+			text-align: center;
+		}
+
+		.possessions-grid {
+			height: 6.83in;
+			min-height: 0;
+		}
+
+		.possessions {
+			position: relative;
+			height: 100%;
+		}
+
+		.possessions table { font-size: 7.8px; }
+		.possessions th { font-size: 8.5px; }
+		.possessions th,
+		.possessions td { border-bottom: 1px solid var(--rule); }
+		.possessions th:nth-child(2),
+		.possessions td:nth-child(2) { width: .82in; }
+		.possessions th:nth-child(3),
+		.possessions td:nth-child(3) { width: .62in; }
+		.possessions th:nth-child(4),
+		.possessions td:nth-child(4) { width: .62in; }
+		.possessions td:nth-child(n+2) { white-space: nowrap; }
+
+		.equipment-name {
+			padding-left: calc(3px + var(--depth, 0) * 8px);
+			font-weight: 600;
+		}
+
+		.equipment-note {
+			color: #555;
+			font-size: 7px;
+			font-style: italic;
+		}
+
+		.possessions .equipment-note { display: none; }
+
+		.totals-row {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 4px;
+			padding: 3px 4px;
+			border-top: 1px solid var(--ink);
+			background: #fff;
+			font-size: 7px;
+			font-weight: 800;
+		}
+
+		.totals-row span:last-child { text-align: right; }
+
+		.continuation {
+			margin-top: .08in;
+		}
+
+		.continuation table {
+			font-size: 8.2px;
+		}
+
+		.continuation th,
+		.continuation td {
+			border-bottom: 1px solid var(--rule);
+			padding: 3px;
+		}
+
+		.overflow-page {
+			height: auto;
+			min-height: 11in;
+			overflow: visible;
+		}
+
+		.overflow-page-header {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: 8px;
+			align-items: baseline;
+			margin-bottom: .08in;
+			border-bottom: 1px solid var(--ink);
+			padding: 0 3px 3px;
+			font: 700 8.5px var(--sans);
+		}
+
+		.overflow-page-header strong {
+			font: 800 10px var(--serif);
+		}
+
+		.overflow-section {
+			margin: 0 0 .08in;
+			border: 1.3px solid var(--ink);
+			break-inside: auto;
+			page-break-inside: auto;
+		}
+
+		.overflow-section table {
+			font: 600 8.2px/1.15 var(--sans);
+		}
+
+		.overflow-section th,
+		.overflow-section td {
+			border-bottom: 0;
+			padding: 3px 4px;
+		}
+
+		.overflow-section thead {
+			display: table-header-group;
+			font-family: var(--serif);
+		}
+
+		.overflow-section thead tr:first-child th {
+			border-bottom: 1px solid var(--ink);
+			background: #fff;
+			font-size: 10px;
+			text-align: left;
+			text-transform: uppercase;
+		}
+
+		.overflow-section thead tr:last-child th {
+			background: #fff;
+			font-size: 8.5px;
+		}
+
+		.overflow-section tbody tr:nth-child(odd) { background: #fff; }
+		.overflow-section tbody tr:nth-child(even) { background: var(--stripe); }
+
+		.overflow-section tr {
+			break-inside: avoid;
+			page-break-inside: avoid;
+		}
+
+		.overflow-section td.indent {
+			padding-left: calc(4px + var(--depth, 0) * 8px);
+		}
+
+		.overflow-section .equipment-note {
+			display: block;
+		}
+
+		.overflow-section-skills td:nth-child(n+2),
+		.overflow-section-gear td:nth-child(n+2) {
+			white-space: nowrap;
+		}
+
+		/* Filled sections use quiet zebra bands instead of ruled-paper lines. */
+		.ruled tbody td,
+		.ruled .list-row,
+		.ruled .reaction-list li,
+		.ruled .note-row {
+			border-bottom: 0;
+		}
+
+		.ruled tbody tr:nth-child(odd),
+		.ruled .list-row:nth-child(odd),
+		.ruled .reaction-list li:nth-child(odd),
+		.ruled .note-row:nth-child(odd) {
+			background: #fff;
+		}
+
+		.ruled tbody tr:nth-child(even),
+		.ruled .list-row:nth-child(even),
+		.ruled .reaction-list li:nth-child(even),
+		.ruled .note-row:nth-child(even) {
+			background: var(--stripe);
+		}
+
+		@page {
+			size: letter;
+			margin: 0 0 .22in;
+
+			@bottom-left {
+				content: "Page " counter(page) " of " counter(pages);
+				padding: 0 0 .04in .56in;
+				color: #555;
+				font: 600 6.5pt var(--sans);
+				text-align: left;
+			}
+
+			@bottom-right {
+				content: "GURPS is a trademark of Steve Jackson Games · GCS © Richard A. Wilkes";
+				padding: 0 .56in .04in 0;
+				color: #555;
+				font: 600 5.5pt var(--sans);
+				text-align: right;
+			}
+		}
+
+		@media print {
+			html,
+			body { background: white; }
+			body {
+				padding: 0;
+				-webkit-print-color-adjust: exact;
+				print-color-adjust: exact;
+			}
+			.print-button { display: none; }
+			.page {
+				position: relative;
+				height: 10.78in;
+				min-height: 10.78in;
+				max-height: 10.78in;
+				margin: 0;
+				overflow: hidden;
+				box-shadow: none;
+			}
+
+			.page-one-top {
+				height: 3.72in;
+				min-height: 0;
+			}
+
+			.page-one-lists {
+				height: 5.63in;
+				min-height: 0;
+			}
+
+			.page-two-header {
+				height: 1.22in;
+				min-height: 0;
+			}
+
+			.ranged-row {
+				height: 2.18in;
+				min-height: 0;
+			}
+
+			.page-two-lower {
+				height: 6.83in;
+				min-height: 0;
+			}
+
+			.page.spell-page {
+				height: auto;
+				min-height: 10.78in;
+				max-height: none;
+				overflow: visible;
+				break-after: auto;
+				page-break-after: auto;
+				-webkit-box-decoration-break: clone;
+				box-decoration-break: clone;
+			}
+
+			.page.overflow-page {
+				height: auto;
+				min-height: 10.78in;
+				max-height: none;
+				overflow: visible;
+				break-after: page;
+				page-break-after: always;
+				-webkit-box-decoration-break: clone;
+				box-decoration-break: clone;
+			}
+
+			.spell-page .continuation {
+				overflow: visible;
+			}
+
+			.spell-page table {
+				break-inside: auto;
+				page-break-inside: auto;
+			}
+
+			.spell-page thead {
+				display: table-header-group;
+			}
+
+			.spell-page tr {
+				break-inside: avoid;
+				page-break-inside: avoid;
+			}
+
+			.overflow-page thead {
+				display: table-header-group;
+			}
+
+			.overflow-page tr {
+				break-inside: avoid;
+				page-break-inside: avoid;
+			}
+
+		}
+
+		@media screen and (max-width: 850px) {
+			body { padding: 0; }
+			.print-button {
+				position: sticky;
+				display: block;
+				top: 6px;
+				margin: 6px 8px 6px auto;
+			}
+			.page {
+				width: 100%;
+				min-width: 790px;
+				margin: 0 0 12px;
+				box-shadow: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<button class="print-button" type="button" onclick="printCharacterSheet()">Print / Save PDF</button>
+
+	{{$st := index .Attributes.PrimaryByID "st"}}
+	{{$dx := index .Attributes.PrimaryByID "dx"}}
+	{{$iq := index .Attributes.PrimaryByID "iq"}}
+	{{$ht := index .Attributes.PrimaryByID "ht"}}
+	{{$will := index .Attributes.SecondaryByID "will"}}
+	{{$per := index .Attributes.SecondaryByID "per"}}
+	{{$speed := index .Attributes.SecondaryByID "basic_speed"}}
+	{{$move := index .Attributes.SecondaryByID "basic_move"}}
+	{{$hp := index .Attributes.PoolsByID "hp"}}
+	{{$fp := index .Attributes.PoolsByID "fp"}}
+	{{$dr := "0"}}
+	{{range .BodyType.Locations}}{{if eq .Where "Torso"}}{{$dr = .DR}}{{end}}{{end}}
+
+	<article class="page page-one">
+		<header class="page-one-header">
+			<div class="identity">
+				<div class="identity-row">
+					<div class="line-field grow">Name <span class="value">{{.Name}}</span></div>
+					<div class="line-field medium">Player <span class="value">{{.Player}}</span></div>
+					<div class="line-field short">Point Total <span class="value">{{.Points.Total}}</span></div>
+				</div>
+				<div class="identity-row">
+					<div class="line-field short">Ht <span class="value">{{.Height}}</span></div>
+					<div class="line-field short">Wt <span class="value">{{.Weight}}</span></div>
+					<div class="line-field medium">Size Modifier <span class="value">{{.SizeModifier}}</span></div>
+					<div class="line-field short">Age <span class="value">{{.Age}}</span></div>
+					<div class="line-field medium">Unspent Pts <span class="value">{{.Points.Unspent}}</span></div>
+				</div>
+				<div class="identity-row">
+					<div class="line-field grow">Appearance <span class="value">{{.Gender}} · {{.Eyes}} eyes · {{.Hair}} hair · {{.Skin}}</span></div>
+				</div>
+			</div>
+		</header>
+
+		<div class="page-one-top">
+			<section class="stats-column">
+				<div class="stat-matrix">
+					<div class="stat-label">ST</div>
+					<div class="stat-box">{{$st.Value}}</div><div class="stat-points">[{{$st.Points}}]</div>
+					<div class="stat-label secondary">HP</div>
+					<div class="stat-box">{{$hp.Maximum}}</div><div class="stat-box current-box">{{$hp.Current}}</div><div class="stat-points">[{{$hp.Points}}]</div>
+
+					<div class="stat-label">DX</div>
+					<div class="stat-box">{{$dx.Value}}</div><div class="stat-points">[{{$dx.Points}}]</div>
+					<div class="stat-label secondary">WILL</div>
+					<div class="stat-box">{{$will.Value}}</div><div class="stat-spacer"></div><div class="stat-points">[{{$will.Points}}]</div>
+
+					<div class="stat-label">IQ</div>
+					<div class="stat-box">{{$iq.Value}}</div><div class="stat-points">[{{$iq.Points}}]</div>
+					<div class="stat-label secondary">PER</div>
+					<div class="stat-box">{{$per.Value}}</div><div class="stat-spacer"></div><div class="stat-points">[{{$per.Points}}]</div>
+
+					<div class="stat-label">HT</div>
+					<div class="stat-box">{{$ht.Value}}</div><div class="stat-points">[{{$ht.Points}}]</div>
+					<div class="stat-label secondary">FP</div>
+					<div class="stat-box">{{$fp.Maximum}}</div><div class="stat-box current-box">{{$fp.Current}}</div><div class="stat-points">[{{$fp.Points}}]</div>
+				</div>
+
+				<div class="basic-row">
+					<span>BASIC LIFT</span><span class="basic-value">{{.Lift.Basic}}</span>
+					<span>DAMAGE Thr</span><span class="basic-value">{{.Thrust}}</span>
+					<span>Sw</span><span class="basic-value">{{.Swing}}</span>
+				</div>
+				<div class="basic-row">
+					<span>BASIC SPEED</span>
+					<span class="basic-value">{{$speed.Value}}</span><span class="points">[{{$speed.Points}}]</span>
+					<span>BASIC MOVE</span>
+					<span class="basic-value">{{$move.Value}}</span><span class="points">[{{$move.Points}}]</span>
+				</div>
+
+				<div class="box encumbrance">
+					<table>
+						<thead><tr><th>Encumbrance</th><th class="num">Max Load</th><th class="num">Move</th><th class="num">Dodge</th></tr></thead>
+						<tbody>
+							{{range .Encumbrance}}
+							<tr class="{{if .IsCurrent}}current{{end}}">
+								<td>{{.Name}} ({{.Level}})</td>
+								<td class="num">{{.MaxLoad}}</td>
+								<td class="num">{{.Move}}</td>
+								<td class="num">{{.Dodge}}</td>
+							</tr>
+							{{end}}
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="reference-column">
+				<div class="box languages ruled">
+					<table>
+						<thead><tr><th>Languages</th><th class="center">Spoken</th><th class="center">Written</th><th class="pts">Pts</th></tr></thead>
+						<tbody>
+							{{range .Traits}}{{if hasPrefix .Description "Language:"}}
+							<tr><td colspan="3" title="{{.Description}}{{if .ModifierNotesNoRolls}} · {{.ModifierNotesNoRolls}}{{end}}">{{.Description}}{{if .ModifierNotesNoRolls}} · {{.ModifierNotesNoRolls}}{{end}}</td><td class="pts">[{{.Points}}]</td></tr>
+							{{end}}{{end}}
+						</tbody>
+					</table>
+				</div>
+
+				<div class="middle-row">
+					<div class="box dr-box">
+						<div>DR</div>
+						<div class="dr-value">{{$dr}}</div>
+					</div>
+					<div class="box cultural ruled">
+						<div class="tl-line">TL: <span>{{.TechLevel}}</span></div>
+						<table>
+							<thead><tr><th>Cultural Familiarities</th><th class="pts">Pts</th></tr></thead>
+							<tbody>
+								{{range .Traits}}{{if hasPrefix .Description "Cultural Familiarity"}}
+								<tr><td title="{{.Description}}">{{.Description}}</td><td class="pts">[{{.Points}}]</td></tr>
+								{{end}}{{end}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="reaction-row">
+					<div class="box defenses">
+						<div class="defense-half">
+							<div class="defense-title">PARRY</div>
+							<div class="defense-list">{{range .MeleeWeapons}}{{if and .Parry (ne .Parry "No")}}<span>{{.Parry}}</span>{{end}}{{end}}</div>
+						</div>
+						<div class="defense-half">
+							<div class="defense-title">BLOCK</div>
+							<div class="defense-list">{{range .MeleeWeapons}}{{if and .Block (ne .Block "No")}}<span>{{.Block}}</span>{{end}}{{end}}</div>
+						</div>
+					</div>
+					<div class="box ruled">
+						<h2 class="box-title">Reaction Modifiers</h2>
+						<ul class="reaction-list">
+							{{range .Reactions}}<li><span class="mod">{{.Total.StringWithSign}}</span><span>{{.Situation}}</span></li>{{end}}
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div class="page-one-lists">
+			<section class="box trait-column ruled">
+				<div class="trait-half" data-overflow-source="advantages">
+					<h2 class="box-title">Advantages and Perks</h2>
+					<div class="list-body">
+						{{range .Traits}}{{if ge .Points 0}}
+						<div class="list-row">
+							<span class="indent" style="--depth:{{.Depth}}" title="{{.Description}}{{if .ModifierNotesNoRolls}} · {{.ModifierNotesNoRolls}}{{end}}">{{.Description}}{{if .ModifierNotesNoRolls}} · {{.ModifierNotesNoRolls}}{{end}}</span>
+							<span>{{if ne .Points 0}}[{{.Points}}]{{end}}</span>
+						</div>
+						{{end}}{{end}}
+						<template class="template-source">{{if false}}
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Charisma 1">Charisma 1</span>
+							<span>[5]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Doodad 1">Doodad 1</span>
+							<span>[1]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Independent Income 5">Independent Income 5</span>
+							<span>[5]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Intuition">Intuition</span>
+							<span>[15]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Natural Attacks">Natural Attacks</span>
+							<span></span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Status 2">Status 2</span>
+							<span>[10]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Talent (Artificer) 1">Talent (Artificer) 1</span>
+							<span>[10]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Very Wealthy">Very Wealthy</span>
+							<span>[30]</span>
+						</div>
+						{{end}}</template>
+					</div>
+				</div>
+				<div class="trait-half" data-overflow-source="disadvantages">
+					<h2 class="box-title">Disadvantages and Quirks</h2>
+					<div class="list-body">
+						{{range .Traits}}{{if lt .Points 0}}
+						<div class="list-row">
+							<span class="indent" style="--depth:{{.Depth}}" title="{{.Description}}{{if .ModifierNotesNoRolls}} · {{.ModifierNotesNoRolls}}{{end}}">{{.Description}}{{if .ModifierNotesNoRolls}} · {{.ModifierNotesNoRolls}}{{end}}</span>
+							<span>[{{.Points}}]</span>
+						</div>
+						{{end}}{{end}}
+						<template class="template-source">{{if false}}
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Buys overly nice gifts for friends - can be embarrassing">Buys overly nice gifts for friends - can be embarrassing</span>
+							<span>[-1]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Calls guns “bean shooters” (thinks it’s cool)">Calls guns “bean shooters” (thinks it’s cool)</span>
+							<span>[-1]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Compulsive Spending">Compulsive Spending</span>
+							<span>[-7]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Curious">Curious</span>
+							<span>[-10]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Enemy (Richard Maskhaven)">Enemy (Richard Maskhaven)</span>
+							<span>[-5]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Loves expensive cars - obsessed with race cars">Loves expensive cars - obsessed with race cars</span>
+							<span>[-1]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Loves his mom, writes to her almost every day">Loves his mom, writes to her almost every day</span>
+							<span>[-1]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Never gambles against friends">Never gambles against friends</span>
+							<span>[-1]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Odious Personal Habit">Odious Personal Habit</span>
+							<span>[-5]</span>
+						</div>
+						
+						<div class="list-row">
+							<span class="indent" style="--depth:0" title="Overconfidence">Overconfidence</span>
+							<span>[-5]</span>
+						</div>
+						{{end}}</template>
+					</div>
+				</div>
+			</section>
+
+			<section class="box skills ruled" data-overflow-source="skills">
+				<h2 class="box-title">Skills</h2>
+				<div class="list-head"><span>Name</span><span class="center">Level</span><span class="center">Relative Level</span><span class="center">Pts</span></div>
+				<div class="list-body">
+					{{range .Skills}}
+					<div class="list-row">
+						<span class="indent" style="--depth:{{.Depth}}" title="{{.Description}}">{{.Description}}</span>
+						<span class="center">{{.Level}}</span>
+						<span class="center">{{.RelativeLevel}}</span>
+						<span class="center">{{if eq .Type "item"}}[{{.Points}}]{{end}}</span>
+					</div>
+					{{end}}
+					<template class="template-source">{{if false}}
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Archaeology">Archaeology</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[4]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Bicycling">Bicycling</span>
+						<span class="center">11</span>
+						<span class="center">DX&#43;0</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Carpentry">Carpentry</span>
+						<span class="center">13</span>
+						<span class="center">IQ&#43;1</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Climbing">Climbing</span>
+						<span class="center">11</span>
+						<span class="center">DX&#43;0</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Current Affairs/TL6 (Science &amp; Technology)">Current Affairs/TL6 (Science &amp; Technology)</span>
+						<span class="center">13</span>
+						<span class="center">IQ&#43;1</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Current Affairs/TL6 (Travel)">Current Affairs/TL6 (Travel)</span>
+						<span class="center">13</span>
+						<span class="center">IQ&#43;1</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Driving/TL6 (Automobile)">Driving/TL6 (Automobile)</span>
+						<span class="center">12</span>
+						<span class="center">DX&#43;1</span>
+						<span class="center">[4]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Engineer/TL6 (Electronics)">Engineer/TL6 (Electronics)</span>
+						<span class="center">11</span>
+						<span class="center">IQ-1</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Explosives/TL6 (Demolition)">Explosives/TL6 (Demolition)</span>
+						<span class="center">11</span>
+						<span class="center">IQ-1</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Fast-Talk">Fast-Talk</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="First Aid/TL6">First Aid/TL6</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Games (Pinochle)">Games (Pinochle)</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Guns/TL6 (Pistol)">Guns/TL6 (Pistol)</span>
+						<span class="center">11</span>
+						<span class="center">DX&#43;0</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="History (Egypt)">History (Egypt)</span>
+						<span class="center">11</span>
+						<span class="center">IQ-1</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Machinist/TL6">Machinist/TL6</span>
+						<span class="center">13</span>
+						<span class="center">IQ&#43;1</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Mathematics/TL6 (Applied)">Mathematics/TL6 (Applied)</span>
+						<span class="center">10</span>
+						<span class="center">IQ-2</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Mechanic/TL6 (Automobile)">Mechanic/TL6 (Automobile)</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Mechanic/TL6 (Light Airplane)">Mechanic/TL6 (Light Airplane)</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Merchant">Merchant</span>
+						<span class="center">12</span>
+						<span class="center">IQ&#43;0</span>
+						<span class="center">[2]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Navigation/TL6 (Air)">Navigation/TL6 (Air)</span>
+						<span class="center">11</span>
+						<span class="center">IQ-1</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Occultism">Occultism</span>
+						<span class="center">11</span>
+						<span class="center">IQ-1</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Piloting/TL6 (Light Airplane)">Piloting/TL6 (Light Airplane)</span>
+						<span class="center">10</span>
+						<span class="center">DX-1</span>
+						<span class="center">[1]</span>
+					</div>
+					
+					<div class="list-row">
+						<span class="indent" style="--depth:0" title="Savoir-Faire (High Society)">Savoir-Faire (High Society)</span>
+						<span class="center">13</span>
+						<span class="center">IQ&#43;1</span>
+						<span class="center">[2]</span>
+					</div>
+					{{end}}</template>
+				</div>
+			</section>
+		</div>
+
+	</article>
+
+	
+	<article class="page page-two">
+		<header class="page-two-header">
+			<section class="box weapon-box ruled" data-overflow-source="melee">
+				<div class="weapon-heading">
+					<h2 class="box-title" style="text-align:left">Hand Weapons</h2>
+					<div class="name-line">Name <span>{{.Name}}</span></div>
+				</div>
+				<table>
+					<thead><tr><th>Weapon</th><th>Damage</th><th class="center">Reach</th><th class="center">Parry</th><th>Notes</th></tr></thead>
+					<tbody>
+						{{range .MeleeWeapons}}
+						<tr>
+							<td>{{.Description}}{{if .Usage}} ({{.Usage}}){{end}}</td>
+							<td>{{.Damage}}</td>
+							<td class="center">{{.Reach}}</td>
+							<td class="center">{{.Parry}}</td>
+							<td>{{.Notes}}</td>
+						</tr>
+						{{end}}
+						<template class="template-source">{{if false}}
+						<tr>
+							<td>Natural Attacks (Bite)</td>
+							<td>1d-3 cr</td>
+							<td class="center">C</td>
+							<td class="center">No</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td>Natural Attacks (Kick)</td>
+							<td>1d-2 cr</td>
+							<td class="center">C,1</td>
+							<td class="center">No</td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td>Natural Attacks (Punch)</td>
+							<td>1d-3 cr</td>
+							<td class="center">C</td>
+							<td class="center">8</td>
+							<td></td>
+						</tr>
+						{{end}}</template>
+					</tbody>
+				</table>
+			</section>
+
+			<section class="box cost-weight">
+				<div><div class="cw-title">Cost</div><div class="cw-lines"></div></div>
+				<div><div class="cw-title">Weight</div><div class="cw-lines"></div></div>
+			</section>
+		</header>
+
+		<div class="ranged-row">
+			<section class="box weapon-box ruled" data-overflow-source="ranged">
+				<h2 class="box-title" style="text-align:left">Ranged Weapons</h2>
+				<table>
+					<thead><tr><th>Weapon</th><th>Damage</th><th class="center">Acc</th><th>Range</th><th class="center">RoF</th><th class="center">Shots</th><th class="center">ST</th><th class="center">Bulk</th><th class="center">Rcl</th><th class="center">LC</th><th>Notes</th></tr></thead>
+					<tbody>
+						{{range .RangedWeapons}}
+						<tr>
+							<td>{{.Description}}{{if .Usage}} ({{.Usage}}){{end}}</td>
+							<td>{{.Damage}}</td>
+							<td class="center">{{.Accuracy}}</td>
+							<td>{{.Range}}</td>
+							<td class="center">{{.RateOfFire}}</td>
+							<td class="center">{{.Shots}}</td>
+							<td class="center">{{.Strength}}</td>
+							<td class="center">{{.Bulk}}</td>
+							<td class="center">{{.Recoil}}</td>
+							<td></td>
+							<td>{{.Notes}}</td>
+						</tr>
+						{{end}}
+						<template class="template-source">{{if false}}
+						<tr>
+							<td>S&amp;W Safety Hammerless, .38 S&amp;W</td>
+							<td>2d-1 pi</td>
+							<td class="center">0</td>
+							<td>90/1,000</td>
+							<td class="center">3</td>
+							<td class="center">5(2i)</td>
+							<td class="center">7</td>
+							<td class="center">-1</td>
+							<td class="center">2</td>
+							<td></td>
+							<td></td>
+						</tr>
+						{{end}}</template>
+					</tbody>
+				</table>
+			</section>
+
+			<section class="box cost-weight">
+				<div><div class="cw-title">Cost</div><div class="cw-lines"></div></div>
+				<div><div class="cw-title">Weight</div><div class="cw-lines"></div></div>
+			</section>
+		</div>
+
+		<div class="page-two-lower">
+			<div class="left-reference">
+				<div class="quick-reference">
+					<section class="box speed-table">
+						<h2 class="box-title" style="text-align:left">Speed/Range Table</h2>
+						<div class="subtitle">For complete table, see p. 550.</div>
+						<table>
+							<thead><tr><th>Speed/Range<br>Modifier</th><th>Linear Measurement<br>(range/speed)</th></tr></thead>
+							<tbody>
+								<tr><td>0</td><td>2 yd or less</td></tr>
+								<tr><td>-1</td><td>3 yd</td></tr>
+								<tr><td>-2</td><td>5 yd</td></tr>
+								<tr><td>-3</td><td>7 yd</td></tr>
+								<tr><td>-4</td><td>10 yd</td></tr>
+								<tr><td>-5</td><td>15 yd</td></tr>
+								<tr><td>-6</td><td>20 yd</td></tr>
+								<tr><td>-7</td><td>30 yd</td></tr>
+								<tr><td>-8</td><td>50 yd</td></tr>
+								<tr><td>-9</td><td>70 yd</td></tr>
+								<tr><td>-10</td><td>100 yd</td></tr>
+								<tr><td>-11</td><td>150 yd</td></tr>
+								<tr><td>-12</td><td>200 yd</td></tr>
+								<tr><td>-13</td><td>300 yd</td></tr>
+								<tr><td>-14</td><td>500 yd</td></tr>
+								<tr><td>-15</td><td>700 yd</td></tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section class="box hit-table">
+						<h2 class="box-title" style="text-align:left">Hit Location</h2>
+						<table>
+							<thead><tr><th>Modifier</th><th>Location</th><th>DR</th></tr></thead>
+							<tbody>
+								{{range .BodyType.Locations}}
+								<tr><td class="center">{{.Penalty}}</td><td>{{.Where}}</td><td class="center">{{.DR}}</td></tr>
+								{{end}}
+								<template class="template-source">{{if false}}
+								<tr><td class="center">-9</td><td>Eyes</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-7</td><td>Skull</td><td class="center">2</td></tr>
+								
+								<tr><td class="center">-5</td><td>Face</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-2</td><td>Right Leg</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-2</td><td>Right Arm</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">0</td><td>Torso</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-3</td><td>Groin</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-2</td><td>Left Arm</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-2</td><td>Left Leg</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-4</td><td>Hand</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-4</td><td>Foot</td><td class="center">1</td></tr>
+								
+								<tr><td class="center">-5</td><td>Neck</td><td class="center">0</td></tr>
+								
+								<tr><td class="center">-3</td><td>Vitals</td><td class="center">0</td></tr>
+								{{end}}</template>
+							</tbody>
+						</table>
+						<p class="hit-note"><em>Imp</em> or <em>Pi</em> attacks can target vitals at -3 or eyes at -9.</p>
+					</section>
+				</div>
+
+				<section class="box notes-summary ruled">
+					<div class="notes-block" data-overflow-source="notes">
+						<h2 class="box-title" style="text-align:left">Character Notes</h2>
+						<div class="notes-area">
+							{{range .Notes}}<div class="note-row" style="padding-left:calc(2px + {{.Depth}} * 8px)">{{.Description}}</div>{{end}}
+						</div>
+					</div>
+					<div class="points-summary">
+						<h3>Points Summary</h3>
+						<div class="summary-row"><span>Attributes/Secondary Characteristics</span><span>{{.Points.Attributes}}</span></div>
+						<div class="summary-row"><span>Advantages/Perks/TL/Languages/Cultural Familiarity</span><span>{{.Points.Advantages}}</span></div>
+						<div class="summary-row"><span>Disadvantages</span><span>{{.Points.Disadvantages}}</span></div>
+						<div class="summary-row"><span>Quirks</span><span>{{.Points.Quirks}}</span></div>
+						<div class="summary-row"><span>Skills/Techniques</span><span>{{.Points.Skills}}</span></div>
+						{{if ne .Points.Spells 0}}<div class="summary-row"><span>Spells</span><span>{{.Points.Spells}}</span></div>{{end}}
+					</div>
+				</section>
+			</div>
+
+			<div class="possessions-grid">
+				<section class="box possessions ruled" data-overflow-source="gear">
+					<h2 class="box-title" style="text-align:left">Armor &amp; Possessions</h2>
+					<table>
+						<thead><tr><th>Item</th><th class="center">Location / State</th><th class="num">Cost</th><th class="num">Weight</th></tr></thead>
+						<tbody>
+							{{range .Equipment.Carried}}
+							<tr>
+								<td class="equipment-name" style="--depth:{{.Depth}}">{{.Description}}{{if .Notes}}<div class="equipment-note">{{.Notes}}</div>{{end}}</td>
+								<td class="center">{{if .Equipped}}Equipped{{else}}Carried{{end}}</td>
+								<td class="num">${{.ExtendedCost}}</td>
+								<td class="num">{{.ExtendedWeight}}</td>
+							</tr>
+							{{end}}
+							{{range .Equipment.Other}}
+							<tr>
+								<td class="equipment-name" style="--depth:{{.Depth}}">{{.Description}}{{if .Notes}}<div class="equipment-note">{{.Notes}}</div>{{end}}</td>
+								<td class="center">Other</td>
+								<td class="num">${{.ExtendedCost}}</td>
+								<td class="num">{{.ExtendedWeight}}</td>
+							</tr>
+							{{end}}
+							<template class="template-source">{{if false}}
+							<tr>
+								<td class="equipment-name" style="--depth:0">S&amp;W Safety Hammerless, .38 S&amp;W<div class="equipment-note">No lanyard ring.</div></td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">Leather Carrier Bag</td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">German PERTRIX Flashlight Torch</td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">Rolex &#34;Oyster&#34; Watch</td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">Cash</td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">Italian Leather Shoes<div class="equipment-note">Flexible; Concealable</div></td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">Travel diary and pencil</td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">Nice European suit</td>
+								<td class="center">Equipped</td>
+							</tr>
+							
+							
+							<tr>
+								<td class="equipment-name" style="--depth:0">1932 Talbot 65 Coupes<div class="equipment-note">In New Haven, CT</div></td>
+								<td class="center">Other</td>
+							</tr>
+							{{end}}</template>
+						</tbody>
+					</table>
+					<div class="totals-row"><span>Carried ${{.Equipment.CarriedValue}} · Other ${{.Equipment.OtherValue}}</span><span>{{.Equipment.CarriedWeight}}</span></div>
+				</section>
+			</div>
+		</div>
+
+	</article>
+
+	{{if .Spells}}
+	<article class="page spell-page">
+		<header class="page-one-header">
+			<div class="identity">
+				<div class="identity-row"><div class="line-field grow">Name <span class="value">{{.Name}}</span></div><div class="line-field short">Spell Points <span class="value">{{.Points.Spells}}</span></div></div>
+				<div class="identity-row"><div class="line-field grow">Player <span class="value">{{.Player}}</span></div></div>
+				<div class="identity-row"><div class="line-field grow">Campaign Notes <span class="value"></span></div></div>
+			</div>
+		</header>
+
+		<section class="box continuation ruled">
+			<h2 class="box-title">Spells</h2>
+			<table>
+				<thead><tr><th>Spell</th><th>College</th><th>Class</th><th class="center">Level</th><th class="center">Relative</th><th class="center">Cost</th><th>Time</th><th>Duration</th><th class="pts">Pts</th><th>Ref</th></tr></thead>
+				<tbody>
+					{{range .Spells}}
+					<tr>
+						<td style="padding-left:calc(3px + {{.Depth}} * 8px)">{{.Description}}</td>
+						<td>{{join .Colleges ", "}}</td>
+						<td>{{.Class}}</td>
+						<td class="center">{{.Level}}</td>
+						<td class="center">{{.RelativeLevel}}</td>
+						<td class="center">{{.Mana.Cast}}{{if and .Mana.Maintain (ne .Mana.Maintain "-")}} / {{.Mana.Maintain}}{{end}}</td>
+						<td>{{.TimeToCast}}</td>
+						<td>{{.Duration}}</td>
+						<td class="pts">{{if eq .Type "item"}}[{{.Points}}]{{end}}</td>
+						<td>{{.PageRef}}</td>
+					</tr>
+					{{end}}
+				</tbody>
+			</table>
+		</section>
+	</article>
+	{{end}}
+
+	<script>
+	(function () {
+		"use strict";
+
+		var built = false;
+		var epsilon = 0.75;
+
+		function directRows(root, selector) {
+			return root ? Array.prototype.slice.call(root.querySelectorAll(selector)) : [];
+		}
+
+		function bottomEdge(element) {
+			return element.getBoundingClientRect().bottom - 1.5;
+		}
+
+		function extractTrailingRows(source, selector, boundary) {
+			var rows = directRows(source, selector);
+			var overflow = [];
+			var guard = rows.length + 1;
+
+			while (rows.length && guard > 0) {
+				guard -= 1;
+				var row = rows[rows.length - 1];
+				var limit = typeof boundary === "function" ? boundary() : bottomEdge(boundary);
+				if (row.getBoundingClientRect().bottom <= limit + epsilon) break;
+				overflow.unshift(row);
+				row.remove();
+				rows.pop();
+			}
+
+			return overflow;
+		}
+
+		function listRowToTableRow(row) {
+			var tableRow = document.createElement("tr");
+			Array.prototype.slice.call(row.children).forEach(function (child) {
+				var cell = document.createElement("td");
+				cell.className = child.className;
+				cell.style.cssText = child.style.cssText;
+				if (child.title) cell.title = child.title;
+				cell.innerHTML = child.innerHTML;
+				tableRow.appendChild(cell);
+			});
+			return tableRow;
+		}
+
+		function noteRowToTableRow(row) {
+			var tableRow = document.createElement("tr");
+			var cell = document.createElement("td");
+			cell.style.cssText = row.style.cssText;
+			cell.innerHTML = row.innerHTML;
+			tableRow.appendChild(cell);
+			return tableRow;
+		}
+
+		function makeHeadingCell(definition) {
+			var cell = document.createElement("th");
+			cell.textContent = definition.text;
+			if (definition.className) cell.className = definition.className;
+			return cell;
+		}
+
+		function makeContinuationSection(title, headings, rows, className) {
+			var section = document.createElement("section");
+			section.className = "overflow-section " + (className || "");
+
+			var table = document.createElement("table");
+			var head = document.createElement("thead");
+			var titleRow = document.createElement("tr");
+			var titleCell = document.createElement("th");
+			titleCell.colSpan = headings.length;
+			titleCell.textContent = title + " — continued";
+			titleRow.appendChild(titleCell);
+
+			var headingRow = document.createElement("tr");
+			headings.forEach(function (heading) {
+				headingRow.appendChild(makeHeadingCell(heading));
+			});
+
+			head.appendChild(titleRow);
+			head.appendChild(headingRow);
+			table.appendChild(head);
+
+			var body = document.createElement("tbody");
+			rows.forEach(function (row) { body.appendChild(row); });
+			table.appendChild(body);
+			section.appendChild(table);
+			return section;
+		}
+
+		function extractGearRows() {
+			var gearSection = document.querySelector('[data-overflow-source="gear"]');
+			if (!gearSection) return [];
+			var totals = gearSection.querySelector(".totals-row");
+			return extractTrailingRows(gearSection, "table > tbody > tr", function () {
+				return totals ? totals.getBoundingClientRect().top - 1 : bottomEdge(gearSection);
+			});
+		}
+
+		function appendIfPresent(article, title, headings, rows, className) {
+			if (!rows.length) return;
+			article.appendChild(makeContinuationSection(title, headings, rows, className));
+		}
+
+		function buildContinuations() {
+			if (built) return;
+			built = true;
+
+			/* Force a completed layout before testing physical page boundaries. */
+			document.body.offsetHeight;
+
+			var advantagesSource = document.querySelector('[data-overflow-source="advantages"]');
+			var disadvantagesSource = document.querySelector('[data-overflow-source="disadvantages"]');
+			var skillsSource = document.querySelector('[data-overflow-source="skills"]');
+			var meleeSource = document.querySelector('[data-overflow-source="melee"]');
+			var rangedSource = document.querySelector('[data-overflow-source="ranged"]');
+			var notesSource = document.querySelector('[data-overflow-source="notes"]');
+
+			var advantages = extractTrailingRows(advantagesSource, ".list-body > .list-row", advantagesSource).map(listRowToTableRow);
+			var disadvantages = extractTrailingRows(disadvantagesSource, ".list-body > .list-row", disadvantagesSource).map(listRowToTableRow);
+			var skills = extractTrailingRows(skillsSource, ".list-body > .list-row", skillsSource).map(listRowToTableRow);
+			var melee = extractTrailingRows(meleeSource, "table > tbody > tr", meleeSource);
+			var ranged = extractTrailingRows(rangedSource, "table > tbody > tr", rangedSource);
+			var gear = extractGearRows();
+			var notes = extractTrailingRows(notesSource, ".notes-area > .note-row", notesSource).map(noteRowToTableRow);
+
+			if (!(advantages.length || disadvantages.length || skills.length || melee.length || ranged.length || gear.length || notes.length)) return;
+
+			var article = document.createElement("article");
+			article.className = "page overflow-page";
+			article.setAttribute("aria-label", "Character sheet continuations");
+
+			var header = document.createElement("header");
+			header.className = "overflow-page-header";
+			var headerTitle = document.createElement("strong");
+			headerTitle.textContent = "CONTINUATIONS";
+			var characterName = document.querySelector(".page-two .name-line span");
+			var headerName = document.createElement("span");
+			headerName.textContent = characterName ? characterName.textContent.trim() : document.title;
+			header.appendChild(headerTitle);
+			header.appendChild(headerName);
+			article.appendChild(header);
+
+			appendIfPresent(article, "Advantages and Perks", [
+				{text: "Trait"}, {text: "Pts", className: "pts"}
+			], advantages, "overflow-section-traits");
+			appendIfPresent(article, "Disadvantages and Quirks", [
+				{text: "Trait"}, {text: "Pts", className: "pts"}
+			], disadvantages, "overflow-section-traits");
+			appendIfPresent(article, "Skills", [
+				{text: "Name"}, {text: "Level", className: "center"}, {text: "Relative Level", className: "center"}, {text: "Pts", className: "center"}
+			], skills, "overflow-section-skills");
+			appendIfPresent(article, "Hand Weapons", [
+				{text: "Weapon"}, {text: "Damage"}, {text: "Reach", className: "center"}, {text: "Parry", className: "center"}, {text: "Notes"}
+			], melee, "overflow-section-weapons");
+			appendIfPresent(article, "Ranged Weapons", [
+				{text: "Weapon"}, {text: "Damage"}, {text: "Acc", className: "center"}, {text: "Range"}, {text: "RoF", className: "center"}, {text: "Shots", className: "center"}, {text: "ST", className: "center"}, {text: "Bulk", className: "center"}, {text: "Rcl", className: "center"}, {text: "LC", className: "center"}, {text: "Notes"}
+			], ranged, "overflow-section-weapons");
+			appendIfPresent(article, "Armor and Possessions", [
+				{text: "Item"}, {text: "Location / State", className: "center"}, {text: "Cost", className: "num"}, {text: "Weight", className: "num"}
+			], gear, "overflow-section-gear");
+			appendIfPresent(article, "Character Notes", [
+				{text: "Note"}
+			], notes, "overflow-section-notes");
+
+			var spellPage = document.querySelector(".spell-page");
+			document.body.insertBefore(article, spellPage || null);
+			document.body.offsetHeight;
+		}
+
+		window.printCharacterSheet = function () {
+			buildContinuations();
+			window.print();
+		};
+
+		window.addEventListener("beforeprint", buildContinuations);
+		window.addEventListener("load", function () {
+			window.requestAnimationFrame(function () {
+				window.requestAnimationFrame(buildContinuations);
+			});
+		}, {once: true});
+	}());
+	</script>
+</body>
+</html>
