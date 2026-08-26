@@ -380,6 +380,29 @@ GCS HTML Template v1
 			text-align: center;
 		}
 
+		.modifier-panels {
+			display: grid;
+			grid-template-rows: minmax(0, 1fr);
+			min-height: 0;
+		}
+
+		.modifier-panels.split {
+			grid-template-rows: repeat(2, minmax(0, 1fr));
+		}
+
+		.modifier-panel {
+			min-height: 0;
+			overflow: hidden;
+		}
+
+		.modifier-panel + .modifier-panel {
+			border-top: 1px solid var(--ink);
+		}
+
+		.modifier-panels.split .reaction-list {
+			font-size: 7.6px;
+		}
+
 		.page-one-lists {
 			display: grid;
 			grid-template-columns: 3.45in 3.55in;
@@ -444,9 +467,6 @@ GCS HTML Template v1
 		}
 
 		.page-two-header {
-			display: grid;
-			grid-template-columns: 1fr 1.25in;
-			gap: .05in;
 			height: 1.22in;
 			min-height: 0;
 			margin-bottom: .05in;
@@ -482,37 +502,16 @@ GCS HTML Template v1
 		.weapon-box th,
 		.weapon-box td { border-bottom: 1px solid var(--rule); }
 
-		.cost-weight {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.cost-weight > div {
-			min-height: 100%;
-			border-left: 1px solid var(--ink);
-			padding: 3px 4px;
-		}
-
-		.cost-weight > div:first-child { border-left: 0; }
-
-		.cw-title {
-			font: 800 8px/1 var(--serif);
-			text-align: center;
-		}
-
-		.cw-lines {
-			min-height: calc(100% - 13px);
-			margin-top: 3px;
-			background: #fff;
-		}
-
 		.ranged-row {
-			display: grid;
-			grid-template-columns: 5.84in 1.25in;
-			gap: .05in;
 			height: 2.18in;
 			min-height: 0;
 			margin-bottom: .05in;
+		}
+
+		.page-two-header > .weapon-box,
+		.ranged-row > .weapon-box {
+			height: 100%;
+			min-height: 0;
 		}
 
 		.page-two-lower {
@@ -627,11 +626,13 @@ GCS HTML Template v1
 		.possessions th,
 		.possessions td { border-bottom: 1px solid var(--rule); }
 		.possessions th:nth-child(2),
-		.possessions td:nth-child(2) { width: .82in; }
+		.possessions td:nth-child(2) { width: .32in; }
 		.possessions th:nth-child(3),
-		.possessions td:nth-child(3) { width: .62in; }
+		.possessions td:nth-child(3) { width: .73in; }
 		.possessions th:nth-child(4),
-		.possessions td:nth-child(4) { width: .62in; }
+		.possessions td:nth-child(4) { width: .58in; }
+		.possessions th:nth-child(5),
+		.possessions td:nth-child(5) { width: .60in; }
 		.possessions td:nth-child(n+2) { white-space: nowrap; }
 
 		.equipment-name {
@@ -753,6 +754,13 @@ GCS HTML Template v1
 		.overflow-section-skills td:nth-child(n+2),
 		.overflow-section-gear td:nth-child(n+2) {
 			white-space: nowrap;
+		}
+
+		.overflow-section-modifiers th:first-child,
+		.overflow-section-modifiers td:first-child {
+			width: .65in;
+			font-weight: 800;
+			text-align: center;
 		}
 
 		/* Filled sections use quiet zebra bands instead of ruled-paper lines. */
@@ -1041,11 +1049,23 @@ GCS HTML Template v1
 							<div class="defense-list">{{range .MeleeWeapons}}{{if and .Block (ne .Block "No")}}<span>{{.Block}}</span>{{end}}{{end}}</div>
 						</div>
 					</div>
-					<div class="box ruled">
-						<h2 class="box-title">Reaction Modifiers</h2>
-						<ul class="reaction-list">
-							{{range .Reactions}}<li><span class="mod">{{.Total.StringWithSign}}</span><span>{{.Situation}}</span></li>{{end}}
-						</ul>
+					<div class="box ruled modifier-panels{{if and .Reactions .ConditionalModifiers}} split{{end}}">
+						{{if .Reactions}}
+						<section class="modifier-panel" data-overflow-source="reactions">
+							<h2 class="box-title">Reaction Modifiers</h2>
+							<ul class="reaction-list">
+								{{range .Reactions}}<li><span class="mod">{{.Total.StringWithSign}}</span><span>{{.Situation}}</span></li>{{end}}
+							</ul>
+						</section>
+						{{end}}
+						{{if .ConditionalModifiers}}
+						<section class="modifier-panel" data-overflow-source="conditional-modifiers">
+							<h2 class="box-title">Conditional Modifiers</h2>
+							<ul class="reaction-list">
+								{{range .ConditionalModifiers}}<li><span class="mod">{{.Total.StringWithSign}}</span><span>{{.Situation}}</span></li>{{end}}
+							</ul>
+						</section>
+						{{end}}
 					</div>
 				</div>
 			</section>
@@ -1397,11 +1417,6 @@ GCS HTML Template v1
 					</tbody>
 				</table>
 			</section>
-
-			<section class="box cost-weight">
-				<div><div class="cw-title">Cost</div><div class="cw-lines"></div></div>
-				<div><div class="cw-title">Weight</div><div class="cw-lines"></div></div>
-			</section>
 		</header>
 
 		<div class="ranged-row">
@@ -1442,11 +1457,6 @@ GCS HTML Template v1
 						{{end}}</template>
 					</tbody>
 				</table>
-			</section>
-
-			<section class="box cost-weight">
-				<div><div class="cw-title">Cost</div><div class="cw-lines"></div></div>
-				<div><div class="cw-title">Weight</div><div class="cw-lines"></div></div>
 			</section>
 		</div>
 
@@ -1543,11 +1553,12 @@ GCS HTML Template v1
 				<section class="box possessions ruled" data-overflow-source="gear">
 					<h2 class="box-title" style="text-align:left">Armor &amp; Possessions</h2>
 					<table>
-						<thead><tr><th>Item</th><th class="center">Location / State</th><th class="num">Cost</th><th class="num">Weight</th></tr></thead>
+						<thead><tr><th>Item</th><th class="center">Qty</th><th class="center">Location / State</th><th class="num">Cost</th><th class="num">Weight</th></tr></thead>
 						<tbody>
 							{{range .Equipment.Carried}}
 							<tr>
 								<td class="equipment-name" style="--depth:{{.Depth}}">{{.Description}}{{if .Notes}}<div class="equipment-note">{{.Notes}}</div>{{end}}</td>
+								<td class="center">{{.Quantity}}</td>
 								<td class="center">{{if .Equipped}}Equipped{{else}}Carried{{end}}</td>
 								<td class="num">${{.ExtendedCost}}</td>
 								<td class="num">{{.ExtendedWeight}}</td>
@@ -1556,6 +1567,7 @@ GCS HTML Template v1
 							{{range .Equipment.Other}}
 							<tr>
 								<td class="equipment-name" style="--depth:{{.Depth}}">{{.Description}}{{if .Notes}}<div class="equipment-note">{{.Notes}}</div>{{end}}</td>
+								<td class="center">{{.Quantity}}</td>
 								<td class="center">Other</td>
 								<td class="num">${{.ExtendedCost}}</td>
 								<td class="num">{{.ExtendedWeight}}</td>
@@ -1769,7 +1781,11 @@ GCS HTML Template v1
 			var meleeSource = document.querySelector('[data-overflow-source="melee"]');
 			var rangedSource = document.querySelector('[data-overflow-source="ranged"]');
 			var notesSource = document.querySelector('[data-overflow-source="notes"]');
+			var reactionsSource = document.querySelector('[data-overflow-source="reactions"]');
+			var conditionalModifiersSource = document.querySelector('[data-overflow-source="conditional-modifiers"]');
 
+			var reactions = extractTrailingRows(reactionsSource, ".reaction-list > li", reactionsSource).map(listRowToTableRow);
+			var conditionalModifiers = extractTrailingRows(conditionalModifiersSource, ".reaction-list > li", conditionalModifiersSource).map(listRowToTableRow);
 			var advantages = extractTrailingRows(advantagesSource, ".list-body > .list-row", advantagesSource).map(listRowToTableRow);
 			var disadvantages = extractTrailingRows(disadvantagesSource, ".list-body > .list-row", disadvantagesSource).map(listRowToTableRow);
 			var skills = extractTrailingRows(skillsSource, ".list-body > .list-row", skillsSource).map(listRowToTableRow);
@@ -1778,7 +1794,7 @@ GCS HTML Template v1
 			var gear = extractGearRows();
 			var notes = extractTrailingRows(notesSource, ".notes-area > .note-row", notesSource).map(noteRowToTableRow);
 
-			if (!(advantages.length || disadvantages.length || skills.length || melee.length || ranged.length || gear.length || notes.length)) return;
+			if (!(reactions.length || conditionalModifiers.length || advantages.length || disadvantages.length || skills.length || melee.length || ranged.length || gear.length || notes.length)) return;
 
 			var article = document.createElement("article");
 			article.className = "page overflow-page";
@@ -1795,6 +1811,12 @@ GCS HTML Template v1
 			header.appendChild(headerName);
 			article.appendChild(header);
 
+			appendIfPresent(article, "Reaction Modifiers", [
+				{text: "Modifier", className: "center"}, {text: "Situation"}
+			], reactions, "overflow-section-modifiers");
+			appendIfPresent(article, "Conditional Modifiers", [
+				{text: "Modifier", className: "center"}, {text: "Situation"}
+			], conditionalModifiers, "overflow-section-modifiers");
 			appendIfPresent(article, "Advantages and Perks", [
 				{text: "Trait"}, {text: "Pts", className: "pts"}
 			], advantages, "overflow-section-traits");
@@ -1811,7 +1833,7 @@ GCS HTML Template v1
 				{text: "Weapon"}, {text: "Damage"}, {text: "Acc", className: "center"}, {text: "Range"}, {text: "RoF", className: "center"}, {text: "Shots", className: "center"}, {text: "ST", className: "center"}, {text: "Bulk", className: "center"}, {text: "Rcl", className: "center"}, {text: "LC", className: "center"}, {text: "Notes"}
 			], ranged, "overflow-section-weapons");
 			appendIfPresent(article, "Armor and Possessions", [
-				{text: "Item"}, {text: "Location / State", className: "center"}, {text: "Cost", className: "num"}, {text: "Weight", className: "num"}
+				{text: "Item"}, {text: "Qty", className: "center"}, {text: "Location / State", className: "center"}, {text: "Cost", className: "num"}, {text: "Weight", className: "num"}
 			], gear, "overflow-section-gear");
 			appendIfPresent(article, "Character Notes", [
 				{text: "Note"}
