@@ -66,7 +66,7 @@ These practices help enforce rules without overwhelming players with confusing e
 
 ## Substitutions
 
-Templates can also include **substitution** using the **`@<comment>@`** format.
+Templates can also include [substitution **placeholders**](Substitutions) using the **`@Label@`** format.
 
 - When the template is applied, the comment becomes a prompt.
 - The answer replaces the placeholder wherever it appears (commonly in fields like skill specialization).
