@@ -54,8 +54,9 @@ You can manage modifiers directly in the Trait Detail Editor:
 - **Delete:** Select the modifier and choose **Delete** ![delete](images/icons/icn-delete.svg).
 
 > [!TIP]
-> Some modifiers include **placeholders** (for example, `@condition@`). You can set these when first adding the
-> modifier, or later with **Set Substitutions** ![substitutions](images/icons/icn-substitutions.svg) in the toolbar.
+> Some modifiers include [substitution **placeholders**](Substitutions) (for example, `@Condition@`). You can set these
+> when first adding the modifier, or later with **Set Substitutions**
+> ![substitutions](images/icons/icn-substitutions.svg) in the toolbar.
 
 ## Editing trait modifiers
 

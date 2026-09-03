@@ -69,6 +69,7 @@ If you can’t find what you’re looking for:
 
 - **Content Creation**
   - [Character Templates](Character%20Templates)
+  - [Substitutions](Substitutions)
   - [Custom Content](Custom%20Content)
   - [Trait Modifiers](Trait%20Modifiers)
   - [Equipment Modifiers](Equipment%20Modifiers)

@@ -66,9 +66,9 @@ These practices help enforce rules without overwhelming players with confusing e
 
 ## Substitutions
 
-Templates can also include **substitution** using the **`@<comment>@`** format.
+Templates can also include [substitution **placeholders**](Substitutions) using the **`@Label@`** format.
 
-- When the template is applied, the comment becomes a prompt.
+- When the template is applied, the label becomes a prompt.
 - The answer replaces the placeholder wherever it appears (commonly in fields like skill specialization).
 
 ## Modifiers in templates
@@ -78,7 +78,8 @@ When you add items to a template, modifier dialogs don’t trigger immediately. 
 - The item is added “as is.”
 - When the template is applied to a character, GCS then presents any modifier dialogs for you to choose from.
 - If you want to pre-select mods (for example, _this skill is always DX-based_), edit the item before saving the
-  template.
+  template and turn on **Preconfigured** in its editor so GCS doesn't ask again when the template is applied. See
+  [Substitutions](Substitutions) for details.
 
 ## Character template toolbar
 
