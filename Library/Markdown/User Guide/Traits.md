@@ -49,9 +49,9 @@ When you add a trait:
 - The **Points block** updates automatically:
   - Advantages subtract from unspent points.
   - Disadvantages (negative points) add to unspent points.
-- Some traits include **substitutions** (for example, `@details@`). You can set these when first adding the trait, or
-  later with **Set Substitutions** ![substitutions](images/icons/icn-substitutions.svg) in the toolbar or by editing the
-  notes directly in the **Trait Editor**.
+- Some traits include [substitution **placeholders**](Substitutions) (for example, `@details@`). You can set these when
+  first adding the trait, or later with **Set Substitutions** ![substitutions](images/icons/icn-substitutions.svg) in
+  the toolbar or by editing the notes directly in the **Trait Editor**.
 - Some traits support multiple **modifiers**. When you first add a trait that has modifiers, GCS prompts you to select
   them. You can select one, several, or none. If you skip this step, you can add or edit modifiers later in the **Trait
   Detail Editor**. See [Trait Modifiers](Trait%20Modifiers) for more details.
