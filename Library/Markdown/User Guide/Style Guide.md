@@ -11,20 +11,32 @@ Be aware of copyright restrictions in entering data to the library.  Game aid no
 # Spells
 
 # General template notes
+
+## General
 * Have all elements of the template contained within a suitably named container with a suitable page reference set.  Where containers are required for multiple areas (traits, skills, spells) ensure they all have page references and the same name.
-* Where there are a selection of traits, skills or spells place them into a container with instructions on what point value or count the user should select.  Can specify this in the "Template Choices" part of the container data.
-* Where a selection of advantages are offered with an instruction to choose a set number of points, set this as "Points / is at most".  Some traits have variable costs (for example "Ally") which show up in the template options as 0 points and so enforcing the final point value is the options is not possible.
-* Similarly where a selection of disadvantages are offered with an instruction to shoose a set number of (negative) points, set this as "Points / is at least".
+
+## Choices
+* Where there are a selection of traits, skills or spells place them into a New Trait/Skill/Spell/Equipment Choice with instructions on what point value or count the user should select.
+  - Trait/Skill/Spell/Equipment items within the choice can be organised and grouped together with Trait/Skill/Spell/Equipment Containers, if they have the "Picked as a Unit" checkbox unchecked.
+* Where a selection of advantages are offered with an instruction to choose a set number of points, set this as "Points / is".
+  - If the template includes options to spend leftover points on other skills or abilities, set this as "Points / is at most".
+* Similarly where a selection of disadvantages are offered with an instruction to shoose a set number of (negative) points, set this as "Points / is".
 * For skills, templates tend to have the instruction to choose a set number with each skill in the selection at the same point cost.  As such can set these to be "Count / is".
-* Where a skill option is to spend a certain number of points on another skill, this can be implemented with a dummy skill and pre-requisites.  Add a skill suitably named to tell the user how many points to spend, and on what set of skills.  Give this a point cost equal to the amount to be spent.  Add a pre-requisite that will always fail, such as the character doesn't have a skill with the name equal to the name of the dummy skill.  The result is that there will be a suitably costed point holder on the character sheet with a pre-requisite failed flag alerting the user to add the points to the relevant other skill and delete the dummy skill.
-* Can do similar where an option is to increase the level of an existing trait where you may not want to have multiple traits (for example Magery).  Add a dummy trait costed as the difference in cost for adding a level, named to instruct the user to increase the level on the other trait.  And finally add a pre-requisite that will always fail such as the character does not have a trait with the same name as the dummy trait.
-* Doing this for spells is a little more awkward, as pre-requisites work differently.  A similar structure can be followed with setting the pre-requisite to something which will always be failed, but without referencing the dummy spell name.  For example, requiring a spell with fictional name, or an absurd level in some trait or spell.
+
+## Adding extra levels
+* Where a skill option is to spend a certain number of points on another skill, this can be implemented by listing the skill again. When the template is added to the character sheet the skills will be automatically merged.
+* Automatic merging isn't enabled for traits, so a different approach must be taken to increase the level of an existing trait where you may not want to have multiple traits (for example Magery).  Add a dummy trait costed as the difference in cost for adding a level, named to instruct the user to increase the level on the other trait.  And finally add a pre-requisite that will always fail such as the character does not have a trait with the same name as the dummy trait.
+* Identical spells can merge in the same way that skills do when added to a character sheet, so additional levels to a spell can be achieved by listing the spell again.
+
+## Modifiers
+* Where the user should choose modifiers to a Trait/Equipment item, delete modifiers that shouldn't be chosen and use Modifier Choices to guide the user on what to do.
+* Template items should have the Preconfigured flag set if they have any `@Substitutions@` that are set, or any modifiers have been preselected (or none of the modifiers should be selected).
+  - Users can still be prompted to pick a modifier when it's Preconfigured, if they are inside a Modifier Choice container where a choice is Mandatory but none have been selected.
 
 # Racial templates
 * Have a trait container with type set to "Ancestry", with the page reference set.
 * If a suitable Ancestry option exists, select that in the Ancestry container drop down and this will ensure suitable random names, heights, weights, etc are used.
 * It is not necessary to have an "Attributes" container within the Ancestry one, as GCS will just add everything to the Ancestry points total
-* For traits with trait modifiers, consider removing any which definitely don't apply to the racial template.  As an example humanoid races with Increased ST would likely have the "No Fine Manipulators", "Size" and "Super-Effort" modifiers deleted from the Increased ST used in their template.  This means that users aren't presented with unneeded options.
 * It is not possible to enforce an Ancestry
 
 # Profession templates
