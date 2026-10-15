@@ -57,7 +57,8 @@ The filters are listed under their list type, with a summary of each filter's co
 
 ![The Saved Filters settings](images/screenshots/scrn-gcs-savedFilters.png)
 
-Select one or more filters, then use the toolbar. Right-click a filter for the same commands.
+Select one or more filters, then use the toolbar. Selecting a list type selects all of its filters. Right-click a
+filter for the same commands.
 
 - **New Filter** ![add](images/icons/icn-add.svg): Choose a list type, then build the filter in the editor.
 - **Edit Filter** ![edit](images/icons/icn-edit.svg): Open the selected filter in the editor. Double-clicking a filter
@@ -65,7 +66,7 @@ Select one or more filters, then use the toolbar. Right-click a filter for the s
 - **Duplicate** ![copy](images/icons/icn-copy.svg): Copy each selected filter. A copy is named after its source, such
   as _Social (2)_.
 - **Merge** ![merge](images/icons/icn-merge.svg): Combine two or more filters of the same list type into a new one.
-- **Delete** ![delete](images/icons/icn-delete.svg): Delete the selected filters.
+- **Delete** ![delete](images/icons/icn-delete.svg): Delete the selected filters. The Delete key does the same.
 
 Every change can be undone with **Edit > Undo**, including a change made from a list's saved filter dropdown while the
 Saved Filters settings are open.
