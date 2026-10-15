@@ -20,7 +20,7 @@ Each library list has a saved filter dropdown at the right end of its toolbar.
 
 While a filter is in use, a striped banner runs across the top of the list. Containers that hold a matching item stay
 visible, dimmed, so you can see where the item sits. The **Quick Filter** field and the **Any Tag** dropdown (see
-[Tags](../User%20Guide/Tags)) still work, and narrow the results further.
+[Tags](Tags)) still work, and narrow the results further.
 
 ![A list with a saved filter in use](images/screenshots/scrn-gcs-savedFiltersFiltered.png)
 
