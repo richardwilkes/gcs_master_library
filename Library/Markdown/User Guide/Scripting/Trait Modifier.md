@@ -11,6 +11,6 @@ This object represents a single Trait Modifier. Only active Trait Modifiers (whi
 | name       | string              | The name.                                                                        | GCS v5.41+   |
 | level      | number \| undefined | The level or undefined if it is not leveled.                                     | GCS v5.41+   |
 | notes      | string              | The notes.                                                                       | GCS v5.41+   |
-| tags       | string[]            | The associated tags.                                                             | GCS v5.41+   |
+| tags       | string[]            | The associated tags. Always an array, which is empty when there are none.        | GCS v5.41+   |
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)

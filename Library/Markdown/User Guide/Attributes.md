@@ -2,7 +2,7 @@
 
 The **Primary and Secondary Attribute blocks** track your character’s Basic Attributes ([B14](B14)) and Secondary
 Characteristics ([B15](B15)). These values form the foundation of your [character sheet](Character%20Sheet%20Overview)
-and affect many other parts of GCS, including [Traits](Traits), [Skills](Skills), and [Spells](Spells).
+and affect many other parts of GCS, including [Traits](Traits), [Skills](Skills), and [Spells](Spells).
 
 ## Primary attributes
 
@@ -19,6 +19,10 @@ As you change these values, GCS will:
 - Adjust related secondary attributes.
 - Apply defaults to [Traits](Traits), [Skills](Skills), and [Spells](Spells).
 
+> [!TIP]
+> Hover over an attribute's name or value to see where its bonuses come from. The tooltip lists each source and its
+> amount. Strength bonuses that apply only to striking, lifting, or throwing are listed separately.
+
 ## Secondary attributes
 
 Your **Secondary Attributes** are your secondary characteristics ([B15](B15)) that depend on your primary attributes.
@@ -29,44 +33,53 @@ To set your secondary attributes:
 
 ## Using attribute options from other games
 
-Some GURPS supplements and house rules use different attributes or point pools. GCS includes several of these options.
+Some GURPS supplements and house rules use different attributes or point pools. The Master Library includes several of
+these options in its `Settings/Attributes` folder.
 
 > [!TIP]
 > If you’re not using a supplement or house rule listed here, stick with the default GURPS attributes.
 
 To switch your attributes:
 
-1. On the character sheet toolbar, select **Attributes** ![attributes](images/icons/icn-attributes.svg).
-2. On the Attribute toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
-3. Choose an option from the table below.
+1. On the character sheet toolbar, select **Attributes** ![attributes](images/icons/icn-attributes.svg), or go to
+   **Sheet > Attributes**.
+2. On the Attributes toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
+3. Choose an option from the table below. They are listed under the **Master Library** heading.
 4. Choose whether to:
-   - **Replace** existing attributes with the new items, or
-   - **Merge** the selected attributes into existing ones.
+   - **Remove existing attribute definitions, replacing them with all of these**, or
+   - **Merge the checked attribute definitions into the existing ones**. Attributes that already exist keep their
+     place, and the rest are added after them.
 5. Select **Import**.
-6. On the Attribute toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
+6. On the Attributes toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
 | Attribute option                            | Notes                                                                                                                                                                    |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **After the End**                           | Adds Radiation Threshold Points (RP) ([ATE1:24](ATE1:24)).                                                                                                               |
 | **Fantastic Dungeon Grappling**             | Adds Control Maximum (CM) levels to Secondary Attributes.                                                                                                                |
-| **PY83 HT-based Per**                       | Perception based on HT instead of IQ ([PY83:21](PY83:21)).                                                                                                               |
-| **QN and HT-based Per**                     | Adds Quintessence (QN) and Quintessence Points (QP) ([PY120:21](PY120:21)); Perception based on HT ([PY83:21](PY83:21)).                                                 |
+| **Mad as Bones**                            | Adds the Sanity attributes used by _Mad as Bones_.                                                                                                                       |
+| **PY83 HT based PER**                       | Perception based on HT instead of IQ ([PY83:21](PY83:21)).                                                                                                               |
+| **QN and HT based PER**                     | Adds Quintessence (QN) and Quintessence Points (QP) ([PY120:21](PY120:21)); Perception based on HT ([PY83:21](PY83:21)).                                                 |
 | **Quintessence**                            | Adds Quintessence (QN) and Quintessence Points (QP) ([PY120:21](PY120:21)).                                                                                              |
 | **Separate Will and Per from IQ**           | Will and Perception become Primary Attributes, independent of IQ.                                                                                                        |
 | **Star Wars**                               | Adds Force Sight to Secondary Attributes.                                                                                                                                |
-| **Star Wars – with Energy Reserve (Force)** | Adds Force Sight to Secondary Attributes and Energy Reserve (Force) Points (ER).                                                                                         |
+| **Star Wars - with Energy Reserve (Force)** | Adds Force Sight to Secondary Attributes and Energy Reserve (Force) Points (ER).                                                                                         |
+| **Stress and Derangement**                  | Adds the Stress and Derangement pools ([H141](H141)).                                                                                                                    |
 | **Threshold Magic**                         | Adds Threshold and Recharge Rate (Primary Attributes), plus Excess Power Tally and Calamity Roll Bonus (Secondary Attributes), and Power Tally Points (PT) ([T76](T76)). |
 
 ## Importing and exporting attributes
 
 You can share custom attribute settings between characters or reuse them in different sheets by importing or exporting.
 
-To import or export an attribute:
+To import or export attributes:
 
-1. On the Attribute toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
+1. On the Attributes toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 2. Select one of the following:
-   - **Import:** Load a saved attributes into your sheet.
-   - **Export:** Save the current attributes as a file.
+   - **Import:** Load a saved set of attributes into your sheet, replacing or merging as described above.
+   - **Export:** Save the current attributes as a file.
+
+> [!TIP]
+> Save an exported `.attr` file in the `Settings` folder of your User Library and it appears in the menu alongside the
+> Master Library's options.
 
 ## Editing attributes
 
@@ -80,22 +93,26 @@ To edit or add attributes:
 1. On the character sheet toolbar, select **Attributes** ![attributes](images/icons/icn-attributes.svg).
 2. On the editor, do one of the following:
    - **Edit** an existing attribute.
-   - Select **Add** ![add](images/icons/icn-add.svg) to add a new attribute.
+   - Select **Add Attribute** ![add](images/icons/icn-add.svg) on the toolbar to add a new attribute.
 3. Enter values in the form using the fields below.
-4. On the Attribute toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
+4. On the Attributes toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
+
+Every change can be undone with **Edit > Undo** while the view is open.
 
 ### Attribute fields
 
-| Field              | Description                                                                                                                                                                                                                                 |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **ID**             | Unique variable name used for references.                                                                                                                                                                                                   |
-| **Attribute type** | Choose from integer, decimal, point pool, or separator. “Display only” creates a read-only field. Anything below a separator can be collapsed/expanded.                                                                                     |
-| **Placement**      | Where the attribute appears on the character sheet. You can also set it to hidden. If **Automatic** is selected, the attribute appears in the Primary or Secondary block depending on whether its base value is a Primary attribute or not. |
-| **Short name**     | The label shown on the character sheet.                                                                                                                                                                                                     |
-| **Full name**      | Optional. If entered, displays before the short name.                                                                                                                                                                                       |
-| **Base value**     | Starting value for the attribute. Supports scripting and attribute IDs (for example, `Math.floor($basic_speed)`). See [Scripting Guide](Scripting%20Guide).                                                                                 |
-| **Cost per point** | Point cost for each level.                                                                                                                                                                                                                  |
-| **SM reduction**   | Size modifier reduction percentage.                                                                                                                                                                                                         |
+| Field              | Description                                                                                                                                                                                                                                                                                                              |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **ID**             | Unique variable name used for references, in lowercase.                                                                                                                                                                                                                                                                  |
+| **Attribute Type** | Choose from **Integer**, **Decimal**, **Pool**, or a **Separator**. The “Display Only” variants create a read-only field, and **Pool (Display Only for Maximum)** lets you track the current value of a pool whose maximum is calculated. Anything below a separator can be collapsed or expanded on the sheet.            |
+| **Placement**      | Where the attribute appears on the character sheet: **Automatic**, **Primary**, **Secondary**, or **Hidden**. With **Automatic**, the attribute appears in the Primary or Secondary block depending on whether its base value is a primary attribute. Pools are always placed automatically, in the Point Pools block.   |
+| **Trait Name**     | Shown when the placement is **Hidden**. Enter the name of a trait that, when present on the character, reveals the attribute with the **Placement When Present** you choose. Leave it empty to always keep the attribute hidden.                                                                                        |
+| **Short Name**     | The label shown on the character sheet.                                                                                                                                                                                                                                                                                  |
+| **Full Name**      | Optional. If entered, displays after the short name.                                                                                                                                                                                                                                                                     |
+| **Base Value**     | Starting value for the attribute. Supports scripting and attribute IDs (for example, `Math.floor($basic_speed)`). See [Scripting Guide](Scripting%20Guide).                                                                                                                                                              |
+| **Cost per Point** | Point cost for each point above or below the base value.                                                                                                                                                                                                                                                                 |
+| **SM Reduction**   | The reduction in cost for each SM greater than 0, as a percentage.                                                                                                                                                                                                                                                       |
+| **Name**           | Separators only. The title shown on the separator.                                                                                                                                                                                                                                                                       |
 
 ### Point pools
 
@@ -103,11 +120,12 @@ See [Point pools](Point%20pools) for details on customizing your pools.
 
 ## Managing attributes
 
-- **Discard changes:** Select **Discard changes** ![discard changes](images/icons/icn-discardChanges.svg).
-- **Delete an attribute:** Select **Delete** ![delete](images/icons/icn-delete.svg).
+- **Discard changes:** Select **Discard Changes** ![discard changes](images/icons/icn-discardChanges.svg).
+- **Delete an attribute:** Select **Delete** ![delete](images/icons/icn-delete.svg) beside it. The last attribute can't
+  be deleted.
 - **Reorder attributes:** Drag an attribute using its grip ![grip](images/icons/icn-grip.svg).
-- **Reset attributes to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg) to restore your attributes to
-  the default settings.
+- **Reset attributes to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg) to restore the sheet's
+  attributes to the current [Default Attributes](Default%20Settings).
 
 ## Default attributes
 

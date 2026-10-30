@@ -2,7 +2,7 @@
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)
 
-This object represents a single Trait or Trait container.
+This object represents a single Trait or Trait container. Disabled traits are never visible to scripts.
 
 The **For** column indicates whether the property or method is defined for a container (C), a leaf (L), or both.
 
@@ -12,18 +12,18 @@ The **For** column indicates whether the property or method is defined for a con
 | CL  | parentID              | string \| undefined | The parent's object ID or undefined if there isn't one.                                                                                                                                            | GCS v5.36+   |
 | CL  | parent                | object \| undefined | The parent Trait or undefined if there isn't one.                                                                                                                                                  | GCS v5.41+   |
 | CL  | name                  | string              | The name.                                                                                                                                                                                          | GCS v5.36+   |
-| CL  | points                | number              | The total adjusted point value, including base points, level, modifiers, and child cost reductions.                                                                                                | GCS v5.44+   |
+| CL  | points                | number              | The total adjusted point value, including base points, level, modifiers, and child cost reductions. 0 for a trait put on the sheet by a grant.                                                     | GCS v5.44+   |
 | CL  | selfControl           | number              | The self-control roll (CR) number, or 0 if there is no roll.                                                                                                                                       | GCS v5.45+   |
 | CL  | selfControlAdjustment | string              | The self-control adjustment key, one of **none, action_penalty, reaction_penalty, fright_check_penalty, fright_check_bonus, minor_cost_of_living_increase,** or **major_cost_of_living_increase.** | GCS v5.45+   |
 | CL  | frequency             | number              | The frequency of appearance (FR) roll number, or 0 if there is no roll. Reflects any override applied.                                                                                             | GCS v5.45+   |
 |  L  | level                 | number \| undefined | The level of the Trait or undefined if it is not leveled.                                                                                                                                          | GCS v5.41+   |
 |  L  | weapons               | object[]            | Returns a list of [Weapons](Weapon) attached to this Trait.                                                                                                                                        | GCS v5.41+   |
 | CL  | notes                 | string              | The notes.                                                                                                                                                                                         | GCS v5.39+   |
-| CL  | tags                  | string[]            | The associated tags.                                                                                                                                                                               | GCS v5.36+   |
+| CL  | tags                  | string[]            | The associated tags. Always an array, which is empty when there are none.                                                                                                                          | GCS v5.36+   |
 | CL  | container             | boolean             | True if this is a container.                                                                                                                                                                       | GCS v5.36+   |
 | CL  | switchedOn            | boolean             | True if the switch controlling any switchable features of this Trait (or its modifiers) is on.                                                                                                     | GCS v5.47+   |
 |  C  | kind                  | string              | The kind of container, one of **group, alternative abilities, ancestry, attributes,** or **meta trait.**                                                                                           | GCS v5.36+   |
-|  C  | children              | object[]            | The contained child Traits.                                                                                                                                                                        | GCS v5.36+   |
+|  C  | children              | object[]            | The contained, enabled child Traits.                                                                                                                                                               | GCS v5.36+   |
 | CL  | activeModifiers       | object[]            | Returns a flattened list of _active_ [Trait Modifiers](Trait%20Modifier) attached to this Trait.                                                                                                   | GCS v5.41+   |
 
 | For | Method             | Arguments                                   | Result Type    | Result                                                                                                                                                                                                          | Availability |

@@ -1,22 +1,23 @@
 # Melee and Ranged Weapons
 
-The **Melee Weapon list** and **Ranged Weapon list** on your [character sheet](Character%20Sheet%20Overview) show all of
-your character’s weapons ([B268–B276](B268–B276)), their usage statistics, and related notes.
+The **Melee Attacks list** and **Ranged Attacks list** on your [character sheet](Character%20Sheet%20Overview) show all
+of your character’s attacks ([B268–B276](B268)), their usage statistics, and related notes. GCS calls each entry an
+**attack**, since one weapon can be used several ways.
 
 These lists include:
 
 - **Natural attacks** (bite, kick, punch).
 - **Weapons** from [Equipment](Equipment).
-- **Melee and missile spells** from [Spells](Spells).
+- **Innate attacks** from [Traits](Traits), **techniques** from [Skills](Skills), and **melee and missile spells** from
+  [Spells](Spells).
 
-Weapons are added through the **Equipment list**. An item with a **Melee** or **Ranged Weapon Usage** automatically
-appears in the appropriate weapon list. To change or delete a weapon, edit or remove the item from the **Equipment
-list**.
+Attacks belong to the item that provides them. An item with a **Melee Attack Usage** or **Ranged Attack Usage**
+automatically appears in the appropriate list. To change or delete an attack, edit the item it belongs to.
 
 > [!NOTE]
-> Normally, only **carried** _and_ **equipped** weapons appear here. If you enable **Show all weapons** in [Sheet
-> Settings](Sheet%20Settings), GCS will also display weapons from items that are _not_ carried or equipped. These are
-> clearly marked as `(not carried)` or `(not equipped)`, as appropriate.
+> Normally, only attacks from **carried** _and_ **equipped** items appear here. If you enable **Show all attacks** in
+> [Sheet Settings](Sheet%20Settings), GCS will also display attacks from items that are _not_ carried or equipped.
+> These are clearly marked as `(not carried)` or `(not equipped)`, as appropriate.
 
 ## Master Library
 
@@ -25,163 +26,150 @@ details.
 
 You can also create your own custom weapons.
 
-## Melee Weapon list
+## Melee Attacks list
 
-The **Melee Weapon list** on your character sheet includes the following columns. Select a column heading to sort
+The **Melee Attacks list** on your character sheet includes the following columns. Select a column heading to sort
 ascending ![sort ascending](images/icons/icn-sortAscending.svg) or descending ![sort
 descending](images/icons/icn-sortDescending.svg).
 
-| Column           | Description                                                           |
-|------------------|-----------------------------------------------------------------------|
-| **Melee Weapon** | The item's name (from equipment).                                     |
-| **Usage**        | Name for the entry. A weapon can have multiple usages.                |
-| **SL**           | The calculated skill level with the weapon.                           |
-| **Parry**        | Bonus or penalty to Parry ([B269](B269)).                             |
-| **Block**        | Bonus or penalty to Block ([B327](B327)).                             |
-| **Damage**       | Damage done by the weapon ([B268](B268)).                             |
-| **Reach**        | The weapon’s reach in combat ([B269](B269)).                          |
-| **ST**           | Minimum Strength needed to use the weapon effectively ([B270](B270)). |
+| Column           | Description                                                                                |
+|------------------|--------------------------------------------------------------------------------------------|
+| **Melee Attack** | The name of the item the attack belongs to.                                                |
+| **Usage**        | Name for the entry. A weapon can have multiple usages.                                     |
+| **SL**           | The calculated skill level with the attack. Hover over it to see how it was worked out.    |
+| **Parry**        | The Parry score with this weapon ([B269](B269)), or **No** if it can't parry.              |
+| **Block**        | The Block score with this weapon ([B327](B327)), or **No** if it can't block.              |
+| **Damage**       | Damage done by the attack ([B268](B268)), with any bonuses applied.                        |
+| **Reach**        | The weapon’s reach in combat ([B269](B269)).                                               |
+| **ST**           | Minimum Strength needed to use the weapon effectively ([B270](B270)).                      |
 
-## Ranged Weapon list
+## Ranged Attacks list
 
-The **Ranged Weapon list** on your character sheet includes the following columns. Select a column heading to sort
+The **Ranged Attacks list** on your character sheet includes the following columns. Select a column heading to sort
 ascending ![sort ascending](images/icons/icn-sortAscending.svg) or descending ![sort
 descending](images/icons/icn-sortDescending.svg).
 
 | Column            | Description                                                            |
 |-------------------|------------------------------------------------------------------------|
-| **Ranged Weapon** | The item's name (from equipment).                                      |
+| **Ranged Attack** | The name of the item the attack belongs to.                            |
 | **Usage**         | Name for the entry. A weapon can have multiple usages.                 |
-| **SL**            | The calculated skill level with the weapon.                            |
+| **SL**            | The calculated skill level with the attack.                            |
 | **Acc**           | Accuracy bonus from aiming ([B269](B269)).                             |
-| **Damage**        | Damage done by the weapon ([B268](B268)).                              |
-| **Range**         | Maximum and half-damage range ([B269](B269)).                          |
+| **Damage**        | Damage done by the attack ([B268](B268)).                              |
+| **Range**         | Half-damage and maximum range ([B269](B269)).                          |
 | **RoF**           | Rate of Fire (how many shots per attack) ([B270](B270)).               |
 | **Shots**         | The number of shots a weapon can fire before reloading ([B270](B270)). |
 | **Bulk**          | The weapon’s size and handiness ([B270](B270)).                        |
 | **Recoil**        | How easy the weapon is to fire ([B271](B271)).                         |
 | **ST**            | Minimum Strength needed to use the weapon effectively ([B270](B270)).  |
 
-## Adding weapons
+> [!TIP]
+> Turn on **Hide unused columns in the melee & ranged attack tables** in [Sheet Settings](Sheet%20Settings) to leave
+> out columns that are empty for every attack, such as Recoil for a character with no firearms.
 
-Weapons are not created directly in the Melee or Ranged Weapon lists. Instead:
+## Adding attacks
 
-- Add a weapon the same way you add [Equipment](Equipment) or [Spells](Spells).
-- If the item has **Melee Weapon Usage** or **Ranged Weapon Usage** fields filled out in the Detail Editor, it
-  automatically appears in the appropriate weapon list.
+Attacks are not created directly in the Melee or Ranged Attacks lists. Instead:
+
+- Add a weapon the same way you add [Equipment](Equipment), [Traits](Traits), [Skills](Skills), or [Spells](Spells).
+- If the item has **Melee Attack Usage** or **Ranged Attack Usage** entries in its editor, it automatically appears in
+  the appropriate list.
 
 Some weapons can have **multiple usages**. For example, a spear may have a **thrust impaling** attack and a **swing
 cutting** attack, which appear as separate rows.
 
 To add natural attacks (bite, kick, and punch):
 
-- Go to **Item > Add Natural Attacks**. This adds all three automatically.
+- Go to **Sheet > Add Natural Attacks**. This adds a _Natural Attacks_ trait with all three. New sheets get it
+  automatically unless you turn off **Add natural attacks** in [General Settings](General%20Settings).
 
-## Managing and editing weapons
+## Managing and editing attacks
 
-You manage and edit melee or ranged weapons the same way you edit [Equipment](Equipment).
+You manage and edit attacks through the item they belong to.
 
-Weapon stats are controlled by the **Melee Weapon Usage** and **Ranged Weapon Usage** fields in the **Equipment Detail
-Editor**. For [Spells](Spells), these fields are available in the **Spell Detail Editor**.
+To edit an attack’s details:
 
-To edit a weapon’s details:
+1. Open the editor of the item that provides it (double-click the item in its list on the sheet).
+2. In the **Melee Attack Usage** or **Ranged Attack Usage** table, double-click the attack to open the **Melee Attack
+   Editor** or **Ranged Attack Editor**.
+3. Make your changes and select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) in the attack
+   editor, then again in the item's editor.
 
-- Open the weapon’s source item from the **Equipment list**, then edit its **Weapon Usage fields**.
+To add a new attack to an item, open the item's editor and go to **Insert > New Melee Attack** (`Ctrl+Shift+M` /
+`Cmd+Shift+M`) or **Insert > New Ranged Attack** (`Ctrl+Shift+R` / `Cmd+Shift+R`), or right-click the attack table and
+choose the same command. To hide an attack from the sheet without deleting it, check **Hide** in the table or select
+the attack and use **Item > Toggle State**.
 
 > [!NOTE]
-> A weapon must have at least one **default skill** (e.g., Broadsword, Spear) to calculate its skill level. See
-> [Defaults](Defaults).
+> An attack must have at least one **default skill** (e.g., Broadsword, Spear) to calculate its skill level. See
+> [Defaults](Defaults). Hover over the attack's **SL** on the sheet to see which skill it used and what adjusted it.
 
-## Melee Weapon Usage fields
+## Melee Attack Editor fields
 
-The Melee Weapon Detail Editor includes the following fields:
+The Melee Attack Editor includes the following fields:
 
-| Field                    | Description                                                                           |
-|--------------------------|---------------------------------------------------------------------------------------|
-| **Hide**                 | If checked, hides the weapon stat from the melee weapon list on your character sheet. |
-| **Usage**                | Name for the entry. A weapon can have multiple usages.                                |
-| **Notes**                | Notes that appear with the weapon entry. Supports [Markdown](Markdown%20Guide).       |
-| **Parry**                | Parry bonus or penalty ([B269](B269)).                                                |
-| **Fencing**              | Uses fencing parry rules ([B296](B296)).                                              |
-| **Unbalanced**           | Weapon can’t attack and parry on the same turn ([B269](B269)).                        |
-| **Block**                | Bonus or penalty to Block ([B327](B327)).                                             |
-| **Damage**               | Damage done by the weapon ([B268](B268)), usually _thrust_ or _swing_.                |
-| **Leveled**              | Adjusts damage by level.                                                              |
-| **Multiply ST**          | Changes how Strength modifies damage.                                                 |
-| **Unaffected by level**  | Ignores level-based modifiers.                                                        |
-| **Per level**            | Damage adjustment per level.                                                          |
-| **Per die**              | Damage adjustment per die.                                                            |
-| **Armor Divisor**        | Adjusts how good the attack is at penetrating DR ([B278](B278)).                      |
-| **Type**                 | The type of injury or effect of the attack (cut, imp, cr, etc.) ([B268](B268)).       |
-| **Fragmentation**        | Special rules for explosive damage ([B414](B414)).                                    |
-| **Reach**                | Reach values for the weapon ([B269](B269)).                                           |
-| **Minimum**              | Minimum reach.                                                                        |
-| **Close Combat**         | Allows use in close combat ([B391](B391)).                                            |
-| **Reach Change Ready**   | Reach changes require a Ready maneuver ([B366](B366)).                                |
-| **Minimum ST**           | Minimum Strength needed to use the weapon ([B270](B270)).                             |
-| **Two-handed**           | Requires two hands ([B270](B270)).                                                    |
-| **Two-handed & unready** | Takes a Ready maneuver when switching grips ([B270](B270)).                           |
-| **Defaults**             | Lists default skills for this weapon ([B271](B271)). See [Defaults](Defaults).        |
+| Field                           | Description                                                                                                                                                                                      |
+|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Hide**                        | If checked, hides the attack from the Melee Attacks list on your character sheet.                                                                                                                |
+| **Usage**                       | Name for the entry. A weapon can have multiple usages.                                                                                                                                           |
+| **Notes**                       | Notes that appear with the attack entry. Supports [Markdown](Markdown%20Guide) and scripts.                                                                                                      |
+| **Parry**                       | If checked, the weapon can parry. Enter the parry modifier ([B269](B269)) beside it.                                                                                                             |
+| **Fencing**                     | Uses fencing parry rules ([B404](B404)).                                                                                                                                                         |
+| **Unbalanced**                  | Weapon can’t attack and parry on the same turn ([B269](B269)).                                                                                                                                   |
+| **Block**                       | If checked, the weapon can block. Enter the block modifier ([B327](B327)) beside it.                                                                                                             |
+| **Damage**                      | The strength basis of the damage (**thr** or **sw**, including lifting, telekinetic, and IQ-based variants, or **None** for fixed damage) ([B268](B268)). Check **Leveled** to multiply it by the item's level. |
+| **Multiply ST used for sw or thr damage calculation by** | Changes how Strength modifies damage.                                                                                                                                                   |
+| **Non-leveled damage modifier** | Dice or a number added to the damage, unaffected by levels. May be a script.                                                                                                                     |
+| **Leveled damage modifier**     | Dice or a number added to the damage per level of the item.                                                                                                                                      |
+| **Damage modifier per die**     | A modifier applied to each die of damage.                                                                                                                                                        |
+| **Armor Divisor**               | Adjusts how good the attack is at penetrating DR ([B378](B378)).                                                                                                                                 |
+| **Type**                        | The type of injury or effect of the attack (cut, imp, cr, etc.) ([B268](B268)).                                                                                                                  |
+| **Fragmentation**               | Fragmentation damage ([B414](B414)): the dice, their armor divisor, and their type. The divisor and type are disabled until dice are entered.                                                     |
+| **Reach**                       | The maximum reach of the weapon ([B269](B269)), with the **Minimum** reach beside it.                                                                                                            |
+| **Close Combat**                | Allows use in close combat ([B391](B391)).                                                                                                                                                       |
+| **Reach Change Requires Ready** | Changing reach requires a Ready maneuver ([B366](B366)).                                                                                                                                         |
+| **Minimum ST**                  | Minimum Strength needed to use the weapon ([B270](B270)).                                                                                                                                        |
+| **Two-handed**                  | Requires two hands ([B270](B270)).                                                                                                                                                               |
+| **Two-handed & unready**        | Requires two hands and becomes unready after each attack ([B270](B270)).                                                                                                                         |
+| **Defaults**                    | Lists default skills for this attack ([B271](B271)). See [Defaults](Defaults).                                                                                                                   |
 
-## Ranged Weapon Usage fields
+## Ranged Attack Editor fields
 
-The Ranged Weapon Detail Editor includes the following fields:
+The Ranged Attack Editor includes the following fields:
 
-| Field                             | Description                                                                            |
-|-----------------------------------|----------------------------------------------------------------------------------------|
-| **Hide**                          | If checked, hides the weapon stat from the ranged weapon list on your character sheet. |
-| **Usage**                         | Name for the entry. A weapon can have multiple usages.                                 |
-| **Notes**                         | Notes that appear with the weapon entry. Supports [Markdown](Markdown%20Guide).        |
-| **Accuracy**                      | Base accuracy bonus ([B269](B269)).                                                    |
-| **Scope**                         | Adds scope bonus to accuracy ([B269](B269) or [HT155](HT155)).                         |
-| **Jet**                           | Attack is treated as a jet (continuous stream) ([B106](B106)).                         |
-| **Damage**                        | Damage done by the weapon ([B268](B268)), usually _thrust_ or _swing_.                 |
-| **Leveled**                       | Adjusts damage by level.                                                               |
-| **Multiply ST**                   | Changes how Strength modifies damage.                                                  |
-| **Unaffected by level**           | Ignores level-based modifiers.                                                         |
-| **Per level**                     | Damage adjustment per level.                                                           |
-| **Per die**                       | Damage adjustment per die.                                                             |
-| **Armor Divisor**                 | Adjusts how good the attack is at penetrating DR ([B278](B278)).                       |
-| **Type**                          | The type of injury or effect of the attack (cut, imp, cr, etc.) ([B268](B268)).        |
-| **Fragmentation**                 | Special rules for explosive damage ([B414](B414)).                                     |
-| **Range**                         | Maximum range values ([B269](B269)).                                                   |
-| **½D Range**                      | Half-damage range ([B269](B269)).                                                      |
-| **Minimum Range**                 | Minimum range ([B269](B269)).                                                          |
-| **Muscle-powered**                | Weapon damage is powered by muscle ([B269](B269)).                                     |
-| **Ranges are in miles**           | Range is measured in miles instead of yards.                                           |
-| **Rate of Fire Mode 1**           | Shots per attack and secondary projectiles ([B373](B373))                              |
-| **Fully Automatic Only**          | Weapon fires only in automatic mode ([B408](B408)).                                    |
-| **High-cyclic Controlled Bursts** | Allows controlled bursts at high RoF ([HT83](HT83)).                                   |
-| **Rate of Fire Mode 2**           | Shots per attack and secondary projectiles ([B373](B373))                              |
-| **Shots**                         | Number of shots before reloading ([B270](B270)).                                       |
-| **In Chamber**                    | Number of shots ready to fire ([B270](B270)).                                          |
-| **Duration**                      | Time the weapon fires continuously.                                                    |
-| **Reload Time**                   | Time to reload ([B270](B270)).                                                         |
-| **Per Shot**                      | Reload time applies per shot.                                                          |
-| **Thrown Weapon**                 | Marks the weapon as thrown ([B270](B270)).                                             |
-| **Bulk**                          | Size and handling penalty ([B270](B270)).                                              |
-| **For Giants**                    | Special handling for giant-sized body type.                                            |
-| **Retracting Stock**              | Weapon has a retracting stock.                                                         |
-| **Recoil**                        | Minimum margin of success needed for extra hits ([B271](B271)).                        |
-| **For Slugs**                     | Used for slug ammunition.                                                              |
-| **Minimum ST**                    | Minimum Strength needed to use the weapon ([B270](B270)).                              |
-| **Two-handed**                    | Requires two hands ([B270](B270)).                                                     |
-| **Two-handed & unready**          | Takes a Ready maneuver when switching grips ([B270](B270)).                            |
-| **Has bipod**                     | Weapon includes a bipod ([B412](B412)).                                                |
-| **Mounted**                       | Weapon must be mounted ([B412](B412)).                                                 |
-| **Uses a musket rest**            | Weapon requires a musket rest ([B412](B412)).                                          |
-| **Defaults**                      | Lists default skills for this weapon ([B275](B275)). See [Defaults](Defaults).         |
+| Field                             | Description                                                                                                                                                                                      |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Hide**                          | If checked, hides the attack from the Ranged Attacks list on your character sheet.                                                                                                               |
+| **Usage**                         | Name for the entry. A weapon can have multiple usages.                                                                                                                                           |
+| **Notes**                         | Notes that appear with the attack entry. Supports [Markdown](Markdown%20Guide) and scripts.                                                                                                      |
+| **Accuracy**                      | Base accuracy bonus ([B269](B269)), with the **Scope** bonus beside it ([HT155](HT155)).                                                                                                          |
+| **Jet**                           | Attack is treated as a jet (continuous stream) ([B106](B106)). Accuracy and rate of fire don't apply.                                                                                            |
+| **Damage**                        | The same damage fields as a melee attack: strength basis, **Leveled**, ST multiplier, damage modifiers, armor divisor, type, and fragmentation.                                                  |
+| **Range**                         | The maximum range ([B269](B269)), with the **½ Damage** range and **Minimum** range beside it.                                                                                                   |
+| **Muscle-powered**                | The ranges are multiplied by the user's ST ([B269](B269)).                                                                                                                                       |
+| **Ranges are in miles**           | Range is measured in miles instead of yards.                                                                                                                                                     |
+| **Rate of Fire**                  | For each of **Mode 1** and **Mode 2**: shots per attack and secondary projectiles ([B373](B373)), with **Fully Automatic Only** ([B408](B408)) and **High-cyclic Controlled Bursts** ([HT83](HT83)) options. |
+| **Shots**                         | Number of shots before reloading ([B270](B270)), with the shots **In Chamber**, the **Duration** of a continuous attack, the **Reload Time**, whether reloading is **Per Shot**, and whether it is a **Thrown Weapon**. |
+| **Bulk**                          | Size and handling penalty ([B270](B270)), with the bulk **For Giants** and whether the weapon has a **Retracting Stock**.                                                                         |
+| **Recoil**                        | Minimum margin of success needed for extra hits ([B271](B271)), with the recoil **For Slugs**.                                                                                                   |
+| **Minimum ST**                    | Minimum Strength needed to use the weapon ([B270](B270)), with **Two-handed**, **Two-handed & unready**, **Has bipod**, **Mounted**, and **Uses a musket rest** ([B412](B412)).                  |
+| **Defaults**                      | Lists default skills for this attack ([B275](B275)). See [Defaults](Defaults).                                                                                                                   |
 
-## Weapon Usage toolbar
+> [!TIP]
+> Damage fields accept dice such as `1d+2` or `2d-1x3`, and the other numeric fields accept a number. A field can also
+> hold a script that works out the value. See the [Scripting Guide](Scripting%20Guide). [Features](Features) on
+> traits, skills, and equipment can adjust any of these stats, and **Sets the value of** can replace one outright.
 
-The toolbar above the Weapon Editor gives you quick access to common actions:
+## Attack Editor toolbar
 
-| Button                                                  | Name                | Description                                    |
-|:--------------------------------------------------------|---------------------|------------------------------------------------|
-| ![help](images/icons/icn-help.svg)                      | **Help**            | Opens the help page from the User Guide.       |
-| 100%                                                    | **Zoom**            | Adjusts the display size of the Weapon Editor. |
-| ![apply changes](images/icons/icn-applyChanges.svg)     | **Apply Changes**   | Saves and closes the Weapon Editor.            |
-| ![discard changes](images/icons/icn-discardChanges.svg) | **Discard Changes** | Exits without saving changes.                  |
+The toolbar above the attack editor gives you quick access to common actions:
+
+| Button                                                  | Name                | Description                                                     |
+|:--------------------------------------------------------|---------------------|-----------------------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                      | **Help**            | Opens this page from the User Guide.                            |
+| 100%                                                    | **Scale**           | Adjusts the display size of the attack editor.                  |
+| ![apply changes](images/icons/icn-applyChanges.svg)     | **Apply Changes**   | Saves and closes the attack editor (`Ctrl+Return` / `Cmd+Return`). |
+| ![discard changes](images/icons/icn-discardChanges.svg) | **Discard Changes** | Exits without saving changes (`Escape`).                        |
 
 ---
 

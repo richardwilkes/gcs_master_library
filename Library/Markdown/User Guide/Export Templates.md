@@ -10,17 +10,27 @@ old (and now deprecated) method used in previous releases:
 
 The first line of the file is used to determine the type of processing to perform on it. When the first line is "GCS
 Text Template v1", without the surrounding quotes, and nothing else, the text templating facilities will be used. If,
-instead, the first line is "GCS HTML Template v1", the HTML templating facilities will be used. If neither of those is
-found, GCS will assume it is an old format pre-dating this change and use that processor instead. In a future release
-(most likely sometime in 2024 or later), that old processor will be removed and those old templates will no longer give
-the desired results.
+instead, the first line is "GCS HTML Template v1", the HTML templating facilities will be used. The line must match
+exactly: leading or trailing spaces, or a byte order mark, keep it from being recognized. If neither of those is found,
+GCS will assume it is an old format pre-dating this change and use the legacy processor instead. That processor is
+still present, but it isn't documented here and won't gain the newer data, so new templates should use one of the two
+formats above.
 
-Both of these new formats are based on the Go language's templating facilities. Details about GCS-specific functionality
+Both of these formats are based on the Go language's templating facilities. Details about GCS-specific functionality
 is provided below and much more detail about Go's templating facilities and how they work can be found on
 the <https://go.dev> site. Specifically, <https://pkg.go.dev/text/template> for the text template
 and <https://pkg.go.dev/html/template> for the HTML template.
 
-When the template is called, it will be given a `Sheet` value (the various data types are described below).
+Templates live in the `Output Templates` folder of a library. Those found in your libraries are listed under
+**File > Export** when a character sheet is active, under the name of the library they came from, and the Master
+Library's own templates (Fantasy Grounds, HTML, Text, and Obsidian Markdown) show how the data below is used. The
+exported file takes the template's extension. The same export can be run from the command line with
+`gcs -text <template> <sheet>…`, which writes the output beside each sheet.
+
+When the template is called, it will be given a `Sheet` value (the various data types are described below). Disabled
+traits, skills, spells, and equipment aren't included, and items put on the sheet by a grant report 0 points.
+Multi-line text, such as notes, uses plain line breaks; an HTML template should pass it through `htmlLines` to turn
+them into `<br>` tags.
 
 There are a number of top-level, GCS-specific, functions that have been made accessible within a template. These are
 divided into two general categories, those that manipulate GCS's internal fixed-point numbers (`Number`) and those that
@@ -49,12 +59,16 @@ manipulate strings.
 - `hasSuffix` — Returns true if `str` ends with `suffix`
   - Parameter: `str` (string)
   - Parameter: `suffix` (string)
+- `htmlLines` — Returns `text` with its HTML special characters escaped and each line break turned into a `<br>` tag,
+  marked as safe HTML so the HTML template doesn't escape it again. Use it for multi-line fields such as `.Notes` and
+  `.ModifierNotes` in an HTML template. Added in GCS v5.45.
+  - Parameter: `text` (string)
 - `indexStr` — Returns an index into `str` where `substr` starts, or -1 if `substr` isn't contained in `str`.<br>
   *NOTE: This was named `index` prior to GCS v5.33, but was renamed due to conflicts with built-in functions that Go
   supplies.*
   - Parameter: `str` (string)
   - Parameter: `substr` (string)
-- `join` — Returns a new string by concatenating the elements of `elems` to create a single string, placing `substr`
+- `join` — Returns a new string by concatenating the elements of `elems` to create a single string, placing `sep`
   between each element in the resulting string
   - Parameter: `elems`, ([]string)
   - Parameter: `sep` (string)
@@ -140,6 +154,10 @@ The remainder of this document details the various data types that the data is m
 - `.Situation` (string)
 - `.Sources` ([]Source)
 - `.Total` (Number)
+- Added in GCS v5.52:
+  - `.Group` (string) — The group the modifier was given, or an empty string. The `.Reactions` and
+    `.ConditionalModifiers` lists are flat: group containers aren't listed, and each modifier names its group here
+    instead.
 
 ## Encumbrance
 
@@ -173,7 +191,7 @@ The remainder of this document details the various data types that the data is m
 - `.Quantity` (Number)
 - `.Tags` ([]string)
 - `.TechLevel` (string)
-- `.Type` (string)
+- `.Type` (string) — `item`, `container` or `group`. Prior to GCS v5.52, every container was `group`.
 - `.UnsatisfiedReason` (string)
 - `.Uses` (int)
 - `.Weight` (string)
@@ -244,7 +262,7 @@ The remainder of this document details the various data types that the data is m
 - `.ID` (string)
 - `.PageRef` (string)
 - `.ParentID` (string)
-- `.Type` (string)
+- `.Type` (string) — `item` or `group`
 - Added in GCS v5.43:
   - `.Tags` ([]string)
 
@@ -260,7 +278,7 @@ numbers.
   - Parameter: `value` (Number)
 - `.Ceil` — Returns the value rounded up to the nearest whole number
 - `.Comma` — Returns the string representation of this value, but with commas for values of 1000 and greater
-- `.CommaWithSign` — Same as `.Comma`, but prefixes the value with a '+' if it is positive
+- `.CommaWithSign` — Same as `.Comma`, but prefixes the value with a '+' if it is not negative
 - `.Dec` — Returns the value decremented by 1
 - `.Div` — Returns the result of dividing this number by `value`
   - Parameter: `value` (Number)
@@ -276,9 +294,10 @@ numbers.
   - Parameter: `value` (Number)
 - `.Round` — Returns the nearest integer value, rounding half away from zero
 - `.String` — Returns the string representation of this value
-- `.StringWithSign` — Same as `.String`, but prefixes the value with a '+' if it is positive
+- `.StringWithSign` — Same as `.String`, but prefixes the value with a '+' if it is not negative
 - `.Sub` — Returns the result of subtracting `value` from this number
   - Parameter: `value` (Number)
+- `.Trunc` — Returns the value with its fractional part removed
 
 ## Page
 
@@ -350,12 +369,12 @@ This is the object passed in to the template. All other data is derived from it.
 - `.BodyType` (BodyType)
 - `.ConditionalModifiers` ([]ConditionalModifier)
 - `.CreatedOn` (string)
-- `.EmbeddedPortraitDataURL` (string)
+- `.EmbeddedPortraitDataURL` (string, marked as a safe URL for HTML templates)
 - `.Encumbrance` ([]Encumbrance)
 - `.Equipment` (AllEquipment)
 - `.Eyes` (string)
 - `.Gender` (string)
-- `.GridTemplate` (string)
+- `.GridTemplate` (string, marked as safe CSS for HTML templates)
 - `.Hair` (string)
 - `.Handedness` (string)
 - `.Height` (string)
@@ -398,7 +417,7 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Points` (Number)
 - `.RelativeLevel` (string)
 - `.Tags` ([]string)
-- `.Type` (string)
+- `.Type` (string) — `item` or `group`
 - `.UnsatisfiedReason` (string)
 
 ## Source
@@ -430,7 +449,7 @@ This is the object passed in to the template. All other data is derived from it.
 - `.Rituals` (string)
 - `.Tags` ([]string)
 - `.TimeToCast` (string)
-- `.Type` (string)
+- `.Type` (string) — `item` or `group`
 - `.UnsatisfiedReason` (string)
 
 ## Trait
@@ -446,9 +465,14 @@ This is the object passed in to the template. All other data is derived from it.
 - `.ParentID` (string)
 - `.Points` (Number)
 - `.Tags` ([]string)
-- `.Type` (string)
+- `.Type` (string) — `item`, or the container type: `group`, `alternative_abilities`, `ancestry`, `attributes` or
+  `meta_trait`
 - `.UnsatisfiedReason` (string)
 - `.UserDescription` (string)
+- Added in GCS v5.52:
+  - `.PrereqContradiction` (string) — Explains a trait whose own prerequisites are met but which is caught in a
+    contradiction with other traits' prerequisites, when the "Disable traits whose prerequisites are unsatisfied"
+    sheet setting is on. Empty otherwise. At most one of this and `.UnsatisfiedReason` is set.
 - Added in GCS v5.43:
   - `.CR` (int) — The self-control roll target number, or 0 if there is no self-control roll.
   - `.CRFull` (string) — The full self-control roll description (e.g. "CR: 12 (Quite Often)"), or an empty string if

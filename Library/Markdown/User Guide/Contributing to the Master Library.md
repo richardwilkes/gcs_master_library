@@ -11,7 +11,7 @@ If something is missing (or if you notice an error), you have three ways to cont
 1. **Submit a Pull Request (preferred):**
    - If you’ve fixed or created content, submit it directly so it can be merged
      into the Master Library via a GitHub Pull Request (instructions below).
-2. **Open an Issue with your files:** asdf
+2. **Open an Issue with your files:**
    - If you can't make a Pull Request, create a new **Issue** on the
      [GCS Master Library repository](https://github.com/richardwilkes/gcs_master_library/issues).
    - Attach your modified file(s) and include a clear explanation of what you changed.
@@ -31,8 +31,9 @@ If something is missing (or if you notice an error), you have three ways to cont
 1. **Respect copyright.** Only add game-aid information like names, point costs, brief notes, and page references.
 2. **Use the standard book abbreviations for [Page References](Page%20References).** If the book isn't listed, ask first
    so maintainers can update it.
-3. **Use [Containers](Containers) if creating [character templates](Character%20templates).** Consistency makes content
-   easier for everyone to use.
+3. **Use choice containers and the Template block when creating [character templates](Character%20templates).**
+   Consistency makes content easier for everyone to use. See the [Style Guide](Style%20Guide) for the conventions the
+   library follows.
 4. **Test your content.** Apply it to a blank character sheet first to make sure it works as expected.
 
 ## Submitting your contribution

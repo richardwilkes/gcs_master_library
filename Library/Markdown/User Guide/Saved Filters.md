@@ -37,7 +37,15 @@ Advantage_.
 
 - **Name:** Each filter needs a name that no other filter of the same list type uses, ignoring case.
 - **Filters:** Select **Add** ![add](images/icons/icn-add.svg) to add a filter or a group. When the editor is empty,
-  select its placeholder to add a filter straight away. Select a filter's sentence to change it.
+  select its placeholder to add a filter straight away. Select a filter's sentence to change it: choose the field to
+  test, how to compare it (see [Operators](Operators)), and the value. An **is** or **is not** condition on a field
+  with a known set of values, such as the tags, colleges, tech level, or legality class, lists the values found in the
+  list below the field as you type; press `Down` to move through them and `Return` to fill one in.
+- **Fields:** A filter can test an item's name, notes, tags, page reference, points, level, and the fields particular
+  to its type, such as a skill's difficulty and specializations, a spell's college and class, equipment's quantity,
+  value, weight, and contents, whether a container is a container or a group, and the names, notes, and tags of a
+  trait's or equipment's modifiers. Modifier conditions test enabled modifiers only unless you add the **+ disabled
+  modifiers** chip.
 - **Groups:** The pill at the top of a group sets how it combines what it holds:
   - **All of:** everything in the group must match.
   - **Any of:** at least one thing in the group must match.
@@ -104,3 +112,7 @@ Filters with nothing in them are left out.
 > [!TIP]
 > Put a `.filters` file in the `Settings` folder of any library, such as your User Library, and it appears at the
 > bottom of the Saved Filters menu, ready to import without browsing for it.
+
+---
+
+[Return to Home](Home)

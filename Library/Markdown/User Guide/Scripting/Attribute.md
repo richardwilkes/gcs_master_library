@@ -8,14 +8,14 @@ Any attributes you’ve defined for the sheet are available as globals using the
 
 For convenience, if you pass the attribute object as a value, it will resolve as if you had passed its maximum value. e.g. `$hp + 1` when the current HP is 8 with a maximum of 10, it would resolve to a value of 11 (10 + 1).
 
-| Property  | Type    | Value                                                                                                                | Availability |
-|-----------|---------|----------------------------------------------------------------------------------------------------------------------|--------------|
-| id        | string  | The ID for this attribute.                                                                                           | GCS v5.36+   |
-| kind      | string  | The kind of attribute this refers to. One of **primary, secondary,** or **pool.**                                    | GCS v5.36+   |
-| name      | string  | The short name of the attribute.                                                                                     | GCS v5.36+   |
-| fullName  | string  | The full name of the attribute.                                                                                      | GCS v5.36+   |
-| maximum   | number  | The maximum value of the attribute.                                                                                  | GCS v5.36+   |
-| current   | number  | The current value of the attribute. For attributes other than **pool**, this will always be the same as the maximum. | GCS v5.36+   |
-| isDecimal | boolean | True if values other than whole numbers might be present.                                                            | GCS v5.36+   |
+| Property  | Type    | Value                                                                                                                              | Availability |
+|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| id        | string  | The ID for this attribute.                                                                                                         | GCS v5.36+   |
+| kind      | string  | The kind of attribute this refers to. One of **primary, secondary,** or **pool.**                                                  | GCS v5.36+   |
+| name      | string  | The short name of the attribute, or its full name when it has no short name.                                                       | GCS v5.36+   |
+| fullName  | string  | The full name of the attribute.                                                                                                    | GCS v5.36+   |
+| maximum   | number  | The maximum value of the attribute. Undefined when the script isn't running for a character sheet.                                 | GCS v5.36+   |
+| current   | number  | The current value of the attribute. For attributes other than **pool**, this will always be the same as the maximum.               | GCS v5.36+   |
+| isDecimal | boolean | True if values other than whole numbers might be present.                                                                          | GCS v5.36+   |
 
 > [Return to the Scripting Guide.](../Scripting%20Guide)

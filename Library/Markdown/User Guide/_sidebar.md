@@ -49,7 +49,7 @@
   - [Contributing to the Master Library](Contributing%20to%20the%20Master%20Library)
   - [Export Templates](Export%20Templates)
 - **Advanced Tools**
-  - [Calculator](Calculator)
+  - [Calculators](Calculator)
   - [Loot Sheets](Loot%20Sheets)
   - [Page References](Page%20References)
   - [Saved Filters](Saved%20Filters)
