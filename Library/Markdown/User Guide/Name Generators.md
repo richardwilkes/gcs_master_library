@@ -1,21 +1,80 @@
 # Name Generators
 
-There are currently (as of GCS v5.18) four types of name generators that can be used with Ancestry definitions:
+When you select **Randomize** ![randomize](images/icons/icn-randomize.svg) beside the **Name** on a character sheet,
+GCS builds a name with the **name generators** of the character's **ancestry**. An ancestry also decides the random
+gender, age, height, weight, hair, eyes, skin, and handedness, and is chosen by the **Ancestry** [container](Containers)
+among the character's traits.
+
+The Master Library includes ancestries and name generators for humans, dwarves, elves, halflings, and others. You can
+edit them, or make your own, with the editors described here, or by writing the files by hand.
+
+## Ancestry and name generator files
+
+- An **ancestry** is a `.ancestry` file. It holds the common options, a set of genders that can override them, and the
+  list of name generators that make up a name.
+- A **name generator** is a `.names` file. An ancestry refers to it by its file name, without the extension.
+
+Both kinds of file are found in the `Settings` folder (or any folder inside it) of a library. When several libraries
+hold a file with the same name, the one in your **User Library** wins, then the **Master Library**, then any other
+libraries, and last the generators built into GCS. New files are saved to your User Library's `Settings/Ancestries`
+folder by default, so a copy there overrides the Master Library's version without editing the Master Library.
+
+## The ancestry editor
+
+To create an ancestry, go to **File > New > New Ancestry**. To edit one, open it with **File > Open**, or choose it from
+the **Menu** ![menu](images/icons/icn-menu.svg) on the editor's toolbar, which lists the ancestries in your libraries.
+The editor's toolbar also has **Save**, **Save As…**, and **Reset**, and every change can be undone.
+
+| Field                 | Description                                                                                                                                                                                                                                               |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**              | A descriptive name. Traits select an ancestry by its file name, so this is mostly shown when a template asks about replacing a character's ancestry, and used as the default file name when saving.                                                        |
+| **Common Options**    | The options used when the chosen gender doesn't provide its own: the **Height Script**, **Weight Script**, and **Age Script** (see the [Scripting Guide](Scripting%20Guide); for example, `entity.randomHeightInInches($st)`), and the weighted lists of **Hair**, **Eyes**, **Skin**, and **Handedness** options to choose from. |
+| **Name Generators**   | The name generators used to produce a name. Their output is joined, in order, with a space. Select **Edit this name generator** ![edit](images/icons/icn-edit.svg) beside one to open it.                                                                |
+| **Genders**           | The genders that may be chosen at random, each with a **Weight** (its relative likelihood) and a **Name**, and any of the common options it overrides. A new ancestry starts with _Male_ and _Female_.                                                     |
+
+In the option lists, the **Weight** of each entry is its relative likelihood; only the ratio between the weights in a
+list matters. Drag entries by their grip ![grip](images/icons/icn-grip.svg) to reorder them.
+
+## The name generator editor
+
+To create a name generator, go to **File > New > New Name Generator**. To edit one, open its `.names` file, choose it
+from the **Menu** ![menu](images/icons/icn-menu.svg) on the editor's toolbar, or select **Edit this name generator**
+beside it in an ancestry. The **Sample Names** at the top show names made from the current definition, and
+**Generate new sample names** ![randomize](images/icons/icn-randomize.svg) makes a fresh set, so you can check your
+changes as you make them.
+
+| Field                                                   | Description                                                                                                                                                                                                                                                                   |
+|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Type**                                                | How names are generated: **Simple** picks one of the training names at random; **Markov Letter** builds new names letter by letter from patterns in the training names; **Markov Run** builds them from the runs of vowels and consonants; **Compound** joins the output of several generators. |
+| **Lowercase training names before use**                 | Whether the result is lowercased before the next step.                                                                                                                                                                                                                        |
+| **Capitalize the first letter of each generated name**  | Whether each generated name starts with an uppercase letter.                                                                                                                                                                                                                  |
+| **Depth** (Markov Letter only)                          | How many preceding letters are considered when choosing the next one, from 1 to 5. Lower values produce more random names; higher values stay closer to the training names. 0 uses the default of 3.                                                                           |
+| **Separator** (Compound only)                           | Placed between the outputs of the combined generators, such as a space.                                                                                                                                                                                                       |
+| **Generators** (Compound only)                          | The generators whose outputs are joined, in order. Each is edited in place, and compounds can nest.                                                                                                                                                                            |
+| **Built-in Training Data**                              | A built-in set of training names: American male, female, or last names, weighted by how common they are, or unweighted. Choose **None** to provide your own list.                                                                                                              |
+| **Training Names**                                      | The names the generator learns from, each with a **Weight**. Select **Import training names from a text file, one name per line** to load a list; a name may end with `: 3` to give it a weight, and duplicates are merged.                                                       |
+
+## File format
+
+Both files hold JSON. An ancestry's fields are `name`, `common_options`, and `gender_options`; each options block has
+`name`, `height_script`, `weight_script`, `age_script`, the `hair_options`, `eye_options`, `skin_options`, and
+`handedness_options` lists of `{weight, value}` entries, and `name_generators`, a list of generator file names. The
+rest of this page describes the name generator files, which you may want to write by hand for large training lists.
+
+There are four types of name generator:
 
 - `simple`
 - `markov_letter`
 - `markov_run`
 - `compound`
 
-A name generator definition is a file in the Settings/Ancestries directory of one of your libraries with the extension
-`.names`. These all contain json content that defines what you want to have happen, as described below.
+### Common fields
 
-## Common Fields
-
-Each of the name generators have some fields in common with each other, which I'll describe here before the actual file
+Each of the name generators has some fields in common with each other, which are described here before the actual file
 definitions, below.
 
-- `type`: this must be present and its value must be one of the name generator types listed above.
+- `type`: this must be present and its value must be one of the name generator types listed above. The older name
+  `markov_chain` is still accepted for `markov_letter`.
 - `no_lowered`: this field is optional, and when not present is assumed to be false. When false, the resulting name will
   be forced to lowercase before being returned. When true, it is left as-is.
 - `no_first_to_upper`: this field is optional, and when not present is assumed to be false. When false, the resulting
@@ -37,6 +96,7 @@ is used:
   - `unweighted_american_female`: first names of American females from [baby names](http://www.ssa.gov/oact/babynames).
   - `unweighted_american_last`: last names of Americans from
     [2010 surnames](https://www2.census.gov/topics/genealogy/2010surnames).
+  - `none`: the default, which means the training data comes from one of the fields below.
 - `weighted_training_data`: this is json object containing pairs of names and weights, like this:
 
     ```json
@@ -56,9 +116,10 @@ is used:
     ```
 
 The examples below all use `training_data`, but could have easily been written to use `built_in_training_data` or
-`weighted_training_data` instead.
+`weighted_training_data` instead. When GCS saves a file, it writes `training_data` if every weight is 1 and
+`weighted_training_data` otherwise.
 
-## Simple
+### Simple
 
 As the name suggests, this is the simplest of the name generators.
 
@@ -74,7 +135,7 @@ As the name suggests, this is the simplest of the name generators.
 }
 ```
 
-## Markov Letter
+### Markov Letter
 
 This option uses [Markov chains](https://en.wikipedia.org/wiki/Markov_chain) from the letters in the training data to
 generate names.
@@ -92,10 +153,10 @@ generate names.
 }
 ```
 
-The `depth` field is optional and will default to 3 if not specified. It can range from 1 to 5 and indicates how many
-consecutive letters should be considered for the chain.
+The `depth` field is optional and will default to 3 if not specified or 0. It can range from 1 to 5 and indicates how
+many consecutive letters should be considered for the chain; values above 5 are treated as 5.
 
-## Markov Run
+### Markov Run
 
 This option uses [Markov chains](https://en.wikipedia.org/wiki/Markov_chain) from decomposing the training data into
 runs of vowels and consonants to generate names.
@@ -112,7 +173,7 @@ runs of vowels and consonants to generate names.
 }
 ```
 
-## Compound
+### Compound
 
 This is the most complex of the available options. It allows you to build a name up using multiple other name
 generators.
@@ -154,3 +215,7 @@ example, if you specify a separator value of "-" and you had two generators list
 
 The `compound` field contains a json array of other name generators to use for the components of this generator. The
 results of each will be strung together, optionally with some separator text between each.
+
+---
+
+[Return to Home](Home)

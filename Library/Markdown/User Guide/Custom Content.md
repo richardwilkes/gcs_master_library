@@ -1,7 +1,7 @@
 # Custom Content
 
 In addition to the items included in the [Master Library](Library%20Explorer), you can create your own **traits, skills,
-spells, equipment, containers, and weapons**.
+spells, equipment, notes, modifiers, containers, and attacks**.
 
 Custom content is useful when:
 
@@ -11,23 +11,26 @@ Custom content is useful when:
 
 ## Creating new items
 
-To create a new custom item directly on your [character sheet](Character%20Sheet%20Overview).
+To create a new custom item directly on your [character sheet](Character%20Sheet%20Overview):
 
 1. Open your character sheet.
-2. Go to **Item > New `<type>`** (for example, **New Trait**, **New Skill**, or **New Equipment**).
-3. A blank item appears on your sheet.
-4. Edit the item using the information on the relevant page:
+2. Go to **Insert**, open the submenu for the kind of item, and choose what to add (for example, **Insert > Trait > New
+   Trait**, **Insert > Skill > New Skill**, or **Insert > Equipment > New Carried Equipment**). You can also right-click
+   a list and choose the **New** command at the top of its menu.
+3. The item's **Detail Editor** opens. Fill it in using the information on the relevant page:
    - [Traits](Traits)
    - [Skills](Skills)
    - [Spells](Spells)
    - [Equipment](Equipment)
    - [Containers](Containers)
    - [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons)
+   - [Notes](Notes)
+4. Select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) on the editor's toolbar. The item
+   appears in the appropriate list on your sheet.
 
 You can customize new items further by adding [Defaults](Defaults), [Features](Features), [Trait
-Modifiers](Trait%20Modifiers), [Equipment Modifiers](Equipment%20Modifiers), and [Prerequisites](Prerequisites).
-
-Save your changes when you're done.
+Modifiers](Trait%20Modifiers), [Equipment Modifiers](Equipment%20Modifiers), [Prerequisites](Prerequisites), and
+[substitution placeholders](Substitutions).
 
 > [!TIP]
 > Start simple. For example, copy an existing skill from the Master Library and edit it instead of building one from
@@ -38,16 +41,23 @@ Save your changes when you're done.
 Custom items created on a character sheet are stored **only in that character** unless you save them to a library. To
 reuse your custom content across characters:
 
-1. Go to **File > New `<type>` Library** to create a custom library (for example, **New Trait Library**)
-2. Drag the item to your new custom library, then **save the library file** to keep it for future use.
-
-Your libraries appear by default in your [User Library](Library%20Explorer).
+1. Go to **File > New** and choose the kind of library to create (for example, **New Traits Library**). A new, empty
+   list opens.
+2. Drag the item from your sheet into the new list, or right-click it on the sheet and use **Copy**, then **Paste** into
+   the list.
+3. Save the list with **File > Save**. Choose a location inside your **User Library** so it appears in the [Library
+   Explorer](Library%20Explorer).
 
 Once saved, your custom items behave exactly like official ones:
 
-- You can drag them into new characters.
+- You can drag them into new characters, templates, and loot sheets, or right-click them and select **Copy to
+  Character Sheet**.
+- Items copied from your library remember where they came from, so **Item > Sync with Source** can update a character's
+  copy after you change the library. See _Master Library Syncing_ in [Character Sheet
+  Overview](Character%20Sheet%20Overview).
+- You can filter and search them like any other list. See [Saved Filters](Saved%20Filters) and [Tags](Tags).
 
-If your content maybe useful for others, consider [Contributing to the Master
+If your content may be useful for others, consider [Contributing to the Master
 Library](Contributing%20to%20the%20Master%20Library).
 
 ---

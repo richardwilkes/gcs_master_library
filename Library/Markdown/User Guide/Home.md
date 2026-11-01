@@ -69,6 +69,7 @@ If you can’t find what you’re looking for:
 
 - **Content Creation**
   - [Character Templates](Character%20Templates)
+  - [Substitutions](Substitutions)
   - [Custom Content](Custom%20Content)
   - [Trait Modifiers](Trait%20Modifiers)
   - [Equipment Modifiers](Equipment%20Modifiers)
@@ -78,9 +79,10 @@ If you can’t find what you’re looking for:
   - [Contributing to the Master Library](Contributing%20to%20the%20Master%20Library)
   - [Export Templates](Export%20Templates)
 - **Advanced Tools**
-  - [Calculator](Calculator)
+  - [Calculators](Calculator)
   - [Loot Sheets](Loot%20Sheets)
   - [Page References](Page%20References)
+  - [Saved Filters](Saved%20Filters)
   - [Tags](Tags)
 
 ### Customization

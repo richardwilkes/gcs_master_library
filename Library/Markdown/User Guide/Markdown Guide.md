@@ -4,7 +4,22 @@ Use **Markdown syntax** to add structure and style to your [Notes](Notes) in GCS
 formatting options with examples.
 
 Markdown is also supported in the notes field in the **Detail Editors** for [Traits](Traits), [Skills](Skills),
-[Spells](Spells), [Equipment](Equipment), and other advanced features.
+[Spells](Spells), [Equipment](Equipment), and other advanced features, and in the `.md` documents kept in your
+libraries, such as this guide.
+
+## Reading and editing Markdown documents
+
+Double-click a `.md` file in the [Library Explorer](Library%20Explorer) to open it. The toolbar has a **Markdown
+Guide** button that opens this page, a **Scale** field, and, for files on disk, **Toggle Edit Mode**
+![edit](images/icons/icn-edit.svg), which switches between the rendered document and a plain text editor. **File > New
+> New Markdown File** creates a new document, starting in edit mode.
+
+In the rendered view, dragging with the mouse scrolls the document. Use the keyboard to read and copy text:
+
+- The arrow keys, `Home`, `End`, `Page Up`, and `Page Down` move a reading caret. Hold `Shift` to extend the
+  selection.
+- **Edit > Copy** and **Edit > Select All** work on the selection.
+- With the caret on a link, press `Return` or `Space` to follow it. Clicking a link follows it too.
 
 ## Quick Reference
 
@@ -20,8 +35,9 @@ Markdown is also supported in the notes field in the **Detail Editors** for [Tra
 | **Inline code**         | `` `code` ``                                                                    | `inline code`                                               |
 | **Code block**          | ` ```code``` `                                                                  | (block shown below)                                         |
 | **Horizontal rule**     | `---` or `***`                                                                  | ---                                                         |
-| **Link**                | External: `[text](https://example.com)`<br>Internal: `[text](Markdown%20Guide]` | [text](https://example.com)<br>[text](Markdown%20Guide)     |
-| **Markdown Link**       | `[Markdown Guide](md:Markdown%20Guide)`                                         | [Markdown Guide](md:Markdown%20Guide)                       |
+| **Link**                | External: `[text](https://example.com)`<br>Internal: `[text](Markdown%20Guide)` | [text](https://example.com)<br>[text](Markdown%20Guide)     |
+| **Markdown Link**       | `[Markdown Guide](md:User%20Guide/Markdown%20Guide)`                            | [Markdown Guide](md:User%20Guide/Markdown%20Guide)          |
+| **Anchor link**         | `[Tables](#tables)`                                                             | [Tables](#tables)                                           |
 | **Page reference link** | `[Basic Set, page 45](B45)`                                                     | [Basic Set, page 45](B45)                                   |
 | **Image**               | `![alt](url)`                                                                   | ![alt](https://gurpscharactersheet.com/images/app_icon.svg) |
 | **List (unordered)**    | `- item`<br>`- item`                                                            | - test<br>- test                                            |
@@ -269,13 +285,15 @@ You can link to files in the same library using **relative paths**. This makes y
 In addition to web links, GCS supports special link types:
 
 **Markdown file links (`md:`):**
-Use this to reference another Markdown file in your GCS library.
+Use this to reference a Markdown file in any library, wherever the document with the link lives. GCS looks for the
+path inside each library's `Markdown` folder first, and then inside the library itself, checking your User Library
+before the Master Library.
 
 ```
-[Markdown Guide](md:Markdown%20Guide)
+[Markdown Guide](md:User%20Guide/Markdown%20Guide)
 ```
 
-[Markdown Guide](md:Markdown%20Guide)
+[Markdown Guide](md:User%20Guide/Markdown%20Guide)
 
 **Page references (like `B45`):**
 Use this shorthand to link directly to a page in a GURPS book. See [Page References](Page%20References) for more details.
@@ -285,6 +303,29 @@ Use this shorthand to link directly to a page in a GURPS book. See [Page Referen
 ```
 
 [Basic Set, page 45](B45)
+
+### Anchors
+
+Every heading gets an anchor made from its text: lowercased, with spaces turned into `-` and punctuation dropped, so
+_## Horizontal Rules_ becomes `#horizontal-rules`. Link to one with `#` to scroll it to the top of the view:
+
+```
+[Jump to the tables section](#tables)
+```
+
+[Jump to the tables section](#tables)
+
+To link to a heading in another document, use the `md:` form with the anchor on the end:
+
+```
+[Scripting globals](md:User%20Guide/Scripting%20Guide#globals)
+```
+
+You can give a heading an anchor of your own by adding `{#my-id}` to the end of it.
+
+> [!NOTE]
+> Only the `md:` form supports anchors into another file. A relative link with an anchor, such as
+> `[x](Other%20Page#section)`, doesn't resolve.
 
 ---
 
@@ -416,6 +457,16 @@ These asterisks \*will not\* make the text bold.
 ```
 
 These asterisks \*will not\* make the text bold.
+
+---
+
+## What isn't supported
+
+GCS renders the common Markdown described on this page, plus the GitHub-style tables, strikethrough, and alerts. It
+doesn't render:
+
+- HTML, apart from `<br>` for a line break and `<hr>` for a horizontal rule. Other tags are dropped.
+- Task lists (`- [ ] item`), footnotes, and definition lists.
 
 ---
 
