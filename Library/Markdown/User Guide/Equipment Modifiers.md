@@ -1,7 +1,8 @@
 # Equipment Modifiers
 
 **Equipment Modifiers** ([B345](B345)) can be applied to [Equipment](Equipment) as either **enhancements** or
-**limitations**. These adjust the base cost and weight of items and allow you to add [Features](Features) to equipment.
+**limitations**. These adjust the base cost and weight of items and allow you to add [Features](Features) and attacks
+to equipment.
 
 ## Master Library
 
@@ -25,7 +26,7 @@ descending](images/icons/icn-sortDescending.svg).
 | **Weight Adjustment**                                     | The calculated adjustment to the equipment's weight.                                                                                                              |
 | **Tags**                                                  | Tags used to help organize modifiers.                                                                                                                             |
 | **![page reference](images/icons/icn-pageReference.svg)** | Page reference for the modifier. See [Page References](Page%20References).                                                                                        |
-| **![source](images/icons/icn-source.svg)**                | Tracks whether the modifier matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).          |
+| **![source](images/icons/icn-source.svg)**                | Tracks whether the modifier matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).           |
 
 ## Adding equipment modifiers
 
@@ -85,7 +86,7 @@ The Equipment Modifier Editor includes the following fields:
 | **Name**                          | The equipment modifier's name.                                                                                                                         |
 | **Show in title notes**           | If checked, the modifier is listed in parentheses after the item's name, instead of in the item's notes.                                               |
 | **Tech Level**                    | The Tech Level.                                                                                                                                        |
-| **Notes**                         | Notes about what the equipment modifier does. These appear with the equipment on your character sheet. Supports [Markdown](Markdown%20Guide).         |
+| **Notes**                         | Notes about what the equipment modifier does. These appear with the equipment on your character sheet. Supports [Markdown](Markdown%20Guide).          |
 | **Show notes in owner's notes**   | If checked (the default), the modifier's notes appear in the item's notes. Clear it to list the modifier by name only.                                 |
 | **Show notes in attack usage**    | If checked, the notes also appear in the usage notes of the item's attacks.                                                                            |
 | **VTT Notes**                     | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                           |
@@ -98,7 +99,9 @@ The Equipment Modifier Editor includes the following fields:
 | **Page Reference**                | Page number for the modifier. See [Page References](Page%20References) for details.                                                                    |
 | **Page Highlight**                | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                          |
 | **Nameables**                     | Defines the `@code@` placeholders the modifier uses, and shows which are defined by the item it belongs to. See [Substitutions](Substitutions).        |
-| **Features**                      | Lists attribute, condition, skill, spell, reaction, or attack changes applied by the modifier. See [Features](Features) for more details.               |
+| **Features**                      | Lists attribute, condition, skill, spell, reaction, or attack changes applied by the modifier. See [Features](Features) for details.                   |
+| **Melee Attack Usage**            | Melee attacks the modifier gives the item while enabled, shown under the item's name. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).  |
+| **Ranged Attack Usage**           | Ranged attacks the modifier gives the item while enabled, shown under the item's name. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons). |
 
 ## Cost and Weight Modifiers
 

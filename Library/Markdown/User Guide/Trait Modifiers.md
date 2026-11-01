@@ -1,7 +1,7 @@
 # Trait Modifiers
 
 **Trait Modifiers** ([B101](B101)) can be applied to [Traits](Traits) as either **enhancements** or **limitations**.
-These adjust the base cost of a trait, and can carry [Features](Features) of their own.
+These adjust the base cost of a trait, and can carry [Features](Features) and attacks of their own.
 
 ## Master Library
 
@@ -23,7 +23,7 @@ descending](images/icons/icn-sortDescending.svg).
 | **Cost Adjustment**                                   | The calculated adjustment to the trait’s [character point](Character%20points) cost.                                                                                |
 | **Tags**                                              | Tags used to help organize modifiers.                                                                                                                               |
 | ![page reference](images/icons/icn-pageReference.svg) | Page reference for the modifier. See [Page References](Page%20References).                                                                                          |
-| ![source](images/icons/icn-source.svg)                | Tracks whether the modifier matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).            |
+| ![source](images/icons/icn-source.svg)                | Tracks whether the modifier matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).             |
 
 ## Adding trait modifiers
 
@@ -100,25 +100,28 @@ titled for the modifier, such as _Trait Modifier Editor for Long Claws_.
 
 The Trait Modifier Editor includes the following fields:
 
-| Trait Modifier field              | Description                                                                                                                                                                                                                   |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                          | The trait modifier's name.                                                                                                                                                                                                    |
-| **Show in title notes**           | If checked, the modifier is listed in parentheses after the trait's name, instead of in the trait's notes.                                                                                                                    |
-| **Notes**                         | Notes about what the trait modifier does. These appear with the trait on your character sheet. Supports [Markdown](Markdown%20Guide).                                                                                        |
-| **Show notes in owner's notes**   | If checked (the default), the modifier's notes appear in the trait's notes. Clear it to list the modifier by name only.                                                                                                       |
-| **Show notes in attack usage**    | If checked, the notes also appear in the usage notes of the trait's attacks.                                                                                                                                                  |
-| **VTT Notes**                     | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                                  |
-| **Enabled**                       | If checked, the modifier is active and applies its effects. The pick of a mandatory choice on a sheet can't be turned off.                                                                                                   |
-| **Cost**                          | The modifier’s cost: a percentage (`+50%`, `-25%`), a flat point cost (`+5`, `-5`), or a multiplier (`x2`, `x2/3`). Choose whether it applies **to cost**, **to base cost only**, or **to leveled cost only**.                |
-| **Level**                         | The level of the modifier, if applicable.                                                                                                                                                                                     |
-| **Use level from owner**          | If checked, the modifier’s level is linked to the parent trait’s level.                                                                                                                                                       |
-| **Multiply cost by level**        | If checked (the default), a leveled modifier's cost adjustment is multiplied by its level. Clear it to apply the cost once while any per-level [features](Features) the modifier carries still scale with the level.         |
-| **Total**                         | Read-only. The total calculated cost adjustment from this modifier.                                                                                                                                                           |
-| **Tags**                          | Comma-separated tags to help organize modifiers.                                                                                                                                                                              |
-| **Page Reference**                | Page number for the modifier. See [Page References](Page%20References) for details.                                                                                                                                           |
-| **Page Highlight**                | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                                                 |
-| **Nameables**                     | Defines the `@code@` placeholders the modifier uses, and shows which are defined by the trait it belongs to. See [Substitutions](Substitutions).                                                                              |
-| **Features**                      | Lists attribute, condition, skill, spell, reaction, or attack changes applied by the modifier, and anything it grants. See [Features](Features) for more details.                                                             |
+| Trait Modifier field                  | Description                                                                                                                                                                                                                     |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                              | The trait modifier's name.                                                                                                                                                                                                      |
+| **Show in title notes**               | If checked, the modifier is listed in parentheses after the trait's name, instead of in the trait's notes.                                                                                                                      |
+| **Notes**                             | Notes about what the trait modifier does. These appear with the trait on your character sheet. Supports [Markdown](Markdown%20Guide).                                                                                           |
+| **Show notes in owner's notes**       | If checked (the default), the modifier's notes appear in the trait's notes. Clear it to list the modifier by name only.                                                                                                         |
+| **Show notes in attack usage**        | If checked, the notes also appear in the usage notes of the trait's attacks.                                                                                                                                                    |
+| **VTT Notes**                         | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                                    |
+| **Enabled**                           | If checked, the modifier is active and applies its effects. The pick of a mandatory choice on a sheet can't be turned off.                                                                                                      |
+| **Cost**                              | The modifier’s cost: a percentage (`+50%`, `-25%`), a flat point cost (`+5`, `-5`), or a multiplier (`x2`, `x2/3`). Choose whether it applies **to cost**, **to base cost only**, or **to leveled cost only**.                  |
+| **Level**                             | The level of the modifier, if applicable.                                                                                                                                                                                       |
+| **Use level from owner**              | If checked, the modifier’s level is linked to the parent trait’s level.                                                                                                                                                         |
+| **Multiply cost by level**            | If checked (the default), a leveled modifier's cost adjustment is multiplied by its level. Clear it to apply the cost once while any per-level [features](Features) the modifier carries still scale with the level.            |
+| **Attacks use this modifier's level** | If checked, the per-level damage of the attacks this modifier provides uses this modifier's level instead of the trait's. Only available while the modifier has levels of its own.                                              |
+| **Total**                             | Read-only. The total calculated cost adjustment from this modifier.                                                                                                                                                             |
+| **Tags**                              | Comma-separated tags to help organize modifiers.                                                                                                                                                                                |
+| **Page Reference**                    | Page number for the modifier. See [Page References](Page%20References) for details.                                                                                                                                             |
+| **Page Highlight**                    | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                                                   |
+| **Nameables**                         | Defines the `@code@` placeholders the modifier uses, and shows which are defined by the trait it belongs to. See [Substitutions](Substitutions).                                                                                |
+| **Features**                          | Lists attribute, condition, skill, spell, reaction, or attack changes applied by the modifier, and anything it grants. See [Features](Features) for more details.                                                               |
+| **Melee Attack Usage**                | Melee attacks the modifier gives the trait while enabled, shown under the trait's name. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                         |
+| **Ranged Attack Usage**               | Ranged attacks the modifier gives the trait while enabled, shown under the trait's name. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                        |
 
 A modifier group or choice has only **Name**, **Notes**, **Tags**, **Page Reference**, and **Page Highlight**, plus a
 **Choice** setting (**Mandatory: exactly one must be picked** or **Optional: at most one may be picked**) for a

@@ -95,7 +95,7 @@ The available feature types are chosen from a dropdown, grouped as shown here.
 | **Gives a conditional modifier of**          | Adds an entry to the Conditional Modifiers table, with the condition it applies in.                                                                                                                                                  |
 | **Gives a reaction modifier of**             | Adds an entry to the Reaction Modifiers table, with who it applies from or to.                                                                                                                                                       |
 | **Gives a trait level modifier of**          | Raises or lowers the level of traits whose name matches. Levels granted this way are free.                                                                                                                                           |
-| **Gives a trait maximum level modifier of**  | Raises or lowers the **Maximum Level** of this trait, or of traits whose name matches. Enter a number (`-1`), a percentage (`10%`), or a multiplier (`x2`). A trait with no maximum stays unlimited.                                  |
+| **Gives a trait maximum level modifier of**  | Raises or lowers the **Maximum Level** of this trait, or of traits whose name matches. Enter a number (`-1`), a percentage (`10%`), or a multiplier (`x2`). A trait with no maximum stays unlimited.                                 |
 | **Reduces the cost of**                      | Lowers the cost of the chosen attribute by a percentage, from 5% to 80%.                                                                                                                                                             |
 
 ### Skills and Spells
@@ -116,10 +116,11 @@ The available feature types are chosen from a dropdown, grouped as shown here.
 ### Weapons
 
 These apply to attacks. Each one can select the attacks by their required skill (with optional **+ specialization** and
-**+ relative skill level** criteria), by name, or as **this weapon** (the attacks of the item holding the feature). Add
-**+ usage**, **+ damage type**, or **+ tag** to narrow the match, and, when selecting by name, the **+ owner level**,
-**+ owner tech level**, **+ owner specialization**, **+ owner optional specialization**, and **+ owner title note**
-chips to check those parts of the attack's owner.
+**+ relative skill level** criteria), by name, or as **this weapon** (the attacks of the item holding the feature,
+including those its enabled modifiers provide; for a feature on a modifier, the item is the one the modifier belongs
+to). Add **+ usage**, **+ damage type**, or **+ tag** to narrow the match, and, when selecting by name, the
+**+ owner level**, **+ owner tech level**, **+ owner specialization**, **+ owner optional specialization**, and
+**+ owner title note** chips to check those parts of the attack's owner.
 
 - Gives a weapon damage modifier of (accepts dice as well as a number, such as `+1d` or `-1d`)
 - Gives a weapon accuracy modifier of
@@ -152,9 +153,9 @@ chips to check those parts of the attack's owner.
 
 ### Equipment
 
-| Feature type                                  | Description                                                                                                                                                                   |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Gives equipment a maximum uses modifier of** | Raises or lowers the **Maximum Uses** of this equipment, or of equipment whose name matches. Enter a number (`-1`), a percentage (`-10%`), or a multiplier (`x2`).           |
+| Feature type                                   | Description                                                                                                                                                                   |
+|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Gives equipment a maximum uses modifier of** | Raises or lowers the **Maximum Uses** of this equipment, or of equipment whose name matches. Enter a number (`-1`), a percentage (`-10%`), or a multiplier (`x2`).            |
 | **Reduces the contained weight by**            | Available on equipment containers only. Reduces the weight of the container's contents by a weight (`2 lb`) or a percentage (`5%`).                                           |
 
 ### Grants
