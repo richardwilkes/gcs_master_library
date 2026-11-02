@@ -38,51 +38,52 @@ The settings are grouped into sections.
 
 ### Lists
 
-| Setting                                                | Description                                                                                                                                                                    |
-|--------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Group containers when sorting**                      | Keeps containers together ahead of other rows when a list is sorted, instead of mixing them in by value.                                                                       |
+| Setting                                               | Description                                                                                                                                                                    |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Group containers when sorting**                     | Keeps containers together ahead of other rows when a list is sorted, instead of mixing them in by value.                                                                       |
 | **Show additional page references when space allows** | Lets the page reference column on character sheets, loot sheets, and templates show more than one reference when there is room, instead of always collapsing to the first one. |
-| **Max Auto Column Width**                              | The widest a column can grow when GCS sizes columns to fit their contents.                                                                                                     |
+| **Max Auto Column Width**                             | The widest a column can grow when GCS sizes columns to fit their contents.                                                                                                     |
 
 ### Workspace
 
-| Setting                         | Description                                                                                                                                                                   |
-|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Restore arrangement on start** | Reopens the sheets, libraries, and documents from your last session, in the same arrangement, when you restart GCS.                                                          |
-| **Open in separate windows**    | Opens the checked document types (Character Sheets, Character Templates, Loot Sheets, Editors, Images, Libraries, Markdown, PDFs, Settings, Sub-Editors) in windows of their own. |
-| **Initial scale**               | The starting zoom for lists, editors, sheets, Markdown documents, images, and PDFs. For PDFs you can also choose **Fit Width** or **Fit Page** instead of a fixed scale.      |
+| Setting                          | Description                                                                                                                                                                                                                 |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Restore arrangement on start** | Reopens the sheets, libraries, and documents from your last session, in the same arrangement, when you restart GCS.                                                                                                         |
+| **Show sheets as pages**         | Opens character sheets as pages, the way they print, instead of as one continuous page. On by default. Each sheet's toolbar can still switch between the two. See [Character Sheet Overview](Character%20Sheet%20Overview). |
+| **Open in separate windows**     | Opens the checked document types (Character Sheets, Character Templates, Loot Sheets, Editors, Images, Libraries, Markdown, PDFs, Settings, Sub-Editors) in windows of their own.                                           |
+| **Initial scale**                | The starting zoom for lists, editors, sheets, Markdown documents, images, and PDFs. For PDFs you can also choose **Fit Width** or **Fit Page** instead of a fixed scale.                                                    |
 
 ### Updates & Library
 
-| Setting                        | Description                                                                                                                                                                                                                      |
-|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Check for GCS Updates**      | How often to look for a newer version of GCS: **At launch**, **At launch and every hour**, **At launch and every day**, or **Never**. **Help > Check for GCS updates** always works. See [Installing and Updating GCS](Installing%20and%20Updating%20GCS). |
-| **Check for Library Updates**  | How often to look for newer versions of your libraries, with the same choices. The [Library Explorer](Library%20Explorer) update buttons always work.                                                                             |
-| **Deep search**                | Lets the Library Explorer search field match the contents of the checked file types (for example, individual traits inside a traits library), not just file names. See [Library Explorer](Library%20Explorer).                     |
+| Setting                       | Description                                                                                                                                                                                                                                                |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Check for GCS Updates**     | How often to look for a newer version of GCS: **At launch**, **At launch and every hour**, **At launch and every day**, or **Never**. **Help > Check for GCS updates** always works. See [Installing and Updating GCS](Installing%20and%20Updating%20GCS). |
+| **Check for Library Updates** | How often to look for newer versions of your libraries, with the same choices. The [Library Explorer](Library%20Explorer) update buttons always work.                                                                                                      |
+| **Deep search**               | Lets the Library Explorer search field match the contents of the checked file types (for example, individual traits inside a traits library), not just file names. See [Library Explorer](Library%20Explorer).                                             |
 
 ### Interaction
 
-| Setting                                          | Description                                                                                                                                                                                                                 |
-|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Initial click on text field selects all**      | Highlights all text when you first click inside a field.                                                                                                                                                                    |
-| **Tab stops on static text for screen readers**  | While a screen reader is in use, makes labels, read-only fields, and disabled controls Tab stops so they can be read by moving the keyboard focus alone. Off by default, since it makes the Tab order slower to move through. |
-| **Tooltip Delay**                                | How long to hover before a tooltip appears (0-30 seconds).                                                                                                                                                                  |
-| **Tooltip Dismissal**                            | How long a tooltip remains visible (1-3600 seconds).                                                                                                                                                                        |
-| **Scroll Wheel Multiplier**                      | Adjusts scroll speed.                                                                                                                                                                                                       |
-| **Cursor Size**                                  | The size of the mouse cursor, in points. The cursor colors can be changed in [Colors and Fonts](Colors%20and%20Fonts).                                                                                                      |
+| Setting                                         | Description                                                                                                                                                                                                                   |
+|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Initial click on text field selects all**     | Highlights all text when you first click inside a field.                                                                                                                                                                      |
+| **Tab stops on static text for screen readers** | While a screen reader is in use, makes labels, read-only fields, and disabled controls Tab stops so they can be read by moving the keyboard focus alone. Off by default, since it makes the Tab order slower to move through. |
+| **Tooltip Delay**                               | How long to hover before a tooltip appears (0-30 seconds).                                                                                                                                                                    |
+| **Tooltip Dismissal**                           | How long a tooltip remains visible (1-3600 seconds).                                                                                                                                                                          |
+| **Scroll Wheel Multiplier**                     | Adjusts scroll speed.                                                                                                                                                                                                         |
+| **Cursor Size**                                 | The size of the mouse cursor, in points. The cursor colors can be changed in [Colors and Fonts](Colors%20and%20Fonts).                                                                                                        |
 
 ### Advanced
 
-| Setting                     | Description                                                                                                                                                                                 |
-|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Settings Path**           | Where GCS saves its settings. Select the button beside it to copy the path.                                                                                                                 |
-| **Translations Path**       | Where GCS looks for translations. Select the button beside it to copy the path.                                                                                                             |
-| **Log Path**                | Where GCS writes its log. Crash details are written to a `gcs-crash.log` file in the same folder. Select the button beside it to copy the path.                                              |
-| **Monitor Resolution**      | Sets resolution. If `0 ppi`, GCS uses the resolution your monitor reports. See **Monitor Resolution** below.                                                                                |
-| **Image Export Resolution** | Resolution for exported images.                                                                                                                                                             |
-| **Script Execution Limit**  | How long a single script may run before it is stopped. See the [Scripting Guide](Scripting%20Guide).                                                                                        |
-| **External PDF Viewer**     | Lets you use a different program to open PDFs. Keep blank to open PDFs with GCS. See **External PDF Settings** below.                                                                        |
-| **Interface Locale**        | Changes the GCS language. Leave blank to use the system default. Takes effect the next time GCS is started.                                                                                  |
+| Setting                     | Description                                                                                                                                     |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Settings Path**           | Where GCS saves its settings. Select the button beside it to copy the path.                                                                     |
+| **Translations Path**       | Where GCS looks for translations. Select the button beside it to copy the path.                                                                 |
+| **Log Path**                | Where GCS writes its log. Crash details are written to a `gcs-crash.log` file in the same folder. Select the button beside it to copy the path. |
+| **Monitor Resolution**      | Sets resolution. If `0 ppi`, GCS uses the resolution your monitor reports. See **Monitor Resolution** below.                                    |
+| **Image Export Resolution** | Resolution for exported images.                                                                                                                 |
+| **Script Execution Limit**  | How long a single script may run before it is stopped. See the [Scripting Guide](Scripting%20Guide).                                            |
+| **External PDF Viewer**     | Lets you use a different program to open PDFs. Keep blank to open PDFs with GCS. See **External PDF Settings** below.                           |
+| **Interface Locale**        | Changes the GCS language. Leave blank to use the system default. Takes effect the next time GCS is started.                                     |
 
 ## External PDF Settings
 

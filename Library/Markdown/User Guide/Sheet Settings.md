@@ -102,7 +102,7 @@ These settings are used when a character buys or sells [Equipment](Equipment).
 
 ### Page
 
-Adjust paper size, orientation, and margins for printing and PDF export.
+Adjust paper size, orientation, and margins for printing, PDF and image export, and the pages view of the sheet (see [Character Sheet Overview](Character%20Sheet%20Overview)).
 
 | Setting         | Description                                                                                                              |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------|

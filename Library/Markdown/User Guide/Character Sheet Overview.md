@@ -54,7 +54,23 @@ To save your work:
 - Select **File > Print** (`Ctrl+P` / `Cmd+P`), choose your printer and settings, then select **Print**.
 
 The paper size, orientation, and margins come from the sheet's [Sheet Settings](Sheet%20Settings). A block that
-doesn't fit in the space left on a page is moved whole to the next page, while lists are split across pages.
+doesn't fit in the space left on a page is moved whole to the next page, while a list is split between two of its rows,
+with its column headers repeated on the next page. To see where the pages break before you print, show the sheet as
+pages (see below).
+
+## Showing the sheet as pages
+
+A character sheet can be shown as pages, the way it prints, or as one continuous page. To switch between them, select
+**Show the sheet as pages** on the toolbar, or go to **Sheet > Show as Pages** (`Ctrl+Alt+P` / `Cmd+Option+P`).
+
+In the pages view, as many pages as fit the window at the current scale are placed side by side, re-flowing when you
+resize the window or change the scale. Printing and exporting to PDF or images break the pages in the same places,
+except that a list with nothing in it, shown on screen so that you can add to it, is left off the printed pages. When a
+list continues beside blocks that have already ended, their space is left empty on the later page so the list keeps
+its column widths. Every page is live: you can select, edit, drag, and drop rows on any page.
+
+Sheets open as pages unless you turn off **Show sheets as pages** in [General Settings](General%20Settings). The view
+isn't saved in the sheet's file. Templates and loot sheets are always shown as one continuous page.
 
 ## Character sheet blocks
 
@@ -64,36 +80,37 @@ update automatically as you add or change content, so you don’t have to calcul
 The table below gives an overview of each block. You can click through to individual pages for a deeper dive into how
 each one works.
 
-| Block                                | Description                                                                                                                                                                                                                                                      |
-|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Portrait**                         | Add an image for your character. Drop an image file, image data, or a web link onto it, or double-click it (or press `Space` while it has the focus) to choose a file. The image is stored at up to 400 pixels on a side.                                        |
-| **Identity**                         | Holds your character’s name, title, and organization.                                                                                                                                                                                                            |
-| **Description**                      | Gender, age, birthday, religion, height, weight, size, tech level ([B22](B22)), hair, eyes, skin, and handedness. Select **Randomize** ![randomize](images/icons/icn-randomize.svg) beside a field to generate a random entry from the character's ancestry.       |
-| **Miscellaneous**                    | Shows the created and modified dates and the player’s name.                                                                                                                                                                                                      |
-| **Points**                           | Tracks your [character points](Character%20Points), with a breakdown by ancestry, attributes, advantages, disadvantages, quirks, skills, and spells.                                                                                                              |
-| **Primary and Secondary Attributes** | Shows your basic attributes and secondary characteristics. Hover over one to see where its bonuses come from. See [Attributes](Attributes) for details.                                                                                                          |
-| **Point Pools**                      | Tracks your fatigue points (FP), hit points (HP), and other pools. See [Point pools](Point%20pools).                                                                                                                                                              |
-| **Body Type**                        | Titled with your [body type](Body%20type), such as _Humanoid_. Displays the hit location table with damage resistance (DR) and a space for notes ![first aid](images/icons/icn-firstAid.svg) for each location (for example, “crippled”).                        |
-| **Encumbrance, Move & Dodge**        | Shows encumbrance and movement speeds. The weight icon ![weight](images/icons/icn-weight.svg) indicates your current encumbrance level.                                                                                                                          |
-| **Lifting & Moving Things**          | Calculates how much weight your character can lift and carry.                                                                                                                                                                                                    |
-| **Basic Damage**                     | Lists thrust and swing damage based on ST.                                                                                                                                                                                                                       |
-| **Reaction Modifiers**               | Appears only if traits, skills, or equipment give your character reaction modifiers.                                                                                                                                                                             |
-| **Conditional Modifiers**            | Appears only if traits, skills, or equipment give your character conditional modifiers.                                                                                                                                                                          |
-| **Melee Attacks**                    | Lists your melee attacks, from equipped weapons, traits, skills, and spells, with their stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                    |
-| **Ranged Attacks**                   | Lists your ranged attacks with their stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                                                                       |
-| **Traits**                           | Shows your advantages, disadvantages, and quirks. See [Traits](Traits).                                                                                                                                                                                          |
-| **Skills**                           | Lists your character’s skills and techniques. See [Skills](Skills).                                                                                                                                                                                              |
-| **Spells**                           | Lists spells your character knows. See [Spells](Spells).                                                                                                                                                                                                         |
-| **Carried Equipment**                | Tracks the equipment your character carries. Carried items can be equipped and affect encumbrance. See [Equipment](Equipment).                                                                                                                                   |
-| **Other Equipment**                  | Tracks equipment your character owns but isn't carrying. See [Equipment](Equipment).                                                                                                                                                                             |
-| **Notes**                            | Free-form notes for backstory, reminders, or campaign info. See [Notes](Notes).                                                                                                                                                                                  |
+| Block                                | Description                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Portrait**                         | Add an image for your character. Drop an image file, image data, or a web link onto it, or double-click it (or press `Space` while it has the focus) to choose a file. The image is stored at up to 400 pixels on a side.                                    |
+| **Identity**                         | Holds your character’s name, title, and organization.                                                                                                                                                                                                        |
+| **Description**                      | Gender, age, birthday, religion, height, weight, size, tech level ([B22](B22)), hair, eyes, skin, and handedness. Select **Randomize** ![randomize](images/icons/icn-randomize.svg) beside a field to generate a random entry from the character's ancestry. |
+| **Miscellaneous**                    | Shows the created and modified dates and the player’s name.                                                                                                                                                                                                  |
+| **Points**                           | Tracks your [character points](Character%20Points), with a breakdown by ancestry, attributes, advantages, disadvantages, quirks, skills, and spells.                                                                                                         |
+| **Primary and Secondary Attributes** | Shows your basic attributes and secondary characteristics. Hover over one to see where its bonuses come from. See [Attributes](Attributes) for details.                                                                                                      |
+| **Point Pools**                      | Tracks your fatigue points (FP), hit points (HP), and other pools. See [Point pools](Point%20pools).                                                                                                                                                         |
+| **Body Type**                        | Titled with your [body type](Body%20type), such as _Humanoid_. Displays the hit location table with damage resistance (DR) and a space for notes ![first aid](images/icons/icn-firstAid.svg) for each location (for example, “crippled”).                    |
+| **Encumbrance, Move & Dodge**        | Shows encumbrance and movement speeds. The weight icon ![weight](images/icons/icn-weight.svg) indicates your current encumbrance level.                                                                                                                      |
+| **Lifting & Moving Things**          | Calculates how much weight your character can lift and carry.                                                                                                                                                                                                |
+| **Basic Damage**                     | Lists thrust and swing damage based on ST.                                                                                                                                                                                                                   |
+| **Reaction Modifiers**               | Appears only if traits, skills, or equipment give your character reaction modifiers.                                                                                                                                                                         |
+| **Conditional Modifiers**            | Appears only if traits, skills, or equipment give your character conditional modifiers.                                                                                                                                                                      |
+| **Melee Attacks**                    | Lists your melee attacks, from equipped weapons, traits, skills, and spells, with their stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                               |
+| **Ranged Attacks**                   | Lists your ranged attacks with their stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                                                                  |
+| **Traits**                           | Shows your advantages, disadvantages, and quirks. See [Traits](Traits).                                                                                                                                                                                      |
+| **Skills**                           | Lists your character’s skills and techniques. See [Skills](Skills).                                                                                                                                                                                          |
+| **Spells**                           | Lists spells your character knows. See [Spells](Spells).                                                                                                                                                                                                     |
+| **Carried Equipment**                | Tracks the equipment your character carries. Carried items can be equipped and affect encumbrance. See [Equipment](Equipment).                                                                                                                               |
+| **Other Equipment**                  | Tracks equipment your character owns but isn't carrying. See [Equipment](Equipment).                                                                                                                                                                         |
+| **Notes**                            | Free-form notes for backstory, reminders, or campaign info. See [Notes](Notes).                                                                                                                                                                              |
 
 ## Sheet layout
 
 You can rearrange, resize, and hide the blocks directly on the sheet.
 
 1. Select **Edit Layout** ![edit layout](images/icons/icn-layout.svg) on the character sheet toolbar, or go to **Sheet >
-   Edit Sheet Layout**. Each block gets a dashed outline.
+   Edit Sheet Layout**. Each block gets a dashed outline. A sheet shown as pages switches to one continuous page while
+   you edit its layout and goes back to pages when you finish.
 2. Make your changes:
    - **Move a block:** Drag it to place it beside, above, or below another block, or drop it on the seam between two
      blocks to sit alongside both of them.
@@ -122,13 +139,13 @@ Layout changes can be undone with **Edit > Undo** like any other edit to the she
 GCS tracks whether items on your character sheet match the library they came from, such as the official **Master
 Library**. Look for the **Library Source** column ![source](images/icons/icn-source.svg) next to items on your sheet.
 
-| Marker  | Meaning                                                                                                                            |
-|---------|------------------------------------------------------------------------------------------------------------------------------------|
-| (blank) | Matches the library.                                                                                                               |
-| `!`     | Different from the library. This happens if you edited the item or if the library was updated (for example, a bug fix).           |
-| `—`     | Custom item that didn’t come from a library.                                                                                       |
-| `?`     | The library the item came from can't be found, so it can't be compared.                                                            |
-| `≠`     | The item is of a different kind than its source (for example, a trait whose source is now a container), so it can't be synced.     |
+| Marker  | Meaning                                                                                                                        |
+|---------|--------------------------------------------------------------------------------------------------------------------------------|
+| (blank) | Matches the library.                                                                                                           |
+| `!`     | Different from the library. This happens if you edited the item or if the library was updated (for example, a bug fix).        |
+| `—`     | Custom item that didn’t come from a library.                                                                                   |
+| `?`     | The library the item came from can't be found, so it can't be compared.                                                        |
+| `≠`     | The item is of a different kind than its source (for example, a trait whose source is now a container), so it can't be synced. |
 
 Hover over the marker to see the item's source. You can hide this column in [Sheet Settings](Sheet%20Settings).
 
@@ -154,23 +171,24 @@ The toolbar above the character sheet gives you quick access to common actions:
 
 ![Character Sheet Toolbar](images/screenshots/scrn-toolbar-characterSheet.png)
 
-| Button                                                | Name                                            | Description                                                                                                                                                                      |
-|:------------------------------------------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ![info](images/icons/icn-info.svg)                    | **Info**                                        | Hover to see a reminder that holding `Alt` (`Option` on macOS) while using the mouse wheel changes the scale.                                                                     |
-| ![help](images/icons/icn-help.svg)                    | **Help**                                        | Open this page from the User Guide.                                                                                                                                              |
-| 100%                                                  | **Scale**                                       | Adjust the display size of your character sheet.                                                                                                                                 |
-| ![toggle expansion](images/icons/icn-expand.svg)      | **Opens/closes all hierarchical rows**          | Show or hide all items within containers at once.                                                                                                                                |
-| ![toggle notes](images/icons/icn-openCloseNotes.svg)  | **Opens/closes all embedded notes**             | Show or hide all embedded notes on your sheet.                                                                                                                                   |
-| ![sheet settings](images/icons/icn-sheetSettings.svg) | **Sheet Settings**                              | Change settings for your character sheet. See [Sheet Settings](Sheet%20Settings).                                                                                                |
-| ![attributes](images/icons/icn-attributes.svg)        | **Attributes**                                  | Change your Primary and Secondary [Attributes](Attributes) and [Point pools](Point%20pools).                                                                                      |
-| ![body type](images/icons/icn-bodyType.svg)           | **Body Type**                                   | Edit your character's [Body type](Body%20type).                                                                                                                                  |
-| ![edit layout](images/icons/icn-layout.svg)           | **Edit the sheet's block layout**               | Rearrange the blocks on the sheet. See **Sheet layout** above.                                                                                                                   |
-| ![layout menu](images/icons/icn-layoutMenu.svg)       | **Block layout menu**                           | Show hidden blocks, reset the layout, or make this layout the default.                                                                                                           |
-| ![clone](images/icons/icn-clone.svg)                  | **Clone Character Sheet & Re-Randomize Fields** | Creates an exact copy of your character sheet, with randomized description fields.                                                                                               |
-| ![sync sources](images/icons/icn-syncSources.svg)     | **Sync with all sources in this sheet**         | Sync all items on the character sheet with the libraries they came from.                                                                                                         |
-| ![calculator](images/icons/icn-calculator.svg)        | **Calculators**                                 | Open the [calculators](Calculator) for explosions, scatter, demolition, collisions and falls, jumping, throwing, and hiking.                                                     |
-| ![shopping record](images/icons/icn-releaseNotes.svg) | **Shopping Record**                             | Open the record of what the character has bought and sold. See [Equipment](Equipment).                                                                                           |
-| N/A                                                   | **Search**                                      | Type to list the matching rows on the sheet, with the name of the list each is in. Choose one with a click, or with the arrow keys and `Return`, to select it and scroll to it.  |
+| Button                                                | Name                                            | Description                                                                                                                                                                     |
+|:------------------------------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![info](images/icons/icn-info.svg)                    | **Info**                                        | Hover to see a reminder that holding `Alt` (`Option` on macOS) while using the mouse wheel changes the scale.                                                                   |
+| ![help](images/icons/icn-help.svg)                    | **Help**                                        | Open this page from the User Guide.                                                                                                                                             |
+| 100%                                                  | **Scale**                                       | Adjust the display size of your character sheet.                                                                                                                                |
+| ![pages](images/icons/icn-pages.svg)                  | **Show the sheet as pages**                     | Switch between pages, the way the sheet prints, and one continuous page. See **Showing the sheet as pages** above.                                                              |
+| ![toggle expansion](images/icons/icn-expand.svg)      | **Opens/closes all hierarchical rows**          | Show or hide all items within containers at once.                                                                                                                               |
+| ![toggle notes](images/icons/icn-openCloseNotes.svg)  | **Opens/closes all embedded notes**             | Show or hide all embedded notes on your sheet.                                                                                                                                  |
+| ![sheet settings](images/icons/icn-sheetSettings.svg) | **Sheet Settings**                              | Change settings for your character sheet. See [Sheet Settings](Sheet%20Settings).                                                                                               |
+| ![attributes](images/icons/icn-attributes.svg)        | **Attributes**                                  | Change your Primary and Secondary [Attributes](Attributes) and [Point pools](Point%20pools).                                                                                    |
+| ![body type](images/icons/icn-bodyType.svg)           | **Body Type**                                   | Edit your character's [Body type](Body%20type).                                                                                                                                 |
+| ![edit layout](images/icons/icn-layout.svg)           | **Edit the sheet's block layout**               | Rearrange the blocks on the sheet. See **Sheet layout** above.                                                                                                                  |
+| ![layout menu](images/icons/icn-layoutMenu.svg)       | **Block layout menu**                           | Show hidden blocks, reset the layout, or make this layout the default.                                                                                                          |
+| ![clone](images/icons/icn-clone.svg)                  | **Clone Character Sheet & Re-Randomize Fields** | Creates an exact copy of your character sheet, with randomized description fields.                                                                                              |
+| ![sync sources](images/icons/icn-syncSources.svg)     | **Sync with all sources in this sheet**         | Sync all items on the character sheet with the libraries they came from.                                                                                                        |
+| ![calculator](images/icons/icn-calculator.svg)        | **Calculators**                                 | Open the [calculators](Calculator) for explosions, scatter, demolition, collisions and falls, jumping, throwing, and hiking.                                                    |
+| ![shopping record](images/icons/icn-releaseNotes.svg) | **Shopping Record**                             | Open the record of what the character has bought and sold. See [Equipment](Equipment).                                                                                          |
+| N/A                                                   | **Search**                                      | Type to list the matching rows on the sheet, with the name of the list each is in. Choose one with a click, or with the arrow keys and `Return`, to select it and scroll to it. |
 
 > [!TIP]
 > Press `Ctrl+J` (`Cmd+J` on macOS) to jump to the search field. When the window is narrow, the toolbar wraps onto more
