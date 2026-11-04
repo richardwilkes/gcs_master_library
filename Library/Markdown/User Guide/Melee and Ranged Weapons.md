@@ -10,9 +10,17 @@ These lists include:
 - **Weapons** from [Equipment](Equipment).
 - **Innate attacks** from [Traits](Traits), **techniques** from [Skills](Skills), and **melee and missile spells** from
   [Spells](Spells).
+- **Modifier attacks** from [Trait Modifiers](Trait%20Modifiers) and [Equipment Modifiers](Equipment%20Modifiers).
 
 Attacks belong to the item that provides them. An item with a **Melee Attack Usage** or **Ranged Attack Usage**
 automatically appears in the appropriate list. To change or delete an attack, edit the item it belongs to.
+
+A modifier's attacks belong to the trait or equipment it modifies, and appear only while the modifier is enabled. They
+are listed under that item's name and work like its own attacks: they use the item's level for leveled damage (unless
+the trait modifier's **Attacks use this modifier's level** is checked) and, for equipment, its **Rated ST**; the
+features of the item and its enabled modifiers that target its attacks apply to them; and modifiers marked **Show notes
+in attack usage** add their notes. Their `@code@` placeholders are the modifier's (see _Codes shared with modifiers_ in
+[Substitutions](Substitutions)). To change or delete one, edit the modifier.
 
 > [!NOTE]
 > Normally, only attacks from **carried** _and_ **equipped** items appear here. If you enable **Show all attacks** in
@@ -72,8 +80,8 @@ descending](images/icons/icn-sortDescending.svg).
 Attacks are not created directly in the Melee or Ranged Attacks lists. Instead:
 
 - Add a weapon the same way you add [Equipment](Equipment), [Traits](Traits), [Skills](Skills), or [Spells](Spells).
-- If the item has **Melee Attack Usage** or **Ranged Attack Usage** entries in its editor, it automatically appears in
-  the appropriate list.
+- If the item, or one of its enabled modifiers, has **Melee Attack Usage** or **Ranged Attack Usage** entries in its
+  editor, they automatically appear in the appropriate list.
 
 Some weapons can have **multiple usages**. For example, a spear may have a **thrust impaling** attack and a **swing
 cutting** attack, which appear as separate rows.
@@ -89,13 +97,16 @@ You manage and edit attacks through the item they belong to.
 
 To edit an attack’s details:
 
-1. Open the editor of the item that provides it (double-click the item in its list on the sheet).
+1. Open the editor of the item it belongs to (double-click the item in its list on the sheet). For a modifier's
+   attack, open the modifier's editor from there as well.
 2. In the **Melee Attack Usage** or **Ranged Attack Usage** table, double-click the attack to open the **Melee Attack
    Editor** or **Ranged Attack Editor**.
 3. Make your changes and select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) in the attack
-   editor, then again in the item's editor.
+   editor, then again in the modifier's editor, if any, and the item's editor.
 
-To add a new attack to an item, open the item's editor and go to **Insert > New Melee Attack** (`Ctrl+Shift+M` /
+Double-clicking an attack in the Melee Attacks or Ranged Attacks list on the sheet does steps 1 and 2 for you.
+
+To add a new attack to an item or modifier, open its editor and go to **Insert > New Melee Attack** (`Ctrl+Shift+M` /
 `Cmd+Shift+M`) or **Insert > New Ranged Attack** (`Ctrl+Shift+R` / `Cmd+Shift+R`), or right-click the attack table and
 choose the same command. To hide an attack from the sheet without deleting it, check **Hide** in the table or select
 the attack and use **Item > Toggle State**.
