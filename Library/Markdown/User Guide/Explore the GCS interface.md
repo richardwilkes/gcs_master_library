@@ -18,7 +18,7 @@ It includes:
 - **Item:** Act on the selected items: open the detail editor, open page references, move, adjust, or convert items,
   toggle their state, apply modifiers, copy them to a sheet or template, and sync them with their library source.
 - **Sheet:** Commands for the active character sheet, such as applying a template, organizing traits, buying and
-  selling equipment, and the sheet's own settings, attributes, body type, and layout.
+  selling equipment, showing the sheet as pages, and the sheet's own settings, attributes, body type, and layout.
 - **Settings:** General settings, colors, fonts, menu keys, saved filters, the defaults for new sheets, and page
   reference mappings. See [General Settings](General%20Settings) and the other pages under **Customization**.
 - **View:** Scale the active document up or down, and open the [Calculators](Calculator).
