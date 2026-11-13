@@ -14,8 +14,8 @@ You can manage default settings the same way as other settings:
   settings.
 - **Import or export settings:** On the Settings toolbar, select **Menu** ![menu](images/icons/icn-menu.svg), then
   choose:
-  - **Import:** Load saved settings into GCS.
-  - **Export:** Save your current settings as a file.
+  - **Import…:** Load saved settings into GCS.
+  - **Export…:** Save your current settings as a file.
   - Matching settings files found in the `Settings` folder of your libraries, such as the attribute sets and body
     types that come with the Master Library, are listed at the bottom of the menu, ready to import.
 
@@ -23,7 +23,8 @@ You can manage default settings the same way as other settings:
 
 **Default Sheet Settings** control the options applied to all new character sheets.
 
-They include the same options as [Sheet Settings](Sheet%20Settings). The difference is:
+They include the same options as [Sheet Settings](Sheet%20Settings), such as the **Skill Level Caps** that new sheets
+start with. The difference is:
 
 - **Default Sheet Settings** apply to _all new sheets you create_. Templates and loot sheets also follow them for the
   settings that apply to them, such as the equipment columns and decimal places.

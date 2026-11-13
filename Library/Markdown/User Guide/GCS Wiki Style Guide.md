@@ -76,7 +76,8 @@ Follow the [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/sty
 
 ### Links
 
-- Use relative links (`../filename.md`) so docs stay portable.
+- Link to another page by its name, with each space written as `%20` and no `.md` extension, such as
+  `[Sheet Settings](Sheet%20Settings)`, so the link works both in GCS and on the wiki.
 
 ### Tables
 

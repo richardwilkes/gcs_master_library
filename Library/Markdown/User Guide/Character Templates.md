@@ -63,6 +63,8 @@ points column shows what the choice may come to, as a range such as `20~45` whil
 
 When you apply the template, GCS presents a picker for each choice:
 
+![The template picker](images/screenshots/scrn-gcs-templatePicker.png)
+
 - Check the options you want. The running total at the top shows what the picks come to against the rule, and a note
   under the list says what is left to do.
 - A container inside a choice is picked as a unit, and can be opened to show what it holds. To offer its contents one
@@ -71,9 +73,33 @@ When you apply the template, GCS presents a picker for each choice:
   question right away, so its cost is fixed. Options still waiting on a choice show a range.
 - **OK** is enabled once the rule is met. **Override** accepts the picks anyway, leaving any open questions for when
   the template is applied.
+- **Auto Pick** makes the picks still open at random, within the choice's rule, and moves on. **Auto Pick All** does
+  the same, and then also for every choice and modifier prompt still to come (see **Picking at random** below).
 
 Only a template can hold choices: copying a choice to a character sheet makes the choice on the way, so only the picked
 options arrive.
+
+### Picking at random
+
+When **Auto Pick** or **Auto Pick All** makes the picks for a choice:
+
+- The options you've already checked stay checked. GCS adds unchecked options, in random order, until the rule is met.
+- A rule that asks for an exact count, or for **is at least** an amount, gets just enough options to reach it. One that
+  asks for **is at most** an amount gets as many as fit. One that asks for an exact number of points, or an exact value
+  or weight, gets options that add up to exactly that. Under any other rule, each option has an even chance. A rule on
+  negative points, such as a disadvantage allowance, is judged by the size of the total.
+- Anything a picked option leaves open is settled at random too: a choice inside it is picked within its own rule, and
+  each modifier choice it must make gets a random option. A choice you've already answered keeps your answer, and only
+  what that answer leaves open is settled. For a rule on points, value, or weight, this happens before an option's
+  cost is counted, so the total is exact.
+- If no random picks meet the rule, the picker stays open and says _No random picks meet this rule._ If the options
+  you've checked can't be settled, it says _What is already checked can't be settled at random._
+
+**Auto Pick All** also makes the picks of every choice still to come, such as the template's other choices, and gives
+a random option to each required modifier choice in the modifier prompts that follow, which then don't appear. A choice
+whose rule can't be met at random still opens its picker for you, and modifier prompts with nothing required,
+substitution prompts, and the ancestry question still appear. A picker or modifier prompt opened from a button inside a
+picker offers only **Auto Pick**.
 
 ## Best practices for templates
 
@@ -128,21 +154,26 @@ Skills and spells the character already has gain the template's points rather th
 adds an ancestry and the character already has one, GCS asks whether to disable the existing ancestry and offers to
 randomize the character's description again.
 
+Items copied from a template saved in a library, whether by applying it, dragging from it, or **Copy to Character
+Sheet**, remember the template as their source, unless they already had one, such as the library list the template got
+them from. **Item > Sync with Source** and the sheet's **Sync with all sources in this sheet** button then update them
+when you change the template. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).
+
 ## Character template toolbar
 
 The toolbar above a character template gives you quick access to common actions:
 
 ![Character Template Toolbar](images/screenshots/scrn-toolbar-characterTemplate.png)
 
-| Button                                                | Name                                    | Description                                                                                                                                                                                   |
-|:------------------------------------------------------|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ![help](images/icons/icn-help.svg)                    | **Help**                                | Opens this page from the User Guide.                                                                                                                                                          |
-| 100%                                                  | **Scale**                               | Adjusts the display size of the character template.                                                                                                                                           |
-| ![toggle expansion](images/icons/icn-expand.svg)      | **Opens/closes all hierarchical rows**  | Show or hide all items within containers at once.                                                                                                                                             |
-| ![toggle notes](images/icons/icn-openCloseNotes.svg)  | **Opens/closes all embedded notes**     | Show or hide all embedded notes on your template.                                                                                                                                             |
+| Button                                                | Name                                    | Description                                                                                                                                                                                       |
+|:------------------------------------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![help](images/icons/icn-help.svg)                    | **Help**                                | Opens this page from the User Guide.                                                                                                                                                              |
+| 100%                                                  | **Scale**                               | Adjusts the display size of the character template.                                                                                                                                               |
+| ![toggle expansion](images/icons/icn-expand.svg)      | **Opens/closes all hierarchical rows**  | Show or hide all items within containers at once.                                                                                                                                                 |
+| ![toggle notes](images/icons/icn-openCloseNotes.svg)  | **Opens/closes all embedded notes**     | Show or hide all embedded notes on your template.                                                                                                                                                 |
 | ![apply template](images/icons/icn-applyTemplate.svg) | **Apply Template to Character Sheet**   | Copies the contents of the current template to an open [character sheet](Character%20Sheet%20Overview). If more than one character sheet is open, you'll be prompted to choose which to apply to. |
-| ![sync sources](images/icons/icn-syncSources.svg)     | **Sync with all sources in this sheet** | Sync all items in the character template with the libraries they came from.                                                                                                                   |
-| N/A                                                   | **Search**                              | Type to list the matching rows in the template. Choose one to select it and scroll to it.                                                                                                      |
+| ![sync sources](images/icons/icn-syncSources.svg)     | **Sync with all sources in this sheet** | Sync all items in the character template with the libraries they came from.                                                                                                                       |
+| N/A                                                   | **Search**                              | Type to list the matching rows in the template. Choose one to select it and scroll to it.                                                                                                         |
 
 ---
 

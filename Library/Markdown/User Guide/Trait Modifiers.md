@@ -55,6 +55,11 @@ To create a new custom modifier:
 > When you first add a trait that has modifiers to a sheet, GCS prompts you to select them. You can select one,
 > several, or none, and a choice marked **Pick 1** must be made. If you skip this step, you can add or edit modifiers
 > later in the **Trait Editor**.
+>
+> While a required choice has no pick, the prompt offers **Auto Pick**, which gives each such choice a random option,
+> keeps everything else as you set it, and closes the prompt. **Auto Pick All** does the same, and also for every later
+> prompt in the same step that has a required choice, such as when you add several traits at once or apply a
+> [template](Character%20Templates). Prompts with nothing required still appear.
 
 ## Modifier groups and choices
 

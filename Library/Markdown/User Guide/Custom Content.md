@@ -43,10 +43,12 @@ reuse your custom content across characters:
 
 1. Go to **File > New** and choose the kind of library to create (for example, **New Traits Library**). A new, empty
    list opens.
-2. Drag the item from your sheet into the new list, or right-click it on the sheet and use **Copy**, then **Paste** into
-   the list.
+2. Drag the item from your sheet into the new list.
 3. Save the list with **File > Save**. Choose a location inside your **User Library** so it appears in the [Library
    Explorer](Library%20Explorer).
+
+To add more items to a list you saved earlier, open it from the Library Explorer. If it opens locked, select **Lock
+against changes** ![lock](images/icons/icn-lock.svg) on its toolbar to unlock it first.
 
 Once saved, your custom items behave exactly like official ones:
 

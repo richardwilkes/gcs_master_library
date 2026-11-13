@@ -18,11 +18,11 @@ descending](images/icons/icn-sortDescending.svg).
 
 | Column                                                | Description                                                                                                                                                                                                                 |
 |-------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ![switched on](images/icons/icn-toggleSwitch.svg)     | Appears only when a trait has switchable [features](Features). Select the cell to turn the trait's switch on or off.                                                                                                       |
-| **Trait**                                             | The trait name and any notes, self-control rolls, or modifiers. Select the chevron ![notes expand](images/icons/icn-notesExpand.svg) to show or hide the notes for this trait.                                             |
+| ![switched on](images/icons/icn-toggleSwitch.svg)     | Appears only when a trait has switchable [features](Features). Select the cell to turn the trait's switch on or off.                                                                                                        |
+| **Trait**                                             | The trait name and any notes, self-control rolls, or modifiers. Select the chevron ![notes expand](images/icons/icn-notesExpand.svg) to show or hide the notes for this trait.                                              |
 | **Pts**                                               | Total [character point](Character%20points) cost for the trait.                                                                                                                                                             |
 | ![page reference](images/icons/icn-pageReference.svg) | Page reference for the trait. See [Page References](Page%20References) for more details.                                                                                                                                    |
-| ![source](images/icons/icn-source.svg)                | Tracks whether the trait matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).                                                                       |
+| ![source](images/icons/icn-source.svg)                | Tracks whether the trait matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).                                                                        |
 
 A disabled trait is dimmed and struck through. A trait whose [prerequisites](Prerequisites) aren't met is tagged
 **Unsatisfied prerequisite(s)**, and a trait put on the sheet by another item's grant is marked with a chain icon
@@ -62,8 +62,9 @@ When you add a trait:
   first adding the trait, or later with **Set Substitutions** ![substitutions](images/icons/icn-substitutions.svg) in
   the editor's toolbar.
 - Some traits have **modifiers**. When you first add a trait that has modifiers, GCS prompts you to select them. You
-  can select one, several, or none, and a modifier choice marked **Pick 1** must be made. If you skip this step, you
-  can add or edit modifiers later in the **Trait Editor**. See [Trait Modifiers](Trait%20Modifiers) for more details.
+  can select one, several, or none, and a modifier choice marked **Pick 1** must be made, by you or at random with
+  **Auto Pick**. If you skip this step, you can add or edit modifiers later in the **Trait Editor**. See [Trait
+  Modifiers](Trait%20Modifiers) for more details.
 
 ## Managing traits
 
@@ -138,7 +139,7 @@ The Trait Editor includes the following fields:
 | **Name**                    | The trait's name.                                                                                                                                                                                                                                                |
 | **Notes**                   | Notes about what the trait does. These appear below the trait in the list. Select the Scripting Guide ![scripting guide](images/icons/icn-scriptingGuide.svg) for instructions on how to include JavaScript. Supports [Markdown](Markdown%20Guide).              |
 | **VTT Notes**               | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                                                                                                                     |
-| **User Description**        | Additional notes for your reference. These appear as a tooltip when you hover, and only exist on character sheets.                                                                                                                                              |
+| **User Description**        | Additional notes for your reference. These appear as a tooltip when you hover, and only exist on character sheets and on the trait a [grant](Features) holds, which passes them to the sheet.                                                                    |
 | **Tags**                    | Comma-separated [Tags](Tags) to help organize traits.                                                                                                                                                                                                            |
 | **Preconfigured**           | Only in templates and libraries. If checked, the trait's modifier choices and substitutions are already settled, so GCS doesn't ask about them when the trait is added to a sheet. See [Substitutions](Substitutions).                                           |
 | **Enabled**                 | If checked, the trait applies to your sheet.                                                                                                                                                                                                                     |
@@ -161,7 +162,7 @@ The Trait Editor includes the following fields:
 | **Trait Modifier**          | Modifiers that apply to the trait. You can enable a modifier to apply it to your sheet. See [Trait Modifiers](Trait%20Modifiers).                                                                                                                                |
 | **Melee Attack Usage**      | Lists melee attack statistics ([B268](B268)), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                                          |
 | **Ranged Attack Usage**     | Lists ranged attack statistics ([B268](B268)), including skill defaults. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons).                                                                                                                         |
-| **Study**                   | Only on character sheets. Allows you to track study time for this trait. See [Study time](Study%20time).                                                                                                                                                        |
+| **Study**                   | Only on character sheets. Allows you to track study time for this trait. See [Study time](Study%20time).                                                                                                                                                         |
 
 Container traits have fewer fields, plus a **Container Type**. See [Containers](Containers).
 

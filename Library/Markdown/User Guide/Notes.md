@@ -10,8 +10,8 @@ Notes are useful for:
 - Quick rules references or house rules.
 
 Notes always show their **full content** in the Notes block of your character sheet (you don’t have to open them
-separately to read). Notes support **[Markdown](Markdown%20Guide)** and **Scripting** for formatting and automation, so a
-note can show calculated values, such as `<script>entity.name</script>`.
+separately to read). Notes support **[Markdown](Markdown%20Guide)** and **Scripting** for formatting and automation, so
+a note can show calculated values, such as `<script>entity.name</script>`.
 
 ## Adding notes
 
@@ -61,10 +61,10 @@ The Note Editor includes the following fields:
 
 | Note Field           | Description                                                                                                                                                                                            |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Notes**            | A multi-line text field for notes. Supports [Markdown](Markdown%20Guide) and scripts; select the Scripting Guide ![scripting guide](images/icons/icn-scriptingGuide.svg) for details.                   |
+| **Notes**            | A multi-line text field for notes. Supports [Markdown](Markdown%20Guide) and scripts; select the Scripting Guide ![scripting guide](images/icons/icn-scriptingGuide.svg) for details.                  |
 | **Tags**             | Comma-separated [Tags](Tags) to help organize notes.                                                                                                                                                   |
 | **Preconfigured**    | Only in templates and libraries. If checked, the note's substitutions are already settled, so GCS doesn't ask about them when the note is added to a sheet. See [Substitutions](Substitutions).        |
-| **Page Reference**   | The page number in the source. Select the bookmark ![page reference](images/icons/icn-pageReference.svg) beside the label to open it. See [Page References](Page%20References).                       |
+| **Page Reference**   | The page number in the source. Select the bookmark ![page reference](images/icons/icn-pageReference.svg) beside the label to open it. See [Page References](Page%20References).                        |
 | **Page Highlight**   | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                                                          |
 | **Nameables**        | Defines the `@code@` placeholders the note uses, with the choices offered for each. See [Substitutions](Substitutions).                                                                                |
 | **Markdown Preview** | Preview of how the note will render on your character sheet, with any scripts resolved.                                                                                                                |

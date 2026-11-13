@@ -28,6 +28,7 @@ Before trying the issue-specific fixes below, you may want to try these quick st
 - GCS is very slow to start
 - Character sheets appear smaller than expected
 - A trait, skill, or spell shows an unsatisfied prerequisite that the character meets
+- A file won't open, and GCS says it holds another kind of data
 
 ---
 
@@ -162,6 +163,50 @@ count spells from the same power source.
 2. Open the item's editor and check its **Prerequisites** section. When the item is on a character sheet, each
    requirement is marked as met or not met, with a tooltip explaining why. See [Prerequisites](Prerequisites).
 3. If the prerequisite is a script, the result of running it is shown beneath the script.
+
+---
+
+## Issue: A file won't open, and GCS says it holds another kind of data
+
+**Cause:** Every data and settings file GCS saves records the kind of data it holds, while GCS decides how to open a
+file by its extension. A file whose extension was changed, for example by renaming it, no longer matches what it holds,
+so GCS refuses to open or import it and names both kinds, for example:
+
+> The file holds "trait_list" data, but "skill_list" data was expected.
+
+**How to fix:**
+
+1. Note the first kind the message names. That is what the file actually holds.
+2. Rename the file so that its extension is the one for that kind, from the table below.
+3. Open or import the file again.
+
+| Kind in the message       | Extension   |
+|---------------------------|-------------|
+| `character`               | `.gcs`      |
+| `template`                | `.gct`      |
+| `loot`                    | `.loot`     |
+| `trait_list`              | `.adq`      |
+| `trait_modifier_list`     | `.adm`      |
+| `skill_list`              | `.skl`      |
+| `spell_list`              | `.spl`      |
+| `equipment_list`          | `.eqp`      |
+| `equipment_modifier_list` | `.eqm`      |
+| `note_list`               | `.not`      |
+| `ancestry`                | `.ancestry` |
+| `names`                   | `.names`    |
+| `attributes`              | `.attr`     |
+| `body`                    | `.body`     |
+| `calendar`                | `.calendar` |
+| `filters`                 | `.filters`  |
+| `skill_level_caps`        | `.caps`     |
+| `general`                 | `.general`  |
+| `sheet_settings`          | `.sheet`    |
+| `colors`                  | `.colors`   |
+| `fonts`                   | `.fonts`    |
+| `key_bindings`            | `.keys`     |
+| `page_refs`               | `.refs`     |
+
+Files saved by older versions of GCS don't record their kind, so GCS opens them by their extension alone.
 
 ---
 

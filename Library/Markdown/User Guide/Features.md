@@ -7,7 +7,8 @@ specific benefits. They’re different from [Prerequisites](Prerequisites):
 - **Prerequisites** determine _who can take_ something.
 - **Features** determine _what it does_ once you have it.
 
-Features are edited directly in the **Detail Editor** under the **Features** section.
+Features are edited directly in the **Detail Editor** under the **Features** section. Each [pool
+threshold](Point%20pools) has a **Features** section too, whose features apply while the pool is at that threshold.
 
 ## The Features section
 
@@ -22,7 +23,10 @@ section's title to collapse it to a one-paragraph summary, or to expand it again
 - **Chips:** Optional criteria are added as chips. Select a dashed **+ …** button to add one, and the **x** on a chip to
   remove it.
 - **Reordering:** Drag a feature by its grip ![grip](images/icons/icn-grip.svg) to move it. Dragging it into the
-  Features section of another open editor copies it there.
+  Features section of another open editor, even one for a different kind of item, copies it there, expanding the
+  section if it's collapsed. A feature the other editor can't hold, such as a grant dropped into the editor of the item
+  it grants, is refused. In a read-only editor, such as a granted item's, features can be dragged out but not
+  rearranged.
 - **More actions:** Select **More actions** ![more](images/icons/icn-moreActions.svg) beside a feature for
   **Duplicate**, **Move Up**, **Move Down**, and **Delete**.
 
@@ -91,7 +95,7 @@ The available feature types are chosen from a dropdown, grouped as shown here.
 
 | Feature type                                 | Description                                                                                                                                                                                                                          |
 |----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Gives an attribute modifier of**           | Adds to an attribute, **Size Modifier**, **Dodge**, **Parry**, or **Block**.                                                                                                                                                         |
+| **Gives an attribute modifier of**           | Adds to an attribute, **Size Modifier**, **Move**, **Dodge**, **Parry**, or **Block**.                                                                                                                                               |
 | **Gives a conditional modifier of**          | Adds an entry to the Conditional Modifiers table, with the condition it applies in.                                                                                                                                                  |
 | **Gives a reaction modifier of**             | Adds an entry to the Reaction Modifiers table, with who it applies from or to.                                                                                                                                                       |
 | **Gives a trait level modifier of**          | Raises or lowers the level of traits whose name matches. Levels granted this way are free.                                                                                                                                           |
@@ -109,8 +113,8 @@ The available feature types are chosen from a dropdown, grouped as shown here.
 
 ### Defense
 
-| Feature type            | Description                                                                                                                                         |
-|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Feature type            | Description                                                                                                                                                      |
+|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Gives a DR bonus of** | Adds DR to all hit locations, to the locations you check, or (on an equipment modifier) to the armor it is attached to, optionally against one damage type only. |
 
 ### Weapons
@@ -146,10 +150,10 @@ to). Add **+ usage**, **+ damage type**, or **+ tag** to narrow the match, and, 
 - Gives a weapon shot duration modifier of
 - Gives a weapon reload time modifier of
 
-| Feature type              | Description                                                                                                                                                                                                                                                                 |
-|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Sets the weapon flag**  | Turns one of an attack's flags on or off, such as **Can Parry**, **Fencing**, **Two-handed**, **Thrown**, **Jet**, or **Retracting Stock**.                                                                                                                                 |
-| **Sets the value of**     | Replaces a field with a chosen value instead of adjusting it: a trait's self-control roll, self-control adjustment, or frequency of appearance, or an attack's damage strength basis, base damage dice, damage type, armor divisor, or fragmentation. When several apply to the same field, the one with the highest **priority** wins. |
+| Feature type             | Description                                                                                                                                                                                                                                                                                                                             |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Sets the weapon flag** | Turns one of an attack's flags on or off, such as **Can Parry**, **Fencing**, **Two-handed**, **Thrown**, **Jet**, or **Retracting Stock**.                                                                                                                                                                                             |
+| **Sets the value of**    | Replaces a field with a chosen value instead of adjusting it: a trait's self-control roll, self-control adjustment, or frequency of appearance, or an attack's damage strength basis, base damage dice, damage type, armor divisor, or fragmentation. When several apply to the same field, the one with the highest **priority** wins. |
 
 ### Equipment
 
@@ -168,8 +172,8 @@ to). Add **+ usage**, **+ damage type**, or **+ tag** to narrow the match, and, 
 
 ### Other
 
-| Feature type            | Description                                                                                                                                                                                                                                                          |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Feature type            | Description                                                                                                                                                                                                                                                                                |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Adds the title note** | Shows text in parentheses after the item's name wherever it appears, such as _Weapon Master (Sword)_. Add **+ before built-in notes** to place it ahead of a skill's specialization or a trait's self-control roll. See [Substitutions](Substitutions) for using placeholders in the text. |
 
 ## Switchable features
@@ -194,13 +198,17 @@ To set up a grant:
 1. Add a **Grants the trait**, **Grants the skill**, or **Grants the spell** feature.
 2. Drag the item to grant from a library, sheet, or template onto the feature's drop zone, or select the zone to start
    from a blank item. You can also select rows in a list and choose **Item > Add as Grant** to add a grant for each of
-   them to an open editor.
+   them to an open editor, or to a [pool threshold](Point%20pools) in the Attributes editor.
 3. If the granted item has levels, choose what the grant does with them: **setting its level to** a value, **adjusting
    its level by** an amount, or, for skills and spells, **adjusting its points by** an amount. When the sheet already
    has the item, an adjustment adds to it, and a level set does what **and if already present** says: **Ignore**,
    **Keep Highest**, or **Keep Lowest**.
 4. Add **+ check prerequisites** if the granted item's own prerequisites should be checked too. By default they are
    not.
+
+A grant added to a spell starts out switchable, so the granted item is only in effect while the spell is switched on
+(see **Switchable features** above). Select the **x** on its **only while switched on** chip to keep the grant in
+effect whatever the switch says.
 
 On the sheet, a granted row is marked with a chain icon ![chain](images/icons/icn-chainLink.svg) that names the
 granting item and selects it when clicked. While the grant is not in effect (for example, its equipment is

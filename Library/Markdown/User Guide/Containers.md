@@ -59,12 +59,12 @@ From the keyboard, select the items and use **Item > Move > Move Into Container*
 
 A trait container's **Container Type** sets how GCS treats its contents:
 
-| Container Type            | Description                                                                                                                                                                                                                                                     |
-|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Group**                 | Just groups the traits. The points go to the categories the traits themselves belong to.                                                                                                                                                                        |
+| Container Type            | Description                                                                                                                                                                                                                                                      |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Group**                 | Just groups the traits. The points go to the categories the traits themselves belong to.                                                                                                                                                                         |
 | **Alternative Abilities** | Applies the Alternative Abilities rule ([P11](P11)): the most expensive abilities cost full price and the rest cost 20%. **Alternative Slots** sets how many can be in use at once; a container with more than one slot shows the count, such as _Alternate x2_. |
 | **Ancestry**              | Marks the container as a racial template. Its points count as **Ancestry** in the Points block, and the **Ancestry** chosen beside it drives the character's random name, gender, age, height, weight, and looks. See [Name Generators](Name%20Generators).      |
-| **Attributes**            | Marks traits that adjust attributes, such as _Increased ST_, so their points count as **Attributes** in the Points block.                                                                                                                                       |
+| **Attributes**            | Marks traits that adjust attributes, such as _Increased ST_, so their points count as **Attributes** in the Points block.                                                                                                                                        |
 | **Meta-Trait**            | Marks the container as a meta-trait ([B262](B262)).                                                                                                                                                                                                              |
 
 ## Equipment containers and groups
@@ -122,7 +122,7 @@ Containers for [Traits](Traits) include the following fields:
 | **Name**                    | The container’s name (e.g., “Advantages,” “Psionic Powers,” “Alternate Form”).                                                                                           |
 | **Notes**                   | Notes that appear under the container. Select the Scripting Guide ![scripting guide](images/icons/icn-scriptingGuide.svg) for instructions on how to include JavaScript. |
 | **VTT Notes**               | Notes for use in your Virtual Tabletop system. See your VTT’s documentation.                                                                                             |
-| **User Description**        | Additional notes for your reference. These appear as a tooltip when you hover.                                                                                           |
+| **User Description**        | Additional notes for your reference. These appear as a tooltip when you hover, and only exist on character sheets.                                                       |
 | **Tags**                    | Comma-separated [Tags](Tags) for organization.                                                                                                                           |
 | **Preconfigured**           | Only in templates and libraries. See [Substitutions](Substitutions).                                                                                                     |
 | **Picked as a Unit**        | Only for a group inside a template choice. Clear it to offer the group's contents one by one.                                                                            |
@@ -133,7 +133,7 @@ Containers for [Traits](Traits) include the following fields:
 | **Frequency of Appearance** | How often the container's subject appears in play ([B36](B36)).                                                                                                          |
 | **Container Type**          | Defines special grouping rules: Group, Alternative Abilities, Ancestry, Attributes, or Meta-Trait (see above).                                                           |
 | **Ancestry**                | Available when Container Type is Ancestry. Choose the ancestry (for example, Human or Elf).                                                                              |
-| **Alternative Slots**       | Available when Container Type is Alternative Abilities. How many of the container's abilities may be in use at once.                                                    |
+| **Alternative Slots**       | Available when Container Type is Alternative Abilities. How many of the container's abilities may be in use at once.                                                     |
 | **Page Reference**          | Page number in the source book. See [Page References](Page%20References) for details.                                                                                    |
 | **Page Highlight**          | Text to highlight in the PDF. Leave blank unless the default highlights fail.                                                                                            |
 | **Nameables**               | Defines the `@code@` placeholders the container uses. See [Substitutions](Substitutions).                                                                                |
@@ -172,7 +172,7 @@ Containers for [Notes](Notes) have the same fields as notes:
 | **Tags**             | Comma-separated [Tags](Tags) to help organize notes.                                    |
 | **Page Reference**   | The page number in the source. See [Page References](Page%20References).                |
 | **Page Highlight**   | Text to highlight in the PDF. Leave blank unless the default highlights fail.           |
-| **Nameables**        | Defines the `@code@` placeholders the notes use. See [Substitutions](Substitutions).     |
+| **Nameables**        | Defines the `@code@` placeholders the notes use. See [Substitutions](Substitutions).    |
 | **Markdown Preview** | Preview of how the notes will render.                                                   |
 
 ## Modifier groups and choices

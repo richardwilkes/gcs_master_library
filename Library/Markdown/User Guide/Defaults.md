@@ -24,7 +24,8 @@ Select the section's title to collapse it to a one-line summary, or to expand it
 - **Editing:** Select a default to open it. Its controls read as a sentence. Select **Done** (or press `Return` or
   `Escape`) to close it.
 - **Reordering:** Drag a default by its grip ![grip](images/icons/icn-grip.svg) to move it. Dragging it into the
-  Defaults section of another open editor copies it there.
+  Defaults section of another open editor, whether a skill's or an attack's, copies it there, expanding the section if
+  it's collapsed. In a read-only editor, defaults can be dragged out but not rearranged.
 - **More actions:** Select **More actions** ![more](images/icons/icn-moreActions.svg) beside a default for
   **Duplicate**, **Move Up**, **Move Down**, and **Delete**.
 
@@ -87,6 +88,9 @@ Bow at +0` or `Skill Driving whose specialization is Motorcycle at -4`.
 
 Matching by tag lets one default cover a whole family of skills: Stage Combat can default to whichever combat skill the
 character has at -3 instead of listing each one.
+
+A default from a skill uses that skill's level after the sheet's skill level caps (see _Skill Level Caps_ in
+[Sheet Settings](Sheet%20Settings)). The defaulting skill is only capped itself if a cap selects it.
 
 > [!WARNING]
 > Skill names must match exactly as they appear in the library or on your sheet. Typos or mismatches mean the default

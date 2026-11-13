@@ -47,8 +47,10 @@ the line:
 The line itself isn't copied to the output. As of GCS v5.58.0, a byte order mark at the start of the file and any
 spaces or tabs around the line are ignored; earlier versions required an exact match. Any other first line runs the
 template through the legacy processor used before GCS v5.15. That processor is still present so that old templates
-keep working, but it isn't documented here and doesn't receive new data, so write new templates in one of the two
-formats above.
+keep working, but it isn't documented here and receives little new data, so write new templates in one of the two
+formats above. As of GCS v5.59.0, its primary and secondary attribute loops offer `@CURRENT`, an attribute's current
+value beside `@VALUE`, and its keys for an attribute or pool threshold the sheet doesn't define write nothing rather
+than a huge negative number.
 
 Both formats use the template language of the Go programming language. The sections below cover everything a sheet
 export needs. The complete reference is at <https://pkg.go.dev/text/template>, with the HTML format's escaping rules
@@ -574,7 +576,10 @@ A primary or secondary attribute. See [Attributes](Attributes).
 - `.ID` (string) — The attribute's ID, such as `st`
 - `.Name` (string) — The short name, such as `ST`
 - `.Points` (Number)
-- `.Value` (Number)
+- `.Value` (Number) — The value without the adjustments of the pools' current thresholds, which the points pay for
+- Added in GCS v5.59:
+  - `.Current` (Number) — The value with the adjustments of the pools' current thresholds, which the sheet shows. The
+    same as `.Value` when none apply.
 
 ## Attributes
 

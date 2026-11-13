@@ -60,8 +60,9 @@ The results give the velocity, the damage to each participant, and the damage to
 ## Jumping
 
 Works out your character's jumping distance ([B352](BX352)). The jumper's Basic Move, Lifting ST, body weight,
-encumbrance, Jumping skill, Enhanced Move, and Super Jump come from the chosen sheet. Enter the **running start** and
-any **penalty for extra effort** ([B356](BX356)). The results show:
+encumbrance, Jumping skill, Enhanced Move, and Super Jump come from the chosen sheet. The Lifting ST includes any
+halving from a [pool threshold](Point%20pools), such as _Tired_. Enter the **running start** and any **penalty for
+extra effort** ([B356](BX356)). The results show:
 
 - **High Jump** distance (vertical leap).
 - **Broad Jump** distance (horizontal leap).
@@ -69,7 +70,8 @@ any **penalty for extra effort** ([B356](BX356)). The results show:
 ## Throwing
 
 Works out your character's throwing distance ([B355](BX355)). The thrower's ST, striking ST, and Throwing and Throwing
-Art skill levels come from the chosen sheet. Enter the object’s **weight** and any **penalty for extra effort**. The
+Art skill levels come from the chosen sheet. The ST includes any halving of lifting ST from a [pool
+threshold](Point%20pools), such as _Tired_. Enter the object’s **weight** and any **penalty for extra effort**. The
 results show:
 
 - **Distance** in yards.

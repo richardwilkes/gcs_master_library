@@ -56,7 +56,8 @@ To create a new custom modifier:
 
 Modifier **groups** and **choices** work the same way as for [Trait Modifiers](Trait%20Modifiers): a choice tagged
 **Pick 1** or **Pick at most 1** makes its modifiers exclusive. Add them with **Insert > Equipment > New Equipment
-Modifier Group** and **New Equipment Modifier Choice**.
+Modifier Group** and **New Equipment Modifier Choice**. The prompt that asks about modifiers when you add equipment to a
+sheet works the same way too, including **Auto Pick** and **Auto Pick All** for choices that must be made.
 
 ## Managing modifiers
 

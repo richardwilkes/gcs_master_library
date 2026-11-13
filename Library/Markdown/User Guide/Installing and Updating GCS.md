@@ -69,10 +69,11 @@ at any time with **Help > Check for GCS updates**.
 When a new version is available:
 
 1. A pulsing **Software Update Available** button appears in the [Library Explorer](Library%20Explorer) toolbar. The
-   update window also opens on its own the first time a release is seen.
+   update window also opens on its own when the check GCS makes at launch finds a release it hasn't shown you before.
 2. Select the button to open the update window, which shows the **release notes** for the new version.
-3. Select **Install & Restart**. GCS downloads the release for your system, verifies it, installs it over the copy
-   you're running, and restarts.
+3. Select **Install & Restart**. GCS downloads the release for your system and verifies it, with a progress window
+   whose **Cancel** button stops the update. It then quits, installs the new version over the copy you're running, and
+   restarts.
 
 If GCS can't update itself (for example, because it was installed by Homebrew or a Linux package manager, is running
 from the disk image, or is in a folder it can't write to), the window explains why and offers **Download Page**

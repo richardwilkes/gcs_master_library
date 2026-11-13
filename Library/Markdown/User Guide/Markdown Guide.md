@@ -42,6 +42,7 @@ In the rendered view, dragging with the mouse scrolls the document. Use the keyb
 | **Image**               | `![alt](url)`                                                                   | ![alt](https://gurpscharactersheet.com/images/app_icon.svg) |
 | **List (unordered)**    | `- item`<br>`- item`                                                            | - test<br>- test                                            |
 | **List (ordered)**      | `1. item`<br>`2. item`                                                          | 1. item<br>2. item                                          |
+| **Task list**           | `- [ ] to do`<br>`- [x] done`                                                   | (task list shown below)                                     |
 | **Table**               | See details below                                                               | (table shown below)                                         |
 | **Escape Markdown**     | `\**escape\**`                                                                  | \*\*escape\*\*                                              |
 
@@ -217,6 +218,9 @@ This is `inline code`.
         its formatting preserved as typed.
 ```
 
+Inline code is shown exactly as you type it: a backslash or an entity such as `&amp;` inside the backticks appears as
+written rather than being interpreted.
+
 ---
 
 ## Horizontal Rules
@@ -239,8 +243,8 @@ ___
 
 ## Links
 
-Plain links are auto-detected:
-[https://gurpscharactersheet.com](https://gurpscharactersheet.com)
+Plain web addresses that start with `https://`, `http://`, or `www.` are auto-detected and shown as you typed them:
+https://gurpscharactersheet.com
 
 To add custom text, use `[text](URL)`:
 
@@ -257,6 +261,16 @@ You can also add tooltips if you hover over the link:
 ```
 
 [Visit GCS](https://gurpscharactersheet.com "GURPS Character Sheet")
+
+The text of a link can be styled, and can hold inline code or an [image](#images):
+
+```
+[Visit **GCS** _now_](https://gurpscharactersheet.com)
+```
+
+[Visit **GCS** _now_](https://gurpscharactersheet.com)
+
+A link too long to fit on one line wraps onto the next, as the rest of the text does.
 
 ### Relative paths
 
@@ -348,6 +362,16 @@ You can also use relative paths for images (see links above):
 > [!TIP]
 > Use relative paths for images stored in your library so they don’t break if you move the file.
 
+To make an image a link, put the image in place of the link's text:
+
+```
+[![GCS](https://gurpscharactersheet.com/images/app_icon.svg)](https://gurpscharactersheet.com)
+```
+
+[![GCS](https://gurpscharactersheet.com/images/app_icon.svg)](https://gurpscharactersheet.com)
+
+An image wider than the space it's shown in, including in a list or a quote, is scaled down to fit.
+
 ---
 
 ## Lists
@@ -400,6 +424,38 @@ Indent items to nest them (and mix and match ordered and unordered lists):
    - More...
 2. Another...
 
+Each level of nesting in an unordered list has its own bullet: a disc, then a circle, then a square.
+
+### Spacing between items
+
+A list whose items are separated by blank lines is spaced out like paragraphs. Without the blank lines, the items sit
+close together:
+
+```
+- Spaced out
+
+- Like paragraphs
+```
+
+- Spaced out
+
+- Like paragraphs
+
+### Task lists
+
+Start a list item with `[ ]` for a task still to do, or `[x]` for one that's done, followed by a space:
+
+```
+- [x] Pick an ancestry
+- [ ] Buy equipment
+```
+
+- [x] Pick an ancestry
+- [ ] Buy equipment
+
+GCS shows a check box in place of the item's bullet. The check boxes only show the state written in the text; selecting
+one doesn't change it.
+
 ---
 
 ## Tables
@@ -446,6 +502,9 @@ Note that tables don't have to have consistent column sizing:
 | aa   |    bb |    cc    |
 | aaaa |  bbbb |   cccc   |
 
+A table too wide for the space it's shown in has its widest columns narrowed, with the text in their cells wrapped to
+fit.
+
 ---
 
 ## Escaping Markdown
@@ -462,11 +521,11 @@ These asterisks \*will not\* make the text bold.
 
 ## What isn't supported
 
-GCS renders the common Markdown described on this page, plus the GitHub-style tables, strikethrough, and alerts. It
-doesn't render:
+GCS renders the common Markdown described on this page, plus the GitHub-style tables, strikethrough, task lists, and
+alerts. It doesn't render:
 
 - HTML, apart from `<br>` for a line break and `<hr>` for a horizontal rule. Other tags are dropped.
-- Task lists (`- [ ] item`), footnotes, and definition lists.
+- Footnotes and definition lists.
 
 ---
 

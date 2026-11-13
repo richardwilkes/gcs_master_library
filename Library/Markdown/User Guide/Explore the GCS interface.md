@@ -88,8 +88,8 @@ the rest of the last row.
 > - **Close All Tabs** closes every open tab in the window, including the one you clicked. This does not quit GCS.
 
 > [!NOTE]
-> With **Restore workspace arrangement on start** turned on in [General Settings](General%20Settings), GCS reopens the
-> documents you had open, in the same arrangement, the next time it starts.
+> With **Restore arrangement on start** turned on in [General Settings](General%20Settings), GCS reopens the documents
+> you had open, in the same arrangement, the next time it starts.
 
 ## Keyboard and screen readers
 

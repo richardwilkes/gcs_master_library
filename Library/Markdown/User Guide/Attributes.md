@@ -31,6 +31,18 @@ To set your secondary attributes:
 
 - In the **Secondary Attributes block**, enter a score for each value.
 
+## Adjusted attributes
+
+A [pool threshold](Point%20pools) can add to or multiply an attribute while the pool is at that threshold. This
+changes only the attribute's current value, leaving its score as it was:
+
+- The sheet shows the current value in the **Warning** color (see [Colors and Fonts](Colors%20and%20Fonts)). Hover over
+  it to see the value it's adjusted from and the thresholds adjusting it.
+- Select the field to edit the attribute. While you edit, the field shows the value without the adjustments.
+- Skills, spells, skill defaults, attribute prerequisites, Move, Dodge, and ST for striking, lifting, and throwing use
+  the current value. Point costs, and attributes calculated from this one, such as HP from ST, use the value without the
+  adjustments.
+
 ## Using attribute options from other games
 
 Some GURPS supplements and house rules use different attributes or point pools. The Master Library includes several of
@@ -74,8 +86,8 @@ To import or export attributes:
 
 1. On the Attributes toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 2. Select one of the following:
-   - **Import:** Load a saved set of attributes into your sheet, replacing or merging as described above.
-   - **Export:** Save the current attributes as a file.
+   - **Import…:** Load a saved set of attributes into your sheet, replacing or merging as described above.
+   - **Export…:** Save the current attributes as a file.
 
 > [!TIP]
 > Save an exported `.attr` file in the `Settings` folder of your User Library and it appears in the menu alongside the
@@ -92,21 +104,27 @@ To edit or add attributes:
 
 1. On the character sheet toolbar, select **Attributes** ![attributes](images/icons/icn-attributes.svg).
 2. On the editor, do one of the following:
-   - **Edit** an existing attribute.
-   - Select **Add Attribute** ![add](images/icons/icn-add.svg) on the toolbar to add a new attribute.
+   - **Edit** an existing attribute. Each attribute is collapsed to a header showing its ID, name, and type; select the
+     header to show its fields, and again to hide them.
+   - Select **Add Attribute** ![add](images/icons/icn-add.svg) on the toolbar to add a new attribute, already expanded.
 3. Enter values in the form using the fields below.
 4. On the Attributes toolbar, select **Apply Changes** ![apply changes](images/icons/icn-applyChanges.svg) to save.
 
-Every change can be undone with **Edit > Undo** while the view is open.
+To expand every attribute at once, select **Expands/collapses all attribute definitions**
+![toggle expansion](images/icons/icn-expand.svg) on the Attributes toolbar. When any attribute is already expanded, it
+collapses them all instead.
+
+Every change can be undone with **Edit > Undo** while the view is open. Undoing a change to a collapsed attribute
+expands it.
 
 ### Attribute fields
 
 | Field              | Description                                                                                                                                                                                                                                                                                                              |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **ID**             | Unique variable name used for references, in lowercase.                                                                                                                                                                                                                                                                  |
-| **Attribute Type** | Choose from **Integer**, **Decimal**, **Pool**, or a **Separator**. The “Display Only” variants create a read-only field, and **Pool (Display Only for Maximum)** lets you track the current value of a pool whose maximum is calculated. Anything below a separator can be collapsed or expanded on the sheet.            |
+| **Attribute Type** | Choose from **Integer**, **Decimal**, **Pool**, or a **Separator**. The “Display Only” variants create a read-only field, and **Pool (Display Only for Maximum)** lets you track the current value of a pool whose maximum is calculated. Anything below a separator can be collapsed or expanded on the sheet.          |
 | **Placement**      | Where the attribute appears on the character sheet: **Automatic**, **Primary**, **Secondary**, or **Hidden**. With **Automatic**, the attribute appears in the Primary or Secondary block depending on whether its base value is a primary attribute. Pools are always placed automatically, in the Point Pools block.   |
-| **Trait Name**     | Shown when the placement is **Hidden**. Enter the name of a trait that, when present on the character, reveals the attribute with the **Placement When Present** you choose. Leave it empty to always keep the attribute hidden.                                                                                        |
+| **Trait Name**     | Shown when the placement is **Hidden**. Enter the name of a trait that, when present on the character, reveals the attribute with the **Placement When Present** you choose. Leave it empty to always keep the attribute hidden.                                                                                         |
 | **Short Name**     | The label shown on the character sheet.                                                                                                                                                                                                                                                                                  |
 | **Full Name**      | Optional. If entered, displays after the short name.                                                                                                                                                                                                                                                                     |
 | **Base Value**     | Starting value for the attribute. Supports scripting and attribute IDs (for example, `Math.floor($basic_speed)`). See [Scripting Guide](Scripting%20Guide).                                                                                                                                                              |
@@ -121,8 +139,8 @@ See [Point pools](Point%20pools) for details on customizing your pools.
 ## Managing attributes
 
 - **Discard changes:** Select **Discard Changes** ![discard changes](images/icons/icn-discardChanges.svg).
-- **Delete an attribute:** Select **Delete** ![delete](images/icons/icn-delete.svg) beside it. The last attribute can't
-  be deleted.
+- **Delete an attribute:** Select **Remove attribute** ![delete](images/icons/icn-delete.svg) beside it. The last
+  attribute can't be deleted.
 - **Reorder attributes:** Drag an attribute using its grip ![grip](images/icons/icn-grip.svg).
 - **Reset attributes to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg) to restore the sheet's
   attributes to the current [Default Attributes](Default%20Settings).

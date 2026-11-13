@@ -37,7 +37,10 @@ at level at least 1_. Select the section's title to collapse it to a one-paragra
 - **Chips:** Optional criteria, such as a level or a specialization, are added as chips. Select a dashed **+ …** button
   to add one, and the **x** on a chip to remove it.
 - **Reordering:** Drag a requirement by its grip ![grip](images/icons/icn-grip.svg) to move it within or between
-  groups. Dragging it into the Prerequisites section of another open editor copies it there.
+  groups. Dragging it into the Prerequisites section of another open editor, even one for a different kind of item,
+  copies it there, expanding the section if it's collapsed. A group brings everything in it along. A requirement the
+  other editor doesn't offer, such as a contained weight requirement dropped into a trait's editor, is refused, and so
+  is a group holding one. In a read-only editor, requirements can be dragged out but not rearranged.
 - **More actions:** Select **More actions** ![more](images/icons/icn-moreActions.svg) beside a requirement for
   **Duplicate**, **Move Up**, **Move Down**, **Wrap in Group**, **Ungroup**, and **Delete**.
 
@@ -117,6 +120,9 @@ Requires that an attribute **is**, **is not**, **is at least**, or **is at most*
   **Dodge**.
 - **+ combined with:** Optionally add a second attribute and compare the total (for example, ST+DX).
 
+The check uses each attribute's current value, which a [pool threshold](Point%20pools) may adjust, and the Dodge for
+the character's current encumbrance.
+
 ### Equipped equipment
 
 Requires that a character **has** or **doesn't have** a specific piece of equipment equipped.
@@ -139,7 +145,8 @@ has a level from one of its defaults.
 
 - **Name:** Compare the skill name. Enter the name in the text field.
 - **+ specialization**, **+ optional specialization:** Compare the skill's specializations.
-- **+ level:** Compare the skill's level (_is at least_, _is at most_).
+- **+ level:** Compare the skill's level (_is at least_, _is at most_). The level compared is the one left after the
+  sheet's skill level caps (see _Skill Level Caps_ in [Sheet Settings](Sheet%20Settings)).
 - **+ points:** Compare the points spent on the skill.
 - **+ tag:** Require a [tag](Tags).
 - **+ title note:** Compare the text shown in parentheses after the skill's name.

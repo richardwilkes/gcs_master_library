@@ -23,8 +23,8 @@ You can manage Menu Keys settings the same way as other settings:
 - **Reset settings to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg).
 - **Import or export settings:** On the **Menu Keys toolbar**, select **Menu** ![menu](images/icons/icn-menu.svg), then
   choose:
-  - **Import:** Load saved settings into GCS.
-  - **Export:** Save your current settings as a file.
+  - **Import…:** Load saved settings into GCS.
+  - **Export…:** Save your current settings as a file.
   - Any `.keys` files found in the `Settings` folder of your libraries are listed at the bottom of the menu, ready to
     import.
 

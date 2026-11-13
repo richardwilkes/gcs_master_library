@@ -37,9 +37,9 @@ Each list's heading includes the **total weight and value** for all items in tha
 | Column                                                                          | Description                                                                                                                                                                       |
 |---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **![equipped](images/icons/icn-applyChanges.svg)**                              | If checked, the equipment is **equipped** and any bonuses apply to your character. Available only for Carried Equipment.                                                          |
-| **![switched on](images/icons/icn-toggleSwitch.svg)**                           | Appears only when an item has switchable [features](Features). Select the cell to turn the item's switch on or off.                                                              |
+| **![switched on](images/icons/icn-toggleSwitch.svg)**                           | Appears only when an item has switchable [features](Features). Select the cell to turn the item's switch on or off.                                                               |
 | **#**                                                                           | Quantity of the item. Equipment with a quantity of zero is dimmed and adds nothing to the sheet, including its attacks.                                                           |
-| **Carried Equipment** / **Other Equipment**                                     | The item's name and any notes, including usage information. Select the chevron ![notes expand](images/icons/icn-notesExpand.svg) to show or hide the notes.                      |
+| **Carried Equipment** / **Other Equipment**                                     | The item's name and any notes, including usage information. Select the chevron ![notes expand](images/icons/icn-notesExpand.svg) to show or hide the notes.                       |
 | **TL**                                                                          | Tech level ([B22](B22)). Can be hidden in [Sheet Settings](Sheet%20Settings).                                                                                                     |
 | **LC**                                                                          | Legality class ([B267](B267)). Can be hidden in [Sheet Settings](Sheet%20Settings).                                                                                               |
 | **![value](images/icons/icn-coins.svg)**                                        | Value of one item.                                                                                                                                                                |
@@ -47,7 +47,7 @@ Each list's heading includes the **total weight and value** for all items in tha
 | **![stack](images/icons/icn-stack.svg) ![value](images/icons/icn-coins.svg)**   | Total value, including the quantity and any contained items.                                                                                                                      |
 | **![stack](images/icons/icn-stack.svg) ![weight](images/icons/icn-weight.svg)** | Total weight, including the quantity and any contained items.                                                                                                                     |
 | **![page reference](images/icons/icn-pageReference.svg)**                       | Page reference for the equipment. See [Page References](Page%20References) for more details.                                                                                      |
-| **![source](images/icons/icn-source.svg)**                                      | Tracks whether the equipment matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).                         |
+| **![source](images/icons/icn-source.svg)**                                      | Tracks whether the equipment matches the library it came from. See _Master Library Syncing_ in [Character Sheet Overview](Character%20Sheet%20Overview).                          |
 
 The number of decimal places shown for weights and values can be changed in [Sheet Settings](Sheet%20Settings). Hover
 over a rounded value to see the exact figure.
@@ -74,8 +74,8 @@ item is added, and you can change them later in the **Equipment Editor**.
 
 When adding weapons or armor:
 
-- **Weapons ([B267](B267)):** Equipped weapons appear on the **Melee Attacks** and/or **Ranged Attacks** lists with their
-  stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons) for more details.
+- **Weapons ([B267](B267)):** Equipped weapons appear on the **Melee Attacks** and/or **Ranged Attacks** lists with
+  their stats. See [Melee and Ranged Weapons](Melee%20and%20Ranged%20Weapons) for more details.
 - **Armor ([B282](B282)):** Equipped armor updates the **Damage Resistance (DR)** values on the body type block based
   on the protection the armor provides.
 
@@ -225,10 +225,10 @@ The Equipment Editor includes the following fields:
 | **Quantity**                 | How many of the item you have.                                                                                                                                                                                                     |
 | **Equipped**                 | Whether the item is equipped. Equipped items apply any bonuses to your character. Only shown for carried equipment.                                                                                                                |
 | **Value**                    | Value of one item. May be a number or a script. See the [Scripting Guide](Scripting%20Guide).                                                                                                                                      |
-| **Extended Value**           | Read-only. Total value based on quantity, modifiers, and contents. Shows a range while a modifier choice is still open.                                                                                                             |
+| **Extended Value**           | Read-only. Total value based on quantity, modifiers, and contents. Shows a range while a modifier choice is still open.                                                                                                            |
 | **Weight**                   | Weight of one item, with optional units. May be a number or a script.                                                                                                                                                              |
 | **Extended Weight**          | Read-only. Total weight based on quantity, modifiers, and contents.                                                                                                                                                                |
-| **Ignore weight for skills** | If checked, it excludes the item’s weight from encumbrance penalties for skills. It does not reduce overall encumbrance.                                                                                                            |
+| **Ignore weight for skills** | If checked, it excludes the item’s weight from encumbrance penalties for skills. It does not reduce overall encumbrance.                                                                                                           |
 | **Switched On**              | Whether the item's switchable [features](Features) are on.                                                                                                                                                                         |
 | **Preconfigured**            | Only in templates and libraries. If checked, the item's modifier choices and substitutions are already settled, so GCS doesn't ask about them when the item is added to a sheet. See [Substitutions](Substitutions).               |
 | **Uses Left**                | The number of uses available. Greyed out unless Maximum Uses > 0.                                                                                                                                                                  |

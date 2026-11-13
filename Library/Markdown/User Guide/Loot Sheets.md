@@ -58,13 +58,13 @@ right-click menu, which adds them to the character's **Buy Equipment** pane. See
 
 The **Loot Sheet** includes the following fields:
 
-| Loot Sheet Field | Description                                                                                                          |
-|------------------|----------------------------------------------------------------------------------------------------------------------|
-| **Name**         | The loot sheet's name.                                                                                               |
-| **Location**     | Notes about where the loot was obtained.                                                                             |
-| **Session**      | Notes about the game session when the loot was found.                                                                |
+| Loot Sheet Field | Description                                                                                                                                                                                                            |
+|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**         | The loot sheet's name.                                                                                                                                                                                                 |
+| **Location**     | Notes about where the loot was obtained.                                                                                                                                                                               |
+| **Session**      | Notes about the game session when the loot was found.                                                                                                                                                                  |
 | **Equipment**    | Items that make up the loot. Standard [Equipment](Equipment) details are included, like weight, value, and quantity. The columns shown and the decimal places follow the [Default Sheet Settings](Default%20Settings). |
-| **Notes**        | Any relevant [Notes](Notes) regarding the loot.                                                                      |
+| **Notes**        | Any relevant [Notes](Notes) regarding the loot.                                                                                                                                                                        |
 
 ## Loot Sheet toolbar
 
@@ -72,14 +72,15 @@ The toolbar above the Loot Sheet gives you quick access to common actions:
 
 ![Loot Sheet Toolbar](images/screenshots/scrn-toolbar-lootSheet.png)
 
-| Button                                               | Name                                              | Description                                                                             |
-|:-----------------------------------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------|
-| 100%                                                 | **Scale**                                         | Adjust the display size of your loot sheet.                                             |
-| ![toggle expansion](images/icons/icn-expand.svg)     | **Opens/closes all hierarchical rows**            | Show or hide all items within containers at once.                                       |
-| ![toggle notes](images/icons/icn-openCloseNotes.svg) | **Opens/closes all embedded notes**               | Show or hide all embedded notes on your sheet.                                          |
-| ![sync sources](images/icons/icn-syncSources.svg)    | **Sync with all sources in this sheet**           | Sync all items on the loot sheet with the libraries they came from.                     |
-| ![treasure](images/icons/icn-wand.svg)               | **Generate a treasure horde from this loot sheet** | Generate a random treasure hoard based on the sheet’s items and settings.              |
-| N/A                                                  | **Search**                                        | Type to list the matching rows on the loot sheet. Choose one to select it and scroll to it. |
+| Button                                               | Name                                               | Description                                                                                                   |
+|:-----------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| ![info](images/icons/icn-info.svg)                   | **Info**                                           | Hover to see a reminder that holding `Alt` (`Option` on macOS) while using the mouse wheel changes the scale. |
+| 100%                                                 | **Scale**                                          | Adjust the display size of your loot sheet.                                                                   |
+| ![toggle expansion](images/icons/icn-expand.svg)     | **Opens/closes all hierarchical rows**             | Show or hide all items within containers at once.                                                             |
+| ![toggle notes](images/icons/icn-openCloseNotes.svg) | **Opens/closes all embedded notes**                | Show or hide all embedded notes on your sheet.                                                                |
+| ![sync sources](images/icons/icn-syncSources.svg)    | **Sync with all sources in this sheet**            | Sync all items on the loot sheet with the libraries they came from.                                           |
+| ![treasure](images/icons/icn-wand.svg)               | **Generate a treasure horde from this loot sheet** | Generate a random treasure hoard based on the sheet’s items and settings.                                     |
+| N/A                                                  | **Search**                                         | Type to list the matching rows on the loot sheet. Choose one to select it and scroll to it.                   |
 
 ---
 

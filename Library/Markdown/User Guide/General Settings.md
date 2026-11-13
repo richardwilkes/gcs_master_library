@@ -16,8 +16,8 @@ Changes are applied immediately. You don’t need to save.
 - **Reset settings to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg).
 - **Import or export settings:** On the Settings toolbar, select **Menu** ![menu](images/icons/icn-menu.svg), then
   choose:
-  - **Import:** Load saved settings into GCS.
-  - **Export:** Save your current settings as a file.
+  - **Import…:** Load saved settings into GCS.
+  - **Export…:** Save your current settings as a file.
   - Any `.general` settings files found in the `Settings` folder of your libraries are listed at the bottom of the
     menu, ready to import.
 
@@ -38,11 +38,12 @@ The settings are grouped into sections.
 
 ### Lists
 
-| Setting                                               | Description                                                                                                                                                                    |
-|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Group containers when sorting**                     | Keeps containers together ahead of other rows when a list is sorted, instead of mixing them in by value.                                                                       |
-| **Show additional page references when space allows** | Lets the page reference column on character sheets, loot sheets, and templates show more than one reference when there is room, instead of always collapsing to the first one. |
-| **Max Auto Column Width**                             | The widest a column can grow when GCS sizes columns to fit their contents.                                                                                                     |
+| Setting                                               | Description                                                                                                                                                                                                                                                                    |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Group containers when sorting**                     | Keeps containers together ahead of other rows when a list is sorted, instead of mixing them in by value.                                                                                                                                                                       |
+| **Show additional page references when space allows** | Lets the page reference column on character sheets, loot sheets, and templates show more than one reference when there is room, instead of always collapsing to the first one.                                                                                                 |
+| **Lock list files when opened**                       | Opens list files locked, so that nothing changes them until you unlock them with **Lock against changes** ![lock](images/icons/icn-lock.svg) on their toolbar. A new list opens unlocked, and lists already open keep their state. See [Library Explorer](Library%20Explorer). |
+| **Max Auto Column Width**                             | The widest a column can grow when GCS sizes columns to fit their contents.                                                                                                                                                                                                     |
 
 ### Workspace
 
@@ -76,14 +77,14 @@ The settings are grouped into sections.
 
 | Setting                     | Description                                                                                                                                     |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Settings Path**           | Where GCS saves its settings. Select the button beside it to copy the path.                                                                     |
-| **Translations Path**       | Where GCS looks for translations. Select the button beside it to copy the path.                                                                 |
-| **Log Path**                | Where GCS writes its log. Crash details are written to a `gcs-crash.log` file in the same folder. Select the button beside it to copy the path. |
 | **Monitor Resolution**      | Sets resolution. If `0 ppi`, GCS uses the resolution your monitor reports. See **Monitor Resolution** below.                                    |
 | **Image Export Resolution** | Resolution for exported images.                                                                                                                 |
 | **Script Execution Limit**  | How long a single script may run before it is stopped. See the [Scripting Guide](Scripting%20Guide).                                            |
 | **External PDF Viewer**     | Lets you use a different program to open PDFs. Keep blank to open PDFs with GCS. See **External PDF Settings** below.                           |
 | **Interface Locale**        | Changes the GCS language. Leave blank to use the system default. Takes effect the next time GCS is started.                                     |
+| **Settings Path**           | Where GCS saves its settings. Select the button beside it to copy the path.                                                                     |
+| **Translations Path**       | Where GCS looks for translations. Select the button beside it to copy the path.                                                                 |
+| **Log Path**                | Where GCS writes its log. Crash details are written to a `gcs-crash.log` file in the same folder. Select the button beside it to copy the path. |
 
 ## External PDF Settings
 

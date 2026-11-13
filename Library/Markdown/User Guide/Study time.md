@@ -40,12 +40,12 @@ Save your changes when you’re done. See **Saving study entries** below.
 
 Each study entry includes the following fields:
 
-| Field              | Description                                                                                           |
-|--------------------|-------------------------------------------------------------------------------------------------------|
+| Field              | Description                                                                                                                                                                    |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Study type**     | How you studied. Choose from the **Study types** table below. Hover over the info icon beside it to see the limits that apply to that type, such as the hours per day allowed. |
-| **Hours spent**    | Enter the number of hours spent studying.                                                             |
-| **Hours of study** | Read-only. Shows the hours that count toward the next point, based on the study type.                 |
-| **Note**           | (Optional) Add any notes about this study session.                                                    |
+| **Hours spent**    | Enter the number of hours spent studying.                                                                                                                                      |
+| **Hours of study** | Read-only. Shows the hours that count toward the next point, based on the study type.                                                                                          |
+| **Note**           | (Optional) Add any notes about this study session.                                                                                                                             |
 
 GCS automatically calculates:
 

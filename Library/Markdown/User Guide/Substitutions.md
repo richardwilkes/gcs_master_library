@@ -86,9 +86,9 @@ Templates](Character%20Templates) for more on building templates.
 
 Older library data packs the whole definition into the placeholder itself, and GCS still reads these forms:
 
-| Form                        | Meaning                                                                                                                                                         |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `@Label@`                   | Any text, including an empty value. With no definition in Nameables, this is how a bare code behaves.                                                            |
+| Form                        | Meaning                                                                                                                                                           |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `@Label@`                   | Any text, including an empty value. With no definition in Nameables, this is how a bare code behaves.                                                             |
 | `@Label|One|Two@`           | Must select _One_ or _Two_. Add `*` as a part to also allow free-form text, `?` to allow an empty value, and `tt(text)` to add a description.                     |
 | `@Label: One, Two, etc.@`   | A short label, a colon, and a comma-separated list ending in "etc." becomes a label with those items as choices. Free-form text and empty values are allowed.     |
 | `@Label: text@`             | A short label and a colon becomes a label, with the rest of the text shown as the description.                                                                   |

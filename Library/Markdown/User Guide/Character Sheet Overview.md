@@ -87,11 +87,11 @@ each one works.
 | **Description**                      | Gender, age, birthday, religion, height, weight, size, tech level ([B22](B22)), hair, eyes, skin, and handedness. Select **Randomize** ![randomize](images/icons/icn-randomize.svg) beside a field to generate a random entry from the character's ancestry. |
 | **Miscellaneous**                    | Shows the created and modified dates and the player’s name.                                                                                                                                                                                                  |
 | **Points**                           | Tracks your [character points](Character%20Points), with a breakdown by ancestry, attributes, advantages, disadvantages, quirks, skills, and spells.                                                                                                         |
-| **Primary and Secondary Attributes** | Shows your basic attributes and secondary characteristics. Hover over one to see where its bonuses come from. See [Attributes](Attributes) for details.                                                                                                      |
+| **Primary and Secondary Attributes** | Shows your basic attributes and secondary characteristics. Hover over one to see where its bonuses come from. A value a [pool](Point%20pools) threshold changes is shown in the warning color. See [Attributes](Attributes) for details.                     |
 | **Point Pools**                      | Tracks your fatigue points (FP), hit points (HP), and other pools. See [Point pools](Point%20pools).                                                                                                                                                         |
 | **Body Type**                        | Titled with your [body type](Body%20type), such as _Humanoid_. Displays the hit location table with damage resistance (DR) and a space for notes ![first aid](images/icons/icn-firstAid.svg) for each location (for example, “crippled”).                    |
-| **Encumbrance, Move & Dodge**        | Shows encumbrance and movement speeds. The weight icon ![weight](images/icons/icn-weight.svg) indicates your current encumbrance level.                                                                                                                      |
-| **Lifting & Moving Things**          | Calculates how much weight your character can lift and carry.                                                                                                                                                                                                |
+| **Encumbrance, Move & Dodge**        | Shows encumbrance and movement speeds. The weight icon ![weight](images/icons/icn-weight.svg) indicates your current encumbrance level. When a [pool](Point%20pools) threshold changes a Max Load, Move, or Dodge value, its tooltip says so.                |
+| **Lifting & Moving Things**          | Calculates how much weight your character can lift and carry. When a [pool](Point%20pools) threshold changes lifting ST, the tooltips of these values say so.                                                                                                |
 | **Basic Damage**                     | Lists thrust and swing damage based on ST.                                                                                                                                                                                                                   |
 | **Reaction Modifiers**               | Appears only if traits, skills, or equipment give your character reaction modifiers.                                                                                                                                                                         |
 | **Conditional Modifiers**            | Appears only if traits, skills, or equipment give your character conditional modifiers.                                                                                                                                                                      |
@@ -139,6 +139,10 @@ Layout changes can be undone with **Edit > Undo** like any other edit to the she
 GCS tracks whether items on your character sheet match the library they came from, such as the official **Master
 Library**. Look for the **Library Source** column ![source](images/icons/icn-source.svg) next to items on your sheet.
 
+An item copied from a list or a [character template](Character%20Templates) in one of your libraries, whether you drag
+it, copy it to the sheet, or apply the template, has that file as its source. An item the template itself got from a
+list keeps that list as its source.
+
 | Marker  | Meaning                                                                                                                        |
 |---------|--------------------------------------------------------------------------------------------------------------------------------|
 | (blank) | Matches the library.                                                                                                           |
@@ -160,6 +164,8 @@ can resync:
 - **Sync everything at once:** Select **Sync with all sources in this sheet** ![sync
   sources](images/icons/icn-syncSources.svg) in the character sheet toolbar.
 - **Break the link:** Select **Item > Clear Source** to turn an item into a custom item that is never synced.
+
+A sync updates each item's own fields. It doesn't add, remove, or reorder the items inside a container.
 
 > [!CAUTION]
 > If you intentionally customized an item (for example, modified a skill or piece of equipment), don’t resync it or it

@@ -56,7 +56,10 @@ When your JavaScript code is called, the following globals are available for you
   - signedValue
 
 In addition, when the script runs for a character sheet, any attributes you've defined for the sheet are available as
-globals using their ID prefixed with a dollar sign, e.g. `$st` refers to the Strength attribute.
+globals using their ID prefixed with a dollar sign, e.g. `$st` refers to the Strength attribute. Used as a number,
+`$st` gives the attribute's value without the adjustments of the pools' current thresholds (a pool's maximum), which
+is what point costs and attributes such as HP are calculated from, while `$st.current` gives the value with them (the
+points a pool has left). See [Attribute](Scripting/Attribute).
 
 ## Rules and limits
 
@@ -71,4 +74,4 @@ globals using their ID prefixed with a dollar sign, e.g. `$st` refers to the Str
 
 ---
 
-***Last updated for v5.57.0***
+***Last updated for v5.59.0***

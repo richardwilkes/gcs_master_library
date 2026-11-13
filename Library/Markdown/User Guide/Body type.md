@@ -60,8 +60,8 @@ To import or export a body type:
 
 1. On the Body Type toolbar, select **Menu** ![menu](images/icons/icn-menu.svg).
 2. Select one of the following:
-   - **Import:** Load a saved body type into your sheet.
-   - **Export:** Save the current body type as a file.
+   - **Import…:** Load a saved body type into your sheet.
+   - **Export…:** Save the current body type as a file.
 
 > [!TIP]
 > Save an exported `.body` file in the `Settings` folder of your User Library and it appears in the menu alongside the
@@ -111,8 +111,8 @@ To add a sub hit location:
 ## Managing hit locations
 
 - **Discard changes:** Select **Discard Changes** ![discard changes](images/icons/icn-discardChanges.svg).
-- **Delete a hit location:** Select **Delete** ![delete](images/icons/icn-delete.svg). A table always keeps at least
-  one location.
+- **Delete a hit location or sub-table:** Select **Remove hit location** or **Remove sub-table**
+  ![delete](images/icons/icn-delete.svg) beside it. A table always keeps at least one location.
 - **Reorder hit locations:** Drag a hit location using its grip ![grip](images/icons/icn-grip.svg). Note: the order
   affects the dice roll table.
 - **Reset body type to defaults:** Select **Reset** ![reset](images/icons/icn-reset.svg) to restore your hit locations
