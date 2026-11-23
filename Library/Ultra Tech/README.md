@@ -29,6 +29,7 @@ between weapons.
 The list of deviations is:
 
 * Anti-Materiel Rifle, 15mmCL uses Chandley's 0.22 lb reload weight and 30.2 lb loaded weight since the sum of the weight of the ammo otherwise equals the reload weight.
+* Assault Cannon, 25mmCL uses Chandley's 35.7 reload weight since the sum of the weight of the ammo otherwise exceeds the reload weight.
 * Gauss Minineedler uses Chandley's 0.11 lb reload weight and 0.21 lb loaded weight since otherwise the weight of the loaded ammo equals the entire loaded weight.
 * Grav Minineedler uses 0.11 lb reload weight and 0.21 lb loaded weight since otherwise the weight of the ammo equals the entire loaded weight. This differs from Chandley's listed stats since they include cell weight that we track separately.
 * Grav Needle Rifle uses 1.1 lb reload weight and 6.1 loaded weight since otherwise the weight of the ammo equals the entire loaded weight. This differs from Chandley's listed stat since they include cell weight that we track separately.
