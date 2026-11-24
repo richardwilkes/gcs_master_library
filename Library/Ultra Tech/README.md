@@ -48,6 +48,7 @@ The list of deviations is:
 * Storm Carbine, 10mmCL uses 2.2 lb reload weight and 8.2 lb loaded weight since the sum of the weight of the ammo otherwise equals the reload weight.
 * Urban Assault Weapon uses the reload weight of 0.46lbs instead of 0.75lbs for its 18.5mmPC shotshells, because they are loaded individually into the weapon instead of using a magazine, and 5 shotshells weighs 0.46lbs.
 * Underbarrel Grenade Launcher, 40mmPLB uses 2.2 lb reload weight and 3.2 lb loaded weight since otherwise the weight of the ammo equals the entire loaded weight.
+*Underbarrel Shotgun uses the reload weight of 0.46lbs instead of 0.75lbs for its 18.5mmPC shotshells, because they are loaded individually into the weapon instead of using a magazine, and 5 shotshells weighs 0.46lbs.
 * Wrist Needler, 3mmN uses 0.14 reload weight and 0.24 loaded weight since otherwise the weight of the ammo exceeds the entire loaded weight.
 
 [Chandley's figures]: https://forums.sjgames.com/showpost.php?p=739408&postcount=5
