@@ -47,6 +47,8 @@ The list of deviations is:
 * Portable Railgun, 10mm uses 2.7 lb reload weight and 21.2 lb loaded weight since otherwise the weight of the ammo exceeds the entire loaded weight. This differs from Chandley's listed stats since they include cell weight that we track separately.
 * Sniper Grav Gun uses 1.1 lb reload weight and 10.1 lb loaded weight since otherwise the weight of the ammo equals the entire loaded weight. This differs from Chandey's listed stats since they include cell weight that we track separately.
 * Storm Carbine, 10mmCL uses 2.2 lb reload weight and 8.2 lb loaded weight since the sum of the weight of the ammo otherwise equals the reload weight.
+* Tangler Pistol's unloaded weight subtracts 0.48lbs instead of 0.5lbs, the _exact_ weight of 4x 25mmT.
+* Tangler's unloaded weight subtracts 0.96lbs instead of 1lbs, the _exact_ weight of 8x 25mmT.
 * Urban Assault Weapon uses the reload weight of 0.46lbs instead of 0.75lbs for its 18.5mmPC shotshells, because they are loaded individually into the weapon instead of using a magazine, and 5 shotshells weighs 0.46lbs.
 * Underbarrel Grenade Launcher, 40mmPLB uses 2.2 lb reload weight and 3.2 lb loaded weight since otherwise the weight of the ammo equals the entire loaded weight.
 *Underbarrel Shotgun uses the reload weight of 0.46lbs instead of 0.75lbs for its 18.5mmPC shotshells, because they are loaded individually into the weapon instead of using a magazine, and 5 shotshells weighs 0.46lbs.
