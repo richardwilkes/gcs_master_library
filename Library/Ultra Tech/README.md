@@ -43,6 +43,7 @@ The list of deviations is:
 * MLAWS, 64mm has reload (5i) since the description is a 6-tube version of the IML. The lack of (i) is assumed to be an error from copying the IML which is reload (5) rather than (5i) because (i) is redundant with single-shot weapons. The alternative would be having a magazine, but since the magazine would need to weigh less than 0.5 lbs to round to 0, and even an ammo belt would weigh 0.6 lbs (0.05 * 12 lbs) so this is less likely than individual reloading.
 * Minigun, 7mmCL uses Chandley's 11 lb belt-fed reload weight and 34 lb loaded weight since the sum of the weight of the ammo otherwise exceeds the reload weight.
 * Needler, 3mmN uses 0.4 lb reload weight and 1.1 lb loaded weight since otherwise the weight of the ammo equals the entire loaded weight.
+* Paint Carbine uses 1.25lb reload weight when tracking individual shots, as that's how much 50 shots actually weighs.
 * Portable Railgun, 10mm uses 2.7 lb reload weight and 21.2 lb loaded weight since otherwise the weight of the ammo exceeds the entire loaded weight. This differs from Chandley's listed stats since they include cell weight that we track separately.
 * Sniper Grav Gun uses 1.1 lb reload weight and 10.1 lb loaded weight since otherwise the weight of the ammo equals the entire loaded weight. This differs from Chandey's listed stats since they include cell weight that we track separately.
 * Storm Carbine, 10mmCL uses 2.2 lb reload weight and 8.2 lb loaded weight since the sum of the weight of the ammo otherwise equals the reload weight.
